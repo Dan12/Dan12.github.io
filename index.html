@@ -4,7 +4,16 @@
 	<title>Home</title>
 	<meta charset="utf-8">
 	<style>
-	*{margin: 0;}
+	@font-face{
+		font-family: 'SF';
+		src: url('SF Intellivised.ttf');
+	}
+	*{
+		margin: 0;
+	}
+	body{
+		font-family: SF;
+	}
 	.heading{
 		text-align: center;
 		background-color: rgb(45,70,120);
@@ -20,10 +29,11 @@
 		font-size: 30px;
 	}
 	.heading h4{
-		font-size: 14px;
+		font-size: 12px;
 		border: 3px solid skyblue;
 		display: inline;
 		padding: 4px;
+		font-family: arial;
 	}
 	.sidebar{
 		background-color: rgb(45,70,120);
@@ -34,7 +44,7 @@
 		left: 0;
 	}
 	.background img{
-		position: absolute;
+		position: fixed;
 		bottom: 0;
 		right: 0;
 		z-index: -2;
@@ -51,32 +61,32 @@
 		position: absolute;
 		top: 150px;
 		left: 70px;
+		background-color: rgba(150,150,150,.5);
 	}
 	.navigtion p{
-		padding-bottom: 30px;
+		padding-bottom: 20px;
 		text-shadow: 12px 12px 3px rgb(255,255,200);
+		line-height: 30px;
 	}
 	.navigtion a{
-		text-decoration: none;
-		color: white;
 		-webkit-text-stroke: .35px black;
 	}
 	.welcome p{
-		width: 300px;
-		height: 150px;
-		background-color: rgba(200,200,200,.8);
+		margin-right: 70px;
+		background-color: rgba(100,100,100,.8);
 		color: white;
 		padding: 15px;	
 		border-radius: 15px;
 		border: 5px double white;
 		position: absolute;
-		top: 480px;
-		right: 20px;
+		top: 470px;
+		left: 70px;
 		z-index: 30;
+		font-family: monaco;
 	}
-	.heading a{
+	a{
 		text-decoration: none;
-		color: white;
+		color: rgb(200,200,255);
 	}
 	</style>
 </head>
@@ -87,16 +97,16 @@
 	<h4>"Because if you don't care where you are, then you ain't lost."</h4>
 </div>
 <div class="background">
-	<img src="background2.jpg" height="972" width="1728">
+	<img src="background2.jpg">
 </div>
 <div class="navigtion">
 	<p><a href="about.html">About</a></p>
 	<p><a href="hobbies.html">Hobbies</a></p>
 	<p><a href="contact.html">Contact</a></p>
-	<p><a href="more_info.html">More Info</a></p>
+	<p><a href="more_cool_stuff.html">More Cool Stuff</a></p>
 </div>
 <div class="welcome">
-	<p>Welcome to Daniel Weber. This site is all about me.</p>
+	<p>Welcome to Daniel Weber. This site is all about me. Look under the headers to see quirky quotes. To navigate the site, click the light purple text. Clicking Daniel Weber will bring you to this home page.</p>
 </div>
 </body>
 </html>

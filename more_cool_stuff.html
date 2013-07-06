@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>More Cool Stuff</title>
+	<meta charset="utf-8">
+	<style>
+	@font-face{
+		font-family: 'SF';
+		src: url('SF Intellivised.ttf');
+	}
+	*{
+		margin: 0;	
+	}
+	body{
+		font-family: SF;
+	}
+	.heading{
+		text-align: center;
+		background-color: rgb(45,70,120);
+		height: 130px;
+		width: 100%;
+		color: white;
+		z-index: 10;
+		position: relative;
+	}
+	.heading h1{
+		padding-top: 30px;
+		padding-bottom: 10px;
+		font-size: 30px;
+	}
+	.heading h4{
+		font-size: 12px;
+		border: 3px solid skyblue;
+		display: inline;
+		padding: 4px;
+		font-family: arial;
+	}
+	.sidebar{
+		background-color: rgb(45,70,120);
+		width: 100px;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+	.background img{
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		z-index: -2;
+	}
+	.navigtion{
+		width: 200px;
+		float: left;
+		border: 5px double white;
+		z-index: 20;
+		position: relative;
+		text-align: center;
+		font-size: 30px;
+		padding-top: 30px;
+		position: absolute;
+		top: 150px;
+		left: 70px;
+		background-color: rgba(100,100,100,.5);
+	}
+	.navigtion p{
+		padding-bottom: 20px;
+		text-shadow: 12px 12px 3px rgb(255,255,200);
+		line-height: 30px;
+	}
+	.navigtion a{
+		-webkit-text-stroke: .35px black;
+	}
+	.cool_stuff{
+		margin-right: 100px;
+		background-color: rgba(100,100,100,.8);
+		color: white;
+		padding: 15px;	
+		border-radius: 15px;
+		border: 5px double white;
+		position: absolute;
+		z-index: 30;
+		top: 470px;
+		left: 70px;
+		text-indent: 20px;
+		font-size: 18px;
+		font-family: monaco;
+	}
+	a{
+		text-decoration: none;
+		color: rgb(200,200,255);
+	}
+	.cool_stuff a{
+		color: blue;
+	}
+	.cool_stuff p{
+		padding-bottom: 15px;
+	}
+	audio{
+		padding-bottom: 15px;
+	}
+	</style>
+</head>
+<body>
+<div class="sidebar"></div>
+<div class="heading">
+	<h1><a href="index.html">Daniel Weber</a>: Cool Stuff</h1>
+	<h4>"An effective way to deal with predators is to taste terrible."</h4>
+</div>
+<div class="background">
+	<img src="coolbackground.jpg" height="972" width="1728">
+</div>
+<div class="navigtion">
+	<p><a href="about.html">About</a></p>
+	<p><a href="hobbies.html">Hobbies</a></p>
+	<p><a href="contact.html">Contact</a></p>
+	<p><a href="more_cool_stuff.html">More Cool Stuff</a></p>
+</div>
+<div class="cool_stuff">
+	<p>My favorite <a href="http://www.youtube.com" target="_blank">YouTube</a> channel is <a href="http://www.youtube.com/user/HISHEdotcom" target="_blank">HISHEdotcom</a>. My favorite song is the Radioactive Sycronice Remix.</p>
+	<div>
+		<audio src="Radioactive%20(Synchronice%20Remix).mp3 " controls>
+			<p>This browser does not support our audio format</p>
+		</audio>
+	</div>
+	<p>My favorite DJ is <a href="http://djearworm.com" target="_blank">DJ Earworm</a>. I also love to create remixes and song using Garageband but I decided to spare you the terribleness. I also play soccer and have been playing for a very long time. My current club is <a href="http://www.fc1academy.com" target="_blank">FC-1 Academy</a>.</p>
+</div>
+</body>
+</html>

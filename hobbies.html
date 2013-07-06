@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hobbies</title>
+	<meta charset="utf-8">
+	<style>
+	@font-face{
+		font-family: 'SF';
+		src: url('SF Intellivised.ttf');
+	}
+	*{
+		margin: 0;
+	}
+	body{
+		font-family: SF;
+	}
+	.heading{
+		text-align: center;
+		background-color: rgb(45,70,120);
+		height: 130px;
+		width: 100%;
+		color: white;
+		z-index: 10;
+		position: relative;
+	}
+	.heading h1{
+		padding-top: 30px;
+		padding-bottom: 10px;
+		font-size: 30px;
+	}
+	.heading h4{
+		font-size: 12px;
+		border: 3px solid skyblue;
+		display: inline;
+		padding: 4px;
+		font-family: arial;
+	}
+	.sidebar{
+		background-color: rgb(45,70,120);
+		width: 100px;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+	.background img{
+		position: fixed;
+		bottom: 0px;
+		right: 0;
+		z-index: -2;
+	}
+	.navigtion{
+		width: 200px;
+		float: left;
+		border: 5px double white;
+		z-index: 20;
+		position: relative;
+		text-align: center;
+		font-size: 30px;
+		padding-top: 30px;
+		position: absolute;
+		top: 150px;
+		left: 70px;
+		background-color: rgba(150,150,150,.5);
+	}
+	.navigtion p{
+		padding-bottom: 20px;
+		text-shadow: 12px 12px 3px rgb(255,255,200);
+		line-height: 30px;
+	}
+	.navigtion a{
+		-webkit-text-stroke: .35px black;
+	}
+	.hobbies{
+		margin-right: 100px;
+		background-color: rgba(100,100,100,.8);
+		color: white;
+		padding: 15px;	
+		border-radius: 15px;
+		border: 5px double white;
+		position: absolute;
+		z-index: 30;
+		top: 470px;
+		left: 70px;
+		text-indent: 20px;
+		font-size: 18px;
+		font-family: monaco;
+	}
+	.hobbies sup{
+		font-size: 8px;
+	}
+	a{
+		text-decoration: none;
+		color: rgb(200,200,255);
+	}
+	</style>
+</head>
+<body>
+<div class="sidebar"></div>
+<div class="heading">
+	<h1><a href="index.html">Daniel Weber</a>: Hobbies</h1>
+	<h4>"Great minds run in great circles."</h4>
+</div>
+<div class="background">
+	<img src="hobbiesbackground.jpg">
+</div>
+<div class="navigtion">
+	<p><a href="about.html">About</a></p>
+	<p><a href="hobbies.html">Hobbies</a></p>
+	<p><a href="contact.html">Contact</a></p>
+	<p><a href="more_cool_stuff.html">More Cool Stuff</a></p>
+</div>
+<div class="hobbies">
+	<p>I like to program on Java in my free time or model on Maya. I also like biking with my friends and buying lots of junk food. I also like going to the movies with my friends. Here is my summer movie list:</p>
+	<p>World War Z, Now You See Me, Monsters University, <s>Lone Ranger</s>, Despicable Me 2, Pacific Rim, Wolverine, Elysium, Catching Fire, The Desolation of Smaug, Star Trek Into Darkness, Thor into Darkness, and Cloudy With a Chance of Meatballs 2.</p>
+	<p>As you can see, my list is very long and at $10.25 per movie, there is great doubt as to whether my allowance will last that long. Some of my other activities that I take part in with my friends is playing video games. I currently have an X-Box 360<sup>TM</sup> and I love to play Fifa<sup>TM</sup> on it.</p>
+</div>
+</body>
+</html>
