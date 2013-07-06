@@ -1,1 +1,1 @@
-.DS_Store
+This is a website
