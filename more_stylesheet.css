@@ -1,13 +1,20 @@
+/*General*/
+
 @font-face{
 	font-family: 'SF';
 	src: url('SF Intellivised.ttf');
 }
+
 *{
 	margin: 0;	
 }
+
 body{
 	font-family: SF;
 }
+
+/*Header*/
+
 .heading{
 	text-align: center;
 	background: url("bar_background.jpg");
@@ -16,11 +23,13 @@ body{
 	z-index: 10;
 	position: relative;
 }
+
 .heading h1{
 	padding-top: 30px;
 	padding-bottom: 10px;
 	font-size: 30px;
 }
+
 .heading h4{
 	font-size: 12px;
 	border: 3px solid skyblue;
@@ -28,6 +37,7 @@ body{
 	padding: 4px;
 	font-family: arial;
 }
+
 .sidebar{
 	background: url("bar_background.jpg");
 	width: 100px;
@@ -36,12 +46,18 @@ body{
 	top: 0;
 	left: 0;
 }
+
+/*Background*/
+
 .background img{
 	position: fixed;
 	bottom: 0;
 	right: 0;
 	z-index: -2;
 }
+
+/*Navigation*/
+
 .navigtion{
 	width: 200px;
 	float: left;
@@ -56,14 +72,24 @@ body{
 	left: 70px;
 	background-color: rgba(100,100,100,.5);
 }
+
 .navigtion p{
 	padding-bottom: 20px;
 	text-shadow: 12px 12px 3px rgb(255,255,200);
 	line-height: 30px;
 }
+
 .navigtion a{
-	-webkit-text-stroke: .35px black;
+	-webkit-text-stroke: .8px black;
 }
+
+a{
+	text-decoration: none;
+	color: rgb(200,200,255);
+}
+
+/*Cool Text*/
+
 .cool_stuff{
 	margin-right: 100px;
 	background-color: rgba(100,100,100,.8);
@@ -80,16 +106,15 @@ body{
 	font-family: monaco;
 	max-width: 600px;
 }
-a{
-	text-decoration: none;
-	color: rgb(200,200,255);
-}
+
 .cool_stuff a{
 	color: blue;
 }
+
 .cool_stuff p{
 	padding-bottom: 15px;
 }
+
 audio{
 	padding-bottom: 15px;
 }
