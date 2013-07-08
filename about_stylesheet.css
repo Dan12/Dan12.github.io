@@ -10,7 +10,7 @@ body{
 }
 .heading{
 	text-align: center;
-	background-color: rgb(45,70,120);
+	background: url("bar_background.jpg");
 	height: 130px;
 	width: 100%;
 	color: white;
@@ -30,7 +30,7 @@ body{
 	font-family: arial;
 }
 .sidebar{
-	background-color: rgb(45,70,120);
+	background: url("bar_background.jpg");
 	width: 100px;
 	height: 100%;
 	position: fixed;
@@ -79,6 +79,7 @@ body{
 	text-indent: 20px;
 	font-size: 20px;
 	font-family: monaco;
+	max-width: 600px;
 }
 a{
 	text-decoration: none;
