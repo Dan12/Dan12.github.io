@@ -56,6 +56,16 @@ body{
 	z-index: -2;
 }
 
+.cover{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 3000px;
+	width: 3000px;
+	z-index: -2;
+	background-color: rgba(200,200,200,.4);
+}
+
 /*Navigation*/
 
 .navigtion{
