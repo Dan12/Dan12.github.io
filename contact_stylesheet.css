@@ -105,3 +105,7 @@ a{
 	font-family: monaco;
 	max-width: 600px;
 }
+
+.contact a{
+	color: blue;
+}
