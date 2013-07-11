@@ -87,6 +87,8 @@ body{
 	padding-bottom: 20px;
 	text-shadow: 12px 12px 3px rgb(255,255,200);
 	line-height: 30px;
+	color: white;
+	-webkit-text-stroke: .8px black;
 }
 
 .navigtion a{
@@ -108,7 +110,7 @@ a{
 	border: 5px double white;
 	position: absolute;
 	z-index: 30;
-	top: 470px;
+	top: 500px;
 	left: 70px;
 	text-indent: 20px;
 	font-size: 20px;
