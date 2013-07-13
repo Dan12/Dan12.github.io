@@ -210,7 +210,8 @@ button:hover a {
 .category_review {
 	width: 940px;
 	display: inline-block;
-	margin-bottom: 40px;
+	margin: 0 auto 40px auto;
+
 }
 
 .category_review .header {
@@ -323,6 +324,7 @@ button:hover a {
 
 .reviews button{
 	margin-left: 30px;
+	margin-bottom: 30px;
 }
 
 .more_reviews{
@@ -342,6 +344,41 @@ button:hover a {
 	color: red;
 	border-radius: 5px;
 	padding: 0 5px;
+}
+
+/*Footer*/
+
+footer a {
+	font-size: 14px;
+	color: black;
+	-webkit-transition: all 300ms linear;
+}
+
+footer a:hover {
+	color: red;
+}
+
+footer li {
+	list-style: none;
+	display: inline-block;
+	width: 120px;
+	text-align: left;
+	margin: 10px;
+}
+
+footer ul {
+	text-align: center;
+	width: 940px;
+	margin: 0 auto;
+	padding-bottom: 30px;
+}
+
+.android_img {
+	width: 100px;
+	height: 75px;
+	background: url("../img/android.jpg");
+	background-size: 100%;
+	margin: 0 auto;
 }
 
 /*More Pages*/
@@ -458,4 +495,84 @@ button:hover a {
 	.catergories ul {
 		width: 450px;
 	}
+
+	.category_review {
+		width: 450px;
+	}
+
+	.reviews {
+		width: 450px;
+		margin: 0 auto;
+	}
+
+	footer ul {
+		width: 450px;
+	}
+}
+
+@media screen and (max-width: 460px){
+
+	.topimg_container {
+		width: 250px;
+		margin: 0 auto;
+	}
+
+	header h1 {
+		font-size: 45px;
+	}
+
+	header h2 {
+		font-size: 18px;
+	}
+
+	.newimg_container {
+		width: 350px;
+	}
+
+	.catergories ul {
+		width: 350px;
+	}
+
+	.category_review {
+		width: 350px;
+	}
+
+	.reviews {
+		width: 350px;
+		margin: 0 auto;
+	}
+
+	footer ul {
+		width: 350px;
+	}
+
+	.review_content {
+		width: 300px;
+	}
+
+	.racing_review .review_app_screen {
+		width: 300px;
+		height: 193px;
+	}
+
+	.arcade_review .review_app_screen {
+		width: 300px;
+		height: 180px;
+	}
+
+	.running_review .review_app_screen1 {
+		width: 120px;
+		height: 214px;
+	}
+
+	.running_review .review_app_screen2 {
+		width: 120px;
+		height: 214px;
+	}
+
+	.puzzle_review .review_app_screen {
+		width: 300px;
+		height: 188px;
+	}
+
 }
