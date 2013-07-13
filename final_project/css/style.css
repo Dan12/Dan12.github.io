@@ -1,0 +1,461 @@
+/*General*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	max-width: 940px;
+	margin: 0 auto;
+	background-color: black;
+}
+
+.all_container {
+	background-color: white;
+}
+
+/*Top Images*/
+
+.topimg_container {
+	margin: 0 auto;
+	text-align: center;
+	width: 940px;
+}
+
+.topimg {
+	width: 90px;
+	height: 90px;
+	margin: 3px;
+	background-size: 100%;
+	display: inline-block; 
+	border-width: 5px;
+	border-style: solid; 
+	border-radius: 22px;
+}
+
+.subway {
+	background-image: url(../img/s-surfer.png);
+	border-color: gold;
+}
+
+.flick {
+	background-image: url(../img/flick_kick.png);
+	border-color: darkgray;
+}
+
+.zombie {
+	background-image: url(../img/z-road_trip.png);
+	border-color: skyblue;
+}
+
+.plague {
+	background-image: url(../img/p-inc.png);
+	border-color: darkred;
+}
+
+.free {
+	background-image: url(../img/f-free.png);
+	border-color: rgb(100,100,100);
+}
+
+.ninja {
+	background-image: url(../img/f-ninja.png);
+	border-color: rgb(100,80,40);
+}
+
+.t-run {
+	background-image: url(../img/t-run_2.png);
+	border-color: orange;
+}
+
+.control {
+	background-image: url(../img/a-control.png);
+	border-color: lightgray;
+}
+
+/*Header*/
+
+header h1 {
+	margin-top: 30px;
+	font-size: 100px;
+	padding-bottom: 40px;
+}
+
+header h2 {
+	font-size: 30px;
+	padding-bottom: 40px;
+	border-bottom: 5px solid black;
+	margin-bottom: 20px;
+}
+
+.header {
+	text-align: center;
+}
+
+/*New*/
+
+.new_head {
+	font-size: 30px;
+	padding: 40px;
+}
+
+.newimg_container {
+	margin: 0 auto;
+	text-align: center;
+	width: 940px;
+	border-bottom: 5px solid black;
+}
+
+.newimg {
+	float: left;
+	width: 75px;
+	height: 75px;
+	border-width: 5px;
+	border-style: solid;
+	border-radius: 20px; 
+	background-size: 100%;
+	margin-right: 10px;
+}
+
+.new_content {
+	display: inline-block;
+	margin: 10px;
+	width: 200px;
+	vertical-align: top;
+	padding-bottom: 20px;
+}
+
+.racing {
+	background-image: url(../img/racing.png);
+	border-color: silver;
+}
+
+.despicable {
+	background-image: url(../img/despicable.png);
+	border-color: orange;
+}
+
+.steel {
+	background-image: url(../img/steel.png);
+	border-color: rgb(100,290,30);
+}
+
+.knight {
+	background-image: url(../img/knight.png);
+	border-color: skyblue;
+}
+
+.new_description {
+	width: 200px;
+	margin: 10px 5px;
+	text-align: left;
+}
+
+button {
+	font-size: 16px;
+	-webkit-transition: all 300ms linear;
+}
+
+button a {
+	text-decoration: none;
+	color: black;
+	-webkit-transition: all 300ms linear;
+}
+
+button:hover{
+	background-color: black;
+	margin-top: -4px;
+}
+
+button:hover a {
+	color: yellow;
+}
+
+/*Catergories*/
+
+.catergories h3 {
+	font-size: 30px;
+	margin: 60px;
+}
+
+.catergories a {
+	font-size: 20px;
+	color: black;
+	-webkit-transition: all 300ms linear;
+}
+
+.catergories a:hover {
+	background-color: darkgray;
+	color: red;
+	border-radius: 5px;
+	padding: 0 5px;
+}
+
+.catergories li {
+	list-style: none;
+	display: inline-block;
+	width: 200px;
+	text-align: left;
+	margin: 10px;
+}
+
+.catergories ul {
+	text-align: center;
+	width: 940px;
+	margin: 0 auto 100px;
+}
+
+/*Reviews*/
+
+.category_review {
+	width: 940px;
+	display: inline-block;
+	margin-bottom: 40px;
+}
+
+.category_review .header {
+	font-size: 36px;
+}
+
+.app_name {
+	text-align: center;
+	font-size: 24px;
+	padding: 20px;
+}
+
+.icon_content {
+	display: inline-block;
+	margin: 30px 20px;
+}
+
+.racing_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/z-road_trip.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+.review_content {
+	width: 400px;
+	margin-left: 10px;
+	padding-bottom: 10px;
+	text-indent: 20px;
+}
+
+.racing_review .review_app_screen {
+	vertical-align: top;
+	display: inline-block;
+	width: 400px;
+	height: 257px;
+	background: url("../img/z-screen.png") no-repeat;
+	background-size: 100%;
+	margin: 30px;
+}
+
+.arcade_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/f-ninja.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+.arcade_review .review_app_screen {
+	vertical-align: top;
+	display: inline-block;
+	width: 400px;
+	height: 240px;
+	background: url("../img/f-ninja_screen.png") no-repeat;
+	background-size: 100%;
+	margin: 30px;
+}
+
+.running_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/s-surfer.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+.running_review .review_app_screen1 {
+	vertical-align: top;
+	display: inline-block;
+	width: 180px;
+	height: 320px;
+	background: url("../img/s-surfer_screen1.png") no-repeat;
+	background-size: 100%;
+	margin: 30px 10px 30px 30px;
+}
+
+.running_review .review_app_screen2 {
+	vertical-align: top;
+	display: inline-block;
+	width: 180px;
+	height: 320px;
+	background: url("../img/s-surfer_screen2.png") no-repeat;
+	background-size: 100%;
+	margin: 30px 30px 30px 10px;
+}
+
+.puzzle_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/p-inc.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+.puzzle_review .review_app_screen {
+	vertical-align: top;
+	display: inline-block;
+	width: 400px;
+	height: 250px;
+	background: url("../img/p-inc_screen.jpg") no-repeat;
+	background-size: 100%;
+	margin: 30px;
+}
+
+.reviews button{
+	margin-left: 30px;
+}
+
+.more_reviews{
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 40px;
+}
+
+.more_reviews a {
+	font-size: 20px;
+	color: black;
+	-webkit-transition: all 300ms linear;
+}
+
+.more_reviews a:hover {
+	background-color: darkgray;
+	color: red;
+	border-radius: 5px;
+	padding: 0 5px;
+}
+
+/*More Pages*/
+
+.more_reviews_header {
+	font-size: 60px;
+	text-align: center;
+	margin: 0 0 60px;
+	width: 940px;
+}
+
+.hill_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/hill.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+.glow_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/glow.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+.flick_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/flick_kick.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+.doodle_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/doodle.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+.temple_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/t-run_2.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+.air_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/a-control.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+.castle_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/castle-td.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+.flow_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/f-free.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+.flow-bridges_review .review_app_icon {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: url("../img/f-free_bridges.png");
+	background-size: 100%;
+	margin: 0 10px;
+}
+
+/*Responsive*/
+
+@media screen and (max-width: 870px){
+
+	.topimg_container {
+		width: 450px;
+		margin: 0 auto;
+	}
+
+	header h1 {
+		font-size: 45px;
+	}
+
+	header h2 {
+		font-size: 18px;
+	}
+
+	.newimg_container {
+		width: 450px;
+	}
+
+	.catergories ul {
+		width: 450px;
+	}
+}
