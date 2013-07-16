@@ -18,7 +18,7 @@ body {
 }
 
 .all_container {
-	background-color: white;
+	background-image: url("../paper_fibers_@2X.png");
 }
 
 /*Top Images*/
@@ -160,28 +160,31 @@ header h2 {
 	text-align: left;
 }
 
-button {
+.button {
+	display: inline-block;
+	margin-left: 30px;
 	font-size: 16px;
 	padding: 3px;
 	border-radius: 5px;
+	border: 2px solid gray;
 	background-color: rgb(240,240,240);
 	box-shadow: 0 4px 6px 1px darkgray;
 	-webkit-transition: all 300ms linear;
 }
 
-button a {
+.button a{
 	text-decoration: none;
 	color: black;
 	-webkit-transition: all 300ms linear;
 }
 
-button:hover{
+.button:hover {
 	box-shadow: 0 0 0 transparent;
 	background-color: rgb(100,100,100);
 	-webkit-transform:translate(0, 4px);
 }
 
-button:hover a {
+.button:hover a{
 	color: lime;
 }
 
