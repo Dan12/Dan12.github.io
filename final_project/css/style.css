@@ -146,7 +146,7 @@ header h2 {
 
 .steel {
 	background-image: url(../img/steel.png);
-	border-color: rgb(100,290,30);
+	border-color: rgb(100,220,30);
 }
 
 .knight {
@@ -163,6 +163,7 @@ header h2 {
 .button {
 	display: inline-block;
 	margin-left: 30px;
+	margin-bottom: 20px;
 	font-size: 16px;
 	padding: 3px;
 	border-radius: 5px;
@@ -276,8 +277,15 @@ header h2 {
 	vertical-align: top;
 	display: inline-block;
 	background-size: 100%;
-	margin: 30px;
+	margin: 30px 30px 50px;
 	border-radius: 20px;
+	box-shadow: 0 0 10px 5px gray;
+	-webkit-transition: all 200ms linear;
+}
+
+.review_app_screen:hover {
+	-webkit-transform:scale(1.15,1.15);
+	box-shadow: 0 0 30px 15px gray;
 }
 
 .racing_review .review_app_screen {
