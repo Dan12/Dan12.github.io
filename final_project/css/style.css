@@ -269,14 +269,18 @@ button:hover a {
 	text-indent: 20px;
 }
 
-.racing_review .review_app_screen {
+.review_app_screen {
 	vertical-align: top;
 	display: inline-block;
+	background-size: 100%;
+	margin: 30px;
+	border-radius: 20px;
+}
+
+.racing_review .review_app_screen {
 	width: 400px;
 	height: 257px;
 	background: url("../img/z-screen.png") no-repeat;
-	background-size: 100%;
-	margin: 30px;
 }
 
 .arcade_review .review_app_icon {
@@ -289,13 +293,9 @@ button:hover a {
 }
 
 .arcade_review .review_app_screen {
-	vertical-align: top;
-	display: inline-block;
 	width: 400px;
 	height: 240px;
 	background: url("../img/f-ninja_screen.png") no-repeat;
-	background-size: 100%;
-	margin: 30px;
 }
 
 .running_review .review_app_icon {
@@ -308,22 +308,16 @@ button:hover a {
 }
 
 .running_review .review_app_screen1 {
-	vertical-align: top;
-	display: inline-block;
 	width: 180px;
 	height: 320px;
 	background: url("../img/s-surfer_screen1.png") no-repeat;
-	background-size: 100%;
 	margin: 30px 10px 30px 30px;
 }
 
 .running_review .review_app_screen2 {
-	vertical-align: top;
-	display: inline-block;
 	width: 180px;
 	height: 320px;
 	background: url("../img/s-surfer_screen2.png") no-repeat;
-	background-size: 100%;
 	margin: 30px 30px 30px 10px;
 }
 
@@ -337,13 +331,9 @@ button:hover a {
 }
 
 .puzzle_review .review_app_screen {
-	vertical-align: top;
-	display: inline-block;
 	width: 400px;
 	height: 250px;
 	background: url("../img/p-inc_screen.jpg") no-repeat;
-	background-size: 100%;
-	margin: 30px;
 }
 
 .reviews button{
