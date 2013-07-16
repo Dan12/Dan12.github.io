@@ -1,7 +1,14 @@
 /*General*/
+
+@font-face{
+	font-family: 'philosopher';
+	src: url('../Philosopher-Regular.ttf');
+}
+
 * {
 	margin: 0;
 	padding: 0;
+	font-family: philosopher;
 }
 
 body {
@@ -19,7 +26,8 @@ body {
 .topimg_container {
 	margin: 0 auto;
 	text-align: center;
-	width: 940px;
+	width: 900px;
+	padding-top: 50px;
 }
 
 .topimg {
@@ -97,6 +105,7 @@ header h2 {
 .new_head {
 	font-size: 30px;
 	padding: 40px;
+	border-top: 5px solid black;
 }
 
 .newimg_container {
@@ -153,6 +162,10 @@ header h2 {
 
 button {
 	font-size: 16px;
+	padding: 3px;
+	border-radius: 5px;
+	background-color: rgb(240,240,240);
+	box-shadow: 0 4px 6px 1px darkgray;
 	-webkit-transition: all 300ms linear;
 }
 
@@ -163,20 +176,16 @@ button a {
 }
 
 button:hover{
-	background-color: black;
-	margin-top: -4px;
+	box-shadow: 0 0 0 transparent;
+	background-color: rgb(100,100,100);
+	-webkit-transform:translate(0, 4px);
 }
 
 button:hover a {
-	color: yellow;
+	color: lime;
 }
 
 /*Catergories*/
-
-.catergories h3 {
-	font-size: 30px;
-	margin: 60px;
-}
 
 .catergories a {
 	font-size: 20px;
@@ -185,8 +194,8 @@ button:hover a {
 }
 
 .catergories a:hover {
-	background-color: darkgray;
-	color: red;
+	background-color: black;
+	color: white;
 	border-radius: 5px;
 	padding: 0 5px;
 }
@@ -197,15 +206,30 @@ button:hover a {
 	width: 200px;
 	text-align: left;
 	margin: 10px;
+	text-align: center;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
 }
 
 .catergories ul {
-	text-align: center;
 	width: 940px;
-	margin: 0 auto 100px;
+	text-align: center;
+}
+
+.catergories {
+	border-bottom: 2px solid black;
+	height: 43px;
+	position: fixed;
+	background-color: white;
+	z-index: 50;
 }
 
 /*Reviews*/
+
+.icon_content .review_content_header {
+	text-indent: 0;
+	padding-bottom: 5px;
+}
 
 .category_review {
 	width: 940px;
@@ -241,7 +265,7 @@ button:hover a {
 .review_content {
 	width: 400px;
 	margin-left: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
 	text-indent: 20px;
 }
 
@@ -340,10 +364,14 @@ button:hover a {
 }
 
 .more_reviews a:hover {
-	background-color: darkgray;
-	color: red;
+	background-color: black;
+	color: white;
 	border-radius: 5px;
 	padding: 0 5px;
+}
+
+.review_content i {
+	font-weight: bold;
 }
 
 /*Footer*/
@@ -364,6 +392,7 @@ footer li {
 	width: 120px;
 	text-align: left;
 	margin: 10px;
+	vertical-align: bottom;
 }
 
 footer ul {
@@ -383,11 +412,49 @@ footer ul {
 
 /*More Pages*/
 
+.all_page_catergories a {
+	font-size: 20px;
+	color: black;
+	-webkit-transition: all 300ms linear;
+}
+
+.all_page_catergories a:hover {
+	background-color: black;
+	color: white;
+	border-radius: 5px;
+	padding: 0 5px;
+}
+
+.all_page_catergories li {
+	list-style: none;
+	display: inline-block;
+	width: 200px;
+	text-align: left;
+	margin: 10px;
+	text-align: center;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
+}
+
+.all_page_catergories ul {
+	width: 940px;
+	text-align: center;
+}
+
+.all_page_catergories {
+	border-bottom: 2px solid black;
+	height: 43px;
+	position: fixed;
+	background-color: white;
+	z-index: 50;
+}
+
 .more_reviews_header {
 	font-size: 60px;
-	text-align: center;
 	margin: 0 0 60px;
 	width: 940px;
+	text-align: center;
+	padding-top: 50px;
 }
 
 .hill_review .review_app_icon {
@@ -473,11 +540,44 @@ footer ul {
 
 /*Responsive*/
 
+@media screen and (max-width: 940px) {
+
+	.all_page_catergories {
+		width: 100%;
+	}
+
+	.all_page_catergories ul {
+		width: 300px;
+		margin: 0 auto;
+	}
+
+	.catergories li {
+		width: 200px;
+		margin: 5px;
+	}
+
+	.catergories {
+		width: 100%;
+	}
+
+	.catergories ul {
+		margin: 0 auto;
+	}
+
+}
+
 @media screen and (max-width: 870px){
+
+	.more_reviews_header {
+		font-size: 40px;
+		width: 450px;
+		margin: 0 auto 60px;
+	}
 
 	.topimg_container {
 		width: 450px;
 		margin: 0 auto;
+		padding-top: 80px;
 	}
 
 	header h1 {
@@ -485,7 +585,7 @@ footer ul {
 	}
 
 	header h2 {
-		font-size: 18px;
+		font-size: 16px;
 	}
 
 	.newimg_container {
@@ -494,6 +594,10 @@ footer ul {
 
 	.catergories ul {
 		width: 450px;
+	}
+
+	.catergories {
+		height: 70px;
 	}
 
 	.category_review {
@@ -512,6 +616,14 @@ footer ul {
 
 @media screen and (max-width: 460px){
 
+	.header h2 {
+		font-size: 13px;
+	}
+
+	.more_reviews_header {
+		width: 350px;
+	}
+
 	.topimg_container {
 		width: 250px;
 		margin: 0 auto;
@@ -527,6 +639,10 @@ footer ul {
 
 	.newimg_container {
 		width: 350px;
+	}
+
+	.catergories li {
+		width: 150px;
 	}
 
 	.catergories ul {
