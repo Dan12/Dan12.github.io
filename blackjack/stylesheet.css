@@ -1,19 +1,18 @@
 body {
-    background-color: rgb(60, 160, 87);
+    background-color:rgb(60,160,90);
 }
 .game_field, .message_box, .title {
     background-color: white;
-    margin: 40px;
+    margin: 20px;
     border: solid 4px black;
     border-radius: 10px;
     text-align: center;
-    padding: 15px;
 }
 .title {
-    width: 600px;
+    width: 700px;
 }
 .game_field {
-    width: 600px;
+    width: 700px;
     float: left;
 }
 .message_box {
@@ -29,4 +28,9 @@ p, div {
 }
 .hit, .stand {
     text-align: left;
+}
+
+h3 {
+    padding: 1px;
+    margin: 1px;
 }

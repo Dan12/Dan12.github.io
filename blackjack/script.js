@@ -154,12 +154,20 @@ function new_card() {
 
         card_used = false;
     }
+    if (spade_card_chosen.length >= 12 && heart_card_chosen.length >= 12 && club_card_chosen.length >= 12 && diamond_card_chosen.length >= 12) {
+        alert("Shuffling Deck...");
+        $('.after').after('<p class="remove">Shuffling Deck</p>');
+        spade_card_chosen = [];
+        heart_card_chosen = [];
+        club_card_chosen = [];
+        diamond_card_chosen = [];
+    }
     repeat = true;
 }
 
 function play() {
     while (bet_repeat) {
-        bet_input = prompt("Enter bet. (greater than zero)");
+        bet_input = prompt("Enter bet. (greater than zero)", bet);
         bet = parseInt(bet_input, 10);
         if (bet > 0 && bet <= money) {
             bet_repeat = false;
@@ -235,13 +243,19 @@ function play() {
     if (o_total === 21) {
         game_over_message = "Dealer got Blackjack. You Lose.";
         lose = true;
-        game_over();
+        display();
+        setTimeout(function () {
+            game_over();
+        },1);
     }
 
     if (y_total === 21) {
         game_over_message = "You got Blackjack! You Won!";
         blackjack = true;
-        game_over();
+        display();
+        setTimeout(function () {
+            game_over();
+        },1);
     }
 
 
@@ -279,7 +293,9 @@ $('.hit').click(function () {
     if (y_total > 21) {
         game_over_message = "You Lost";
         lose = true;
-        game_over();
+        setTimeout(function () {
+            game_over();
+        }, 1);
     }
 });
 
@@ -313,7 +329,6 @@ $('.stand').click(function () {
                 dealer_has_ace = false;
             }
         }
-        display();
         if (o_total > 21) {
             game_over_message = "Dealer Lost. You Won!";
             win = true;
@@ -333,7 +348,10 @@ $('.stand').click(function () {
             }
         }
     }
-    game_over();
+    display();
+    setTimeout(function () {
+        game_over();
+    }, 1);
 });
 
 function game_over() {
