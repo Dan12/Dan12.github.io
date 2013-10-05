@@ -1,0 +1,32 @@
+body {
+    background-color: rgb(60, 160, 87);
+}
+.game_field, .message_box, .title {
+    background-color: white;
+    margin: 40px;
+    border: solid 4px black;
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+}
+.title {
+    width: 600px;
+}
+.game_field {
+    width: 600px;
+    float: left;
+}
+.message_box {
+    width: 200px;
+    height: 200px;
+    float: right;
+    overflow: scroll;
+    margin-right: 100px;
+}
+p, div {
+    padding: 1px;
+    margin: 0;
+}
+.hit, .stand {
+    text-align: left;
+}

@@ -1,20 +1,33 @@
 $(document).ready(function(){
+    
 var y_total = 0;
 var o_total = 0;
 var card = 0;
+var card_name = 0;
+var money = 500;
+var bet = 0;
+var terminate_game = false;
+var bet_repeat = true;
 var card_used = false;
 var repeat = true;
 var repeat_dealer = true;
 var you_has_ace = false;
 var dealer_has_ace = false;
+var win = false;
+var lose = false;
+var blackjack = false;
+var bet_input = "";
 var card_chosen_name = "";
 var card_chosen_suit = "";
-var card_name = "";
+var dealer_hidden_card = "";
+var game_over_message = "";
 var card_chosen_value = 0;
 var heart_card_chosen = [];
 var club_card_chosen = [];
 var diamond_card_chosen = [];
 var spade_card_chosen = [];
+var dealer_chosen_cards = [];
+var you_chosen_cards = [];
 
 function new_card() {
     while (repeat) {
@@ -73,10 +86,6 @@ function new_card() {
                 card_chosen_value = 11;
                 card_chosen_name = "Ace";
                 break;
-            default:
-                card_chosen_value = 0;
-                card_chosen_name = "";
-                break;
         }
         card_name = Math.floor(Math.random() * 4 + 1);
 
@@ -92,9 +101,6 @@ function new_card() {
                 break;
             case 4:
                 card_chosen_suit = "Spades";
-                break;
-            default:
-                card_chosen_suit = "";
                 break;
         }
 
@@ -152,19 +158,33 @@ function new_card() {
 }
 
 function play() {
+    while (bet_repeat) {
+        bet_input = prompt("Enter bet. (greater than zero)");
+        bet = parseInt(bet_input, 10);
+        if (bet > 0 && bet <= money) {
+            bet_repeat = false;
+        } else {
+            alert("That was an unacceptabel value!");
+        }
+    }
     y_total = 0;
     o_total = 0;
     you_has_ace = false;
     dealer_has_ace = false;
     repeat_dealer = true;
+    blackjack = false;
+    bet_repeat = true;
+    win = false;
+    lose = false;
+    dealer_chosen_cards = [];
+    you_chosen_cards = [];
 
-    $('.remove').remove();
-    $('.opponent').html(o_total);
-    $('.you').html(y_total);
-
+    $('.bet').html('Bet: $' + bet);
+    $('.total_money').html('Total money: $' + money);
 
     new_card();
-    $('.before').before('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
+    $('.after').after('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
+    you_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
     y_total += card_chosen_value;
 
     if (card_chosen_name === "Ace") {
@@ -172,15 +192,17 @@ function play() {
     }
 
     new_card();
-    $('.before').before('<p class="remove">Dealer got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
+    $('.after').after('<p class="remove">Dealer got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
     o_total += card_chosen_value;
+    dealer_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
 
     if (card_chosen_name === "Ace") {
         dealer_has_ace = true;
     }
 
     new_card();
-    $('.before').before('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
+    $('.after').after('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
+    you_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
     y_total += card_chosen_value;
 
     if (card_chosen_name === "Ace") {
@@ -189,6 +211,8 @@ function play() {
 
     new_card();
     o_total += card_chosen_value;
+    dealer_chosen_cards.push('hidden, ');
+    dealer_hidden_card = card_chosen_name + " of " + card_chosen_suit + ", ";
 
     if (card_chosen_name === "Ace") {
         dealer_has_ace = true;
@@ -209,11 +233,15 @@ function play() {
     }
 
     if (o_total === 21) {
-        $('.before').before('<p class="remove">Dealer got Blackjack. You Lose.</p>');
+        game_over_message = "Dealer got Blackjack. You Lose.";
+        lose = true;
+        game_over();
     }
 
     if (y_total === 21) {
-        $('.before').before('<p class="remove">You got Blackjack! You Won!</p>');
+        game_over_message = "You got Blackjack! You Won!";
+        blackjack = true;
+        game_over();
     }
 
 
@@ -225,13 +253,15 @@ function play() {
 }
 
 function display() {
-    $('.opponent').html(o_total);
-    $('.you').html(y_total);
+    $('.you').html('Your Total: ' + y_total);
+    $('.your_cards').html(you_chosen_cards);
+    $('.dealer_cards').html(dealer_chosen_cards);
 }
 
 $('.hit').click(function () {
     new_card();
-    $('.before').before('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
+    $('.after').after('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
+    you_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
     y_total += card_chosen_value;
 
 
@@ -247,17 +277,29 @@ $('.hit').click(function () {
     }
     display();
     if (y_total > 21) {
-        $('.before').before('<p class="remove">You Lost</p>');
+        game_over_message = "You Lost";
+        lose = true;
+        game_over();
     }
 });
 
 $('.stand').click(function () {
+    dealer_chosen_cards[1] = dealer_hidden_card;
     if (o_total > y_total) {
+        game_over_message = "Dealer Won. You Lost.";
+        lose = true;
         repeat_dealer = false;
+    }
+    if (o_total === y_total) {
+        if (o_total > 19) {
+            game_over_message = "Its a tie.";
+            repeat_dealer = false;
+        }
     }
     while (repeat_dealer) {
         new_card();
-        $('.before').before('<p class="remove">Dealer got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
+        $('.after').after('<p class="remove">Dealer got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
+        dealer_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
         o_total += card_chosen_value;
 
 
@@ -273,20 +315,60 @@ $('.stand').click(function () {
         }
         display();
         if (o_total > 21) {
-            $('.before').before('<p class="remove">Dealer Lost. You Won!</p>');
+            game_over_message = "Dealer Lost. You Won!";
+            win = true;
             repeat_dealer = false;
         }
         if (o_total > y_total) {
             if (o_total <= 21) {
-                $('.before').before('<p class="remove">Dealer Won. You Lost.</p>');
+                game_over_message = "Dealer Won. You Lost.";
+                lose = true;
+                repeat_dealer = false;
+            }
+        }
+        if (o_total === y_total) {
+            if (o_total > 19) {
+                game_over_message = "Its a tie.";
                 repeat_dealer = false;
             }
         }
     }
+    game_over();
 });
+
+function game_over() {
+    alert(game_over_message);
+    $('.after').after(game_over_message);
+    if (win) {
+        money += bet;
+        $('.after').after('<p class="remove">You Won $' + bet + '</p>');
+    } else if (lose) {
+        money -= bet;
+        $('.after').after('<p class="remove">You Lost $' + bet + '</p>');
+    } else if (blackjack) {
+        money += bet * 1.5;
+        $('.after').after('<p class="remove">You won $' + bet * 1.5 + '</p>');
+    } else {
+        $('.after').after('<p class="remove">No money was gained or lost</p>');
+    }
+    alert("Your total money is: $" + money);
+    if (money <= 0) {
+        alert("You lost all your money");
+        alert("Reload page to play again");
+        $('div').remove();
+        $('p').remove();
+        $('h1').remove();
+        $('h3').remove();
+        terminate_game = true;
+    }
+    if (terminate_game === false) {
+        play();
+    }
+}
 
 $('.play').click(function () {
     play();
+    $('.play').hide();
 });
 
 });
