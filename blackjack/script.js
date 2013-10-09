@@ -307,7 +307,7 @@ $('.hit').click(function () {
 
 $('.double_down').click(function () {
     if (bet * 2 > money) {
-        alert("You do not have enough money to double down!")
+        alert("You do not have enough money to double down!");
     } else {
         bet = bet * 2;
         your_turn();
