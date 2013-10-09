@@ -168,11 +168,11 @@ function new_card() {
 function play() {
     while (bet_repeat) {
         bet_input = prompt("Enter bet. (greater than zero)", bet);
-        bet = parseInt(bet_input, 10);
+        bet = parseFloat(bet_input);
         if (bet > 0 && bet <= money) {
             bet_repeat = false;
         } else {
-            alert("That was an unacceptabel value!");
+            alert("That was an unacceptable value!");
         }
     }
     y_total = 0;
@@ -261,8 +261,10 @@ function play() {
 
     display();
 
+    $('.hit, .stand, .double_down').css('display', 'block');
     $('.hit').html('Hit');
     $('.stand').html('Stand');
+    $('.double_down').html('Double Down');
 
 }
 
@@ -273,6 +275,10 @@ function display() {
 }
 
 $('.hit').click(function () {
+    your_turn();
+});
+
+    function your_turn() {
     new_card();
     $('.after').after('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
     you_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
@@ -297,9 +303,25 @@ $('.hit').click(function () {
             game_over();
         }, 1);
     }
+}
+
+$('.double_down').click(function () {
+    if (bet * 2 > money) {
+        alert("You do not have enough money to double down!")
+    } else {
+        bet = bet * 2;
+        your_turn();
+        if (y_total<=21){
+        dealer_turn();
+    }
+    }
 });
 
 $('.stand').click(function () {
+    dealer_turn();
+});
+
+    function dealer_turn() {
     dealer_chosen_cards[1] = dealer_hidden_card;
     if (o_total > y_total) {
         game_over_message = "Dealer Won. You Lost.";
@@ -352,7 +374,7 @@ $('.stand').click(function () {
     setTimeout(function () {
         game_over();
     }, 1);
-});
+}
 
 function game_over() {
     alert(game_over_message);

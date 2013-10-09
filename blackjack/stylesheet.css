@@ -26,11 +26,20 @@ p, div {
     padding: 1px;
     margin: 0;
 }
-.hit, .stand {
-    text-align: left;
-}
 
 h3 {
     padding: 1px;
     margin: 1px;
+}
+
+.hit, .stand, .double_down {
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    border: solid black 2px;
+    margin: 10px;
+    width: 50px;
+    background-color: #FFDE00;
+    color: #097054;
+    display: none;
 }
