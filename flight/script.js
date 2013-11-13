@@ -7,10 +7,14 @@ var dirn = "down";
 var height = [];
 var height_add = 0;
 var seconds = 1;
+var score = 1;
+var score_mult = 1;
 var space_down = false;
 var space_down_first = false;
 var space_up_first = false;
 var barrier_active = false;
+var mult_active = false;
+var mult_appear = 0;
 var barrier_x = 500;
 var barrier_y = 100;
 var barrier_appear = 0;
@@ -27,6 +31,8 @@ var star_3_y = 150;
 var star_4_x = 375;
 var star_4_y = 130;
 var star_y_setter = 100;
+var mult_y = 100;
+var mult_x = 100;
 
 //Function to assign legnth values in an array with 100 slots
 function assign() {
@@ -82,9 +88,11 @@ setInterval(function () {
         assign();
         canvas.clearRect(0, 0, 500, 300);
         seconds++;
+        score += 1 * score_mult;
         rocket_seconds++;
         rocket_power();
         barrier_check();
+        mult_check();
         //drawing landscape
         canvas.fillStyle = "lime";
         for (var repeat = 0; repeat < 100; repeat++) {
@@ -163,16 +171,57 @@ setInterval(function () {
         if (barrier_active) {
             canvas.fillRect(barrier_x, barrier_y, 10, 100);
         }
+        //Drawing score multiplier
+        if (mult_active) {
+            canvas.fillStyle = "yellow";
+            canvas.beginPath();
+            canvas.arc(mult_x + 7.5, mult_y + 10, 20, 0, Math.PI * 2, true);
+            canvas.closePath();
+            canvas.fill();
+            canvas.fillStyle = "gray";
+            canvas.fillRect(mult_x - 5, mult_y, 5, 20);
+            canvas.beginPath();
+            canvas.moveTo(mult_x, mult_y);
+            canvas.lineTo(mult_x + 10, mult_y + 20);
+            canvas.lineTo(mult_x + 5, mult_y + 20);
+            canvas.lineTo(mult_x - 5, mult_y);
+            canvas.closePath();
+            canvas.fill();
+            canvas.beginPath();
+            canvas.moveTo(mult_x + 5, mult_y + 20);
+            canvas.lineTo(mult_x + 10, mult_y + 20);
+            canvas.lineTo(mult_x + 20, mult_y);
+            canvas.lineTo(mult_x + 15, mult_y);
+            canvas.closePath();
+            canvas.fill();
+            canvas.fillRect(mult_x + 15, mult_y, 5, 20);
+        }
         //drawing spaceship
         canvas.fillStyle = "red";
         canvas.fillRect(50, rocket_y, 20, 20);
         die_check();
+        hit_mult_check();
         //display score
-        $('canvas').after('<p class="seconds">Score: ' + seconds + '</p>');
+        $('canvas').after('<p class="seconds">Score: ' + score + ' Score Multiplier: ' + score_mult + '</p>');
     }
 }, 40);
 
-//
+function mult_check() {
+    mult_appear = Math.floor(Math.random() * 400 + 1);
+    if (mult_appear === 10 && mult_active === false) {
+        mult_active = true;
+        mult_y = 85 + Math.floor(Math.random() * 25 + 1);
+        mult_x = 500;
+    }
+    if (mult_active) {
+        mult_x -= 5;
+    }
+    if (mult_active && mult_x <= -10) {
+        mult_active = false;
+    }
+}
+
+//Control star movement
 function star_movement() {
     star_y_setter = 85 + Math.floor(Math.random() * 130 + 1);
     star_1_x -= 5;
@@ -201,7 +250,7 @@ function barrier_check() {
     barrier_appear = Math.floor(Math.random() * 80 + 1);
     if (barrier_appear === 50 && barrier_active === false) {
         barrier_active = true;
-        barrier_y = 85 + Math.floor(Math.random() * 25 + 1);
+        barrier_y = 70 + Math.floor(Math.random() * 65 + 1);
         barrier_x = 500;
     }
     if (barrier_active) {
@@ -212,13 +261,25 @@ function barrier_check() {
     }
 }
 
+function hit_mult_check() {
+    if (mult_active) {
+        if (mult_x - 10 <= 70 && mult_x + 30 >= 50) {
+            if (rocket_y + 20 > mult_y - 10 && rocket_y < mult_y + 30) {
+                mult_active = false;
+                score_mult++;
+            }
+        }
+    }
+
+}
+
 function die_check() {
-    if (rocket_y <= (20 + height[9]) || rocket_y <= (20 + height[14]) || (rocket_y + 20) >= (230 + height[9]) || (rocket_y + 20) >= (230 + height[14])) {
+    if (rocket_y < (20 + height[9]) || rocket_y < (20 + height[14]) || (rocket_y + 20) > (230 + height[9]) || (rocket_y + 20) > (230 + height[14])) {
         go = false;
     }
     if (barrier_active) {
-        if (barrier_x <= 70 && barrier_x >= 50) {
-            if (rocket_y >= barrier_y && rocket_y <= barrier_y + 100) {
+        if (barrier_x < 70 && barrier_x > 40) {
+            if (rocket_y + 20 > barrier_y && rocket_y < barrier_y + 100) {
                 go = false;
             }
         }
@@ -244,6 +305,7 @@ function rocket_power() {
     }
     rocket_y += power;
 }
+
     $(document).keydown(function (e) {
         if (e.keyCode === 13) {
             go = true;
@@ -265,6 +327,12 @@ function rocket_power() {
             barrier_active = false;
             barrier_x = 500;
             barrier_y = 100;
+            score = 1;
+            score_mult = 1;
+            mult_active = false;
+            mult_appear = 0;
+            mult_y = 100;
+            mult_x = 100;
         }
         if (e.keyCode === 32) {
             space_down = true;
