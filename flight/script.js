@@ -14,10 +14,18 @@ var space_down_first = false;
 var space_up_first = false;
 var barrier_active = false;
 var mult_active = false;
+var shield_level = 3;
+var shield_countdown = 30;
+var shield_countdown_on = false;
+var shield_up_active = false;
+var shield_up_appear = 0;
+var shield_up_x = 100;
+var shield_up_y = 100;
 var mult_appear = 0;
 var barrier_x = 500;
 var barrier_y = 100;
 var barrier_appear = 0;
+var barrier_appear_max = 80;
 var rocket_seconds = 0;
 var rocket_y = 130;
 var power = 0;
@@ -33,6 +41,7 @@ var star_4_y = 130;
 var star_y_setter = 100;
 var mult_y = 100;
 var mult_x = 100;
+var level = 0;
 
 //Function to assign legnth values in an array with 100 slots
 function assign() {
@@ -83,6 +92,19 @@ function assign() {
 
 //Function to execute every 40 milliseconds to draw everything and call functions
 setInterval(function () {
+    if (go === false) {
+        canvas.clearRect(0, 0, 500, 300);
+        canvas.fillStyle = "White";
+        canvas.font = "14px Arial";
+        canvas.fillText("Press Enter to start", 15, 25);
+        canvas.fillText("Press Space to move", 15, 60);
+        canvas.fillText("Try to get the highest score by flying for as long as possible", 15, 95);
+        canvas.fillText("without hitting the landscape or the barriers", 15, 110);
+        canvas.fillText("If you die, just press enter to start a new game", 15, 145);
+        canvas.fillText("Power Ups:", 15, 180);
+        canvas.fillText("Yellow Circle=Score Multiplier", 15, 195);
+        canvas.fillText("White Square=Shield Up", 15, 210);
+    }
     if (go) {
         $('.seconds').remove();
         assign();
@@ -196,18 +218,77 @@ setInterval(function () {
             canvas.fill();
             canvas.fillRect(mult_x + 15, mult_y, 5, 20);
         }
+        //Drawing Shield_Up
+        if (shield_up_active) {
+            canvas.fillStyle = "white";
+            canvas.fillRect(shield_up_x, shield_up_y, 40, 40);
+            canvas.fillStyle = "red";
+            canvas.fillRect(shield_up_x, shield_up_y + 15, 40, 10);
+            canvas.fillRect(shield_up_x + 15, shield_up_y, 10, 40);
+        }
         //drawing spaceship
         canvas.fillStyle = "red";
         canvas.fillRect(50, rocket_y, 20, 20);
+        if (shield_level === 3) {
+            canvas.fillStyle = "rgba(0,0,255,.5)";
+            canvas.beginPath();
+            canvas.arc(50 + 10, rocket_y + 10, 17, 0, Math.PI * 2, true);
+            canvas.closePath();
+            canvas.fill();
+        }
+        if (shield_level === 2) {
+            canvas.fillStyle = "rgba(255,170,0,.5)";
+            canvas.beginPath();
+            canvas.arc(50 + 10, rocket_y + 10, 17, 0, Math.PI * 2, true);
+            canvas.closePath();
+            canvas.fill();
+        }
+        if (shield_countdown_on) {
+            shield_countdown--;
+            if (shield_countdown < 0) {
+                shield_countdown_on = false;
+                shield_countdown = 30;
+            }
+        }
         die_check();
         hit_mult_check();
+        hit_shield_up_check();
+        if (shield_level < 3) {
+            shield_up_check();
+        }
         //display score
-        $('canvas').after('<p class="seconds">Score: ' + score + ' Score Multiplier: ' + score_mult + '</p>');
+        canvas.fillStyle = "black";
+        canvas.font = "14px Arial";
+        canvas.fillText("Score: " + score, 15, 295);
+        canvas.fillText("Score Multiplier: " + score_mult, 110, 295);
+        canvas.fillText("Shield Level: " + shield_level, 250, 295);
+        canvas.fillText("Level: " + level, 380, 295);
+        if (seconds === 800) {
+            level++;
+            seconds = 2;
+        }
     }
 }, 40);
 
+//Randomly Spawns Shield_Ups
+function shield_up_check() {
+    shield_up_appear = Math.floor(Math.random() * 1000 + 1);
+    if (shield_up_appear === 10 && shield_up_active === false) {
+        shield_up_active = true;
+        shield_up_y = 85 + Math.floor(Math.random() * 25 + 1);
+        shield_up_x = 500;
+    }
+    if (shield_up_active) {
+        shield_up_x -= 5;
+    }
+    if (shield_up_active && shield_up_x <= -10) {
+        shield_up_active = false;
+    }
+}
+
+//Randomly Spawns score multipliers
 function mult_check() {
-    mult_appear = Math.floor(Math.random() * 400 + 1);
+    mult_appear = Math.floor(Math.random() * 600 + 1);
     if (mult_appear === 10 && mult_active === false) {
         mult_active = true;
         mult_y = 85 + Math.floor(Math.random() * 25 + 1);
@@ -246,21 +327,38 @@ function star_movement() {
     }
 }
 
+//Randomly Spawns barriers
 function barrier_check() {
-    barrier_appear = Math.floor(Math.random() * 80 + 1);
-    if (barrier_appear === 50 && barrier_active === false) {
+    if (level === 0) {
+        barrier_appear_max = 80;
+    }
+    if (level === 1) {
+        barrier_appear_max = 70;
+    }
+    if (level === 2) {
+        barrier_appear_max = 45;
+    }
+    if (level === 3) {
+        barrier_appear_max = 20;
+    }
+    if (level === 4) {
+        barrier_appear_max = 10;
+    }
+    barrier_appear = Math.floor(Math.random() * barrier_appear_max + 1);
+    if (barrier_appear === 4 && barrier_active === false) {
         barrier_active = true;
         barrier_y = 70 + Math.floor(Math.random() * 65 + 1);
         barrier_x = 500;
     }
     if (barrier_active) {
-        barrier_x -= 4;
+        barrier_x -= (4 + level);
     }
     if (barrier_active && barrier_x <= -10) {
         barrier_active = false;
     }
 }
 
+//Checks to see if score multiplier hit
 function hit_mult_check() {
     if (mult_active) {
         if (mult_x - 10 <= 70 && mult_x + 30 >= 50) {
@@ -270,22 +368,49 @@ function hit_mult_check() {
             }
         }
     }
-
 }
 
-function die_check() {
-    if (rocket_y < (20 + height[9]) || rocket_y < (20 + height[14]) || (rocket_y + 20) > (230 + height[9]) || (rocket_y + 20) > (230 + height[14])) {
-        go = false;
-    }
-    if (barrier_active) {
-        if (barrier_x < 70 && barrier_x > 40) {
-            if (rocket_y + 20 > barrier_y && rocket_y < barrier_y + 100) {
-                go = false;
+//Checks to see if shield up hit
+function hit_shield_up_check() {
+    if (shield_up_active) {
+        if (shield_up_x <= 70 && shield_up_x + 40 >= 50) {
+            if (rocket_y + 20 > shield_up_y - 10 && rocket_y < shield_up_y + 40) {
+                shield_up_active = false;
+                shield_level++;
             }
         }
     }
 }
 
+//checks to see if ship hit landscape or barriers
+function die_check() {
+    if (rocket_y < (20 + height[9]) || rocket_y < (20 + height[14]) || (rocket_y + 20) > (230 + height[9]) || (rocket_y + 20) > (230 + height[14])) {
+        if (shield_countdown_on === false) {
+            shield_level--;
+            shield_countdown_on = true;
+        }
+        if (shield_level <= 0) {
+            go = false;
+            alert("Your Score was: " + score);
+        }
+    }
+    if (barrier_active) {
+        if (barrier_x < 70 && barrier_x > 40) {
+            if (rocket_y + 20 > barrier_y && rocket_y < barrier_y + 100) {
+                if (shield_countdown_on === false) {
+                    shield_level--;
+                    shield_countdown_on = true;
+                }
+                if (shield_level <= 0) {
+                    go = false;
+                    alert("Your Score was: " + score);
+                }
+            }
+        }
+    }
+}
+
+//Sets motion of rocket
 function rocket_power() {
     if (space_down === false && space_up_first) {
         power += 1.25 * (rocket_seconds / 50);
@@ -306,6 +431,7 @@ function rocket_power() {
     rocket_y += power;
 }
 
+//listens for keycodes
     $(document).keydown(function (e) {
         if (e.keyCode === 13) {
             go = true;
@@ -333,6 +459,9 @@ function rocket_power() {
             mult_appear = 0;
             mult_y = 100;
             mult_x = 100;
+            shield_level = 3;
+            shield_countdown = 40;
+            shield_countdown_on = false;
         }
         if (e.keyCode === 32) {
             space_down = true;
