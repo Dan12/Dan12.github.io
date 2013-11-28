@@ -1,0 +1,97 @@
+body {
+	background-color: rgb(255,239,189);
+}
+* {
+	font-family: 'Aclonica', sans-serif;
+}
+#dropDown, #wrap {
+	height: 10px;
+	width: 600px;
+	margin: 0 auto;
+}
+.itemSelect {
+	position: relative;
+	background-image: url(scroll.png);
+	background-repeat: no-repeat;
+	background-size: 224px 320px;
+	padding: 70px;
+	height: 240px;
+	width: 224px;
+	text-align: center;
+	background-position: center top;
+	font-size: 18px;
+}
+#selectFrom span, #selectTo span {
+	border: solid rgb(227,153,93) 2px;
+	background-color: rgba(177,116,71,.4);
+	padding: 4px;
+}
+#selectFrom span:hover, #selectTo span:hover {
+	border-color: rgb(248,188,76);
+	cursor: pointer;
+	box-shadow: 0 0 6px 2px rgb(231,133,72);
+}
+#selectFrom{
+    top: 40px;
+}
+#selectTo{
+    top: -422px;
+    left: 340px;
+}
+#swapLanguages {
+    position: relative;
+    left: 314px;
+    top: -160px;
+    width: 80px;
+    height: 80px;
+    background-image: url('132382-worn-cloth-icon-arrows-two-directions.png');
+    background-size:90px 90px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: solid rgb(237,168,111) 1px;
+    background-color: rgba(255,255,255,0);
+    cursor:pointer;
+}
+#textAreaId {
+    top: 135px;
+    left: 117px;
+    background-color: rgba(255,255,255,.2);
+    resize: none;
+    font-size: 14px;
+}
+#textAreaId:hover {
+	box-shadow: 0 0 10px 3px rgb(245,186,110);
+}
+#textAreaId:focus {
+    outline: rgb(245,225,164) solid thin !important;
+    background-color: rgba(255,255,255,.5);
+}
+#translationTest, #textAreaId {
+	position: relative;
+    width: 125px;
+    height: 140px;
+    border: solid lightgray 1px;
+    padding: 4px;
+}
+#translationTest {
+    background-color: rgba(0,0,0,.4);
+    top: -66px;
+    left: 457px;
+}
+.translate_btn {
+	font-size: 13px;
+	position: relative;
+	top: 0px;
+	left: 175px;
+	background-image: url('quill_pen_ink_2.png');
+	background-size: 54px 86px;
+	width: 80px;
+	height: 100px;
+	background-color: rgba(255,255,255,0);
+	background-repeat: no-repeat;
+	background-position: center;
+	border: solid rgb(237,168,111) 1px;
+}
+.translate_btn:hover, #swapLanguages:hover {
+	box-shadow: 0 0 10px 4px rgb(234,163,83);
+}

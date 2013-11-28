@@ -1,0 +1,78 @@
+body {
+    background-color: rgb(203,252,233);
+}
+* {
+    font-family: 'Signika Negative', sans-serif;
+}
+.itemSelect {
+    width: 100px;
+    background-color: lightblue;
+    color: rgb(70,20,20);
+    text-align: center;
+    padding: 6px 14px;
+    border: solid rgb(132,184,161) 2px;
+    cursor:pointer;
+    position: relative;
+    font-size: 18px;
+}
+.itemSelect:hover, #swapLanguages:hover{
+    border: solid rgb(57,115,196) 2px;
+}
+#dropDown, #wrap {
+    width:600px;
+    margin: 0 auto;
+}
+#selectFrom{
+    display:inline;
+    left: 30px;
+    top: 180px;
+}
+#selectTo{
+    display:inline;
+    top: 180px;
+    left: 360px;
+}
+#swapLanguages {
+    position: relative;
+    top: 180px;
+    left: 185px;
+    padding: 6px 20px;
+    display:inline;
+    background-image: url('swap.png');
+    background-size:20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: lightblue;
+    border: solid rgb(132,184,161) 2px;
+}
+#translationTest {
+    position: relative;
+    top: -108px;
+    left: 366px;
+    width: 200px;
+    height: 104px;
+    background-color: lightgray;
+    border: solid rgb(132,184,161) 2px;
+}
+#textAreaId {
+    position: relative;
+    left: 0;
+    top: 20px;
+    width: 200px;
+    height: 100px;
+    resize: none;
+    border: solid rgb(132,184,161) 2px;
+    font-size: 16px;
+}
+.translate_btn {
+    background-image: linear-gradient(to bottom, #F0FFFA 0%, #A7DBD8 100%);
+    padding: 10px;
+    font-size: 22px;
+    position: relative;
+    top: -30px;
+    left: 16px;
+    border-color: rgb(132,184,161);
+}
+.translate_btn:hover {
+    border-color: lightgreen;
+}
