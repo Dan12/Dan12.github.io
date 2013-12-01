@@ -2,16 +2,20 @@
     font-family: 'Playfair Display', serif;
 }
 .itemSelect {
-    width: 150px;
-    text-align: center;
-    border: solid rgb(237,144,85) 2px;
-    background-color: rgb(242,184,102);
-    padding: 4px;
+    width: 120px;
+    text-align: left;
+    border: solid lightblue 2px;
+    background-image: linear-gradient(to bottom, #FFF7F7 0%, #86E8EF 100%);
+    padding: 6px 10px;
     font-size: 17px;
     margin: 20px;
 }
-.itemSelect:hover {
-    border-color: rgb(142,29,30);
+.itemSelect:hover{
+    cursor: pointer;
+    border-color: blue;
+}
+.itemSelect:active {
+    background-image: linear-gradient(to top, #FFF7F7 0%, #86E8EF 100%);
 }
 #selectTo {
     position: relative;
@@ -19,32 +23,19 @@
     left: 280px;
 }
 #swapLanguages {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    transform: rotate(90deg);
     position: relative;
     top: -62px;
     left: 215px;
     width: 50px;
     height: 50px;
-    background-image: url('009674-simple-red-glossy-icon-arrows-two-directions-up-down.png');
+    background-image: url('007390-blue-jelly-icon-arrows-arrows1-track-back.png');
     background-size:60px 60px;
     background-repeat: no-repeat;
     background-position: center;
-    border: solid rgb(186,75,62) 2px;
-    background-color: rgb(253,233,147);
-    border-radius: 30px;
     cursor:pointer;
 }
 #swapLanguages:hover{
     border-color: rgb(94,36,13);
-}
-body {
-    width: 600px;
-    margin: 0 auto;
-    background-color: rgb(255,236,180);
 }
 img {
     position: absolute;
@@ -56,40 +47,44 @@ img {
 }
 #textAreaId {
     padding: 4px;
-    top: -20px;
+    top: -120px;
     resize: none;
     font-size: 17px;
-    height: 103px;
-    background-color: rgb(255,244,211);
+    height: 100px;
+    background-color: white;
     left: 60px;
-    border: solid rgb(158,36,0) 1px;
 }
 #textAreaId:focus {
     outline: none !important;
-    box-shadow: 0 0 6px 2px rgb(189,65,29);
+    box-shadow: 0 0 6px 1px rgb(65,128,171);
 }
 #translationTest, #textAreaId {
-    width: 202px;
+    width: 400px;
     position: relative;
+    border: solid gray 1px;
 }
 #translationTest {
     padding: 2px;
-    top: -155px;
+    top: -40px;
     background-color: rgb(210, 210,210);
-    height: 109px;
-    left: 300px;
+    height: 100px;
+    left: 60px;
 }
 .translate_btn {
-    background-image: linear-gradient(to bottom, #FFE0DB 0%, #FF3617 100%);
+    background-image: linear-gradient(to bottom, #05F7FF 0%, #053BEF 100%);
     padding: 10px;
     font-size: 20px;
     position: relative;
-    top: -180px;
-    left: 8px;
+    top: -60px;
+    left: -200px;
     border-width: 4px;
-    border-color: rgb(156,33,2);
+    border-color: darkblue;
     border-radius: 6px;
 }
 .translate_btn:hover {
-    border-color: rgb(242,46,19);
+    border-color: blue;
+    cursor: pointer;
+}
+.translate_btn:active{
+    background-image: linear-gradient(to top, #05F7FF 0%, #053BEF 100%);
 }

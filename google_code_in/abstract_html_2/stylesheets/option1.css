@@ -1,6 +1,3 @@
-body {
-    background-color: rgb(203,252,233);
-}
 * {
     font-family: 'Signika Negative', sans-serif;
 }
@@ -73,5 +70,5 @@ body {
     border-color: rgb(132,184,161);
 }
 .translate_btn:hover {
-    border-color: lightgreen;
+    border-color: rgb(57,115,196);
 }
