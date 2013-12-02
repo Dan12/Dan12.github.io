@@ -355,7 +355,7 @@ function populateTranslationList(elementClass, langArr){
 			FromOrTo="from";
 			$('#dropDownSub').hide();
 			$('#dropDownSub').addClass('selectFromSub');
-			$('#dropDownSub').css('left','-60px');
+			$('#dropDownSub').css('left','0');
 			
 			
 		} else {
@@ -366,7 +366,7 @@ function populateTranslationList(elementClass, langArr){
 		
 			FromOrTo = "to";
 			$('#dropDownSub').hide();
-			$('#dropDownSub').css('left','306px');
+			$('#dropDownSub').css('left','366px');
 			
 			$('#dropDownSub').removeClass('selectFromSub');
 			//find_smth(curr_pair.srcLang);

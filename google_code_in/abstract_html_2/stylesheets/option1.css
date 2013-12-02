@@ -42,17 +42,17 @@
     margin: 0 auto;
 }
 #selectFrom{
-    left: -60px;
+    left: 0;
     top: 50px;
 }
 #selectTo{
     top: -22px;
-    left: 514px;
+    left: 574px;
 }
 #swapLanguages {
     position: relative;
     top: 14px;
-    left: 282px;
+    left: 342px;
     width: 34px;
     height: 34px;
     background-image: url('swap.png'), linear-gradient(to bottom, #FFFFFF 0%, #EDEDED 100%);
@@ -70,8 +70,9 @@
     position: relative;
     top: -181px;
     left: 366px;
-    width: 350px;
-    height: 183px;
+    width: 342px;
+    padding: 4px;
+    height: 175px;
     background-color: rgb(230,230,230);
     border: solid lightgray 1px;
 }
@@ -117,11 +118,9 @@
 
 /*Drop Down CSS*/
 #dropDown{
-    width:630px;
     height:30px;
     background-color:#fff;
     margin:50px auto;
-    padding:5px 10px;
     color:#444;
     cursor:defaullt;
     font-family: Arial, sans-serif;
@@ -206,5 +205,17 @@ border-color: gray;
 
 /*Moblie CSS*/
 @media handheld {
-
+    #selectTo {
+        left: 208px;
+    }
+    #swapLanguages {
+        left: 158px;
+    }
+    .translate_btn {
+        left: -114px;
+    }
+    #translationTest {
+        left: 0;
+        top: 76px;
+    }
 }
