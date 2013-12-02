@@ -5,8 +5,16 @@
     margin: 0 auto;
     width: 600px;
 }
+.catch_phrase {
+    width: 600px;
+    margin: 6px auto;
+    color: gray;
+    font-size: 14px;
+}
 .itemSelect {
     background-image: linear-gradient(to bottom, #FFFFFF 0%, #EDEDED 100%);
+    background-position: left, center;
+    background-repeat: no-repeat;
     color: rgb(70,20,20);
     text-align: center;
     padding: 6px 14px;
@@ -73,8 +81,8 @@
     box-shadow: inset 0 0 4px gray;
 }
 #textAreaId:focus {
-    outline: rgb(64,173,112) solid thin !important;
-    box-shadow: 0 0 6px 1px rgb(65,128,171);
+    outline: rgb(57,115,196) solid thin !important;
+    box-shadow: none;
     border-color: rgb(57,115,196);
 }
 .translate_btn {
