@@ -3,10 +3,10 @@
 }
 .img_container {
     margin: 0 auto;
-    width: 600px;
+    width: 750px;
 }
 .catch_phrase {
-    width: 600px;
+    width: 750px;
     margin: 6px auto;
     color: gray;
     font-size: 14px;
@@ -32,7 +32,7 @@
     border: solid rgb(57,115,196) 2px;
 }
 #dropDown, #wrap {
-    width:600px;
+    width:750px;
     margin: 0 auto;
 }
 #selectFrom{
@@ -46,7 +46,7 @@
 #swapLanguages {
     position: relative;
     top: 42px;
-    left: 266px;
+    left: 236px;
     width: 34px;
     height: 34px;
     background-image: url('swap.png');
@@ -61,8 +61,8 @@
     position: relative;
     top: -106px;
     left: 366px;
-    width: 200px;
-    height: 104px;
+    width: 350px;
+    height: 106px;
     background-color: rgb(230,230,230);
     border: solid rgb(210,210,210) 2px;
 }
@@ -70,7 +70,7 @@
     position: relative;
     left: 0;
     top: 20px;
-    width: 200px;
+    width: 350px;
     height: 100px;
     resize: none;
     border: solid lightgray 1px;
@@ -95,8 +95,8 @@
     border-radius: 4px;
     cursor: pointer;
     position: relative;
-    top: -30px;
-    left: 16px;
+    top: 60px;
+    left: -114px;
 }
 .translate_btn:hover {
     border-color: rgb(57,115,196);
