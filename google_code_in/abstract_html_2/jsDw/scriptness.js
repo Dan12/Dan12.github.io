@@ -4,6 +4,7 @@ var srcLangs = new Array();
 var dstLangs = new Array();
 var grayedOuts = new Array();
 var isDetecting = false;
+var hasSelected = false;
 
 var abbreviations = {
 	'Spanish':'es',
@@ -244,7 +245,7 @@ function getPairs(){
 	
 	
 	jQuery.ajax({
-			url:'http://localhost:2737/listPairs',
+			url:'http://api.apertium.org/json/listPairs',
 			type:"GET",
 			success : trad_ok,
 			dataType: 'jsonp',
@@ -347,22 +348,25 @@ function populateTranslationList(elementClass, langArr){
 		
 		if($(this).attr("id")=="selectFrom"){
 			
-			
+			if (!hasSelected){
 			populateTranslationList("#column-group-", srcLangs);
+			}	
 		
 			FromOrTo="from";
 			$('#dropDownSub').hide();
 			$('#dropDownSub').addClass('selectFromSub');
-			$('#dropDownSub').css('margin-left',00);
+			$('#dropDownSub').css('left','-60px');
 			
 			
 		} else {
-			
+		
+		if (!hasSelected){	
 		populateTranslationList("#column-group-", dstLangs);
+		}
 		
 			FromOrTo = "to";
 			$('#dropDownSub').hide();
-			$('#dropDownSub').css('margin-left',287);
+			$('#dropDownSub').css('left','306px');
 			
 			$('#dropDownSub').removeClass('selectFromSub');
 			//find_smth(curr_pair.srcLang);
@@ -370,7 +374,7 @@ function populateTranslationList(elementClass, langArr){
 		}
 			
 			$('#dropDownSub').show();
-		
+			hasSelected = true;
 	}, function(){
 		$('#dropDownSub').hide()	
 	});
@@ -379,7 +383,14 @@ function populateTranslationList(elementClass, langArr){
 	$('#dropDownSub a').click(function(){
 		
 		$('#dropDownSub a').removeClass('language-selected');
-		$(this).addClass('language-selected');
+		if (FromOrTo == "from"){
+			$('#dropDownSub a').removeClass('current-language-selected-from');
+			$(this).addClass('current-language-selected-from');
+		}
+		if (FromOrTo == "to"){
+			$('#dropDownSub a').removeClass('current-language-selected-to');
+			$(this).addClass('current-language-selected-to');
+		}
 		
 		if(FromOrTo=="from"){
 
@@ -387,12 +398,19 @@ function populateTranslationList(elementClass, langArr){
 			if($(this).text()!=" Detect Language ")
 				isDetecting = false;
 		
-		
+			if($(this).text() !=" Detect Language "){
 			$('#selectFrom em').html($(this).text());
+			}else{
+			$('#selectFrom em').html("Detect");	
+			}
 			curr_pair.srcLang = $(this).text();
 			
 		} else {
+			if($(this).text() !=" Detect Language "){
 			$('#selectTo em').html($(this).text());
+			}else{
+			$('#selectTo em').html("Detect");	
+			}
 			curr_pair.dstLang = $(this).text();
 		}
 		matchFound= false;
