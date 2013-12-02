@@ -219,7 +219,7 @@ function translate(langPair, text){
 	//alert(langpairer);
 
 	jQuery.ajax({
-		url:'http://localhost:2737/translate',
+		url:'http://api.apertium.org/json/translate',
 		type:"GET",
 		data:{
 			'langpair':langpairer,
