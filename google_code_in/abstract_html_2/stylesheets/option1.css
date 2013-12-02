@@ -49,13 +49,16 @@
     left: 236px;
     width: 34px;
     height: 34px;
-    background-image: url('swap.png');
-    background-size:20px 20px;
+    background-image: url('swap.png'), linear-gradient(to bottom, #FFFFFF 0%, #EDEDED 100%);
+    background-size:40px 40px;
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
     background-color: rgb(245,245,245);
     border: solid rgb(132,184,161) 2px;
+}
+#swapLanguages:active {
+    background-image: url('swap.png'), linear-gradient(to top, #FFFFFF 0%, #EDEDED 100%);
 }
 #translationTest {
     position: relative;
@@ -96,7 +99,7 @@
     cursor: pointer;
     position: relative;
     top: 60px;
-    left: -114px;
+    left: -364px;
 }
 .translate_btn:hover {
     border-color: rgb(57,115,196);
