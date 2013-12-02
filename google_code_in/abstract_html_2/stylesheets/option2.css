@@ -1,6 +1,9 @@
 *{
     font-family: 'Playfair Display', serif;
 }
+img {
+    
+}
 .itemSelect {
     width: 120px;
     text-align: left;
@@ -20,12 +23,12 @@
 #selectTo {
     position: relative;
     top: -128px;
-    left: 280px;
+    left: 266px;
 }
 #swapLanguages {
     position: relative;
     top: -62px;
-    left: 210px;
+    left: 202px;
     width: 50px;
     height: 50px;
     background-image: url('007390-blue-jelly-icon-arrows-arrows1-track-back.png');

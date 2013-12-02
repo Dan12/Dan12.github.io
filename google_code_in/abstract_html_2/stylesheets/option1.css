@@ -1,6 +1,10 @@
 * {
     font-family: 'Signika Negative', sans-serif;
 }
+.img_container {
+    margin: 0 auto;
+    width: 600px;
+}
 .itemSelect {
     background-image: linear-gradient(to bottom, #FFFFFF 0%, #EDEDED 100%);
     color: rgb(70,20,20);
@@ -24,16 +28,16 @@
     margin: 0 auto;
 }
 #selectFrom{
-    left: 38px;
-    top: 260px;
+    left: 0;
+    top: 80px;
 }
 #selectTo{
-    top: 184px;
-    left: 406px;
+    top: 4px;
+    left: 366px;
 }
 #swapLanguages {
     position: relative;
-    top: 222px;
+    top: 42px;
     left: 266px;
     width: 34px;
     height: 34px;
@@ -41,16 +45,17 @@
     background-size:20px 20px;
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
     background-color: rgb(245,245,245);
     border: solid rgb(132,184,161) 2px;
 }
 #translationTest {
     position: relative;
-    top: -108px;
+    top: -106px;
     left: 366px;
     width: 200px;
     height: 104px;
-    background-color: lightgray;
+    background-color: rgb(230,230,230);
     border: solid rgb(210,210,210) 2px;
 }
 #textAreaId {
@@ -60,22 +65,32 @@
     width: 200px;
     height: 100px;
     resize: none;
-    border: solid rgb(210,210,210) 2px;
+    border: solid lightgray 1px;
     font-size: 16px;
+    padding: 4px;
+}
+#textAreaId:hover {
+    box-shadow: inset 0 0 4px gray;
+}
+#textAreaId:focus {
+    outline: rgb(64,173,112) solid thin !important;
+    box-shadow: 0 0 6px 1px rgb(65,128,171);
+    border-color: rgb(57,115,196);
 }
 .translate_btn {
-    background-image: linear-gradient(to bottom, #F2FFF9 0%, #C4FFE6 100%);
-    padding: 10px;
-    font-size: 22px;
+    color: white;
+    padding: 6px;
+    font-size: 20px;
+    background-color: rgb(64,201,39);
+    width: 110px;
+    border: solid rgb(24,122,92) 2px;
+    border-radius: 4px;
+    cursor: pointer;
     position: relative;
     top: -30px;
     left: 16px;
-    border-color: rgb(132,184,161);
 }
 .translate_btn:hover {
     border-color: rgb(57,115,196);
     cursor: pointer;
-}
-.translate_btn:active{
-    background-image: linear-gradient(to top, #F2FFF9 0%, #C4FFE6 100%);
 }

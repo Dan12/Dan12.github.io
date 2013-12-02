@@ -1,9 +1,13 @@
 * {
 	font-family: 'Alegreya', serif;
 }
+.img_container {
+    margin: 0 auto;
+    width: 650px;
+}
 #dropDown, #wrap {
 	height: 10px;
-	width: 600px;
+	width: 650px;
 	margin: 0 auto;
 }
 .itemSelect {
@@ -20,22 +24,23 @@
 	cursor: pointer;
 }
 #selectFrom{
-    top: 40px;
+    top: 80px;
 }
 #selectTo{
-    top: 15px;
-    left: 0;
+    top: 17px;
+    left: 186px;
 }
 #swapLanguages {
     position: relative;
     left: 134px;
-    top: 26px;
-    width: 30px;
-    height: 30px;
+    top: 48px;
+    width: 28px;
+    height: 28px;
     background-image: url('swap.png');
     background-size:20px 20px;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: rgb(245,250,245)
     cursor:pointer;
     border: solid gray 2px;
     transform:rotate(90deg);
@@ -77,8 +82,8 @@
 	padding: 6px;
 	font-size: 20px;
 	position: relative;
-	top: -40px;
-	left: -50px;
+	top: 160px;
+	left: -44px;
 	background-color: rgb(64,201,39);
 	width: 110px;
 	border: solid rgb(24,122,92) 2px;
