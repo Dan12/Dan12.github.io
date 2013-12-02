@@ -18,7 +18,7 @@
     color: rgb(70,20,20);
     text-align: center;
     padding: 6px 14px;
-    border: solid rgb(132,184,161) 2px;
+    border: solid lightgray 2px;
     cursor:pointer;
     position: relative;
     font-size: 18px;
@@ -29,7 +29,7 @@
     background-image: linear-gradient(to top, #FFFFFF 0%, #EDEDED 100%);
 }
 .itemSelect:hover, #swapLanguages:hover{
-    border: solid rgb(57,115,196) 2px;
+    border-color: rgb(31,85,139);
 }
 #dropDown, #wrap {
     width:750px;
@@ -41,12 +41,12 @@
 }
 #selectTo{
     top: 4px;
-    left: 366px;
+    left: 588px;
 }
 #swapLanguages {
     position: relative;
     top: 42px;
-    left: 236px;
+    left: 344px;
     width: 34px;
     height: 34px;
     background-image: url('swap.png'), linear-gradient(to bottom, #FFFFFF 0%, #EDEDED 100%);
@@ -55,7 +55,7 @@
     background-position: center;
     cursor: pointer;
     background-color: rgb(245,245,245);
-    border: solid rgb(132,184,161) 2px;
+    border: solid lightgray 2px;
 }
 #swapLanguages:active {
     background-image: url('swap.png'), linear-gradient(to top, #FFFFFF 0%, #EDEDED 100%);
@@ -67,7 +67,7 @@
     width: 350px;
     height: 106px;
     background-color: rgb(230,230,230);
-    border: solid rgb(210,210,210) 2px;
+    border: solid lightgray 2px;
 }
 #textAreaId {
     position: relative;
@@ -84,9 +84,9 @@
     box-shadow: inset 0 0 4px gray;
 }
 #textAreaId:focus {
-    outline: rgb(57,115,196) solid thin !important;
+    outline: rgb(31,85,139) solid thin !important;
     box-shadow: none;
-    border-color: rgb(57,115,196);
+    border-color: rgb(31,85,139);
 }
 .translate_btn {
     color: white;
@@ -94,14 +94,21 @@
     font-size: 20px;
     background-color: rgb(64,201,39);
     width: 110px;
-    border: solid rgb(24,122,92) 2px;
+    border: solid rgb(94,168,96) 2px;
     border-radius: 4px;
     cursor: pointer;
     position: relative;
     top: 60px;
-    left: -364px;
+    /*Button position left
+    left: -364px;*/
+    /*Button position right*/
+    left: 246px;
+    box-shadow: 0px 0px 10px 1px gray;
 }
 .translate_btn:hover {
-    border-color: rgb(57,115,196);
+    border-color: rgb(31,85,139);
     cursor: pointer;
+}
+.translate_btn:active {
+    box-shadow: 0px 0px 6px 0px gray;
 }
