@@ -2,7 +2,7 @@
     font-family: 'Signika Negative', sans-serif;
 }
 .itemSelect {
-    background-color: rgb(235,250,255);
+    background-image: linear-gradient(to bottom, #FFFFFF 0%, #EDEDED 100%);
     color: rgb(70,20,20);
     text-align: center;
     padding: 6px 14px;
@@ -10,6 +10,11 @@
     cursor:pointer;
     position: relative;
     font-size: 18px;
+    width: 100px;
+    text-align: left;
+}
+.itemSelect:active {
+    background-image: linear-gradient(to top, #FFFFFF 0%, #EDEDED 100%);
 }
 .itemSelect:hover, #swapLanguages:hover{
     border: solid rgb(57,115,196) 2px;
@@ -19,26 +24,24 @@
     margin: 0 auto;
 }
 #selectFrom{
-    display:inline;
-    left: 30px;
-    top: 180px;
+    left: 38px;
+    top: 260px;
 }
 #selectTo{
-    display:inline;
-    top: 180px;
-    left: 360px;
+    top: 184px;
+    left: 406px;
 }
 #swapLanguages {
     position: relative;
-    top: 180px;
-    left: 185px;
-    padding: 6px 20px;
-    display:inline;
+    top: 222px;
+    left: 266px;
+    width: 34px;
+    height: 34px;
     background-image: url('swap.png');
     background-size:20px 20px;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: rgb(235,250,255);
+    background-color: rgb(245,245,245);
     border: solid rgb(132,184,161) 2px;
 }
 #translationTest {
@@ -48,7 +51,7 @@
     width: 200px;
     height: 104px;
     background-color: lightgray;
-    border: solid rgb(143,154,156) 2px;
+    border: solid rgb(210,210,210) 2px;
 }
 #textAreaId {
     position: relative;
@@ -57,7 +60,7 @@
     width: 200px;
     height: 100px;
     resize: none;
-    border: solid rgb(143,154,156) 2px;
+    border: solid rgb(210,210,210) 2px;
     font-size: 16px;
 }
 .translate_btn {

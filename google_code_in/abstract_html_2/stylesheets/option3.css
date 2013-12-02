@@ -11,36 +11,39 @@
 	width: 100px;
 	text-align: left;
 	font-size: 18px;
-	border: solid rgb(24,122,92) 2px;
+	border: solid gray 2px;
 	background-image: linear-gradient(to top, #F2F7F2 0%, #FFFFFF 100%);
-	padding: 6px 16px;
+	padding: 2px 10px;
 }
 .itemSelect:hover {
-	background-image: linear-gradient(to top, #F2F7F2 0%, #D5EBDA 100%);
+	border-color: rgb(24,122,92);
 	cursor: pointer;
 }
 #selectFrom{
     top: 40px;
 }
 #selectTo{
-    top: -40px;
-    left: 240px;
+    top: 15px;
+    left: 0;
 }
 #swapLanguages {
     position: relative;
-    left: 154px;
-    top: 0;
-    width: 60px;
-    height: 36px;
-    background-image: url('008479-green-jelly-icon-arrows-arrow1-left-right1.png');
-    background-size:60px 60px;
+    left: 134px;
+    top: 26px;
+    width: 30px;
+    height: 30px;
+    background-image: url('swap.png');
+    background-size:20px 20px;
     background-repeat: no-repeat;
     background-position: center;
     cursor:pointer;
-    border: solid rgb(24,122,92) 2px;
+    border: solid gray 2px;
+    transform:rotate(90deg);
+    -ms-transform:rotate(90deg); /* IE 9 */
+    -webkit-transform:rotate(90deg); /* Safari and Chrome */
 }
 #swapLanguages:hover {
-	background-color: #D5EBDA;
+	border-color: rgb(24,122,92);
 }
 #textAreaId {
     top: 115px;
@@ -49,11 +52,13 @@
     resize: none;
     font-size: 14px;
 }
+#textAreaId:hover {
+    box-shadow: inset 0 0 4px gray;
+}
 #textAreaId:focus {
     outline: rgb(64,173,112) solid thin !important;
-    box-shadow: 0 0 10px 1px rgb(64,173,112);
+    box-shadow: none;
     border-color: rgb(64,173,112);
-    background-color: rgba(255,255,255,.5);
 }
 #translationTest, #textAreaId {
 	position: relative;
@@ -64,23 +69,19 @@
 }
 #translationTest {
     background-color: rgb(230,230,230);
-    top: -11px;
+    top: -13px;
     left: 340px;
 }
 .translate_btn {
+    color: white;
 	padding: 6px;
-	font-size: 18px;
+	font-size: 20px;
 	position: relative;
-	top: -54px;
-	left: 90px;
-	background-image: linear-gradient(to bottom, #FFFFFF 0%, #AEEFA7 100%);
-	width: 100px;
-	border: solid rgb(157,222,138) 2px;
+	top: -40px;
+	left: -50px;
+	background-color: rgb(64,201,39);
+	width: 110px;
+	border: solid rgb(24,122,92) 2px;
 	border-radius: 4px;
-}
-.translate_btn:hover {
-	border-color: rgb(24,122,92);
-}
-.translate_btn:active {
-	background-image: linear-gradient(to top, #FFFFFF 0%, #AEEFA7 100%);
+    cursor: pointer;
 }
