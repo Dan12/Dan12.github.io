@@ -4,7 +4,8 @@ var srcLangs = new Array();
 var dstLangs = new Array();
 var grayedOuts = new Array();
 var isDetecting = false;
-var hasSelected = false;
+var toLangCode = "";
+var fromLangCode = "";
 
 var abbreviations = {
 	'Spanish':'es',
@@ -326,8 +327,17 @@ function populateTranslationList(elementClass, langArr){
 	column_num=1;
 	//console.log(langArr);
 	for(it in langArr){
+		var compareLang = " "+getLangByCode(langArr[it])+" ";
 		
-		jQuery(elementClass+column_num).append("<span> <a href='#' class='language-selected' > " + getLangByCode(langArr[it]) + " </a></span>");
+		if (toLangCode == compareLang) {
+			jQuery(elementClass+column_num).append("<span> <a href='#' class='current-language-selected-to' > " + getLangByCode(langArr[it]) + " </a></span>");
+		}
+		if (fromLangCode == compareLang) {
+			jQuery(elementClass+column_num).append("<span> <a href='#' class='current-language-selected-from' > " + getLangByCode(langArr[it]) + " </a></span>");
+		}
+		if (fromLangCode != compareLang && toLangCode != compareLang) {
+			jQuery(elementClass+column_num).append("<span> <a href='#' class='language-selected' > " + getLangByCode(langArr[it]) + " </a></span>");
+		}
 		
 		
 		if(jQuery(elementClass+column_num).children().length>5){
@@ -348,10 +358,8 @@ function populateTranslationList(elementClass, langArr){
 		
 		if($(this).attr("id")=="selectFrom"){
 			
-			if (!hasSelected){
 			populateTranslationList("#column-group-", srcLangs);
-			}	
-		
+			
 			FromOrTo="from";
 			$('#dropDownSub').hide();
 			$('#dropDownSub').addClass('selectFromSub');
@@ -360,9 +368,7 @@ function populateTranslationList(elementClass, langArr){
 			
 		} else {
 		
-		if (!hasSelected){	
 		populateTranslationList("#column-group-", dstLangs);
-		}
 		
 			FromOrTo = "to";
 			$('#dropDownSub').hide();
@@ -374,22 +380,20 @@ function populateTranslationList(elementClass, langArr){
 		}
 			
 			$('#dropDownSub').show();
-			hasSelected = true;
 	}, function(){
 		$('#dropDownSub').hide()	
 	});
 
 	
 	$('#dropDownSub a').click(function(){
-		
 		$('#dropDownSub a').removeClass('language-selected');
 		if (FromOrTo == "from"){
 			$('#dropDownSub a').removeClass('current-language-selected-from');
-			$(this).addClass('current-language-selected-from');
+			fromLangCode = $(this).text();
 		}
 		if (FromOrTo == "to"){
 			$('#dropDownSub a').removeClass('current-language-selected-to');
-			$(this).addClass('current-language-selected-to');
+			toLangCode = $(this).text();
 		}
 		
 		if(FromOrTo=="from"){
