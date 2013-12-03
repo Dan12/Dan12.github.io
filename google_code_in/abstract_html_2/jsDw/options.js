@@ -9,5 +9,6 @@ $(document).ready(function(){
  			|| navigator.userAgent.match(/Windows Phone/i)
  		){
  			document.getElementById('pagestyle').setAttribute('href', 'stylesheets/option1_mobile.css');
+ 			$('#swapLanguages').html("Swap");
 		}
 });
