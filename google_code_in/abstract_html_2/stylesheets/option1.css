@@ -204,7 +204,7 @@ border-color: gray;
 }
 
 /*Moblie CSS*/
-@media handheld, screen and (max-width: 750px) {
+@media screen and (max-width: 750px) {
     #selectTo {
         left: 208px;
     }
