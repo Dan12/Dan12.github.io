@@ -6,6 +6,8 @@ var grayedOuts = new Array();
 var isDetecting = false;
 var toLangCode = "";
 var fromLangCode = "";
+var winW = 800;
+var scrW = 800;
 
 var abbreviations = {
 	'Spanish':'es',
@@ -357,22 +359,36 @@ function populateTranslationList(elementClass, langArr){
 		jQuery('.column-group').removeClass('language-selected');
 		
 		if($(this).attr("id")=="selectFrom"){
-			
 			populateTranslationList("#column-group-", srcLangs);
 			
 			FromOrTo="from";
 			$('#dropDownSub').hide();
 			$('#dropDownSub').addClass('selectFromSub');
 			$('#dropDownSub').css('left','0');
-			
-			
+		
+
 		} else {
+		var interval = setInterval(function(){
+		winW = window.innerWidth;
+		if (winW < 750 && FromOrTo == "to") {
+			$('#dropDownSub').css('left', '0');
+		}
+		if (winW >= 750 && FromOrTo == "to") {
+			$('#dropDownSub').css('left', '366px');
+		}
+		},1);
 		
 		populateTranslationList("#column-group-", dstLangs);
-		
+			winW = window.innerWidth;
+			scrW = screen.width;
+
 			FromOrTo = "to";
 			$('#dropDownSub').hide();
-			$('#dropDownSub').css('left','366px');
+			if (winW>750 && scrW>750){
+				$('#dropDownSub').css('left','366px');
+			}else {
+				$('#dropDownSub').css('left', '0');
+			}
 			
 			$('#dropDownSub').removeClass('selectFromSub');
 			//find_smth(curr_pair.srcLang);

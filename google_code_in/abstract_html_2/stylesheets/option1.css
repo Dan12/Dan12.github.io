@@ -109,7 +109,7 @@
     /*Button position left
     left: -364px;*/
     /*Button position right*/
-    left: 246px;
+    left: 252px;
 }
 .translate_btn:hover {
     border-color: rgb(31,85,139);
@@ -219,3 +219,18 @@ border-color: gray;
         top: 76px;
     }
 }
+/*@media only screen and (max-device width:480px) {
+    #selectTo {
+        left: 208px;
+    }
+    #swapLanguages {
+        left: 158px;
+    }
+    .translate_btn {
+        left: -114px;
+    }
+    #translationTest {
+        left: 0;
+        top: 76px;
+    }
+}*/
