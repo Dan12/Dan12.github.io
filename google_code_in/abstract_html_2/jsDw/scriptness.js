@@ -130,6 +130,10 @@ $(document).ready(function(){
 		curr_pair.dstLang = fromText;
 		curr_pair.srcLang = toText;
 		
+		var langHolder = "";
+		langHolder = toLangCode;
+		toLangCode = fromLangCode;
+		fromLangCode = langHolder;
 		
 	});
 /*
