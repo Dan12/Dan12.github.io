@@ -2,12 +2,12 @@
     font-family: 'Signika Negative', sans-serif;
 }
 .img_container {
-    margin: 0 auto;
+    margin: 0 0;
     width: 350px;
 }
 .catch_phrase {
     width: 350px;
-    margin: 6px auto;
+    margin: 6px 0;
     color: rgb(130,130,130);
     font-size: 14px;
 }
@@ -39,7 +39,7 @@
 }*/
 #dropDown, #wrap {
     width:350px;
-    margin: 0 auto;
+    margin: 0 0;
 }
 #selectFrom{
     left: 0;
@@ -121,7 +121,7 @@
 #dropDown{
     height:30px;
     background-color:#fff;
-    margin:50px auto;
+    margin:50px 0;
     color:#444;
     cursor:defaullt;
     font-family: Arial, sans-serif;

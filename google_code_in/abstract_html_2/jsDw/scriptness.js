@@ -8,6 +8,7 @@ var toLangCode = "";
 var fromLangCode = "";
 var winW = 800;
 var scrW = 800;
+var mobile = false;
 
 var abbreviations = {
 	'Spanish':'es',
@@ -360,6 +361,16 @@ function populateTranslationList(elementClass, langArr){
 	
 	
 	$('.itemSelect').toggle(function(){
+		if( navigator.userAgent.match(/Android/i)
+ 			|| navigator.userAgent.match(/webOS/i)
+ 			|| navigator.userAgent.match(/iPhone/i)
+ 			|| navigator.userAgent.match(/iPad/i)
+ 			|| navigator.userAgent.match(/iPod/i)
+ 			|| navigator.userAgent.match(/BlackBerry/i)
+ 			|| navigator.userAgent.match(/Windows Phone/i)
+ 		){
+ 			mobile = true;
+		}
 		jQuery('.column-group').removeClass('language-selected');
 		
 		if($(this).attr("id")=="selectFrom"){
@@ -374,10 +385,10 @@ function populateTranslationList(elementClass, langArr){
 		} else {
 		var interval = setInterval(function(){
 		winW = window.innerWidth;
-		if (winW < 750 && FromOrTo == "to") {
+		if (winW < 750 && FromOrTo == "to" && mobile) {
 			$('#dropDownSub').css('left', '0');
 		}
-		if (winW >= 750 && FromOrTo == "to") {
+		if (winW >= 750 && FromOrTo == "to" && !mobile) {
 			$('#dropDownSub').css('left', '366px');
 		}
 		},1);
