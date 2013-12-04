@@ -3,10 +3,10 @@
 }
 .img_container {
     margin: 0 0;
-    width: 350px;
+    width: 270px;
 }
 .catch_phrase {
-    width: 350px;
+    width: 270px;
     margin: 6px 0;
     color: rgb(130,130,130);
     font-size: 14px;
@@ -17,12 +17,12 @@
     background-repeat: no-repeat;
     color: rgb(70,20,20);
     text-align: center;
-    padding: 6px 14px;
+    padding: 6px 6px;
     border: solid lightgray 1px;
     cursor:pointer;
     position: relative;
-    font-size: 18px;
-    width: 114px;
+    font-size: 14px;
+    width: 95px;
     text-align: left;
 }
 .itemSelect:active {
@@ -38,29 +38,30 @@
     transform: matrix(-1, 0, 0, 1, 0, 0);
 }*/
 #dropDown, #wrap {
-    width:350px;
+    width:270px;
     margin: 0 0;
 }
 #selectFrom{
     left: 0;
-    top: 50px;
+    top: 28px;
 }
 #selectTo{
-    top: -22px;
-    left: 208px;
+    top: -34px;
+    left: 163px;
 }
 #swapLanguages {
     position: relative;
-    top: 14px;
-    left: 152px;
-    width: 38px;
-    padding: 7px 4px;
+    top: -3px;
+    left: 114px;
+    width: 34px;
+    padding: 6px 4px;
 /*    height: 34px;*/
     background-image: url('swap.png'), linear-gradient(to bottom, #FFFFFF 0%, #EDEDED 100%);
 /*    background-size:40px 40px;*/
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    font-size: 14px;
     background-color: rgb(245,245,245);
     border: solid lightgray 1px;
 }
@@ -70,10 +71,10 @@
 #translationTest {
     position: relative;
     left: 0;
-    top: 76px;
-    width: 342px;
+    top: 30px;
+    width: 262px;
     padding: 4px;
-    height: 175px;
+    height: 100px;
     background-color: rgb(230,230,230);
     border: solid lightgray 1px;
 }
@@ -81,11 +82,11 @@
     position: relative;
     left: 0;
     top: 20px;
-    width: 342px;
-    height: 175px;
+    width: 262px;
+    height: 100px;
     resize: none;
     border: solid lightgray 1px;
-    font-size: 16px;
+    font-size: 14px;
     padding: 4px;
 }
 #textAreaId:hover {
@@ -106,11 +107,11 @@
     border-radius: 4px;
     cursor: pointer;
     position: relative;
-    top: 40px;
+    top: 22px;
     /*Button position left
     left: -364px;*/
     /*Button position right*/
-    left: 242px;
+    left: 162px;
 }
 .translate_btn:hover {
     border-color: rgb(31,85,139);
@@ -121,7 +122,7 @@
 #dropDown{
     height:30px;
     background-color:#fff;
-    margin:50px 0;
+    margin:20px 0;
     color:#444;
     cursor:defaullt;
     font-family: Arial, sans-serif;
@@ -153,9 +154,9 @@
     outline: none;
     padding: 6px 0;
     position: relative;
-    top: -22px;
-    width: 350px;
-    font-size:12px;
+    top: -34px;
+    width: 270px;
+    font-size:11px;
     text-align: left;
     text-decoration: none !important;
     -moz-user-select: none;
@@ -180,7 +181,7 @@ border-color: gray;
 .column-group a{
     display:block;
     padding: 3px 3px 3px 3px;
-    margin-right: 15px;
+    margin-right: 5px;
     border-style: none;
     border:1px solid #fff;
     background-color:white;

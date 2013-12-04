@@ -22,7 +22,7 @@
     cursor:pointer;
     position: relative;
     font-size: 18px;
-    width: 114px;
+    width: 124px;
     text-align: left;
 }
 .itemSelect:active {
@@ -224,6 +224,18 @@ border-color: gray;
     .translate_btn {
         top: 40px;
         left: 242px;
+    }
+    .itemSelect {
+        font-size: 16px;
+        width: 114px;
+    }
+    #swapLanguages {
+        top: 16px;
+        width: 32px;
+        height: 32px;
+    }
+    #selectTo {
+        top: -18px;
     }
 }
 /*@media only screen and (max-device width:480px) {
