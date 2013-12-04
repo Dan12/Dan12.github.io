@@ -7,7 +7,6 @@ var isDetecting = false;
 var toLangCode = "";
 var fromLangCode = "";
 var winW = 800;
-var scrW = 800;
 var mobile = false;
 
 var abbreviations = {
@@ -385,21 +384,20 @@ function populateTranslationList(elementClass, langArr){
 		} else {
 		var interval = setInterval(function(){
 		winW = window.innerWidth;
-		if (winW < 750 && FromOrTo == "to" && mobile) {
+		if (winW < 750 || mobile) {
 			$('#dropDownSub').css('left', '0');
 		}
-		if (winW >= 750 && FromOrTo == "to" && !mobile) {
+		if (winW >= 750 && !mobile) {
 			$('#dropDownSub').css('left', '366px');
 		}
 		},1);
 		
 		populateTranslationList("#column-group-", dstLangs);
 			winW = window.innerWidth;
-			scrW = screen.width;
 
 			FromOrTo = "to";
 			$('#dropDownSub').hide();
-			if (winW>750 && scrW>750){
+			if (winW>750 && !mobile){
 				$('#dropDownSub').css('left','366px');
 			}else {
 				$('#dropDownSub').css('left', '0');
