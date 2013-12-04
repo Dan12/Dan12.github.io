@@ -384,11 +384,13 @@ function populateTranslationList(elementClass, langArr){
 		} else {
 		var interval = setInterval(function(){
 		winW = window.innerWidth;
-		if (winW < 750 || mobile) {
-			$('#dropDownSub').css('left', '0');
-		}
-		if (winW >= 750 && !mobile) {
-			$('#dropDownSub').css('left', '366px');
+		if (FromOrTo == "to"){
+			if (winW < 750 || mobile) {
+				$('#dropDownSub').css('left', '0');
+			}
+			if (winW >= 750 && !mobile) {
+				$('#dropDownSub').css('left', '366px');
+			}
 		}
 		},1);
 		
