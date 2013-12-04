@@ -218,6 +218,13 @@ border-color: gray;
         left: 0;
         top: 76px;
     }
+    .img_container,.catch_phrase,#dropDown,#wrap {
+        width: 350px;
+    }
+    .translate_btn {
+        top: 40px;
+        left: 242px;
+    }
 }
 /*@media only screen and (max-device width:480px) {
     #selectTo {
