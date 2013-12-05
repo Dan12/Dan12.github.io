@@ -1,6 +1,9 @@
 * {
     font-family: 'Signika Negative', sans-serif;
 }
+body {
+    width: 300px;
+}
 .img_container {
     margin: 0 0;
     width: 270px;
