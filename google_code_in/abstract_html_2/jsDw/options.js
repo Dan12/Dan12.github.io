@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	document.getElementById('pagestyle').setAttribute('href', 'stylesheets/option1.css');
+	document.getElementById('pagestyle').setAttribute('href', 'stylesheets/option1_mobile.css');
+		$('#swapLanguages').html("Swap");
 		if( navigator.userAgent.match(/Android/i)
  			|| navigator.userAgent.match(/webOS/i)
  			|| navigator.userAgent.match(/iPhone/i)

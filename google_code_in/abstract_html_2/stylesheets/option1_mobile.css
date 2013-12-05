@@ -3,6 +3,7 @@
 }
 body {
     width: 300px;
+    margin-right: 0;
 }
 .img_container {
     margin: 0 0;
