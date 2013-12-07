@@ -185,7 +185,7 @@ border-color: gray;
     background-color:white;
 
 }
-.column-group a:hover, .language-selected:hover{
+.column-group a:hover, .language-selected:hover, #dropDownSub .detect_choice:hover{
     background-color:rgb(230,230,230) !important;
     border:1px solid rgb(31,85,139);
 }
@@ -201,6 +201,15 @@ border-color: gray;
 .selectFromSub a{
     color:#444 !important;
     background-color: #fff !important;
+}
+#dropDownSub .detect_choice_1 {
+    background-color: rgb(230,230,230) !important;
+}
+#dropDownSub .detect_choice_2 {
+    background-color: rgb(240,240,240) !important;
+}
+#dropDownSub .detect_choice_3 {
+    background-color: rgb(250,250,250) !important;
 }
 
 /*Moblie CSS*/
