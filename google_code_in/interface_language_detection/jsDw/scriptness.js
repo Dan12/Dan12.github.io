@@ -371,8 +371,10 @@ function populateTranslationList(elementClass, langArr){
 			$( "#dropDownSub span a:contains('"+thr_highest_lang_code+"')" ).addClass("detect_choice detect_choice_3");
 		}
 	
-		for(it in grayedOuts)
+		for(it in grayedOuts) {
 			$("a:contains( " +grayedOuts[it]+" )").removeClass('language-selected');
+			$("a:contains( " +grayedOuts[it]+" )").addClass('not_grayed_out');
+		}
 
 	
 	
