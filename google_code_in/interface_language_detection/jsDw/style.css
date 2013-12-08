@@ -22,7 +22,7 @@
     cursor:pointer;
     position: relative;
     font-size: 18px;
-    width: 124px;
+    width: 160px;
     text-align: left;
 }
 .itemSelect:active {
@@ -47,7 +47,7 @@
 }
 #selectTo{
     top: -22px;
-    left: 564px;
+    left: 528px;
 }
 #swapLanguages {
     position: relative;

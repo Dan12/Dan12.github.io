@@ -13,8 +13,8 @@ var probabilities_lang_code = [];
 var probabilities = [];
 var ordered_probs = [];
 var highest = 0;
-var sec_highest_lang_code = 0;
-var thr_highest_lang_code = 0;
+var sec_highest_lang_code = "";
+var thr_highest_lang_code = "";
 var highest_index = 0;
 var highest_lang_code = "";
 var from_drop_down = false;
@@ -402,10 +402,10 @@ function populateTranslationList(elementClass, langArr){
 		var interval = setInterval(function(){
 		winW = window.innerWidth;
 		if (FromOrTo == "to"){
-			if (winW < 750 || mobile) {
+			if (winW <= 750 || mobile) {
 				$('#dropDownSub').css('left', '0');
 			}
-			if (winW >= 750 && !mobile) {
+			if (winW > 750 && !mobile) {
 				$('#dropDownSub').css('left', '366px');
 			}
 		}
@@ -446,8 +446,12 @@ function populateTranslationList(elementClass, langArr){
 		
 		if(FromOrTo=="from"){	
 			
-			if($(this).text()!=" Detect Language ")
+			if($(this).text()!=" Detect Language "){
 				isDetecting = false;
+				sec_highest_lang_code = "";
+				thr_highest_lang_code = "";
+				highest_lang_code = "";
+			}
 		
 			if($(this).text() !=" Detect Language "){
 			$('#selectFrom em').html($(this).text());
@@ -567,7 +571,17 @@ function detect_lang_interface() {
 	probabilities.splice(highest_index, 1);
 	probabilities_lang_code.splice(highest_index, 1);
 	highest = 0;
-	$('#selectFrom em').html(" "+highest_lang_code+" ");
+	setInterval(function(){
+		winW = window.innerWidth;
+		if (isDetecting){
+			if (winW <= 750 || mobile) {
+				$('#selectFrom em').html(" "+highest_lang_code+" ");
+			}
+			else {
+				$('#selectFrom em').html(" "+highest_lang_code+"-detected ");
+			}
+		}
+	},1);
 	fromLangCode = " "+highest_lang_code+" ";
 	curr_pair.srcLang = " "+highest_lang_code+" ";
 }

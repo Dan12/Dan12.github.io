@@ -385,10 +385,10 @@ function populateTranslationList(elementClass, langArr){
 		var interval = setInterval(function(){
 		winW = window.innerWidth;
 		if (FromOrTo == "to"){
-			if (winW < 750 || mobile) {
+			if (winW <= 750 || mobile) {
 				$('#dropDownSub').css('left', '0');
 			}
-			if (winW >= 750 && !mobile) {
+			if (winW > 750 && !mobile) {
 				$('#dropDownSub').css('left', '366px');
 			}
 		}
