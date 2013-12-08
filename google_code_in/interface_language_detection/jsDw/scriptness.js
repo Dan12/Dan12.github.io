@@ -361,7 +361,11 @@ function populateTranslationList(elementClass, langArr){
 		}
 		
 	}
+
 		if (from_drop_down){
+			if (isDetecting){
+				$('#dropDownSub a').addClass('detecting_improbable');
+			}
 			$( "#dropDownSub span a:contains('"+highest_lang_code+"')" ).addClass("detect_choice detect_choice_1");
 			$( "#dropDownSub span a:contains('"+sec_highest_lang_code+"')" ).addClass("detect_choice detect_choice_2");
 			$( "#dropDownSub span a:contains('"+thr_highest_lang_code+"')" ).addClass("detect_choice detect_choice_3");

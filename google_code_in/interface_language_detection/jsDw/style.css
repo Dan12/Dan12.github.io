@@ -202,14 +202,21 @@ border-color: gray;
     color:#444 !important;
     background-color: #fff !important;
 }
+#dropDownSub .detecting_improbable {
+    background-color: rgb(241,241,241) !important;
+    color: rgb(204,204,204) !important;
+}
 #dropDownSub .detect_choice_1 {
-    background-color: rgb(210,210,210) !important;
+    background-color: rgb(255,255,255) !important;
+    color: black !important;
 }
 #dropDownSub .detect_choice_2 {
-    background-color: rgb(220,220,220) !important;
+    background-color: rgb(250,250,250) !important;
+    color: rgb(60,60,60) !important;
 }
 #dropDownSub .detect_choice_3 {
-    background-color: rgb(235,235,235) !important;
+    background-color: rgb(240,240,240) !important;
+    color: rgb(100,100,100) !important;
 }
 
 /*Moblie CSS*/
