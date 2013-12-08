@@ -185,9 +185,12 @@ border-color: gray;
     background-color:white;
 
 }
-.column-group a:hover, .language-selected:hover, #dropDownSub .detect_choice:hover{
+.column-group a:hover, .language-selected:hover, #dropDownSub .detect_choice:hover, #dropDownSub .detecting_improbable:hover{
     background-color:rgb(210,210,210) !important;
     border:1px solid rgb(31,85,139);
+}
+#dropDownSub .detecting_improbable:hover {
+    color: black !important;
 }
 .language-selected{
     padding: 3px 3px 3px 3px;
@@ -204,7 +207,7 @@ border-color: gray;
 }
 #dropDownSub .detecting_improbable {
     background-color: rgb(241,241,241) !important;
-    color: rgb(154,154,154) !important;
+    color: rgb(204,204,204) !important;
     cursor: pointer;
 }
 #dropDownSub .detect_choice_1 {
