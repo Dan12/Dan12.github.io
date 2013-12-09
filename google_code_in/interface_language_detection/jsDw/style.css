@@ -200,12 +200,8 @@ border-color: gray;
 }
 #dropDownSub .detecting_improbable {
     background-color: rgb(255,255,255) !important;
-    color: rgb(138,138,138) !important;
+    color: rgb(168,168,168) !important;
     cursor: pointer;
-}
-#dropDown .current-language-selected-to, #dropDown .current-language-selected-from{
-    background-color: rgb(210,210,210) !important;
-    color: black !important;
 }
 .selectFromSub a{
     color:#444 !important;
@@ -217,7 +213,11 @@ border-color: gray;
 }
 #dropDownSub .detect_choice_2, #dropDownSub .detect_choice_3 {
     background-color: rgb(240,240,240) !important;
-    color: rgb(80,80,80) !important;
+    color: rgb(60,60,60) !important;
+}
+#dropDown .current-language-selected-to, #dropDown .current-language-selected-from{
+    background-color: rgb(210,210,210) !important;
+    color: black !important;
 }
 
 /*screen smaller than 750 px CSS*/

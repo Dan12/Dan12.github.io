@@ -185,15 +185,18 @@ border-color: gray;
 .column-group a{
     display:block;
     padding: 3px 3px 3px 3px;
-    margin-right: 5px;
+    margin-right: 15px;
     border-style: none;
     border:1px solid #fff;
     background-color:white;
 
 }
-.column-group a:hover, .language-selected:hover, #dropDownSub .detect_choice:hover{
+.not_grayed_out:hover, .selectFromSub a:hover, #dropDownSub .detect_choice:hover, #dropDownSub .detecting_improbable:hover{
     background-color:rgb(210,210,210) !important;
     border:1px solid rgb(31,85,139);
+}
+#dropDownSub .detecting_improbable:hover {
+    color: black !important;
 }
 .language-selected{
     padding: 3px 3px 3px 3px;
@@ -201,8 +204,10 @@ border-color: gray;
     background-color:#f1f1f1 !important;
     cursor:default;
 }
-#dropDown .current-language-selected-to, #dropDown .current-language-selected-from{
-    background-color: rgb(210,210,210) !important;
+#dropDownSub .detecting_improbable {
+    background-color: rgb(255,255,255) !important;
+    color: rgb(168,168,168) !important;
+    cursor: pointer;
 }
 .selectFromSub a{
     color:#444 !important;
@@ -210,10 +215,13 @@ border-color: gray;
 }
 #dropDownSub .detect_choice_1 {
     background-color: rgb(210,210,210) !important;
+    color: black !important;
 }
-#dropDownSub .detect_choice_2 {
-    background-color: rgb(225,225,225) !important;
-}
-#dropDownSub .detect_choice_3 {
+#dropDownSub .detect_choice_2, #dropDownSub .detect_choice_3 {
     background-color: rgb(240,240,240) !important;
+    color: rgb(60,60,60) !important;
+}
+#dropDown .current-language-selected-to, #dropDown .current-language-selected-from{
+    background-color: rgb(210,210,210) !important;
+    color: black !important;
 }
