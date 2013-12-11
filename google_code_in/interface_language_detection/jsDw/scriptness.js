@@ -210,15 +210,75 @@ $(document).ready(function(){
 	
 	getPairs();
 
+	$('.itemSelect').toggle(function(){
+		if( navigator.userAgent.match(/Android/i)
+ 			|| navigator.userAgent.match(/webOS/i)
+ 			|| navigator.userAgent.match(/iPhone/i)
+ 			|| navigator.userAgent.match(/iPad/i)
+ 			|| navigator.userAgent.match(/iPod/i)
+ 			|| navigator.userAgent.match(/BlackBerry/i)
+ 			|| navigator.userAgent.match(/Windows Phone/i)
+ 		){
+ 			mobile = true;
+		}
+		jQuery('.column-group').removeClass('language-selected');
+		
+		if($(this).attr("id")=="selectFrom"){
+			populateTranslationList("#column-group-", srcLangs);
+			
+			FromOrTo="from";
+			from_drop_down = true;
+			$('#dropDownSub').hide();
+			$('#dropDownSub').addClass('selectFromSub');
+			$('#dropDownSub').css('left','0');
+		
+
+		} else {
+			from_drop_down = false;
+		$( window ).resize(function() {
+		winW = window.innerWidth;
+		if (FromOrTo == "to"){
+			if (winW <= 750 || mobile) {
+				$('#dropDownSub').css('left', '0');
+			}
+			if (winW > 750 && !mobile) {
+				$('#dropDownSub').css('left', '366px');
+			}
+		}
+		});
+		
+		populateTranslationList("#column-group-", dstLangs);
+			winW = window.innerWidth;
+
+			FromOrTo = "to";
+			$('#dropDownSub').hide();
+			if (winW>750 && !mobile){
+				$('#dropDownSub').css('left','366px');
+			}else {
+				$('#dropDownSub').css('left', '0');
+			}
+			
+			$('#dropDownSub').removeClass('selectFromSub');
+			//find_smth(curr_pair.srcLang);
+			//$('#dropDownSub a').addClass('language-selected');
+		}
+
+
+		$('#dropDownSub').show();
+			
+	}, function(){
+		$('#dropDownSub').hide();
+	});
+
 	
 });
 
 
 
 
-$(document).click(function(){
-	$('#dropDownSub').hide();
-});
+// $(document).click(function(){
+// 	$('#dropDownSub').hide();
+// });
 
 function getLangByCode(code) {
 	language = code
@@ -380,63 +440,74 @@ function populateTranslationList(elementClass, langArr){
 	
 	
 	
-	$('.itemSelect').toggle(function(){
-		if( navigator.userAgent.match(/Android/i)
- 			|| navigator.userAgent.match(/webOS/i)
- 			|| navigator.userAgent.match(/iPhone/i)
- 			|| navigator.userAgent.match(/iPad/i)
- 			|| navigator.userAgent.match(/iPod/i)
- 			|| navigator.userAgent.match(/BlackBerry/i)
- 			|| navigator.userAgent.match(/Windows Phone/i)
- 		){
- 			mobile = true;
-		}
-		jQuery('.column-group').removeClass('language-selected');
+	// $('.itemSelect').click(function(){
+	// 	if( navigator.userAgent.match(/Android/i)
+ // 			|| navigator.userAgent.match(/webOS/i)
+ // 			|| navigator.userAgent.match(/iPhone/i)
+ // 			|| navigator.userAgent.match(/iPad/i)
+ // 			|| navigator.userAgent.match(/iPod/i)
+ // 			|| navigator.userAgent.match(/BlackBerry/i)
+ // 			|| navigator.userAgent.match(/Windows Phone/i)
+ // 		){
+ // 			mobile = true;
+	// 	}
+	// 	jQuery('.column-group').removeClass('language-selected');
 		
-		if($(this).attr("id")=="selectFrom"){
-			populateTranslationList("#column-group-", srcLangs);
+	// 	if($(this).attr("id")=="selectFrom"){
+	// 		populateTranslationList("#column-group-", srcLangs);
 			
-			FromOrTo="from";
-			from_drop_down = true;
-			$('#dropDownSub').hide();
-			$('#dropDownSub').addClass('selectFromSub');
-			$('#dropDownSub').css('left','0');
+	// 		FromOrTo="from";
+	// 		from_drop_down = true;
+	// 		$('#dropDownSub').hide();
+	// 		$('#dropDownSub').addClass('selectFromSub');
+	// 		$('#dropDownSub').css('left','0');
 		
 
-		} else {
-			from_drop_down = false;
-		$( window ).resize(function() {
-		winW = window.innerWidth;
-		if (FromOrTo == "to"){
-			if (winW <= 750 || mobile) {
-				$('#dropDownSub').css('left', '0');
-			}
-			if (winW > 750 && !mobile) {
-				$('#dropDownSub').css('left', '366px');
-			}
-		}
-		});
+	// 	} else {
+	// 		from_drop_down = false;
+	// 	$( window ).resize(function() {
+	// 	winW = window.innerWidth;
+	// 	if (FromOrTo == "to"){
+	// 		if (winW <= 750 || mobile) {
+	// 			$('#dropDownSub').css('left', '0');
+	// 		}
+	// 		if (winW > 750 && !mobile) {
+	// 			$('#dropDownSub').css('left', '366px');
+	// 		}
+	// 	}
+	// 	});
 		
-		populateTranslationList("#column-group-", dstLangs);
-			winW = window.innerWidth;
+	// 	populateTranslationList("#column-group-", dstLangs);
+	// 		winW = window.innerWidth;
 
-			FromOrTo = "to";
-			$('#dropDownSub').hide();
-			if (winW>750 && !mobile){
-				$('#dropDownSub').css('left','366px');
-			}else {
-				$('#dropDownSub').css('left', '0');
-			}
+	// 		FromOrTo = "to";
+	// 		$('#dropDownSub').hide();
+	// 		if (winW>750 && !mobile){
+	// 			$('#dropDownSub').css('left','366px');
+	// 		}else {
+	// 			$('#dropDownSub').css('left', '0');
+	// 		}
 			
-			$('#dropDownSub').removeClass('selectFromSub');
-			//find_smth(curr_pair.srcLang);
-			//$('#dropDownSub a').addClass('language-selected');
-		}
+	// 		$('#dropDownSub').removeClass('selectFromSub');
+	// 		//find_smth(curr_pair.srcLang);
+	// 		//$('#dropDownSub a').addClass('language-selected');
+	// 	}
+
+	// 	$('#dropDownSub').show();
+
+	// 	drop_down_click = false;
+	// 	if (drop_down_click == false && drop_down_show == false){
+	// 		$('.img_container').after('<p>show</p>');
+	// 		drop_down_click = true;
+	// 		drop_down_show = true;
+	// 	}
+	// 	if (!drop_down_click && drop_down_show){
+	// 		$('.img_container').after('<p>hide</p>');
+	// 		drop_down_click = true;
+	// 		drop_down_show = false;
+	// 	}
 			
-			$('#dropDownSub').show();
-	}, function(){
-		$('#dropDownSub').hide()	
-	});
+	// });
 
 	
 	$('#dropDownSub a').click(function(){
