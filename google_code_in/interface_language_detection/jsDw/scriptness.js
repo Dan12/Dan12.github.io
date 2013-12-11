@@ -19,6 +19,9 @@ var highest_index = 0;
 var highest_lang_code = "";
 var from_drop_down = false;
 
+var drop_down_show = false;
+var drop_down_click = false;
+
 var abbreviations = {
 	'Spanish':'es',
 	'Catalan':'ca',
@@ -106,6 +109,10 @@ $(document).ready(function(){
 		*/
 	});
 
+		$(document).click(function(){
+			$('#dropDownSub').hide();
+			drop_down_show = false;
+		});
 
 	jQuery("#inputBox").submit(function(){
 		try{
@@ -210,7 +217,8 @@ $(document).ready(function(){
 	
 	getPairs();
 
-	$('.itemSelect').toggle(function(){
+	$('.itemSelect').click(function(e){
+		e.stopPropagation();
 		if( navigator.userAgent.match(/Android/i)
  			|| navigator.userAgent.match(/webOS/i)
  			|| navigator.userAgent.match(/iPhone/i)
@@ -263,22 +271,99 @@ $(document).ready(function(){
 			//$('#dropDownSub a').addClass('language-selected');
 		}
 
+		drop_down_click = false;
 
-		$('#dropDownSub').show();
+		if (!drop_down_click && !drop_down_show) {
+			$('#dropDownSub').show();
+			drop_down_click = true;
+			drop_down_show = true;
+		}
+		if (!drop_down_click && drop_down_show) {
+			$('#dropDownSub').hide();
+			drop_down_click = true;
+			drop_down_show = false;
+		}
 			
-	}, function(){
-		$('#dropDownSub').hide();
-	});
+	$('#dropDownSub a').click(function(){
+			$('#dropDownSub a').removeClass('language-selected');
+			if (FromOrTo == "from"){
+				$('#dropDownSub a').removeClass('current-language-selected-from');
+				fromLangCode = $(this).text();
+			}
+			if (FromOrTo == "to"){
+				$('#dropDownSub a').removeClass('current-language-selected-to');
+				toLangCode = $(this).text();
+			}
+			
+			if(FromOrTo=="from"){	
+				
+				if($(this).text()!=" Detect Language "){
+					isDetecting = false;
+					sec_highest_lang_code = "";
+					thr_highest_lang_code = "";
+					highest_lang_code = "";
+				}
+			
+				if($(this).text() !=" Detect Language "){
+				$('#selectFrom em').html($(this).text());
+				}else{
+				$('#selectFrom em').html("Detect");	
+				}
+				curr_pair.srcLang = $(this).text();
 
+				if($(this).text()== " Detect Language ") {
+					detect_lang_interface();
+				}
+				
+			} else {
+				if($(this).text() !=" Detect Language "){
+				$('#selectTo em').html($(this).text());
+				}else{
+				$('#selectTo em').html("Detect");	
+				}
+				curr_pair.dstLang = $(this).text();
+			}
+			matchFound= false;
+		
+			//FIXME: if (curr_pair in window.pairs) ??
+			for(var it in window.pairs){	
+				if(parsePair_lol(curr_pair)==window.pairs[it])
+					matchFound=true;
+			}
+			
+			
+			if(matchFound){
+			
+				try{
+					if(curr_pair.srcLang.indexOf("Detect") !=-1){
+						curr_pair.srcLang = detectLanguage($(this).val());
+						
+						curr_pair.srcLang = abbreviations[curr_pair.srcLang];
+				
+						$('#selectFrom em').html(curr_pair.srcLang);
+						
+				}
+					
+				
+				}catch(e){
+					console.log(e.message);
+				}
+				
+				translate(curr_pair,$('#textAreaId').val());
+			}
+			else jQuery('#translationTest').html("Translation not yet available!");
+			
+			$('#dropDownSub').hide();
+			drop_down_show = false;
+			
+		});
+	});
 	
 });
 
 
 
 
-// $(document).click(function(){
-// 	$('#dropDownSub').hide();
-// });
 
 function getLangByCode(code) {
 	language = code
@@ -510,77 +595,78 @@ function populateTranslationList(elementClass, langArr){
 	// });
 
 	
-	$('#dropDownSub a').click(function(){
-		$('#dropDownSub a').removeClass('language-selected');
-		if (FromOrTo == "from"){
-			$('#dropDownSub a').removeClass('current-language-selected-from');
-			fromLangCode = $(this).text();
-		}
-		if (FromOrTo == "to"){
-			$('#dropDownSub a').removeClass('current-language-selected-to');
-			toLangCode = $(this).text();
-		}
+	// $('#dropDownSub a').click(function(){
+	// 	$('.img_container').after('<p>clicked</p>');
+	// 	$('#dropDownSub a').removeClass('language-selected');
+	// 	if (FromOrTo == "from"){
+	// 		$('#dropDownSub a').removeClass('current-language-selected-from');
+	// 		fromLangCode = $(this).text();
+	// 	}
+	// 	if (FromOrTo == "to"){
+	// 		$('#dropDownSub a').removeClass('current-language-selected-to');
+	// 		toLangCode = $(this).text();
+	// 	}
 		
-		if(FromOrTo=="from"){	
+	// 	if(FromOrTo=="from"){	
 			
-			if($(this).text()!=" Detect Language "){
-				isDetecting = false;
-				sec_highest_lang_code = "";
-				thr_highest_lang_code = "";
-				highest_lang_code = "";
-			}
+	// 		if($(this).text()!=" Detect Language "){
+	// 			isDetecting = false;
+	// 			sec_highest_lang_code = "";
+	// 			thr_highest_lang_code = "";
+	// 			highest_lang_code = "";
+	// 		}
 		
-			if($(this).text() !=" Detect Language "){
-			$('#selectFrom em').html($(this).text());
-			}else{
-			$('#selectFrom em').html("Detect");	
-			}
-			curr_pair.srcLang = $(this).text();
+	// 		if($(this).text() !=" Detect Language "){
+	// 		$('#selectFrom em').html($(this).text());
+	// 		}else{
+	// 		$('#selectFrom em').html("Detect");	
+	// 		}
+	// 		curr_pair.srcLang = $(this).text();
 
-			if($(this).text()== " Detect Language ") {
-				detect_lang_interface();
-			}
+	// 		if($(this).text()== " Detect Language ") {
+	// 			detect_lang_interface();
+	// 		}
 			
-		} else {
-			if($(this).text() !=" Detect Language "){
-			$('#selectTo em').html($(this).text());
-			}else{
-			$('#selectTo em').html("Detect");	
-			}
-			curr_pair.dstLang = $(this).text();
-		}
-		matchFound= false;
+	// 	} else {
+	// 		if($(this).text() !=" Detect Language "){
+	// 		$('#selectTo em').html($(this).text());
+	// 		}else{
+	// 		$('#selectTo em').html("Detect");	
+	// 		}
+	// 		curr_pair.dstLang = $(this).text();
+	// 	}
+	// 	matchFound= false;
 	
-		//FIXME: if (curr_pair in window.pairs) ??
-		for(var it in window.pairs){	
-			if(parsePair_lol(curr_pair)==window.pairs[it])
-				matchFound=true;
-		}
+	// 	//FIXME: if (curr_pair in window.pairs) ??
+	// 	for(var it in window.pairs){	
+	// 		if(parsePair_lol(curr_pair)==window.pairs[it])
+	// 			matchFound=true;
+	// 	}
 		
 		
-		if(matchFound){
+	// 	if(matchFound){
 		
-			try{
-				if(curr_pair.srcLang.indexOf("Detect") !=-1){
-					curr_pair.srcLang = detectLanguage($(this).val());
+	// 		try{
+	// 			if(curr_pair.srcLang.indexOf("Detect") !=-1){
+	// 				curr_pair.srcLang = detectLanguage($(this).val());
 					
-					curr_pair.srcLang = abbreviations[curr_pair.srcLang];
+	// 				curr_pair.srcLang = abbreviations[curr_pair.srcLang];
 			
-					$('#selectFrom em').html(curr_pair.srcLang);
+	// 				$('#selectFrom em').html(curr_pair.srcLang);
 					
-			}
+	// 		}
 				
 			
-			}catch(e){
-				console.log(e.message);
-			}
+	// 		}catch(e){
+	// 			console.log(e.message);
+	// 		}
 			
-			translate(curr_pair,$('#textAreaId').val());
-		}
-		else jQuery('#translationTest').html("Translation not yet available!");
+	// 		translate(curr_pair,$('#textAreaId').val());
+	// 	}
+	// 	else jQuery('#translationTest').html("Translation not yet available!");
 		
 		
-	});
+	// });
 	
 }
 
