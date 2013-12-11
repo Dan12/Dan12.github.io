@@ -247,10 +247,10 @@ $(document).ready(function(){
 			} else {
 				drop_down_zone_change = false;
 			}
+			from_drop_down = true;
 			populateTranslationList("#column-group-", srcLangs);
 			
 			FromOrTo="from";
-			from_drop_down = true;
 			$('#dropDownSub').hide();
 			$('#dropDownSub').addClass('selectFromSub');
 			$('#dropDownSub').css('left','0');
