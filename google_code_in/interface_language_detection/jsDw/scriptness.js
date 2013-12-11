@@ -21,6 +21,9 @@ var from_drop_down = false;
 
 var drop_down_show = false;
 var drop_down_click = false;
+var drop_down_zone = "";
+var latest_drop_down_zone = "";
+var drop_down_zone_change = false;
 
 var abbreviations = {
 	'Spanish':'es',
@@ -139,7 +142,12 @@ $(document).ready(function(){
 	var FromOrTo;
 	
 	$('#swapLanguages').click(function(){
-		fromText = $('#selectFrom em').text();
+		if (!isDetecting){
+			fromText = $('#selectFrom em').text();
+		}else {
+			fromText = " "+highest_lang_code+" ";
+			isDetecting = false;
+		}
 		toText = $('#selectTo em').text();
 		$('#selectTo em').html(fromText);
 		$('#selectFrom em').html(toText);
@@ -232,6 +240,13 @@ $(document).ready(function(){
 		jQuery('.column-group').removeClass('language-selected');
 		
 		if($(this).attr("id")=="selectFrom"){
+			drop_down_zone = "from";
+			if (drop_down_zone != latest_drop_down_zone){
+				latest_drop_down_zone = drop_down_zone;
+				drop_down_zone_change = true;
+			} else {
+				drop_down_zone_change = false;
+			}
 			populateTranslationList("#column-group-", srcLangs);
 			
 			FromOrTo="from";
@@ -242,6 +257,13 @@ $(document).ready(function(){
 		
 
 		} else {
+			drop_down_zone = "to";
+			if (drop_down_zone != latest_drop_down_zone){
+				latest_drop_down_zone = drop_down_zone;
+				drop_down_zone_change = true;
+			} else {
+				drop_down_zone_change = false;
+			}
 			from_drop_down = false;
 		$( window ).resize(function() {
 		winW = window.innerWidth;
@@ -282,6 +304,11 @@ $(document).ready(function(){
 			$('#dropDownSub').hide();
 			drop_down_click = true;
 			drop_down_show = false;
+		}
+		if (drop_down_zone_change) {
+			$('#dropDownSub').show();
+			drop_down_click = true;
+			drop_down_show = true;
 		}
 			
 	$('#dropDownSub a').click(function(){
