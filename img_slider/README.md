@@ -1,0 +1,1 @@
+This is a new project in which I make an image slider in Javascript.

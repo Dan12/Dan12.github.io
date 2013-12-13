@@ -1,0 +1,1 @@
+This is a google code in 2013 task to make an interface for language detection in the simple-html interface for the open source project apertium.

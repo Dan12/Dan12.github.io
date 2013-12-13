@@ -1,0 +1,1 @@
+This is a game made from Javascript. The objective is to get the highest score without crashing.

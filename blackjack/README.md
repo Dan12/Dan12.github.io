@@ -1,0 +1,1 @@
+This is a Javascript based game of blackjack.

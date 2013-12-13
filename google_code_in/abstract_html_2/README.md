@@ -1,0 +1,1 @@
+This is a google code in 2013 task to abstract the formatting for the simple-html interface for the open source project apertium.
