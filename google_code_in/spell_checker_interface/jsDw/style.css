@@ -251,7 +251,54 @@ border-color: gray;
     padding: 6px;
     border-radius: 4px;
 }
-
+.spell_recomendations {
+    width: 100px;
+    border: solid 1px lightgray;
+    text-align: center;
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+.spell_recomendations_item {
+    margin: 1px;
+    padding: 1px;
+    cursor: pointer;
+}
+.spell_recomendations_item:hover {
+    background-color: gray;
+}
+.spell_checker_box {
+    width: 250px;
+    height: 80px;
+    border: 1px solid gray;
+    position: relative;
+    top: -340px;
+    display: none;
+}
+.spell_checker_close {
+    position: relative;
+    font-size: 12px;
+    top: -96px;
+    width: 29px;
+    border: solid gray 1px;
+    text-align: center;
+    cursor: pointer;
+}
+.spell_checker_uncorrected, .spell_checker_corrected {
+    width: 115px;
+    border: solid 1px gray;
+    height: 70px;
+    font-size: 14px;
+    padding: 4px;
+    overflow: scroll;
+}
+.spell_checker_corrected {
+    position: relative;
+    top: -80px;
+    left: 125px;
+}
 
 /*screen smaller than 750 px CSS*/
 @media screen and (max-width: 750px) {
