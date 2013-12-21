@@ -2,6 +2,9 @@ var SCR = {}
 var myinterval;
 var seconds = 0;
 var dummyWords = ["hello", "world", "how", "are", "you", 'pizza','artichokical','blah','dah','tah', 'undefined'];
+var text_area_focus = false;
+var text_area_click = false;
+var document_click = false;
 
 SCR.SCI = null;
 SCR.STA = null;
@@ -183,6 +186,7 @@ SCR.populateSpellCheck = function(opt,index) {
 					var words = SCR.STA.val();
 					words = words.split(" ");
 					var number = words.indexOf(this_text);
+					$('.spell_recomendations').append('<div class="spell_recomendations_word">'+this_text+'</div>')
 					for(var z = 0; z < dummyWords.length; z++){
 						$('.spell_recomendations').append('<div class="spell_recomendations_item" num="'+number+'" value="'+dummyWords[z]+'">'+dummyWords[z]+'</div>')
 					}
@@ -191,6 +195,7 @@ SCR.populateSpellCheck = function(opt,index) {
 					});
 					$('.spell_recomendations_item').click(function(){
 						$('.spell_recomendations').css('display', 'none');
+						$('#textAreaId').focus();
 						var opt = $(this)
 						var toChange = SCR.STA.val()
 						toChange = toChange.split(" ")
@@ -255,9 +260,24 @@ $(window).load(SCR.loadModule);
 
 $(document).ready(function(){
 	$('#textAreaId').focus(function() {
-		$('#spellCheckHighlight').css({'z-index':'10', 'color':'black', 'border':' 1px solid rgb(77,144,254)'});
+		$('#spellCheckHighlight').css({'z-index':'10', 'color':'rgba(0,0,0,0)', 'border':' 1px solid rgb(77,144,254)'});
+		//text_area_focus = true;
+	});
+	$('#spellCheckHighlight').click(function(){
+		text_area_click = false;
+		if (text_area_focus == false && text_area_click == false){
+			$('#textAreaId').focus();
+			text_area_click = true;
+			text_area_focus = true;
+		}
+		if (text_area_focus == true && text_area_click == false){
+			$('#textAreaId').focusout();
+			text_area_click = true;
+			text_area_focus = false;
+		}
 	});
 	$('#textAreaId').focusout(function() {
-		$('#spellCheckHighlight').css("z-index","-10");
+			$('#spellCheckHighlight').css("border-color","lightgray");
+			text_area_focus = false;
 	});
 });

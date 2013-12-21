@@ -144,11 +144,18 @@
     left: 0;
     background-color: white;
 }
-.spell_recomendations_item {
+.spell_recomendations_item{
     margin: 1px;
     padding: 1px;
     cursor: pointer;
 }
 .spell_recomendations_item:hover {
-    background-color: gray;
+    background-color: lightgray;
+}
+.spell_recomendations_word {
+	margin: 1px;
+	padding: 1px;
+	width: 96px;
+	overflow: hidden;
+	background-color: yellow;
 }
