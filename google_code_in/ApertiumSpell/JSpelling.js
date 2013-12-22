@@ -5,6 +5,7 @@ var dummyWords = ["hello", "world", "how", "are", "you", 'pizza','artichokical',
 var text_area_focus = false;
 var text_area_click = false;
 var document_click = false;
+var recomendations_move = false;
 
 SCR.SCI = null;
 SCR.STA = null;
@@ -159,7 +160,7 @@ SCR.populateSpellCheck = function(opt,index) {
 		var adjust = " "+highlight.text()+" ";
 		for (i in opt) {
 			if (i==index) {
-				adjust = adjust.replace(" "+words[opt[i][0]]+" "," <span id='incorrect_spelling' style='background:yellow; color:black; border-bottom:1px solid red; cursor:pointer;'>"+words[opt[i][0]]+"</span> ");
+				adjust = adjust.replace(" "+words[opt[i][0]]+" "," <span id='incorrect_spelling' style='color:black; border-bottom:1px solid red; cursor:pointer;'>"+words[opt[i][0]]+"</span> ");
 				//console.log(words);
 				//console.log(adjust,words[opt[i][0]]);
 			} else {
@@ -173,45 +174,53 @@ SCR.populateSpellCheck = function(opt,index) {
 		console.log(adjust)
 		highlight.html(adjust);
 		$('#incorrect_spelling').mouseover(function(e){
-			var this_text = $(this).html();
-			myinterval = setInterval(function(){
-				seconds++;
-				if (seconds > 2){
-					clearInterval(myinterval);
-					seconds = 0;
-					var xwin = e.pageX-12;
-				    var ywin = e.pageY-12;
-					$('.spell_recomendations').css({'display':'inline', 'top': ywin+'px', 'left': xwin+'px', 'z-index':'10'});
-					$('.spell_recomendations').html('');
-					var words = SCR.STA.val();
-					words = words.split(" ");
-					var number = words.indexOf(this_text);
-					$('.spell_recomendations').append('<div class="spell_recomendations_word">'+this_text+'</div>')
-					for(var z = 0; z < dummyWords.length; z++){
-						$('.spell_recomendations').append('<div class="spell_recomendations_item" num="'+number+'" value="'+dummyWords[z]+'">'+dummyWords[z]+'</div>')
-					}
-					$('.spell_recomendations').mouseleave(function(){
-						$('.spell_recomendations').css('display', 'none');
-					});
-					$('.spell_recomendations_item').click(function(){
-						$('.spell_recomendations').css('display', 'none');
-						$('#textAreaId').focus();
-						var opt = $(this)
-						var toChange = SCR.STA.val()
-						toChange = toChange.split(" ")
-						toChange[parseInt(opt.attr("num"))] = opt.attr("value");
-						toChange = toChange.join(" ");
-						SCR.STA.val(toChange);
-						SCR.spellTextEvent();
-					});
+		var this_text = $(this).html();
+		myinterval = setInterval(function(){
+			seconds++;
+			if (seconds > 2){
+				clearInterval(myinterval);
+				recomendations_move = false;
+				seconds = 0;
+				var xwin = e.pageX-40;
+			    var ywin = e.pageY-34;
+				$('.spell_recomendations').css({'display':'inline', 'top': ywin+'px', 'left': xwin+'px', 'z-index':'10'});
+				$('.spell_recomendations').html('');
+				var words = SCR.STA.val();
+				words = words.split(" ");
+				var number = words.indexOf(this_text);
+				$('.spell_recomendations').append('<div class="spell_recomendations_word">'+this_text+'</div>')
+				for(var z = 0; z < dummyWords.length; z++){
+					$('.spell_recomendations').append('<div class="spell_recomendations_item" num="'+number+'" value="'+dummyWords[z]+'">'+dummyWords[z]+'</div>')
 				}
-			},200);
-		})
-		.mouseleave(function(){
-			$('.spell_check_editor span').css('background-color', 'white');
-			clearInterval(myinterval);
-			seconds = 0;
-		});
+				$('.spell_recomendations div:nth-child(2)').css('background-color','lightgray');
+				$('.spell_recomendations').mouseleave(function(){
+					$('.spell_recomendations').css('display', 'none');
+				});
+				$('.spell_recomendations div:nth-child(2)').mouseenter(function(){
+					$(this).css('background-color','lightgray');
+				})
+				.mouseout(function(){
+					$(this).css('background-color','white');
+				});
+				$('.spell_recomendations_item').click(function(){
+					$('.spell_recomendations').css('display', 'none');
+					$('#textAreaId').focus();
+					var opt = $(this)
+					var toChange = SCR.STA.val()
+					toChange = toChange.split(" ")
+					toChange[parseInt(opt.attr("num"))] = opt.attr("value");
+					toChange = toChange.join(" ");
+					SCR.STA.val(toChange);
+					SCR.spellTextEvent();
+				});
+			}
+		},200);
+	})
+	.mouseleave(function(){
+		$('.spell_check_editor span').css('background-color', 'white');
+		clearInterval(myinterval);
+		seconds = 0;
+	});
 	}
 }
 SCR.genOpt = function(opt,wordNum) {
@@ -257,7 +266,6 @@ SCR.dummySpelling = function(WC) {
 }
 
 $(window).load(SCR.loadModule);
-
 $(document).ready(function(){
 	$('#textAreaId').focus(function() {
 		$('#spellCheckHighlight').css({'z-index':'10', 'color':'rgba(0,0,0,0)', 'border':' 1px solid rgb(77,144,254)'});

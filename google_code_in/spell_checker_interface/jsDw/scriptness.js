@@ -27,6 +27,7 @@ var drop_down_zone_change = false;
 
 var corrected_words = [];
 var dummy_words = ["hello", "my", "name", "is", "and", "I", "like", "nothing", "but", "bacon"];
+var text_area_focus = false;
 
 var abbreviations = {
 	'Spanish':'es',
@@ -70,20 +71,27 @@ $(document).ready(function(){
 	.keypress(function(){
 		spell_checker();
 	});
+	$('.spell_check_editor').click(function(){
+		if (text_area_focus == false){
+			text_area_focus = true;
+			$('#textAreaId').focus();
+		}
+	});
 	$('#textAreaId').focus(function() {
 		spell_checker();
 		$('.spell_check_editor').css({"z-index": "10","border-color": "rgb(31,85,139)"});
-		$('.spell_check_editor span').mouseover(function(){
-			if ($(this).hasClass('misspelled')){
-				$(this).css({'background-color':'yellow', 'cursor':'pointer'});
-			}
-		})
-		.mouseout(function(){
-			$(this).css('background-color', 'white');
-		});
+		// $('.spell_check_editor span').mouseover(function(){
+		// 	if ($(this).hasClass('misspelled')){
+		// 		$(this).css({'background-color':'yellow', 'cursor':'pointer'});
+		// 	}
+		// })
+		// .mouseout(function(){
+		// 	$(this).css('background-color', 'white');
+		// });
 	});
 	$('#textAreaId').focusout(function() {
-		$('.spell_check_editor').css("z-index", "-10");
+		$('.spell_check_editor').css("border-color","lightgray");
+		text_area_focus = false;
 	});
 	$("#textAreaId").keyup(function(event) {
 		if(event.keyCode==32 || event.keyCode==190 || event.keyCode==191 || event.keyCode==49 || event.keyCode==59 || event.keyCode==13){
@@ -852,13 +860,22 @@ function spell_checker() {
 				if (seconds > 2){
 					clearInterval(myinterval);
 					seconds = 0;
-					var xwin = e.pageX-12;
-				    var ywin = e.pageY-12;
-					$('.spell_recomendations').css({'display':'inline', 'top': ywin+'px', 'left': xwin+'px', 'z-index':'20'});
+					var xwin = e.pageX-40;
+				    var ywin = e.pageY-34;
+					$('.spell_recomendations').css({'display':'inline', 'top': ywin+'px', 'left': xwin+'px', 'z-index':'30'});
 					$('.spell_recomendations').html('');
+					$('.spell_recomendations').append('<div class="spell_recomendations_word">'+this_text+'</div>')
 					for(var z = 0; z < dummy_words.length; z++){
 						$('.spell_recomendations').append('<div class="spell_recomendations_item">'+dummy_words[z]+'</div>')
 					}
+					$('.spell_recomendations').append('<div class="spell_recomendations_ignore">Ignore Word</div>')
+					$('.spell_recomendations div:nth-child(2)').css('background-color','lightgray');
+					$('.spell_recomendations div:nth-child(2)').mouseenter(function(){
+						$(this).css('background-color','lightgray');
+					})
+					.mouseout(function(){
+						$(this).css('background-color','white');
+					});
 					$('.spell_recomendations').mouseleave(function(){
 						$('.spell_recomendations').css('display', 'none');
 						$('.spell_check_editor span').css('background-color', 'white');
@@ -875,7 +892,14 @@ function spell_checker() {
 						$('#textAreaId').val(text_back);
 						index = corrected_words.indexOf(this_text);
 						corrected_words.splice(index, 1);
+						$('#textAreaId').focus();
 					});
+					$('.spell_recomendations_ignore').click(function(){
+						$('#textAreaId').focus();
+						dummy_words.push(this_text);
+						spell_checker();
+						$('.spell_recomendations').css('display', 'none');
+;					});
 				}
 			},200);
 			this_text = $(this).html();
@@ -887,51 +911,47 @@ function spell_checker() {
 		clearInterval(myinterval);
 		seconds = 0;
 	});
-	check_spelling();
-	$('.check_spelling_btn').click(function(){
-		check_spelling();
-		$('.spell_checker_box').css('display','block');
-	});
+	//check_spelling();
 }
-function check_spelling() {
-	$('.spell_checker_uncorrected').html('');
-	$('.spell_checker_corrected').html('');
-	if (corrected_words.length == 0){
-		$('.spell_checker_corrected').html('No spelling Errors');
-	}
-	else {
-		var repeat = 0;
-		var this_text = corrected_words[repeat];
-		var text = $("#textAreaId").val();
-		var words = text.split( /\s+/ );
-		var index = words.indexOf(this_text);
-		if ($('.spell_checker_box').css('display') == 'block') {
-			$('.spell_check_editor span:nth-child('+(index+1)+')').css('background-color','yellow');
-		}
-		$('.spell_checker_uncorrected').html(corrected_words[repeat]);
-		for(var z = 0; z < dummy_words.length; z++){
-			$('.spell_checker_corrected').append('<div class="spell_recomendations_item">'+dummy_words[z]+'</div>')
-		}
-		$('.spell_recomendations_item').click(function(){
-			var this_text = corrected_words[repeat];
-			var newtext = $(this).html();
-			var text = $("#textAreaId").val();
-			var words = text.split( /\s+/ );
-			var index = words.indexOf(this_text);
-			words.splice(index, 1);
-			words.splice(index, 0, newtext);
-			text_back = words.join( "</span> <span>" );
-			$('.spell_check_editor').html('<span>'+text_back+'</span');
-			text_back = words.join( " " );
-			$('#textAreaId').val(text_back);
-			index = corrected_words.indexOf(this_text);
-			corrected_words.splice(index, 1);
-			check_spelling();
-		});
-	}
-	$('.spell_checker_close').click(function(){
-		$('.spell_checker_box').css('display','none');
-	});
-}
+// function check_spelling() {
+// 	$('.spell_checker_uncorrected').html('');
+// 	$('.spell_checker_corrected').html('');
+// 	if (corrected_words.length == 0){
+// 		$('.spell_checker_corrected').html('No spelling Errors');
+// 	}
+// 	else {
+// 		var repeat = 0;
+// 		var this_text = corrected_words[repeat];
+// 		var text = $("#textAreaId").val();
+// 		var words = text.split( /\s+/ );
+// 		var index = words.indexOf(this_text);
+// 		if ($('.spell_checker_box').css('display') == 'block') {
+// 			$('.spell_check_editor span:nth-child('+(index+1)+')').css('background-color','yellow');
+// 		}
+// 		$('.spell_checker_uncorrected').html(corrected_words[repeat]);
+// 		for(var z = 0; z < dummy_words.length; z++){
+// 			$('.spell_checker_corrected').append('<div class="spell_recomendations_item">'+dummy_words[z]+'</div>')
+// 		}
+// 		$('.spell_recomendations_item').click(function(){
+// 			var this_text = corrected_words[repeat];
+// 			var newtext = $(this).html();
+// 			var text = $("#textAreaId").val();
+// 			var words = text.split( /\s+/ );
+// 			var index = words.indexOf(this_text);
+// 			words.splice(index, 1);
+// 			words.splice(index, 0, newtext);
+// 			text_back = words.join( "</span> <span>" );
+// 			$('.spell_check_editor').html('<span>'+text_back+'</span');
+// 			text_back = words.join( " " );
+// 			$('#textAreaId').val(text_back);
+// 			index = corrected_words.indexOf(this_text);
+// 			corrected_words.splice(index, 1);
+// 			check_spelling();
+// 		});
+// 	}
+// 	$('.spell_checker_close').click(function(){
+// 		$('.spell_checker_box').css('display','none');
+// 	});
+// }
 
 	

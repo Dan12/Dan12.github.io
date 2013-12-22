@@ -160,7 +160,7 @@
     text-decoration: none !important;
     -moz-user-select: none;
     -webkit-user-select: none;
-    z-index:1;
+    z-index:30;
 }
 td{
 vertical-align: top;
@@ -224,7 +224,7 @@ border-color: gray;
 /*Spell Checker Interface*/
 
 .spell_check_editor {
-    z-index: -10;
+    z-index: 20;
     position: relative;
     left: 0;
     top: -366px;
@@ -241,16 +241,6 @@ border-color: gray;
 #textAreaId {
     background-color: rgba(0,0,0,0);
 }
-.check_spelling_btn {
-    position: relative;
-    top: -354px;
-    width: 110px;
-    background-color: rgb(230,230,230);
-    border: 1px solid lightgray;
-    text-align: center;
-    padding: 6px;
-    border-radius: 4px;
-}
 .spell_recomendations {
     width: 100px;
     border: solid 1px lightgray;
@@ -261,43 +251,26 @@ border-color: gray;
     left: 0;
     background-color: white;
 }
-.spell_recomendations_item {
+.spell_recomendations_item, .spell_recomendations_ignore {
     margin: 1px;
     padding: 1px;
     cursor: pointer;
 }
+.spell_recomendations_ignore {
+    background-color: rgb(180,230,255);
+}
 .spell_recomendations_item:hover {
-    background-color: gray;
+    background-color: lightgray;
 }
-.spell_checker_box {
-    width: 250px;
-    height: 80px;
-    border: 1px solid gray;
-    position: relative;
-    top: -340px;
-    display: none;
+.spell_recomendations_ignore:hover {
+    background-color: rgb(140,195,220);
 }
-.spell_checker_close {
-    position: relative;
-    font-size: 12px;
-    top: -96px;
-    width: 29px;
-    border: solid gray 1px;
-    text-align: center;
-    cursor: pointer;
-}
-.spell_checker_uncorrected, .spell_checker_corrected {
-    width: 115px;
-    border: solid 1px gray;
-    height: 70px;
-    font-size: 14px;
-    padding: 4px;
-    overflow: scroll;
-}
-.spell_checker_corrected {
-    position: relative;
-    top: -80px;
-    left: 125px;
+.spell_recomendations_word {
+    margin: 1px;
+    padding: 1px;
+    width: 96px;
+    background-color: yellow;
+    overflow: hidden;
 }
 
 /*screen smaller than 750 px CSS*/

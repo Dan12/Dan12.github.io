@@ -134,6 +134,14 @@
 	vertical-align: middle;
 
 }
+#incorrect_spelling {
+	color: black;
+	cursor: pointer;
+	background-color: rgba(255,255,255,0);
+}
+#incorrect_spelling:hover {
+	background-color: yellow;
+}
 .spell_recomendations {
     width: 100px;
     border: solid 1px lightgray;
