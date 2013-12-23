@@ -1,81 +1,8 @@
 * {
     font-family: 'Signika Negative', sans-serif;
 }
-.img_container {
-    margin: 0 auto;
-    width: 750px;
-}
-.catch_phrase {
-    width: 750px;
-    margin: 6px auto;
-    color: rgb(130,130,130);
-    font-size: 14px;
-}
-.itemSelect {
-    background-image: linear-gradient(to bottom, #FFFFFF 0%, #EDEDED 100%);
-    background-position: left, center;
-    background-repeat: no-repeat;
-    color: rgb(70,20,20);
+h1 {
     text-align: center;
-    padding: 6px 14px;
-    border: solid lightgray 1px;
-    cursor:pointer;
-    position: relative;
-    font-size: 18px;
-    width: 160px;
-    text-align: left;
-}
-.itemSelect:active {
-    background-image: linear-gradient(to top, #FFFFFF 0%, #EDEDED 100%);
-}
-.itemSelect:hover, #swapLanguages:hover{
-    border-color: rgb(31,85,139);
-}
-#swapLanguages:hover {
-    -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
-    -moz-transform: matrix(-1, 0, 0, 1, 0, 0);
-    -o-transform: matrix(-1, 0, 0, 1, 0, 0);
-    transform: matrix(-1, 0, 0, 1, 0, 0);
-}
-#dropDown, #wrap {
-    width:750px;
-    height: 20px;
-    margin: 0 auto;
-}
-#selectFrom{
-    left: 0;
-    top: 50px;
-}
-#selectTo{
-    top: -22px;
-    left: 528px;
-}
-#swapLanguages {
-    position: relative;
-    top: 14px;
-    left: 342px;
-    width: 34px;
-    height: 34px;
-    background-image: url('swap.png'), linear-gradient(to bottom, #FFFFFF 0%, #EDEDED 100%);
-    background-size:40px 40px;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    background-color: rgb(245,245,245);
-    border: solid lightgray 1px;
-}
-#swapLanguages:active {
-    background-image: url('swap.png'), linear-gradient(to top, #FFFFFF 0%, #EDEDED 100%);
-}
-#translationTest {
-    position: relative;
-    top: -181px;
-    left: 366px;
-    width: 342px;
-    padding: 4px;
-    height: 175px;
-    background-color: rgb(230,230,230);
-    border: solid lightgray 1px;
 }
 #textAreaId {
     position: relative;
@@ -87,6 +14,8 @@
     border: solid lightgray 1px;
     font-size: 16px;
     padding: 4px;
+    margin: 0 auto;
+    display: block;
 }
 #textAreaId:hover {
     box-shadow: inset 0 0 4px gray;
@@ -96,144 +25,21 @@
     box-shadow: none;
     border-color: rgb(31,85,139);
 }
-.translate_btn {
-    color: white;
-    padding: 6px;
-    font-size: 20px;
-    background-color: rgb(64,201,39);
-    width: 110px;
-    border: solid rgb(94,168,96) 2px;
-    border-radius: 4px;
-    cursor: pointer;
-    position: relative;
-    top: 60px;
-    /*Button position left
-    left: -364px;*/
-    /*Button position right*/
-    left: 252px;
-}
-.translate_btn:hover, .check_spelling_btn:hover {
-    border-color: rgb(31,85,139);
-    cursor: pointer;
-}
-
-/*Drop Down CSS*/
-#dropDown{
-    height:30px;
-    background-color:#fff;
-    margin:50px auto;
-    color:#444;
-    cursor:defaullt;
-    font-family: Arial, sans-serif;
-}
-#dropDown a{
-    color:#444;
-}
-#dropDown li{
-    display:inline;
-    text-decoration:none;
-}
-#dropDown em{
-    font-style:normal;
-}
-#dropDownSub{
-    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    -webkit-transition: opacity 0.218s;
-    -moz-transition: opacity 0.218s;
-    -o-transition: opacity 0.218s;
-    transition: opacity 0.218s;
-    background: white;
-    border: 1px solid #CCC;
-    border: 1px solid rgba(0, 0, 0, .2);
-    cursor: default;
-    font-size: 13px;
-    margin: 0;
-    outline: none;
-    padding: 6px 0;
-    position: relative;
-    top: -22px;
-    width: 350px;
-    font-size:12px;
-    text-align: left;
-    text-decoration: none !important;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    z-index:30;
-}
-td{
-vertical-align: top;
-padding: 0;
-margin: 0;
-}
-table {
-display: table;
-border-collapse: separate;
-border-spacing: 2px;
-border-color: gray;
-}
-.column-group{
-    float:left;
-
-}
-.column-group a{
-    display:block;
-    padding: 3px 3px 3px 3px;
-    margin-right: 15px;
-    border-style: none;
-    border:1px solid #fff;
-    background-color:white;
-
-}
-.not_grayed_out:hover, .selectFromSub a:hover, #dropDownSub .detect_choice:hover, #dropDownSub .detecting_improbable:hover{
-    background-color:rgb(210,210,210) !important;
-    border:1px solid rgb(31,85,139);
-}
-#dropDownSub .detecting_improbable:hover {
-    color: black !important;
-}
-.language-selected{
-    padding: 3px 3px 3px 3px;
-    color:#ccc !important;
-    background-color:#f1f1f1 !important;
-    cursor:default;
-}
-#dropDownSub .detecting_improbable {
-    background-color: rgb(255,255,255) !important;
-    color: rgb(168,168,168) !important;
-    cursor: pointer;
-}
-.selectFromSub a{
-    color:#444 !important;
-    background-color: #fff !important;
-}
-#dropDownSub .detect_choice_1 {
-    background-color: rgb(210,210,210) !important;
-    color: black !important;
-}
-#dropDownSub .detect_choice_2, #dropDownSub .detect_choice_3 {
-    background-color: rgb(240,240,240) !important;
-    color: rgb(60,60,60) !important;
-}
-#dropDown .current-language-selected-to, #dropDown .current-language-selected-from{
-    background-color: rgb(210,210,210) !important;
-    color: black !important;
-}
 
 /*Spell Checker Interface*/
 
 .spell_check_editor {
-    z-index: 20;
+    display: block;
+    z-index: -1;
     position: relative;
     left: 0;
-    top: -366px;
+    top: -165px;
     width: 342px;
-    height: 175px;
-    border: solid lightgray 1px;
+    border: solid rgba(0,0,0,0) 1px;
     font-size: 16px;
     padding: 4px;
     background-color: rgba(0,0,0,0);
+    margin: 0 auto;
 }
 .misspelled {
     border-bottom: solid red 1px;
@@ -272,63 +78,3 @@ border-color: gray;
     background-color: yellow;
     overflow: hidden;
 }
-
-/*screen smaller than 750 px CSS*/
-@media screen and (max-width: 750px) {
-    #selectTo {
-        left: 208px;
-    }
-    #swapLanguages {
-        left: 158px;
-    }
-    .translate_btn {
-        left: -114px;
-    }
-    #translationTest {
-        left: 0;
-        top: 76px;
-    }
-    .img_container,.catch_phrase,#dropDown,#wrap {
-        width: 350px;
-    }
-    .translate_btn {
-        top: 40px;
-        left: 242px;
-    }
-    .itemSelect {
-        font-size: 16px;
-        width: 114px;
-    }
-    #swapLanguages {
-        top: 16px;
-        width: 32px;
-        height: 32px;
-    }
-    #selectTo {
-        top: -18px;
-    }
-    #dropDownSub {
-        top: -18px;
-    }
-    .spell_check_editor {
-        top: -400px;
-    }
-    .check_spelling_btn {
-        top: -370px;
-    }
-}
-/*@media only screen and (max-device width:480px) {
-    #selectTo {
-        left: 208px;
-    }
-    #swapLanguages {
-        left: 158px;
-    }
-    .translate_btn {
-        left: -114px;
-    }
-    #translationTest {
-        left: 0;
-        top: 76px;
-    }
-}*/
