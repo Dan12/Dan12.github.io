@@ -4,17 +4,27 @@ var text_area_focus = false;
 
 $(document).ready(function(){
 
+	$('.spell_check_editor').mousedown(function(){
+		$(this).css('z-index','-10');
+	})
+	.mouseup(function(){
+		$(this).css('z-index', '20')
+	});
 	$('#textAreaId').keyup(function(){
 		spell_checker();
+		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
 	})
 	.keydown(function(){
 		spell_checker();
+		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
 	})
 	.keypress(function(){
 		spell_checker();
+		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
 	});
 	$('#textAreaId').focus(function() {
 		spell_checker();
+		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
 		$('.spell_check_editor').css("z-index","20");
 		// $('.spell_check_editor span').mouseover(function(){
 		// 	if ($(this).hasClass('misspelled')){
@@ -27,6 +37,7 @@ $(document).ready(function(){
 	});
 	$('#textAreaId').focusout(function() {
 		$('.spell_check_editor').css("z-index","-10");
+		$('textAreaId').focus();
 	});
 });
 
@@ -83,7 +94,7 @@ function spell_checker() {
 					});
 					$('.spell_recomendations').mouseleave(function(){
 						$('.spell_recomendations').css('display', 'none');
-						$('.spell_check_editor span').css('background-color', 'white');
+						$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
 					});
 					$('.spell_recomendations_item').click(function(){
 						$('.spell_recomendations').css('display', 'none');
@@ -108,11 +119,11 @@ function spell_checker() {
 				}
 			},200);
 			this_text = $(this).html();
-			$(this).css({'background-color':'yellow', 'cursor':'pointer'});
+			$(this).css({'background-color':'yellow', 'cursor':'pointer', 'color':'black'});
 		}
 	})
 	.mouseleave(function(){
-		$('.spell_check_editor span').css('background-color', 'white');
+		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
 		clearInterval(myinterval);
 		seconds = 0;
 	});
