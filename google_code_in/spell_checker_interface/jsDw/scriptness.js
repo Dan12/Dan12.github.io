@@ -1,14 +1,17 @@
 ﻿var corrected_words = [];
 var dummy_words = ["hello", "my", "name", "is", "and", "I", "like", "nothing", "but", "bacon"];
 var text_area_focus = false;
+var mouse_down = false;
 
 $(document).ready(function(){
 
 	$('.spell_check_editor').mousedown(function(){
 		$(this).css('z-index','-10');
+		mouse_down = true;
 	})
 	.mouseup(function(){
 		$(this).css('z-index', '20')
+		mouse_down = false;
 	});
 	$('#textAreaId').keyup(function(){
 		spell_checker();
@@ -70,6 +73,7 @@ function spell_checker() {
 		}
 	}
 	$('.spell_check_editor span').mouseover(function(e){
+		if (!mouse_down) {
 		if ($(this).hasClass('misspelled')){
 			myinterval = setInterval(function(){
 				seconds++;
@@ -121,6 +125,7 @@ function spell_checker() {
 			this_text = $(this).html();
 			$(this).css({'background-color':'yellow', 'cursor':'pointer', 'color':'black'});
 		}
+	}
 	})
 	.mouseleave(function(){
 		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
