@@ -2,6 +2,9 @@
 var dummy_words = ["hello", "my", "name", "is", "and", "I", "like", "nothing", "but", "bacon"];
 var text_area_focus = false;
 var mouse_down = false;
+var multiword = ["record player", "toy car", "baby carrage"];
+var multiword_checker = "";
+var is_multiword = false;
 
 $(document).ready(function(){
 
@@ -54,6 +57,18 @@ function spell_checker() {
 	var word_spelled_correct = false;
 	var text = $("#textAreaId").val();
 	var words = text.split( /\s+/ );
+	for (var re = 0; re < (words.length-1); re++) {
+		multiword_checker = words[re]+" "+words[re+1];
+		for (var r_e = 0; r_e < multiword.length; r_e++){
+			if (multiword_checker == multiword[r_e]) {
+				is_multiword = true
+			}
+		}
+		if (is_multiword){
+			words.splice(re,2,multiword_checker);
+			is_multiword = false;
+		}
+	}
 	var text_back = words.join( "</span> <span>" );
 	$('.spell_check_editor').html('<span>'+text_back+'</span');
 	for (var x = 0; x < words.length; x++){
