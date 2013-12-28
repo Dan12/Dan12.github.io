@@ -100,7 +100,7 @@ function spell_checker() {
 					$('.spell_recomendations').css({'display':'inline', 'top': ywin+'px', 'left': xwin+'px', 'z-index':'30'});
 					$('.spell_recomendations').html('');
 					$('.spell_recomendations').append('<div class="spell_recomendations_word">'+this_text+'</div>')
-					$('.spell_recomendations').append('<div class="spell_recomendations_ignore">&#x2714</div>')
+					$('.spell_recomendations').append('<div class="spell_recomendations_ignore" style="top:0; left:81px;">&#x2714</div>')
 					for(var z = 0; z < dummy_words.length; z++){
 						$('.spell_recomendations').append('<div class="spell_recomendations_item">'+dummy_words[z]+'</div>')
 					}
