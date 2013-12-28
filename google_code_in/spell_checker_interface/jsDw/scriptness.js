@@ -1,5 +1,5 @@
 ﻿var corrected_words = [];
-var dummy_words = ["hello", "my", "name", "is", "and", "I", "like", "nothing", "but", "bacon"];
+var dummy_words = ["hello", "my", "name", "is", "and", "I", "like", "nothing", "but", "bacon", "toy car"];
 var text_area_focus = false;
 var mouse_down = false;
 var multiword = ["record player", "toy car", "baby carrage"];
@@ -100,12 +100,12 @@ function spell_checker() {
 					$('.spell_recomendations').css({'display':'inline', 'top': ywin+'px', 'left': xwin+'px', 'z-index':'30'});
 					$('.spell_recomendations').html('');
 					$('.spell_recomendations').append('<div class="spell_recomendations_word">'+this_text+'</div>')
+					$('.spell_recomendations').append('<div class="spell_recomendations_ignore">&#x2714</div>')
 					for(var z = 0; z < dummy_words.length; z++){
 						$('.spell_recomendations').append('<div class="spell_recomendations_item">'+dummy_words[z]+'</div>')
 					}
-					$('.spell_recomendations').append('<div class="spell_recomendations_ignore">Ignore Word</div>')
-					$('.spell_recomendations div:nth-child(2)').css('background-color','lightgray');
-					$('.spell_recomendations div:nth-child(2)').mouseenter(function(){
+					$('.spell_recomendations div:nth-child(3)').css('background-color','lightgray');
+					$('.spell_recomendations div:nth-child(3)').mouseenter(function(){
 						$(this).css('background-color','lightgray');
 					})
 					.mouseout(function(){

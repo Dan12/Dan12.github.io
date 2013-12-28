@@ -65,6 +65,10 @@ h1 {
 }
 .spell_recomendations_ignore {
     background-color: rgb(180,230,255);
+    color: green;
+    width: 16px;
+    display: inline-block;
+    margin-left: 0;
 }
 .spell_recomendations_item:hover {
     background-color: lightgray;
@@ -75,7 +79,9 @@ h1 {
 .spell_recomendations_word {
     margin: 1px;
     padding: 1px;
-    width: 96px;
+    width: 78px;
     background-color: yellow;
     overflow: hidden;
+    display: inline-block;
+    margin-right: 0;
 }
