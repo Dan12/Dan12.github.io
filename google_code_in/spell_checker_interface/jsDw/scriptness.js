@@ -1,4 +1,5 @@
-﻿var corrected_words = [];
+﻿//add this to var part of js
+var corrected_words = [];
 var dummy_words = ["hello", "my", "name", "is", "and", "I", "like", "nothing", "but", "bacon", "toy car"];
 var text_area_focus = false;
 var mouse_down = false;
@@ -6,8 +7,8 @@ var multiword = ["record player", "toy car", "baby carrage"];
 var multiword_checker = "";
 var is_multiword = false;
 
+//add this to document ready part of js
 $(document).ready(function(){
-
 	$('.spell_check_editor').mousedown(function(){
 		$(this).css('z-index','-10');
 		mouse_down = true;
@@ -47,6 +48,7 @@ $(document).ready(function(){
 	});
 });
 
+//add this at bottom of js outside of document ready
 function spell_checker() {
 	var corrected_words_num = 0;
 	var myinterval;
@@ -101,11 +103,12 @@ function spell_checker() {
 					$('.spell_recomendations').html('');
 					$('.spell_recomendations').append('<div class="spell_recomendations_word">'+this_text+'</div>')
 					$('.spell_recomendations').append('<div class="spell_recomendations_ignore" style="top:0; left:81px;">&#x2714</div>')
+					$('.spell_recomendations').append('<div class="line"></div>');
 					for(var z = 0; z < dummy_words.length; z++){
 						$('.spell_recomendations').append('<div class="spell_recomendations_item">'+dummy_words[z]+'</div>')
 					}
-					$('.spell_recomendations div:nth-child(3)').css('background-color','lightgray');
-					$('.spell_recomendations div:nth-child(3)').mouseenter(function(){
+					$('.spell_recomendations div:nth-child(4)').css('background-color','lightgray');
+					$('.spell_recomendations div:nth-child(4)').mouseenter(function(){
 						$(this).css('background-color','lightgray');
 					})
 					.mouseout(function(){
@@ -149,6 +152,9 @@ function spell_checker() {
 	});
 	//check_spelling();
 }
+
+//you do not nead to add this
+
 // function check_spelling() {
 // 	$('.spell_checker_uncorrected').html('');
 // 	$('.spell_checker_corrected').html('');

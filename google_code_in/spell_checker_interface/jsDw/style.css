@@ -4,6 +4,7 @@
 h1 {
     text-align: center;
 }
+/*if the width and height constraints are changed, the js will have to be tweaked*/
 #textAreaId {
     position: relative;
     left: 0;
@@ -51,7 +52,7 @@ h1 {
 .spell_recomendations {
     width: 100px;
     border: solid 1px lightgray;
-    text-align: center;
+    text-align: left;
     position: absolute;
     display: none;
     top: 0;
@@ -81,7 +82,12 @@ h1 {
     padding: 1px;
     width: 78px;
     height: 20px;
-    background-color: yellow;
+    background-color: white;
     overflow: hidden;
     margin-right: 0;
+    color: red;
+}
+.line {
+    height: 1px;
+    background-color: black;
 }
