@@ -6,6 +6,8 @@ var mouse_down = false;
 var multiword = ["record player", "toy car", "baby carrage"];
 var multiword_checker = "";
 var is_multiword = false;
+var misspelled_width = 0;
+var width_dif = 0;
 
 //add this to document ready part of js
 $(document).ready(function(){
@@ -90,6 +92,7 @@ function spell_checker() {
 		}
 	}
 	$('.spell_check_editor span').mouseover(function(e){
+		misspelled_width = $(this).width();
 		if (!mouse_down) {
 		if ($(this).hasClass('misspelled')){
 			myinterval = setInterval(function(){
@@ -99,10 +102,16 @@ function spell_checker() {
 					seconds = 0;
 					var xwin = e.pageX-40;
 				    var ywin = e.pageY-34;
-					$('.spell_recomendations').css({'display':'inline', 'top': ywin+'px', 'left': xwin+'px', 'z-index':'30'});
+				    if (misspelled_width > 78) {
+				    	width_dif = misspelled_width - 78;
+				    }
+				    else {
+				    	width_dif = 0;
+				    }
+					$('.spell_recomendations').css({'display':'inline', 'top': ywin+'px', 'left': xwin+'px', 'z-index':'30', 'width':''+(100+width_dif)+''});
 					$('.spell_recomendations').html('');
-					$('.spell_recomendations').append('<div class="spell_recomendations_word">'+this_text+'</div>')
-					$('.spell_recomendations').append('<div class="spell_recomendations_ignore" style="top:0; left:81px;">&#x2714</div>')
+					$('.spell_recomendations').append('<div class="spell_recomendations_word" style="width:'+(78+width_dif)+'px;">'+this_text+'</div>')
+					$('.spell_recomendations').append('<div class="spell_recomendations_ignore" style="top:0; left:'+(81+width_dif)+'px;">&#x2714</div>')
 					$('.spell_recomendations').append('<div class="line"></div>');
 					for(var z = 0; z < dummy_words.length; z++){
 						$('.spell_recomendations').append('<div class="spell_recomendations_item">'+dummy_words[z]+'</div>')
@@ -112,7 +121,7 @@ function spell_checker() {
 						$(this).css('background-color','lightgray');
 					})
 					.mouseout(function(){
-						$(this).css('background-color','white');
+						$(this).css({'background-color':'white','color':'black'});
 					});
 					$('.spell_recomendations').mouseleave(function(){
 						$('.spell_recomendations').css('display', 'none');
