@@ -102,8 +102,8 @@ function spell_checker() {
 					seconds = 0;
 					var xwin = e.pageX-40;
 				    var ywin = e.pageY-34;
-				    if (misspelled_width > 78) {
-				    	width_dif = misspelled_width - 78;
+				    if (misspelled_width > 72) {
+				    	width_dif = misspelled_width - 72;
 				    }
 				    else {
 				    	width_dif = 0;
@@ -114,7 +114,7 @@ function spell_checker() {
 					$('.spell_recomendations').append('<div class="spell_recomendations_ignore" style="top:0; left:'+(81+width_dif)+'px;">&#x2714</div>')
 					$('.spell_recomendations').append('<div class="line"></div>');
 					for(var z = 0; z < dummy_words.length; z++){
-						$('.spell_recomendations').append('<div class="spell_recomendations_item">'+dummy_words[z]+'</div>')
+						$('.spell_recomendations').append('<div class="spell_recomendations_item" style="width:'+(96+width_dif)+'px;">'+dummy_words[z]+'</div>')
 					}
 					$('.spell_recomendations div:nth-child(4)').css('background-color','lightgray');
 					$('.spell_recomendations div:nth-child(4)').mouseenter(function(){

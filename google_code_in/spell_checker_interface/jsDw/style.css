@@ -64,6 +64,10 @@ h1 {
     padding: 1px;
     cursor: pointer;
 }
+.spell_recomendations_item {
+    width: 96px;
+    overflow: hidden;
+}
 .spell_recomendations_ignore {
     text-align: center;
     background-color: rgb(180, 230, 255);
