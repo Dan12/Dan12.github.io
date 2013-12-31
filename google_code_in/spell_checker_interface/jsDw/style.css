@@ -94,6 +94,7 @@ h1 {
     height: 20px;
     background-color: white;
     overflow: hidden;
+    text-overflow: ellipsis;
     margin-right: 0;
     color: red;
 }

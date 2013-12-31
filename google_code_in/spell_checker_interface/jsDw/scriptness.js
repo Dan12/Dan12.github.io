@@ -8,6 +8,7 @@ var multiword_checker = "";
 var is_multiword = false;
 var misspelled_width = 0;
 var width_dif = 0;
+var newline_array = [];
 
 //add this to document ready part of js
 $(document).ready(function(){
@@ -52,6 +53,7 @@ $(document).ready(function(){
 
 //add this at bottom of js outside of document ready
 function spell_checker() {
+	$('.spell_check_editor').html('');
 	var corrected_words_num = 0;
 	var myinterval;
 	var seconds = 0;
@@ -73,8 +75,15 @@ function spell_checker() {
 			is_multiword = false;
 		}
 	}
-	var text_back = words.join( "</span> <span>" );
-	$('.spell_check_editor').html('<span>'+text_back+'</span');
+	newline_array = text.split( "\n" );
+	for (var rep = 0; rep < newline_array.length; rep++){
+		var newline_words = newline_array[rep].split(/\s+/);
+		var text_back = newline_words.join( "</span> <span>" );
+		if (rep > 0){
+			$('.spell_check_editor').append('\n');
+		}
+		$('.spell_check_editor').append('<span>'+text_back+'</span');
+	}
 	for (var x = 0; x < words.length; x++){
 		spelled_correct = false;
 		for (var xx = 0; xx < dummy_words.length; xx++){
@@ -129,13 +138,34 @@ function spell_checker() {
 					});
 					$('.spell_recomendations_item').click(function(){
 						$('.spell_recomendations').css('display', 'none');
+						$('.spell_check_editor').html('');
 						newtext = $(this).html();
-						var index = words.indexOf(this_text);
-						words.splice(index, 1);
-						words.splice(index, 0, newtext);
-						text_back = words.join( "</span> <span>" );
-						$('.spell_check_editor').html('<span>'+text_back+'</span');
-						text_back = words.join( " " );
+						var index = 0;
+						for (var repe = 0; repe < newline_array.length; repe++){
+							var array_check = newline_array[repe].split(/\s+/);
+							index = array_check.indexOf(this_text);
+							if (index >= 0){
+								array_check.splice(index, 1, newtext);
+								var string_back = array_check.join(" ");
+								newline_array[repe] = string_back;
+								for (var rep1 = 0; rep1 < newline_array.length; rep1++){
+									var newline_words1 = newline_array[rep1].split(/\s+/);
+									var text_back = newline_words1.join( "</span> <span>" );
+									if (rep1 > 0){
+										$('.spell_check_editor').append('\n');
+									}
+									$('.spell_check_editor').append('<span>'+text_back+'</span');
+								}
+								break;
+							}
+						}
+						text_back = "";
+						for (var rep2 = 0; rep2 < newline_array.length; rep2++) {
+							if (rep2 > 0){
+								text_back = text_back+'\n';
+							}
+							text_back = text_back+newline_array[rep2];
+						}
 						$('#textAreaId').val(text_back);
 						index = corrected_words.indexOf(this_text);
 						corrected_words.splice(index, 1);
