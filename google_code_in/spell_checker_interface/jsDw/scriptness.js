@@ -53,6 +53,11 @@ $(document).ready(function(){
 
 //add this at bottom of js outside of document ready
 function spell_checker() {
+	var h = $('.spell_check_editor').height();
+	if (h>175) {
+		$('#textAreaId').css('height',h);
+		$('.spell_check_editor').css('top','-'+(165+(h-175))+'px');
+	}
 	$('.spell_check_editor').html('');
 	var corrected_words_num = 0;
 	var myinterval;

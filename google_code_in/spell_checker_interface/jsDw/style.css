@@ -36,6 +36,8 @@ h1 {
     left: 0;
     top: -165px;
     width: 342px;
+    /*height: 175px;
+    overflow: auto;*/
     border: solid rgba(0,0,0,0) 1px;
     font-size: 16px;
     padding: 4px;
