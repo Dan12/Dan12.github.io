@@ -1,4 +1,11 @@
-﻿//add this to var part of js
+﻿//bugs:
+// the interface freaks out with multiwords on more than one line
+// the interface freaks out with more than one space between words
+// the interface freaks out when the first line is a newline
+// the interface freaks out when the textarea resizes with a newline but no text is inputed
+// most of the bugs have to do with newlines
+
+//add this to var part of js
 var corrected_words = [];
 var dummy_words = ["hello", "my", "name", "is", "and", "I", "like", "nothing", "but", "bacon", "toy car"];
 var text_area_focus = false;
@@ -54,7 +61,7 @@ $(document).ready(function(){
 //add this at bottom of js outside of document ready
 function spell_checker() {
 	var h = $('.spell_check_editor').height();
-	if (h>175) {
+	if (h>155) {
 		$('#textAreaId').css('height',h);
 		$('.spell_check_editor').css('top','-'+(165+(h-175))+'px');
 	}
@@ -68,21 +75,57 @@ function spell_checker() {
 	var word_spelled_correct = false;
 	var text = $("#textAreaId").val();
 	var words = text.split( /\s+/ );
-	for (var re = 0; re < (words.length-1); re++) {
-		multiword_checker = words[re]+" "+words[re+1];
-		for (var r_e = 0; r_e < multiword.length; r_e++){
-			if (multiword_checker == multiword[r_e]) {
-				is_multiword = true
+	// for (var re = 0; re < (words.length-1); re++) {
+	// 	multiword_checker = words[re]+" "+words[re+1];
+	// 	for (var r_e = 0; r_e < multiword.length; r_e++){
+	// 		if (multiword_checker == multiword[r_e]) {
+	// 			is_multiword = true
+	// 		}
+	// 	}
+	// 	if (is_multiword){
+	// 		words.splice(re,2,multiword_checker);
+	// 		is_multiword = false;
+	// 	}
+	// }
+	newline_array = text.split( "\n" );
+	// $('.test').remove();
+	// $('h1').after('<p class="test">'+newline_array+'</p>');
+	for (var ind = 0; ind < newline_array.length; ind++){
+		if (newline_array[ind]==""){
+			var sample_text = ""
+			var last_text = ""
+			var counter = 0;
+			while(last_text == ""){
+				if (ind-(counter+1)<0) {
+					break;
+				}
+				sample_text = newline_array[(ind-(counter+1))].split(/\s+/);
+				last_text = sample_text[sample_text.length-1];
+				if (last_text != ""){
+					break;
+				}
+				else {
+					counter++;
+				}
 			}
-		}
-		if (is_multiword){
-			words.splice(re,2,multiword_checker);
-			is_multiword = false;
+			var inde = words.indexOf(last_text)+1;
+			words.splice(inde,0,"")
 		}
 	}
-	newline_array = text.split( "\n" );
 	for (var rep = 0; rep < newline_array.length; rep++){
 		var newline_words = newline_array[rep].split(/\s+/);
+		for (var re = 0; re < (newline_words.length-1); re++) {
+			multiword_checker = newline_words[re]+" "+newline_words[re+1];
+			for (var r_e = 0; r_e < multiword.length; r_e++){
+				if (multiword_checker == multiword[r_e]) {
+					is_multiword = true
+				}
+			}
+			if (is_multiword){
+				newline_words.splice(re,2,multiword_checker);
+				is_multiword = false;
+			}
+		}
 		var text_back = newline_words.join( "</span> <span>" );
 		if (rep > 0){
 			$('.spell_check_editor').append('\n');
@@ -148,6 +191,18 @@ function spell_checker() {
 						var index = 0;
 						for (var repe = 0; repe < newline_array.length; repe++){
 							var array_check = newline_array[repe].split(/\s+/);
+							for (var re = 0; re < (array_check.length-1); re++) {
+								multiword_checker = array_check[re]+" "+array_check[re+1];
+								for (var r_e = 0; r_e < multiword.length; r_e++){
+									if (multiword_checker == multiword[r_e]) {
+										is_multiword = true
+									}
+								}
+								if (is_multiword){
+									array_check.splice(re,2,multiword_checker);
+									is_multiword = false;
+								}
+							}
 							index = array_check.indexOf(this_text);
 							if (index >= 0){
 								array_check.splice(index, 1, newtext);
@@ -185,12 +240,12 @@ function spell_checker() {
 				}
 			},200);
 			this_text = $(this).html();
-			$(this).css({'background-color':'yellow', 'cursor':'pointer', 'color':'black'});
+			$(this).css({'background-color':'yellow', 'cursor':'pointer', 'color':'black', 'z-index':'25'});
 		}
 	}
 	})
 	.mouseleave(function(){
-		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
+		$('.spell_check_editor span').css({'background-color':'rgba(0,0,0,0)', 'z-index':'30'});
 		clearInterval(myinterval);
 		seconds = 0;
 	});

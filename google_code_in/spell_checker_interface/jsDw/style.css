@@ -50,6 +50,10 @@ h1 {
     white-space: -o-pre-wrap;   /* Opera 7 */    
     word-wrap: break-word; 
 }
+.spell_check_editor span {
+    position: relative;
+    z-index: 30;
+}
 .misspelled {
     border-bottom: solid red 1px;
 }
