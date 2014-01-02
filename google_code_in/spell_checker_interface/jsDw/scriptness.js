@@ -62,23 +62,6 @@ $(document).ready(function(){
 
 //add this at bottom of js outside of document ready
 function spell_checker() {
-	$('h1').after('<div class="dummy_height" style="width:342px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;"></div>');
-	var prev_val = $('#textAreaId').val();
-	$('#textAreaId').val(($('#textAreaId').val()+'AA'));
-	newline_array = $("#textAreaId").val().split("\n");
-	$('#textAreaId').val(prev_val);
-	for (var re_dum = 0; re_dum < newline_array.length; re_dum++){
-		if (re_dum > 0){
-			$('.dummy_height').append('\n');
-		}
-		$('.dummy_height').append('<span>'+newline_array[re_dum]+'<span>')
-	}
-	var h = $('.dummy_height').height();
-	if (h>=175) {
-		$('#textAreaId').css('height',h);
-		$('.spell_check_editor').css('top','-'+(165+(h-175))+'px');
-	}
-	$('.dummy_height').remove();
 	$('.spell_check_editor').html('');
 	var corrected_words_num = 0;
 	var myinterval;
@@ -264,6 +247,26 @@ function spell_checker() {
 		seconds = 0;
 	});
 	//check_spelling();
+	$('h1').after('<div class="dummy_height" style="width:342px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;"></div>');
+	$('h1').after('<div id="textAreaId1"></div>');
+	var prev_val = $('#textAreaId').val();
+	$('#textAreaId1').val(prev_val);
+	$('#textAreaId1').val(($('#textAreaId1').val()+'AA'));
+	newline_array = $("#textAreaId1").val().split("\n");
+	$('#textAreaId').val(prev_val);
+	for (var re_dum = 0; re_dum < newline_array.length; re_dum++){
+		if (re_dum > 0){
+			$('.dummy_height').append('\n');
+		}
+		$('.dummy_height').append('<span>'+newline_array[re_dum]+'<span>')
+	}
+	var h = $('.dummy_height').height();
+	if (h>=175) {
+		$('#textAreaId').css('height',h);
+		$('.spell_check_editor').css('top','-'+(165+(h-175))+'px');
+	}
+	$('.dummy_height').remove();
+	$('#textAreaId1').remove();
 }
 
 //you do not nead to add this
