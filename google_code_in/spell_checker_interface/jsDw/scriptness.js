@@ -1,4 +1,4 @@
-﻿//bugs:
+﻿// bugs:
 // bug 1: the interface freaks out with multiwords on more than one line
 // activate it by typing first word of multiword on one line, hit return, and type the second word
 // (slightly fixed)bug 2: the interface freaks out with more than one space between words
@@ -272,6 +272,7 @@ function spell_checker() {
 						index = corrected_words.indexOf(this_text);
 						corrected_words.splice(index, 1);
 						$('#textAreaId').focus();
+						spell_checker();
 					});
 					// this is an ignore function and you can modify this any way you like, as long as it achieves the same result
 					$('.spell_recomendations_ignore').click(function(){
