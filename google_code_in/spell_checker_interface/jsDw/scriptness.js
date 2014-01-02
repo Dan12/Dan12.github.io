@@ -166,7 +166,7 @@ function spell_checker() {
 		x_add+=newline_words.length;
 	}
 	// $('.test').remove();
-	// $('h1').after('<p class="test">'+newline_array[1].split(/\s+/)+'</p>');
+	// $('h1').after('<p class="test">'+newline_array+'</p>');
 	// for (var x = 0; x < words.length; x++){
 	// 	spelled_correct = false;
 	// 	for (var xx = 0; xx < dummy_words.length; xx++){
