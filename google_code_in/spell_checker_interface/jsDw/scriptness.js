@@ -118,6 +118,17 @@ function spell_checker() {
 	}
 	for (var rep = 0; rep < newline_array.length; rep++){
 		var newline_words = newline_array[rep].split(/\s+/);
+		var newline_words_space = newline_array[rep].match(/\s+/g);
+		if (newline_words_space !== null) {
+			for (var indexe = 0; indexe < newline_words_space.length; indexe++){
+				var samp_str = newline_words_space[indexe];
+				if (samp_str.length > 1){
+					for (var samp = 1; samp < samp_str.length; samp++){
+						newline_words[indexe+1] = newline_words[indexe+1]+' ';
+					}
+				}
+			}
+		}
 		for (var re = 0; re < (newline_words.length-1); re++) {
 			multiword_checker = newline_words[re]+" "+newline_words[re+1];
 			for (var r_e = 0; r_e < multiword.length; r_e++){
@@ -136,6 +147,8 @@ function spell_checker() {
 		}
 		$('.spell_check_editor').append('<span>'+text_back+'</span');
 	}
+	// $('.test').remove();
+	// $('h1').after('<p class="test">'+newline_array[0].split(/\s+/)+'</p>');
 	for (var x = 0; x < words.length; x++){
 		spelled_correct = false;
 		for (var xx = 0; xx < dummy_words.length; xx++){
