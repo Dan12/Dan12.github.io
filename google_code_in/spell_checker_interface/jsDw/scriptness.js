@@ -27,18 +27,20 @@ $(document).ready(function(){
 		$(this).css('z-index', '20')
 		mouse_down = false;
 	});
-	$('#textAreaId').keyup(function(){
-		spell_checker();
-		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
-	})
-	.keydown(function(){
-		spell_checker();
-		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
-	})
-	.keypress(function(){
+	$('#textAreaId').bind('input propertychange', function() {
 		spell_checker();
 		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
 	});
+	// $('#textAreaId').keyup(function(){
+	// })
+	// .keydown(function(){
+	// 	spell_checker();
+	// 	$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
+	// })
+	// .keypress(function(){
+	// 	spell_checker();
+	// 	$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
+	// });
 	$('#textAreaId').focus(function() {
 		//spell_checker();
 		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
