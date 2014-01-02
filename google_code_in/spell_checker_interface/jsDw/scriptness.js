@@ -1,7 +1,7 @@
 ﻿//bugs:
 // bug 1: the interface freaks out with multiwords on more than one line
 // activate it by typing first word of multiword on one line, hit return, and type the second word
-// bug 2: the interface freaks out with more than one space between words
+// (slightly fixed)bug 2: the interface freaks out with more than one space between words
 // activate by putting more than one space between words
 // (i think it is fixed)bug 3: the interface freaks out when the first line is a newline
 // activate by hitting return once or multiple times before typeing any text into the textarea
@@ -67,6 +67,7 @@ $(document).ready(function(){
 
 //add this at bottom of js outside of document ready
 function spell_checker() {
+	//this part is data handeling code, this you can change any way you like
 	$('.spell_check_editor').html('');
 	var corrected_words_num = 0;
 	var myinterval;
@@ -147,6 +148,7 @@ function spell_checker() {
 			$('.spell_check_editor').append('\n');
 		}
 		$('.spell_check_editor').append('<span>'+text_back+'</span');
+		// this for loop checks the spelling of all the single words and multiwords
 		for (var x = 0; x < newline_words.length; x++){
 			spelled_correct = false;
 			for (var xx = 0; xx < dummy_words.length; xx++){
@@ -183,6 +185,7 @@ function spell_checker() {
 	// 		corrected_words.splice(x,1)
 	// 	}
 	// }
+	// this part is UI code, leave this mostly as is
 	$('.spell_check_editor span').mouseover(function(e){
 		misspelled_width = $(this).width();
 		if (!mouse_down) {
@@ -205,6 +208,7 @@ function spell_checker() {
 					$('.spell_recomendations').append('<div class="spell_recomendations_word" style="width:'+(78+width_dif)+'px;">'+this_text+'</div>')
 					$('.spell_recomendations').append('<div class="spell_recomendations_ignore" style="top:0; left:'+(81+width_dif)+'px;">&#x2714</div>')
 					$('.spell_recomendations').append('<div class="line"></div>');
+					// this function gets the spelling suggestions for the dropdown
 					for(var z = 0; z < dummy_words.length; z++){
 						$('.spell_recomendations').append('<div class="spell_recomendations_item" style="width:'+(96+width_dif)+'px;">'+dummy_words[z]+'</div>')
 					}
@@ -220,10 +224,12 @@ function spell_checker() {
 						$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
 					});
 					$('.spell_recomendations_item').click(function(){
+						//this is a data retreval and data handeling function
 						$('.spell_recomendations').css('display', 'none');
 						$('.spell_check_editor').html('');
 						newtext = $(this).html();
 						var index = 0;
+						// this for loop sends changed word to the spell_check_editor
 						for (var repe = 0; repe < newline_array.length; repe++){
 							var array_check = newline_array[repe].split(/\s+/);
 							for (var re = 0; re < (array_check.length-1); re++) {
@@ -255,6 +261,7 @@ function spell_checker() {
 							}
 						}
 						text_back = "";
+						// this for loop and following lines sends chaged text to textarea
 						for (var rep2 = 0; rep2 < newline_array.length; rep2++) {
 							if (rep2 > 0){
 								text_back = text_back+'\n';
@@ -266,6 +273,7 @@ function spell_checker() {
 						corrected_words.splice(index, 1);
 						$('#textAreaId').focus();
 					});
+					// this is an ignore function and you can modify this any way you like, as long as it achieves the same result
 					$('.spell_recomendations_ignore').click(function(){
 						$('#textAreaId').focus();
 						dummy_words.push(this_text);
