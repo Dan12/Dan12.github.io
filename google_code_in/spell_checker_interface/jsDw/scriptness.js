@@ -40,7 +40,7 @@ $(document).ready(function(){
 		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
 	});
 	$('#textAreaId').focus(function() {
-		spell_checker();
+		//spell_checker();
 		$('.spell_check_editor span').css('background-color', 'rgba(0,0,0,0)');
 		$('.spell_check_editor').css("z-index","20");
 		// $('.spell_check_editor span').mouseover(function(){
@@ -87,18 +87,18 @@ function spell_checker() {
 	var word_spelled_correct = false;
 	var text = $("#textAreaId").val();
 	var words = text.split( /\s+/ );
-	// for (var re = 0; re < (words.length-1); re++) {
-	// 	multiword_checker = words[re]+" "+words[re+1];
-	// 	for (var r_e = 0; r_e < multiword.length; r_e++){
-	// 		if (multiword_checker == multiword[r_e]) {
-	// 			is_multiword = true
-	// 		}
-	// 	}
-	// 	if (is_multiword){
-	// 		words.splice(re,2,multiword_checker);
-	// 		is_multiword = false;
-	// 	}
-	// }
+	for (var re = 0; re < (words.length-1); re++) {
+		multiword_checker = words[re]+" "+words[re+1];
+		for (var r_e = 0; r_e < multiword.length; r_e++){
+			if (multiword_checker == multiword[r_e]) {
+				is_multiword = true
+			}
+		}
+		if (is_multiword){
+			words.splice(re,2,multiword_checker);
+			is_multiword = false;
+		}
+	}
 	newline_array = text.split( "\n" );
 	// $('.test').remove();
 	// $('h1').after('<p class="test">'+newline_array+'</p>');
