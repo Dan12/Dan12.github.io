@@ -116,6 +116,7 @@ function spell_checker() {
 			words.splice(inde,0,"")
 		}
 	}
+	var x_add = 0;
 	for (var rep = 0; rep < newline_array.length; rep++){
 		var newline_words = newline_array[rep].split(/\s+/);
 		var newline_words_space = newline_array[rep].match(/\s+/g);
@@ -146,25 +147,42 @@ function spell_checker() {
 			$('.spell_check_editor').append('\n');
 		}
 		$('.spell_check_editor').append('<span>'+text_back+'</span');
-	}
-	// $('.test').remove();
-	// $('h1').after('<p class="test">'+newline_array[0].split(/\s+/)+'</p>');
-	for (var x = 0; x < words.length; x++){
-		spelled_correct = false;
-		for (var xx = 0; xx < dummy_words.length; xx++){
-			if (words[x] == dummy_words[xx] || words[x] == dummy_words[xx]+"," || words[x] == dummy_words[xx]+"." || words[x] == ""){
-				spelled_correct = true;
+		for (var x = 0; x < newline_words.length; x++){
+			spelled_correct = false;
+			for (var xx = 0; xx < dummy_words.length; xx++){
+				if (newline_words[x] == dummy_words[xx] || newline_words[x] == dummy_words[xx]+"," || newline_words[x] == dummy_words[xx]+"." || newline_words[x] == ""){
+					spelled_correct = true;
+				}
+			}
+			if (!spelled_correct) {
+				corrected_words[corrected_words_num] = newline_words[x];
+				corrected_words_num++;
+				$('.spell_check_editor span:nth-child('+(x+x_add+1)+')').addClass('misspelled');
+			}
+			if (spelled_correct) {
+				corrected_words.splice(x,1)
 			}
 		}
-		if (!spelled_correct) {
-			corrected_words[corrected_words_num] = words[x];
-			corrected_words_num++;
-			$('.spell_check_editor span:nth-child('+(x+1)+')').addClass('misspelled');
-		}
-		if (spelled_correct) {
-			corrected_words.splice(x,1)
-		}
+		x_add+=newline_words.length;
 	}
+	// $('.test').remove();
+	// $('h1').after('<p class="test">'+newline_array[1].split(/\s+/)+'</p>');
+	// for (var x = 0; x < words.length; x++){
+	// 	spelled_correct = false;
+	// 	for (var xx = 0; xx < dummy_words.length; xx++){
+	// 		if (words[x] == dummy_words[xx] || words[x] == dummy_words[xx]+"," || words[x] == dummy_words[xx]+"." || words[x] == ""){
+	// 			spelled_correct = true;
+	// 		}
+	// 	}
+	// 	if (!spelled_correct) {
+	// 		corrected_words[corrected_words_num] = words[x];
+	// 		corrected_words_num++;
+	// 		$('.spell_check_editor span:nth-child('+(x+1)+')').addClass('misspelled');
+	// 	}
+	// 	if (spelled_correct) {
+	// 		corrected_words.splice(x,1)
+	// 	}
+	// }
 	$('.spell_check_editor span').mouseover(function(e){
 		misspelled_width = $(this).width();
 		if (!mouse_down) {
