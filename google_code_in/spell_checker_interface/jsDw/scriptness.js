@@ -1,16 +1,4 @@
-﻿//bugs:
-// bug 1: the interface freaks out with multiwords on more than one line
-// activate it by typing first word of multiword on one line, hit return, and type the second word
-// bug 2: the interface freaks out with more than one space between words
-// activate by putting more than one space between words
-// bug 3: the interface freaks out when the first line is a newline
-// activate by hitting return once or multiple times before typeing any text into the textarea
-// bug 4: the interface freaks out when same word is present multiple times in one line, and you make a newline
-// activate by typing "blah blah blah" and then hitting enter in the textarea
-// bug 5: the interface freaks out when the same incorrect words are in the textarea and you try to correct them not in order of first to last
-// activate by typing "blah blah blah" and then correcting the last "blah"
-
-//add this to var part of js
+﻿//add this to var part of js
 var corrected_words = [];
 var dummy_words = ["hello", "my", "name", "is", "and", "I", "like", "nothing", "but", "bacon", "toy car"];
 var text_area_focus = false;
@@ -76,8 +64,6 @@ function spell_checker() {
 	var nthchild = 0;
 	var word_spelled_correct = false;
 	var text = $("#textAreaId").val();
-	// bug 2 has something to do with the fact that i split text by newlines and spaces. 
-	// it doesn't take into acount more than one space
 	var words = text.split( /\s+/ );
 	for (var re = 0; re < (words.length-1); re++) {
 		multiword_checker = words[re]+" "+words[re+1];
@@ -306,48 +292,3 @@ function spell_checker() {
 	$('#textAreaId1').remove();
 	newline_array = $("#textAreaId").val().split("\n");
 }
-
-//you do not nead to add this
-
-// function check_spelling() {
-// 	$('.spell_checker_uncorrected').html('');
-// 	$('.spell_checker_corrected').html('');
-// 	if (corrected_words.length == 0){
-// 		$('.spell_checker_corrected').html('No spelling Errors');
-// 	}
-// 	else {
-// 		var repeat = 0;
-// 		var this_text = corrected_words[repeat];
-// 		var text = $("#textAreaId").val();
-// 		var words = text.split( /\s+/ );
-// 		var index = words.indexOf(this_text);
-// 		if ($('.spell_checker_box').css('display') == 'block') {
-// 			$('.spell_check_editor span:nth-child('+(index+1)+')').css('background-color','yellow');
-// 		}
-// 		$('.spell_checker_uncorrected').html(corrected_words[repeat]);
-// 		for(var z = 0; z < dummy_words.length; z++){
-// 			$('.spell_checker_corrected').append('<div class="spell_recomendations_item">'+dummy_words[z]+'</div>')
-// 		}
-// 		$('.spell_recomendations_item').click(function(){
-// 			var this_text = corrected_words[repeat];
-// 			var newtext = $(this).html();
-// 			var text = $("#textAreaId").val();
-// 			var words = text.split( /\s+/ );
-// 			var index = words.indexOf(this_text);
-// 			words.splice(index, 1);
-// 			words.splice(index, 0, newtext);
-// 			text_back = words.join( "</span> <span>" );
-// 			$('.spell_check_editor').html('<span>'+text_back+'</span');
-// 			text_back = words.join( " " );
-// 			$('#textAreaId').val(text_back);
-// 			index = corrected_words.indexOf(this_text);
-// 			corrected_words.splice(index, 1);
-// 			check_spelling();
-// 		});
-// 	}
-// 	$('.spell_checker_close').click(function(){
-// 		$('.spell_checker_box').css('display','none');
-// 	});
-// }
-
-	
