@@ -1,4 +1,16 @@
-﻿//add this to var part of js
+﻿//bugs:
+// bug 1: the interface freaks out with multiwords on more than one line
+// activate it by typing first word of multiword on one line, hit return, and type the second word
+// bug 2: the interface freaks out with more than one space between words
+// activate by putting more than one space between words
+// (i think it is fixed)bug 3: the interface freaks out when the first line is a newline
+// activate by hitting return once or multiple times before typeing any text into the textarea
+// (i think it is fixed)bug 4: the interface freaks out when same word is present multiple times in one line, and you make a newline
+// activate by typing "blah blah blah" and then hitting enter in the textarea
+// bug 5: the interface freaks out when the same incorrect words are in the textarea and you try to correct them not in order of first to last
+// activate by typing "blah blah blah" and then correcting the last "blah"
+
+//add this to var part of js
 var corrected_words = [];
 var dummy_words = ["hello", "my", "name", "is", "and", "I", "like", "nothing", "but", "bacon", "toy car"];
 var text_area_focus = false;
@@ -64,6 +76,8 @@ function spell_checker() {
 	var nthchild = 0;
 	var word_spelled_correct = false;
 	var text = $("#textAreaId").val();
+	// bug 2 has something to do with the fact that i split text by newlines and spaces. 
+	// it doesn't take into acount more than one space
 	var words = text.split( /\s+/ );
 	for (var re = 0; re < (words.length-1); re++) {
 		multiword_checker = words[re]+" "+words[re+1];
