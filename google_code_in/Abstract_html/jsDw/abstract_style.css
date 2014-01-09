@@ -1,0 +1,65 @@
+@font-face{
+		font-family: 'Assassin';
+		src: url('Fonts/Assassin$.ttf');
+	}
+@font-face{
+		font-family: 'Averia';
+		src: url('Fonts/Averia-Regular.ttf');
+	}
+@font-face{
+		font-family: 'Harabara';
+		src: url('Fonts/Harabara.ttf');
+	}
+@font-face{
+		font-family: 'Optimus';
+		src: url('Fonts/OptimusPrinceps.ttf');
+	}
+@font-face{
+		font-family: 'Timeless';
+		src: url('Fonts/Timeless.ttf');
+	}
+@font-face{
+		font-family: 'Modern';
+		src: url('Fonts/Top_Modern.ttf');
+	}
+
+.finish_interface_button {
+	display: none;
+}
+.edit_interface_container .edit_interface_button, .edit_interface_container .finish_interface_button {
+	width: 100px;
+	text-align: center;
+	border: solid black 2px;
+	background-color: lightgray;
+}
+.edit_interface_container {
+	position: absolute;
+	top: 100px;
+	left: 5px;
+	width: 300px;
+	padding: 4px;
+	margin: 0;
+	color: black;
+}
+.edit_interface_object {
+	padding: 3px;
+	margin: 2px;
+	width: 200px;
+	border: solid gray 1px;
+	background-color: white;
+}
+.parent_object {
+	background-color: rgb(235,235,235);
+}
+.child_object {
+	margin-left: 14px;
+}
+.app_container {
+	position: absolute;
+	top: 50px;
+	left: 250px;
+}
+.window_edit_info {
+	display: none;
+	position: absolute;
+}

@@ -1,0 +1,1 @@
+This is the original but unaccepted design for the abstract html challenge for Google Code In 2013 for the open source program, apertium
