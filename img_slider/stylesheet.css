@@ -1,0 +1,46 @@
+body {
+	background-color: lightblue;
+}
+
+h1 {
+	text-align: center;
+}
+
+div {
+	width: 192px;
+	height: 120px;
+	border: 1px solid gray;
+	margin: 0 auto;
+}
+
+.img_container_1 {
+	background-size: 192px 120px;
+	background-image: url('img1.jpeg')
+}
+
+.img_container_2 {
+	position: relative;
+	top: -122px;
+	z-index: -10;
+	background-size: 192px 120px;
+}
+
+.slider_button_holder {
+	border: none;
+	width: 192px;
+	position: relative;
+	top: -112px;
+}
+
+.slider_button {
+	cursor: pointer;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 10px;
+	border: none;
+	background-image: url("bullet.png");
+	background-size: 10px 20px;
+	margin: 19px;
+	background-position: 0px 0px;
+}
