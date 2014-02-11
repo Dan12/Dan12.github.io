@@ -1,0 +1,25 @@
+textarea {
+    resize: none;
+    width: 300px;
+    height: 70px;
+}
+.button {
+    padding: 2px;
+    border: 1px solid black;
+    width: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+.encode_key, .alphabet_key{
+    width:16px;
+    height:16px;
+    resize: none;
+    display: inline;
+}
+input {
+    border: solid black 1px;
+}
+div,input {
+    margin: 4px;
+    margin-left: 0;
+}

@@ -1,0 +1,1 @@
+This is a Javascript text encoder. It will only decode messages that were encoded with this website.
