@@ -132,7 +132,7 @@ function new_alpha() {
             }
         }
         letter++;
-        if (letter>=4){
+        if (letter>4){
             letter=1;
         }
     }   
