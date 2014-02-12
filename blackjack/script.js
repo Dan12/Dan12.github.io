@@ -34,7 +34,7 @@ var icon_x_list = [];
 var icon_y_list = [];
 var o_icon_x_list = [];
 var o_icon_y_list = [];
-
+//this generates a new card and make sure it has not been used before suffling the deck
 function new_card() {
     while (repeat) {
         card = Math.floor(Math.random() * 13 + 1);
@@ -187,7 +187,7 @@ function new_card() {
     }
     repeat = true;
 }
-
+//this is the initial gameplay, giving each player two cards
 function play() {
     while (bet_repeat) {
         bet_input = prompt("Enter bet. (greater than zero)", bet);
@@ -302,7 +302,7 @@ function play() {
     $('.double_down').html('Double Down');
 
 }
-
+//this displays the current cards on the field
 function display() {
     $('.card_img').remove();
     $('.you').html('Your Total: ' + y_total);
@@ -320,12 +320,12 @@ function display() {
     //$('.your_cards').html(you_chosen_cards);
     //$('.dealer_cards').html(dealer_chosen_cards);
 }
-
+//this calls the function your_turn
 $('.hit').click(function () {
     your_turn();
 });
-
-    function your_turn() {
+//this function gives the player a single card and checks if any events happened
+function your_turn() {
     new_card();
     $('.after').after('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
     you_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
@@ -355,7 +355,7 @@ $('.hit').click(function () {
         }, 1);
     }
 }
-
+//this function checks if you have enough money to double down. If you do, it gives you one card and moves to the dealers turn
 $('.double_down').click(function () {
     if (bet * 2 > money) {
         alert("You do not have enough money to double down!");
@@ -367,12 +367,12 @@ $('.double_down').click(function () {
     }
     }
 });
-
+//this function calls the dealers turn
 $('.stand').click(function () {
     dealer_turn();
 });
-
-    function dealer_turn() {
+//this function with play as the dealer, drawing a new card until it has won or breaks
+function dealer_turn() {
     dealer_chosen_cards[1] = dealer_hidden_card;
     if (o_total > y_total) {
         game_over_message = "Dealer Won. You Lost.";
@@ -389,6 +389,8 @@ $('.stand').click(function () {
         new_card();
         $('.after').after('<p class="remove">Dealer got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
         dealer_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
+        o_icon_x_list.push(icon_x);
+        o_icon_y_list.push(icon_y);
         o_total += card_chosen_value;
 
 
@@ -426,7 +428,7 @@ $('.stand').click(function () {
         game_over();
     }, 1);
 }
-
+//this function displays the gameover messages and deletes all elements
 function game_over() {
     alert(game_over_message);
     $('.after').after(game_over_message);
@@ -456,7 +458,7 @@ function game_over() {
         play();
     }
 }
-
+//this function calls the play function
 $('.play').click(function () {
     play();
     $('.play').hide();
