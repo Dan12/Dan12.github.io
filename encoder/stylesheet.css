@@ -11,7 +11,7 @@ textarea {
     cursor: pointer;
 }
 .encode_key, .alphabet_key{
-    width:16px;
+    width:24px;
     height:16px;
     resize: none;
     display: inline;
