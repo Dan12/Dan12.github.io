@@ -32,7 +32,7 @@ h3 {
     margin: 1px;
 }
 
-.hit, .stand, .double_down {
+.hit, .stand, .double_down, .play {
     text-align: center;
     border-radius: 5px;
     padding: 5px;
@@ -42,4 +42,21 @@ h3 {
     background-color: #FFDE00;
     color: #097054;
     display: none;
+    cursor: pointer;
+}
+
+div .play {
+    display: block;
+    margin: 10px auto;
+    position: relative;
+}
+
+.card_img {
+    background-image: url('cards_icon.png');
+    background-position: 0 0;
+    width: 71px;
+    height: 96px;
+    margin: 0 auto;
+    position: relative;
+    display: inline-block;
 }

@@ -28,6 +28,12 @@ var diamond_card_chosen = [];
 var spade_card_chosen = [];
 var dealer_chosen_cards = [];
 var you_chosen_cards = [];
+var icon_x = 0;
+var icon_y = 0;
+var icon_x_list = [];
+var icon_y_list = [];
+var o_icon_x_list = [];
+var o_icon_y_list = [];
 
 function new_card() {
     while (repeat) {
@@ -37,54 +43,67 @@ function new_card() {
             case 1:
                 card_chosen_value = 2;
                 card_chosen_name = "Two";
+                icon_x = 73;
                 break;
             case 2:
                 card_chosen_value = 3;
                 card_chosen_name = "Three";
+                icon_x = 146;
                 break;
             case 3:
                 card_chosen_value = 4;
                 card_chosen_name = "Four";
+                icon_x = 219;
                 break;
             case 4:
                 card_chosen_value = 5;
                 card_chosen_name = "Five";
+                icon_x = 292;
                 break;
             case 5:
                 card_chosen_value = 6;
                 card_chosen_name = "Six";
+                icon_x = 365;
                 break;
             case 6:
                 card_chosen_value = 7;
                 card_chosen_name = "Seven";
+                icon_x = 438;
                 break;
             case 7:
                 card_chosen_value = 8;
                 card_chosen_name = "Eight";
+                icon_x = 511;
                 break;
             case 8:
                 card_chosen_value = 9;
                 card_chosen_name = "Nine";
+                icon_x = 584;
                 break;
             case 9:
                 card_chosen_value = 10;
                 card_chosen_name = "Ten";
+                icon_x = 657;
                 break;
             case 10:
                 card_chosen_value = 10;
                 card_chosen_name = "Jack";
+                icon_x = 730;
                 break;
             case 11:
                 card_chosen_value = 10;
                 card_chosen_name = "Queen";
+                icon_x = 803;
                 break;
             case 12:
                 card_chosen_value = 10;
                 card_chosen_name = "King";
+                icon_x = 876;
                 break;
             case 13:
                 card_chosen_value = 11;
                 card_chosen_name = "Ace";
+                icon_x = 0;
                 break;
         }
         card_name = Math.floor(Math.random() * 4 + 1);
@@ -92,15 +111,19 @@ function new_card() {
         switch (card_name) {
             case 1:
                 card_chosen_suit = "Hearts";
+                icon_y = 196;
                 break;
             case 2:
                 card_chosen_suit = "Clubs";
+                icon_y = 0;
                 break;
             case 3:
                 card_chosen_suit = "Diamonds";
+                icon_y = 294;
                 break;
             case 4:
                 card_chosen_suit = "Spades";
+                icon_y = 98;
                 break;
         }
 
@@ -186,6 +209,8 @@ function play() {
     lose = false;
     dealer_chosen_cards = [];
     you_chosen_cards = [];
+    icon_y_list = [];
+    icon_x_list = [];
 
     $('.bet').html('Bet: $' + bet);
     $('.total_money').html('Total money: $' + money);
@@ -193,6 +218,8 @@ function play() {
     new_card();
     $('.after').after('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
     you_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
+    icon_x_list.push(icon_x);
+    icon_y_list.push(icon_y);
     y_total += card_chosen_value;
 
     if (card_chosen_name === "Ace") {
@@ -203,6 +230,8 @@ function play() {
     $('.after').after('<p class="remove">Dealer got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
     o_total += card_chosen_value;
     dealer_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
+    o_icon_x_list.push(icon_x);
+    o_icon_y_list.push(icon_y);
 
     if (card_chosen_name === "Ace") {
         dealer_has_ace = true;
@@ -211,6 +240,8 @@ function play() {
     new_card();
     $('.after').after('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
     you_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
+    icon_x_list.push(icon_x);
+    icon_y_list.push(icon_y);
     y_total += card_chosen_value;
 
     if (card_chosen_name === "Ace") {
@@ -220,7 +251,11 @@ function play() {
     new_card();
     o_total += card_chosen_value;
     dealer_chosen_cards.push('hidden, ');
+    o_icon_x_list.push(icon_x);
+    o_icon_y_list.push(icon_y);
     dealer_hidden_card = card_chosen_name + " of " + card_chosen_suit + ", ";
+
+    display();
 
     if (card_chosen_name === "Ace") {
         dealer_has_ace = true;
@@ -269,9 +304,21 @@ function play() {
 }
 
 function display() {
+    $('.card_img').remove();
     $('.you').html('Your Total: ' + y_total);
-    $('.your_cards').html(you_chosen_cards);
-    $('.dealer_cards').html(dealer_chosen_cards);
+    for (var x = 0; x<you_chosen_cards.length; x++){
+        $('.your_cards').append('<div class="card_img card'+x+'"></div>');
+        $('.card'+x+'').css('background-position',''+(-icon_x_list[x])+'px '+(-icon_y_list[x])+'px');
+    }
+    for (var xx = 0; xx<dealer_chosen_cards.length; xx++){
+        $('.dealer_cards').append('<div class="card_img o_card'+xx+'"></div>');
+        $('.o_card'+xx+'').css('background-position',''+(-o_icon_x_list[xx])+'px '+(-o_icon_y_list[xx])+'px');
+        if (dealer_chosen_cards[xx]=='hidden, '){
+            $('.o_card'+xx+'').css({"background-image":"url('card_back.jpg')","background-size":"165px 108px","background-position":"-4px -6px"});
+        }
+    }
+    //$('.your_cards').html(you_chosen_cards);
+    //$('.dealer_cards').html(dealer_chosen_cards);
 }
 
 $('.hit').click(function () {
@@ -282,6 +329,8 @@ $('.hit').click(function () {
     new_card();
     $('.after').after('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
     you_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
+    icon_x_list.push(icon_x);
+    icon_y_list.push(icon_y);
     y_total += card_chosen_value;
 
 
@@ -298,6 +347,8 @@ $('.hit').click(function () {
     display();
     if (y_total > 21) {
         game_over_message = "You Lost";
+        dealer_chosen_cards[1] = dealer_hidden_card;
+        display();
         lose = true;
         setTimeout(function () {
             game_over();
