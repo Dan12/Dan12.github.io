@@ -60,6 +60,19 @@ $(document).ready(function () {
         var value = $('.decode_textarea').val();
         letters = value.split('');
         letter=1;
+        var eoa = "encode";
+        var eoa_num = 1;
+        for (var xx = 0; xx<8; xx++){
+            if(!$('.'+eoa+''+eoa_num.toString()+'_key').val()){
+                alert("You left one or more inputs blank");
+                return;
+            }
+            eoa_num++;
+            if (eoa_num>4){
+                eoa_num = 1;
+                eoa = "alpha";
+            }
+        }
         var encode1 = parseInt($('.encode1_key').val());
         var encode2 = parseInt($('.encode2_key').val());
         var encode3 = parseInt($('.encode3_key').val());
