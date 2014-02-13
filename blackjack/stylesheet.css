@@ -21,6 +21,7 @@ body {
     float: right;
     overflow: scroll;
     margin-right: 100px;
+    /*display: none;*/
 }
 p, div {
     padding: 1px;
@@ -45,6 +46,19 @@ h3 {
     cursor: pointer;
 }
 
+.hit, .stand, .double_down {
+    position: absolute;
+}
+.hit {
+    top: 390px;
+}
+.stand {
+    top: 430px;
+}
+.double_down {
+    top: 470px;
+}
+
 div .play {
     display: block;
     margin: 10px auto;
@@ -59,4 +73,15 @@ div .play {
     margin: 0 auto;
     position: relative;
     display: inline-block;
+}
+
+#bet_input {
+    width: 60px;
+}
+#bet_input, .play_message {
+    display: inline;
+}
+.w_or_l_message{
+    font-size: 30px;
+    height: 30px;
 }

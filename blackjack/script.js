@@ -6,7 +6,9 @@ var card = 0;
 var card_name = 0;
 var money = 500;
 var bet = 0;
-var terminate_game = false;
+var icon_x = 0;
+var icon_y = 0;
+var card_chosen_value = 0;
 var bet_repeat = true;
 var card_used = false;
 var repeat = true;
@@ -16,24 +18,25 @@ var dealer_has_ace = false;
 var win = false;
 var lose = false;
 var blackjack = false;
+var game_in_prog = false;
 var bet_input = "";
 var card_chosen_name = "";
 var card_chosen_suit = "";
 var dealer_hidden_card = "";
 var game_over_message = "";
-var card_chosen_value = 0;
 var heart_card_chosen = [];
 var club_card_chosen = [];
 var diamond_card_chosen = [];
 var spade_card_chosen = [];
 var dealer_chosen_cards = [];
 var you_chosen_cards = [];
-var icon_x = 0;
-var icon_y = 0;
 var icon_x_list = [];
 var icon_y_list = [];
 var o_icon_x_list = [];
 var o_icon_y_list = [];
+
+$('.total_money').html('Total money: $' + money);
+
 //this generates a new card and make sure it has not been used before suffling the deck
 function new_card() {
     while (repeat) {
@@ -189,14 +192,13 @@ function new_card() {
 }
 //this is the initial gameplay, giving each player two cards
 function play() {
-    while (bet_repeat) {
-        bet_input = prompt("Enter bet. (greater than zero)", bet);
-        bet = parseFloat(bet_input);
-        if (bet > 0 && bet <= money) {
-            bet_repeat = false;
-        } else {
-            alert("That was an unacceptable value!");
-        }
+    bet_input = $('#bet_input').val();
+    bet = parseFloat(bet_input);
+    if (bet > 0 && bet <= money) {
+    } else {
+        alert("That was an unacceptable value!");
+        document.getElementById('bet_input').disabled = false;
+        return;
     }
     y_total = 0;
     o_total = 0;
@@ -211,6 +213,8 @@ function play() {
     you_chosen_cards = [];
     icon_y_list = [];
     icon_x_list = [];
+    o_icon_y_list = [];
+    o_icon_x_list = [];
 
     $('.bet').html('Bet: $' + bet);
     $('.total_money').html('Total money: $' + money);
@@ -322,6 +326,9 @@ function display() {
 }
 //this calls the function your_turn
 $('.hit').click(function () {
+    if (!game_in_prog){
+        return;
+    }
     your_turn();
 });
 //this function gives the player a single card and checks if any events happened
@@ -357,6 +364,9 @@ function your_turn() {
 }
 //this function checks if you have enough money to double down. If you do, it gives you one card and moves to the dealers turn
 $('.double_down').click(function () {
+    if (!game_in_prog){
+        return;
+    }
     if (bet * 2 > money) {
         alert("You do not have enough money to double down!");
     } else {
@@ -369,6 +379,9 @@ $('.double_down').click(function () {
 });
 //this function calls the dealers turn
 $('.stand').click(function () {
+    if (!game_in_prog){
+        return;
+    }
     dealer_turn();
 });
 //this function with play as the dealer, drawing a new card until it has won or breaks
@@ -392,7 +405,6 @@ function dealer_turn() {
         o_icon_x_list.push(icon_x);
         o_icon_y_list.push(icon_y);
         o_total += card_chosen_value;
-
 
         if (card_chosen_name === "Ace") {
             dealer_has_ace = true;
@@ -430,8 +442,15 @@ function dealer_turn() {
 }
 //this function displays the gameover messages and deletes all elements
 function game_over() {
+    game_in_prog = false;
+    $('.play').css({"background-color":"#FFDE00","cursor":"pointer"});
+    $('.stand').css({"background-color":"lightgray","cursor":"default"});
+    $('.double_down').css({"background-color":"lightgray","cursor":"default"});
+    $('.hit').css({"background-color":"lightgray","cursor":"default"});
+    document.getElementById('bet_input').disabled = false;
     alert(game_over_message);
     $('.after').after(game_over_message);
+    $('.w_or_l_message').html(game_over_message);
     if (win) {
         money += bet;
         $('.after').after('<p class="remove">You Won $' + bet + '</p>');
@@ -444,24 +463,33 @@ function game_over() {
     } else {
         $('.after').after('<p class="remove">No money was gained or lost</p>');
     }
-    alert("Your total money is: $" + money);
+    display();
+    $('.total_money').html('Total money: $' + money);
     if (money <= 0) {
         alert("You lost all your money");
-        alert("Reload page to play again");
+        $('body').after('<h2>Reload Page To Play Again</h2>');
         $('div').remove();
         $('p').remove();
         $('h1').remove();
         $('h3').remove();
-        terminate_game = true;
+        //terminate_game = true;
     }
-    if (terminate_game === false) {
-        play();
-    }
+    // if (terminate_game === false) {
+    //     play();
+    // }
 }
 //this function calls the play function
 $('.play').click(function () {
-    play();
-    $('.play').hide();
+    document.getElementById('bet_input').disabled = true;
+    $('.w_or_l_message').html("");
+    if (!game_in_prog){
+        game_in_prog = true;
+        $('.play').css({"background-color":"lightgray","cursor":"default"});
+        $('.stand').css({"background-color":"#FFDE00","cursor":"pointer"});
+        $('.double_down').css({"background-color":"#FFDE00","cursor":"pointer"});
+        $('.hit').css({"background-color":"#FFDE00","cursor":"pointer"});
+        play();
+    }
 });
 
 });
