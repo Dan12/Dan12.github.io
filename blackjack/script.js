@@ -13,8 +13,14 @@ var bet_repeat = true;
 var card_used = false;
 var repeat = true;
 var repeat_dealer = true;
-var you_has_ace = false;
-var dealer_has_ace = false;
+var you_has_heart_ace = false;
+var dealer_has_heart_ace = false;
+var you_has_spade_ace = false;
+var dealer_has_spade_ace = false;
+var you_has_club_ace = false;
+var dealer_has_club_ace = false;
+var you_has_diamond_ace = false;
+var dealer_has_diamond_ace = false;
 var win = false;
 var lose = false;
 var blackjack = false;
@@ -187,6 +193,40 @@ function new_card() {
         heart_card_chosen = [];
         club_card_chosen = [];
         diamond_card_chosen = [];
+        if (you_chosen_cards.length>0){
+            for (var x = 0; x<you_chosen_cards.length; x++){
+                var a = you_chosen_cards[x].split(' ');
+                if (a[1] == 'Spades'){
+                    spade_card_chosen.push(a[0]);
+                }
+                if (a[1] == 'Hearts'){
+                    heart_card_chosen.push(a[0]);
+                }
+                if (a[1] == 'Clubs'){
+                    club_card_chosen.push(a[0]);
+                }
+                if (a[1] == 'Diamonds'){
+                    diamond_card_chosen.push(a[0]);
+                }
+            }
+        }
+        if (dealer_chosen_cards.length>0){
+            for (var xx = 0; xx<dealer_chosen_cards.length; xx++){
+                var aa = dealer_chosen_cards[xx].split(' ');
+                if (aa[1] == 'Spades'){
+                    spade_card_chosen.push(aa[0]);
+                }
+                if (aa[1] == 'Hearts'){
+                    heart_card_chosen.push(aa[0]);
+                }
+                if (aa[1] == 'Clubs'){
+                    club_card_chosen.push(aa[0]);
+                }
+                if (aa[1] == 'Diamonds'){
+                    diamond_card_chosen.push(aa[0]);
+                }
+            }
+        }
     }
     repeat = true;
 }
@@ -198,12 +238,21 @@ function play() {
     } else {
         alert("That was an unacceptable value!");
         document.getElementById('bet_input').disabled = false;
+        game_in_prog = false;
+        $('.play').css({"background-color":"#FFDE00","cursor":"pointer"});
+        $('.made_by').css('top','500px');
         return;
     }
     y_total = 0;
     o_total = 0;
-    you_has_ace = false;
-    dealer_has_ace = false;
+    you_has_heart_ace = false;
+    dealer_has_heart_ace = false;
+    you_has_spade_ace = false;
+    dealer_has_spade_ace = false;
+    you_has_diamond_ace = false;
+    dealer_has_diamond_ace = false;
+    you_has_club_ace = false;
+    dealer_has_club_ace = false;
     repeat_dealer = true;
     blackjack = false;
     bet_repeat = true;
@@ -221,63 +270,41 @@ function play() {
 
     new_card();
     $('.after').after('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
-    you_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
+    you_chosen_cards.push(card_chosen_name + ' ' + card_chosen_suit);
     icon_x_list.push(icon_x);
     icon_y_list.push(icon_y);
     y_total += card_chosen_value;
 
-    if (card_chosen_name === "Ace") {
-        you_has_ace = true;
-    }
+    you_got_ace_check();
 
     new_card();
     $('.after').after('<p class="remove">Dealer got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
     o_total += card_chosen_value;
-    dealer_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
+    dealer_chosen_cards.push(card_chosen_name + ' ' + card_chosen_suit);
     o_icon_x_list.push(icon_x);
     o_icon_y_list.push(icon_y);
 
-    if (card_chosen_name === "Ace") {
-        dealer_has_ace = true;
-    }
+    dealer_got_ace_check();
 
     new_card();
     $('.after').after('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
-    you_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
+    you_chosen_cards.push(card_chosen_name + ' ' + card_chosen_suit);
     icon_x_list.push(icon_x);
     icon_y_list.push(icon_y);
     y_total += card_chosen_value;
 
-    if (card_chosen_name === "Ace") {
-        you_has_ace = true;
-    }
+    you_got_ace_check();
 
     new_card();
     o_total += card_chosen_value;
-    dealer_chosen_cards.push('hidden, ');
+    dealer_chosen_cards.push(card_chosen_name + ' ' + card_chosen_suit);
     o_icon_x_list.push(icon_x);
     o_icon_y_list.push(icon_y);
-    dealer_hidden_card = card_chosen_name + " of " + card_chosen_suit + ", ";
+    dealer_hidden_card = card_chosen_name + " " + card_chosen_suit;
 
     display();
 
-    if (card_chosen_name === "Ace") {
-        dealer_has_ace = true;
-    }
-
-    if (o_total > 21) {
-        if (dealer_has_ace) {
-            o_total -= 10;
-            dealer_has_ace = false;
-        }
-    }
-
-    if (y_total > 21) {
-        if (you_has_ace) {
-            y_total -= 10;
-            you_has_ace = false;
-        }
-    }
+    dealer_got_ace_check();
 
     if (o_total === 21) {
         game_over_message = "Dealer got Blackjack. You Lose.";
@@ -317,12 +344,17 @@ function display() {
     for (var xx = 0; xx<dealer_chosen_cards.length; xx++){
         $('.dealer_cards').append('<div class="card_img o_card'+xx+'"></div>');
         $('.o_card'+xx+'').css('background-position',''+(-o_icon_x_list[xx])+'px '+(-o_icon_y_list[xx])+'px');
-        if (dealer_chosen_cards[xx]=='hidden, '){
+        if (dealer_chosen_cards[xx]==dealer_hidden_card){
             $('.o_card'+xx+'').css({"background-image":"url('card_back.jpg')","background-size":"165px 108px","background-position":"-4px -6px"});
         }
     }
-    //$('.your_cards').html(you_chosen_cards);
-    //$('.dealer_cards').html(dealer_chosen_cards);
+    if(($('.game_field').height())>350){
+        var h = $('.game_field').height()-350;
+        $('.made_by').css('top',''+(600+h)+'px');
+    }
+    else {
+        $('.made_by').css('top','600px');
+    }
 }
 //this calls the function your_turn
 $('.hit').click(function () {
@@ -335,26 +367,21 @@ $('.hit').click(function () {
 function your_turn() {
     new_card();
     $('.after').after('<p class="remove">You got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
-    you_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
+    you_chosen_cards.push(card_chosen_name + ' ' + card_chosen_suit);
     icon_x_list.push(icon_x);
     icon_y_list.push(icon_y);
     y_total += card_chosen_value;
 
+    you_got_ace_check();
 
-    if (card_chosen_name === "Ace") {
-        you_has_ace = true;
-    }
+    you_has_ace_check();
 
-    if (y_total > 21) {
-        if (you_has_ace) {
-            y_total -= 10;
-            you_has_ace = false;
-        }
-    }
     display();
+
     if (y_total > 21) {
         game_over_message = "You Lost";
         dealer_chosen_cards[1] = dealer_hidden_card;
+        dealer_hidden_card = "none"
         display();
         lose = true;
         setTimeout(function () {
@@ -387,6 +414,7 @@ $('.stand').click(function () {
 //this function with play as the dealer, drawing a new card until it has won or breaks
 function dealer_turn() {
     dealer_chosen_cards[1] = dealer_hidden_card;
+    dealer_hidden_card = "none"
     if (o_total > y_total) {
         game_over_message = "Dealer Won. You Lost.";
         lose = true;
@@ -401,21 +429,15 @@ function dealer_turn() {
     while (repeat_dealer) {
         new_card();
         $('.after').after('<p class="remove">Dealer got a ' + card_chosen_name + ' of ' + card_chosen_suit + '</p>');
-        dealer_chosen_cards.push(card_chosen_name + ' of ' + card_chosen_suit + ", ");
+        dealer_chosen_cards.push(card_chosen_name + ' ' + card_chosen_suit);
         o_icon_x_list.push(icon_x);
         o_icon_y_list.push(icon_y);
         o_total += card_chosen_value;
 
-        if (card_chosen_name === "Ace") {
-            dealer_has_ace = true;
-        }
+        dealer_got_ace_check();
 
-        if (o_total > 21) {
-            if (dealer_has_ace) {
-                o_total -= 10;
-                dealer_has_ace = false;
-            }
-        }
+        dealer_has_ace_check();
+
         if (o_total > 21) {
             game_over_message = "Dealer Lost. You Won!";
             win = true;
@@ -438,7 +460,83 @@ function dealer_turn() {
     display();
     setTimeout(function () {
         game_over();
-    }, 1);
+    }, 100);
+}
+//this function checks if you got an ace from the newcard function
+function you_got_ace_check() {
+    if (card_chosen_name === "Ace") {
+        if (card_chosen_suit === "Hearts") {
+            you_has_heart_ace = true;
+        }
+        if (card_chosen_suit === "Spades") {
+            you_has_spade_ace = true;
+        }
+        if (card_chosen_suit === "Clubs") {
+            you_has_club_ace = true;
+        }
+        if (card_chosen_suit === "Diamonds") {
+            you_has_diamond_ace = true;
+        }
+    }
+}
+//this function checks if the dealer got an ace from the newcard function
+function dealer_got_ace_check() {
+    if (card_chosen_name === "Ace") {
+        if (card_chosen_suit === "Hearts") {
+            dealer_has_heart_ace = true;
+        }
+        if (card_chosen_suit === "Spades") {
+            dealer_has_spade_ace = true;
+        }
+        if (card_chosen_suit === "Clubs") {
+            dealer_has_club_ace = true;
+        }
+        if (card_chosen_suit === "Diamonds") {
+            dealer_has_diamond_ace = true;
+        }
+    }
+}
+//this function checks if you have an ace; if you do, it will subtract 10 from your total
+function you_has_ace_check() {
+    if (y_total > 21) {
+        if (you_has_diamond_ace) {
+            y_total -= 10;
+            you_has_diamond_ace = false;
+        }
+        if (you_has_heart_ace) {
+            y_total -= 10;
+            you_has_heart_ace = false;
+        }
+        if (you_has_spade_ace) {
+            y_total -= 10;
+            you_has_spade_ace = false;
+        }
+        if (you_has_club_ace) {
+            y_total -= 10;
+            you_has_club_ace = false;
+        }
+    }
+}
+//this function checks if the dealer has an ace; if the dealer does, it will subtract 10 from the dealers total
+function dealer_has_ace_check() {
+    if (o_total > 21) {
+            if (dealer_has_diamond_ace) {
+                o_total -= 10;
+                dealer_has_diamond_ace = false;
+            }
+            if (dealer_has_heart_ace) {
+                o_total -= 10;
+                dealer_has_heart_ace = false;
+            }
+            if (dealer_has_spade_ace) {
+                o_total -= 10;
+                dealer_has_spade_ace = false;
+            }
+            if (dealer_has_club_ace) {
+                o_total -= 10;
+                dealer_has_club_ace = false;
+            }
+        }
 }
 //this function displays the gameover messages and deletes all elements
 function game_over() {
@@ -472,14 +570,24 @@ function game_over() {
         $('p').remove();
         $('h1').remove();
         $('h3').remove();
-        //terminate_game = true;
     }
-    // if (terminate_game === false) {
-    //     play();
-    // }
 }
+$('.close_box').click(function () {
+    $('.message_box').css('display','none');
+    $('.close_box').css('display','none');
+});
 //this function calls the play function
 $('.play').click(function () {
+    start_game_check();
+});
+
+$(document).keydown(function (e) {
+    if (e.keyCode === 13) {
+        start_game_check();
+    }
+});
+
+function start_game_check() {
     document.getElementById('bet_input').disabled = true;
     $('.w_or_l_message').html("");
     if (!game_in_prog){
@@ -488,8 +596,9 @@ $('.play').click(function () {
         $('.stand').css({"background-color":"#FFDE00","cursor":"pointer"});
         $('.double_down').css({"background-color":"#FFDE00","cursor":"pointer"});
         $('.hit').css({"background-color":"#FFDE00","cursor":"pointer"});
+        $('.made_by').css('top','600px');
         play();
     }
-});
+}
 
 });
