@@ -10,7 +10,7 @@ textarea {
     text-align: center;
     cursor: pointer;
 }
-.encode_key, .alphabet_key{
+.encode_key, .alphabet_key, .enter_key{
     width:24px;
     height:16px;
     resize: none;
@@ -22,4 +22,17 @@ input {
 div,input {
     margin: 4px;
     margin-left: 0;
+}
+.encode_rand_button,.encode_pre_button {
+    width: 90px;
+}
+.decode_area {
+    position: absolute;
+    top: 0;
+    left: 340px;
+}
+.encode_pre_button {
+    position: relative;
+    top: -154px;
+    left: 120px;
 }
