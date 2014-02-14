@@ -24,7 +24,10 @@ var dealer_has_diamond_ace = false;
 var win = false;
 var lose = false;
 var blackjack = false;
+var surrender = false;
 var game_in_prog = false;
+var can_double_down = true;
+var can_surrender = true;
 var bet_input = "";
 var card_chosen_name = "";
 var card_chosen_suit = "";
@@ -240,9 +243,22 @@ function play() {
         document.getElementById('bet_input').disabled = false;
         game_in_prog = false;
         $('.play').css({"background-color":"#FFDE00","cursor":"pointer"});
-        $('.made_by').css('top','500px');
+        $('.stand').css({"background-color":"lightgray","cursor":"default"});
+        $('.double_down').css({"background-color":"lightgray","cursor":"default"});
+        $('.hit').css({"background-color":"lightgray","cursor":"default"});
+        $('.surrender').css({"background-color":"lightgray","cursor":"default"});
+        if(($('.game_field').height())>350){
+            var h = $('.game_field').height()-350;
+            $('.made_by').css('top',''+(600+h)+'px');
+        }
+        else if(($('.game_field').height())>150) {
+            $('.made_by').css('top','600px');
+        }else{
+            $('.made_by').css('top','350px');
+        }
         return;
     }
+    $('.w_or_l_message').html("");
     y_total = 0;
     o_total = 0;
     you_has_heart_ace = false;
@@ -258,6 +274,9 @@ function play() {
     bet_repeat = true;
     win = false;
     lose = false;
+    surrender = false;
+    can_double_down = true;
+    can_surrender = true;
     dealer_chosen_cards = [];
     you_chosen_cards = [];
     icon_y_list = [];
@@ -306,19 +325,24 @@ function play() {
 
     dealer_got_ace_check();
 
-    if (o_total === 21) {
-        game_over_message = "Dealer got Blackjack. You Lose.";
-        lose = true;
-        display();
+    if (o_total === 21 && y_total === 21){
+        game_over_message = "Its a tie.";
         setTimeout(function () {
             game_over();
         },1);
     }
 
-    if (y_total === 21) {
+    if (o_total === 21 && y_total != 21) {
+        game_over_message = "Dealer got Blackjack. You Lose.";
+        lose = true;
+        setTimeout(function () {
+            game_over();
+        },1);
+    }
+
+    if (y_total === 21 && o_total != 21) {
         game_over_message = "You got Blackjack! You Won!";
         blackjack = true;
-        display();
         setTimeout(function () {
             game_over();
         },1);
@@ -327,10 +351,11 @@ function play() {
 
     display();
 
-    $('.hit, .stand, .double_down').css('display', 'block');
+    $('.hit, .stand, .double_down, .surrender').css('display', 'block');
     $('.hit').html('Hit');
     $('.stand').html('Stand');
     $('.double_down').html('Double Down');
+    $('.surrender').html('Surrender');
 
 }
 //this displays the current cards on the field
@@ -361,7 +386,25 @@ $('.hit').click(function () {
     if (!game_in_prog){
         return;
     }
+    can_double_down = false;
+    can_surrender = false;
+    $('.double_down').css({"background-color":"lightgray","cursor":"default"});
+    $('.surrender').css({"background-color":"lightgray","cursor":"default"});
     your_turn();
+});
+//this causes you to surrender and calls game_over function
+$('.surrender').click(function () {
+    if (can_surrender){
+        if (!game_in_prog){
+            return;
+        }
+        bet = bet / 2;
+        game_over_message = "You Surrendered";
+        surrender = true;
+        setTimeout(function () {
+            game_over();
+        },1);
+    }
 });
 //this function gives the player a single card and checks if any events happened
 function your_turn() {
@@ -380,9 +423,6 @@ function your_turn() {
 
     if (y_total > 21) {
         game_over_message = "You Lost";
-        dealer_chosen_cards[1] = dealer_hidden_card;
-        dealer_hidden_card = "none"
-        display();
         lose = true;
         setTimeout(function () {
             game_over();
@@ -391,17 +431,19 @@ function your_turn() {
 }
 //this function checks if you have enough money to double down. If you do, it gives you one card and moves to the dealers turn
 $('.double_down').click(function () {
-    if (!game_in_prog){
-        return;
-    }
-    if (bet * 2 > money) {
-        alert("You do not have enough money to double down!");
-    } else {
-        bet = bet * 2;
-        your_turn();
-        if (y_total<=21){
-        dealer_turn();
-    }
+    if (can_double_down){
+        if (!game_in_prog){
+            return;
+        }
+        if (bet * 2 > money) {
+            alert("You do not have enough money to double down!");
+        } else {
+            bet = bet * 2;
+            your_turn();
+            if (y_total<=21){
+                dealer_turn();
+            }
+        }
     }
 });
 //this function calls the dealers turn
@@ -414,7 +456,7 @@ $('.stand').click(function () {
 //this function with play as the dealer, drawing a new card until it has won or breaks
 function dealer_turn() {
     dealer_chosen_cards[1] = dealer_hidden_card;
-    dealer_hidden_card = "none"
+    dealer_hidden_card = "none";
     if (o_total > y_total) {
         game_over_message = "Dealer Won. You Lost.";
         lose = true;
@@ -457,10 +499,9 @@ function dealer_turn() {
             }
         }
     }
-    display();
     setTimeout(function () {
         game_over();
-    }, 100);
+    }, 1);
 }
 //this function checks if you got an ace from the newcard function
 function you_got_ace_check() {
@@ -540,15 +581,21 @@ function dealer_has_ace_check() {
 }
 //this function displays the gameover messages and deletes all elements
 function game_over() {
+    if (dealer_hidden_card != "none"){
+        dealer_chosen_cards[1] = dealer_hidden_card;
+        dealer_hidden_card = "none";
+    }
     game_in_prog = false;
+    display();
     $('.play').css({"background-color":"#FFDE00","cursor":"pointer"});
     $('.stand').css({"background-color":"lightgray","cursor":"default"});
     $('.double_down').css({"background-color":"lightgray","cursor":"default"});
     $('.hit').css({"background-color":"lightgray","cursor":"default"});
+    $('.surrender').css({"background-color":"lightgray","cursor":"default"});
     document.getElementById('bet_input').disabled = false;
-    alert(game_over_message);
     $('.after').after(game_over_message);
     $('.w_or_l_message').html(game_over_message);
+    alert(game_over_message);
     if (win) {
         money += bet;
         $('.after').after('<p class="remove">You Won $' + bet + '</p>');
@@ -558,11 +605,14 @@ function game_over() {
     } else if (blackjack) {
         money += bet * 1.5;
         $('.after').after('<p class="remove">You won $' + bet * 1.5 + '</p>');
-    } else {
+    } else if (surrender) {
+        money -= bet;
+        $('.after').after('<p class="remove">You Lost $' + bet + '</p>');
+    }else {
         $('.after').after('<p class="remove">No money was gained or lost</p>');
     }
-    display();
     $('.total_money').html('Total money: $' + money);
+    $('.bet').html('Bet: $' + bet);
     if (money <= 0) {
         alert("You lost all your money");
         $('body').after('<h2>Reload Page To Play Again</h2>');
@@ -572,30 +622,31 @@ function game_over() {
         $('h3').remove();
     }
 }
+//this function hides the message box and the close box button
 $('.close_box').click(function () {
     $('.message_box').css('display','none');
     $('.close_box').css('display','none');
 });
-//this function calls the play function
+//this function calls start_game_check
 $('.play').click(function () {
     start_game_check();
 });
-
+//this activates if enter key is pressed and calls start_game_function
 $(document).keydown(function (e) {
     if (e.keyCode === 13) {
         start_game_check();
     }
 });
-
+//this checks if the game should be started and starts it if it should be by calling the play function
 function start_game_check() {
     document.getElementById('bet_input').disabled = true;
-    $('.w_or_l_message').html("");
     if (!game_in_prog){
         game_in_prog = true;
         $('.play').css({"background-color":"lightgray","cursor":"default"});
         $('.stand').css({"background-color":"#FFDE00","cursor":"pointer"});
         $('.double_down').css({"background-color":"#FFDE00","cursor":"pointer"});
         $('.hit').css({"background-color":"#FFDE00","cursor":"pointer"});
+        $('.surrender').css({"background-color":"#FFDE00","cursor":"pointer"});
         $('.made_by').css('top','600px');
         play();
     }

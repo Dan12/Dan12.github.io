@@ -16,19 +16,16 @@ body {
     float: left;
 }
 .close_box,.message_box {
-    clear: both;
-    float: right;
-    margin-right: 100px;
-    position: relative;
+    position: absolute;
 }
 .close_box {
-    top: -132px;
-    left: -10px;
     font-size: 10px;
     cursor: pointer;
     padding: 0 15px 0 1px;
     z-index: 10;
     background-color: rgba(0,0,0,0);
+    top: 26px;
+    left: 924px;
 }
 .close_box::after{
     background-image: url("close_button.png");
@@ -38,7 +35,7 @@ body {
     content: "";
     position: absolute;
     left: 26px;
-    top: 0;
+    top: 1px;
 }
 .close_box:hover{
     background-color: lightgray;
@@ -47,7 +44,8 @@ body {
     width: 200px;
     height: 200px;
     overflow: scroll;
-    top: -170px;
+    top: 0;
+    left: 740px;
     /*display: none;*/
 }
 p, div {
@@ -60,30 +58,33 @@ h3 {
     margin: 1px;
 }
 
-.hit, .stand, .double_down, .play {
+.hit, .stand, .double_down, .play, .surrender {
     text-align: center;
     border-radius: 5px;
     padding: 5px;
     border: solid black 2px;
     margin: 10px;
-    width: 50px;
+    width: 60px;
     background-color: #FFDE00;
     color: #097054;
     display: none;
     cursor: pointer;
 }
 
-.hit, .stand, .double_down {
+.hit, .stand, .double_down, .surrender {
     position: absolute;
 }
 .hit {
-    top: 390px;
+    top: 380px;
 }
 .stand {
-    top: 430px;
+    top: 420px;
 }
 .double_down {
-    top: 470px;
+    top: 460px;
+}
+.surrender {
+    top: 520px;
 }
 
 div .play {
@@ -111,6 +112,7 @@ div .play {
 .w_or_l_message{
     font-size: 30px;
     height: 30px;
+    margin-bottom: 10px;
 }
 .your_cards {
     margin: 0 75px;
@@ -120,8 +122,9 @@ div .play {
     position: absolute;
     top: 350px;
     left: 26px;
+    width: 700px;
 }
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 990px) {
     .close_box, .message_box {
         display: none;
     }
