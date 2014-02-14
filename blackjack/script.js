@@ -370,7 +370,7 @@ function display() {
         $('.dealer_cards').append('<div class="card_img o_card'+xx+'"></div>');
         $('.o_card'+xx+'').css('background-position',''+(-o_icon_x_list[xx])+'px '+(-o_icon_y_list[xx])+'px');
         if (dealer_chosen_cards[xx]==dealer_hidden_card){
-            $('.o_card'+xx+'').css({"background-image":"url('card_back.jpg')","background-size":"165px 108px","background-position":"-4px -6px"});
+            $('.o_card'+xx+'').css({"background-image":"url('card_back.png')","background-size":"71px 96px","background-position":"1px 1px"});
         }
     }
     if(($('.game_field').height())>350){

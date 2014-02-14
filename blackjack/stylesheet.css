@@ -101,6 +101,7 @@ div .play {
     margin: 0 auto;
     position: relative;
     display: inline-block;
+    background-repeat: no-repeat;
 }
 
 #bet_input {
