@@ -29,7 +29,7 @@ div,input {
 .decode_area {
     position: absolute;
     top: 0;
-    left: 340px;
+    left: 360px;
 }
 .encode_pre_button {
     position: relative;
