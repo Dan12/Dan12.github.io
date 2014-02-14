@@ -325,6 +325,10 @@ function play() {
 
     dealer_got_ace_check();
 
+    you_has_ace_check();
+
+    dealer_has_ace_check();
+
     if (o_total === 21 && y_total === 21){
         game_over_message = "Its a tie.";
         setTimeout(function () {
