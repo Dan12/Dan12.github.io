@@ -43,7 +43,7 @@ body{
 	background: url("bar_background.jpg");
 	width: 100px;
 	height: 100%;
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 }
@@ -73,6 +73,7 @@ body{
 	width: 200px;
 	float: left;
 	border: 5px double white;
+	border-radius: 15px;
 	z-index: 20;
 	position: relative;
 	text-align: center;
@@ -90,6 +91,8 @@ body{
 	line-height: 30px;
 	color: white;
 	-webkit-text-stroke: .8px black;
+	width: 160px;
+	margin: 0 auto;
 }
 
 .navigtion a{
@@ -101,9 +104,9 @@ a{
 	color: rgb(200,200,255);
 }
 
-/*About Text*/
+/*General Text*/
 
-.about p{
+.text_box{
 	margin-right: 70px;
 	background-color: rgba(100,100,100,.8);
 	color: white;
@@ -112,10 +115,42 @@ a{
 	border: 5px double white;
 	position: absolute;
 	z-index: 30;
-	top: 500px;
+	top: 570px;
 	left: 70px;
 	text-indent: 20px;
 	font-size: 20px;
 	font-family: monaco;
 	max-width: 600px;
+}
+
+/*Hobbies extra*/
+
+.hobbies sup{
+	font-size: 8px;
+}
+
+.hobbies a, .contact a, .cool_stuff a {
+	color: blue;
+}
+
+/*Cool extra*/
+
+.cool_stuff p{
+	padding-bottom: 15px;
+}
+
+audio{
+	padding-bottom: 15px;
+}
+
+@media screen and (max-width: 500px){
+	.heading h4{
+		font-size: 10px;
+	}
+	.heading h1{
+		font-size: 26px;
+	}
+	.text_box{
+		font-size: 17px;
+	}
 }
