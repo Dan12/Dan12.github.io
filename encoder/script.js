@@ -15,13 +15,13 @@ var value="";
 $(document).ready(function () {
 
     $('.encode_pre_button').click(function(){
-        value = $('.decode_textarea').val();
+        value = $('.encode_textarea').val();
         letters = value.split('');
         letter=1;
         var eoa = "en";
         var eoa_num = 1;
         for (var xx = 0; xx<8; xx++){
-            if(!$('.enter_'+eoa+''+eoa_num+'_key'.toString()+'_key').val()){
+            if(!$('.enter_'+eoa+eoa_num.toString()+'_key').val()){
                 alert("You left one or more inputs blank");
                 return;
             }
