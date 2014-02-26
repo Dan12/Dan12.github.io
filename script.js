@@ -1,6 +1,9 @@
 $(document).ready(function(){
 	resize();
-	$(window).resize(function(){
+	$(window).scroll(function(){
+		resize();
+	})
+	.resize(function(){
 		resize();
 	});
 });

@@ -254,10 +254,11 @@ function play() {
         else if(($('.game_field').height())>150) {
             $('.made_by').css('top','600px');
         }else{
-            $('.made_by').css('top','350px');
+            $('.made_by').css('top','370px');
         }
         return;
     }
+    $('.made_by').css('top','600px');
     $('.w_or_l_message').html("");
     y_total = 0;
     o_total = 0;
@@ -651,7 +652,6 @@ function start_game_check() {
         $('.double_down').css({"background-color":"#FFDE00","cursor":"pointer"});
         $('.hit').css({"background-color":"#FFDE00","cursor":"pointer"});
         $('.surrender').css({"background-color":"#FFDE00","cursor":"pointer"});
-        $('.made_by').css('top','600px');
         play();
     }
 }
