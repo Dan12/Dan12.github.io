@@ -5,6 +5,11 @@
 	src: url('SF Intellivised.ttf');
 }
 
+@font-face{
+	font-family: 'monaco';
+	src: url('Monaco.ttf');
+}
+
 *{
 	margin: 0;
 }
