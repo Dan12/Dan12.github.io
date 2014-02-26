@@ -97,11 +97,11 @@ body{
 
 .navigtion a{
 	-webkit-text-stroke: .8px black;
+	color: rgb(200,200,255);
 }
 
 a{
 	text-decoration: none;
-	color: rgb(200,200,255);
 }
 
 /*General Text*/
@@ -129,7 +129,7 @@ a{
 	font-size: 8px;
 }
 
-.hobbies a, .contact a, .cool_stuff a {
+.hobbies a, .contact a, .cool_stuff a{
 	color: blue;
 }
 
