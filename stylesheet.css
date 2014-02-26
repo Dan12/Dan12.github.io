@@ -102,7 +102,6 @@ body{
 
 a{
 	text-decoration: none;
-	color: blue;
 }
 
 /*General Text*/
@@ -138,6 +137,10 @@ a{
 
 audio{
 	padding-bottom: 15px;
+}
+
+.text_box a{
+	color: blue;
 }
 
 @media screen and (max-width: 500px){
