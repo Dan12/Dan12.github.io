@@ -96,14 +96,14 @@ body{
 	text-shadow: 12px 12px 3px rgb(255,255,200);
 	line-height: 30px;
 	color: white;
-	-webkit-text-stroke: .8px black;
+	-webkit-text-stroke: .6px black;
 	width: 160px;
 	margin: 0 auto;
 }
 
 .navigtion a{
-	-webkit-text-stroke: .8px black;
-	color: rgb(200,200,255);
+	-webkit-text-stroke: .6px black;
+	color: rgb(0,87,199);
 }
 
 a{
@@ -114,7 +114,7 @@ a{
 
 .text_box{
 	margin-right: 70px;
-	background-color: rgba(100,100,100,.8);
+	background-color: rgba(100,100,100,.7);
 	color: white;
 	padding: 15px;	
 	border-radius: 15px;
