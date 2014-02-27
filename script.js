@@ -10,8 +10,8 @@ $(document).ready(function(){
 function resize(){
 	var h = $('.text_box').height()+640;
 	$('.sidebar').css("height",h);
-	alert(h+" "+document.height);
-	if (h<document.height){
+	alert(h+" "+$('body').height);
+	if (h<$('body').height()){
 		$('.sidebar').css("height","100%");
 		alert("larger");
 	}
