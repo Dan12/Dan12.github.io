@@ -6,30 +6,33 @@ h1 {
 	text-align: center;
 }
 
-div {
+.container {
 	width: 192px;
 	height: 120px;
-	border: 1px solid gray;
 	margin: 0 auto;
 }
 
 .img_container_1 {
-	background-size: 192px 120px;
 	background-image: url('img1.jpeg')
 }
 
 .img_container_2 {
-	position: relative;
-	top: -122px;
 	z-index: -10;
+}
+
+.img_container {
+	border: 1px solid gray;
+	width: 192px;
+	height: 120px;
 	background-size: 192px 120px;
+	position: absolute;
 }
 
 .slider_button_holder {
-	border: none;
 	width: 192px;
-	position: relative;
-	top: -112px;
+	position: absolute;
+	top: 200px;
+	margin: 0 1px;
 }
 
 .slider_button {
