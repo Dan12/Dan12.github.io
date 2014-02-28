@@ -50,6 +50,7 @@ $(document).ready(function () {
 		$('.container').append('<div class="img_container_'+img_num+' img_container"></div>');
 		$('.img_container_'+img_num).css({'background-image':'url(img'+img_num+'.jpeg)','z-index':'-10'});
 	}
+	$('.img_container').css('display','hidden')
 	$('.img_container_1').css('z-index','10');
 	for (i = 1; i <= img; i++){
 		$('.slider_button_holder').append('<div class="slider_button slider_button_'+i+'" value="'+i+'"></div>');
@@ -58,10 +59,11 @@ $(document).ready(function () {
 	$('.img_container').css({'width':(img_width*img_scale)+'px','height':(img_height*img_scale)+'px','background-size':(img_width*img_scale)+'px '+(img_height*img_scale)+'px'});
 	img_num = 1;	
 	$('.slider_button_'+img_num+'').css('background-position','0px 10px');
-	if ($('.img_container_1')[0].complete){
+	setTimeout(function(){
+		$('.img_container').css('display','block');
 		$('.container').css({'z-index':'-1','background':'rgba(0,0,0,0)'});
 		start();
-	}
+	},3000);
 	$('.slider_button').click(function(){
 		if (!going) {
 			clearInterval(interval1);
