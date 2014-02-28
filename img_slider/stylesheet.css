@@ -1,5 +1,6 @@
 body {
 	background-color: lightblue;
+	text-align: center;
 }
 
 h1 {
@@ -10,14 +11,6 @@ h1 {
 	width: 192px;
 	height: 120px;
 	margin: 0 auto;
-}
-
-.img_container_1 {
-	background-image: url('img1.jpeg')
-}
-
-.img_container_2 {
-	z-index: -10;
 }
 
 .img_container {
@@ -46,4 +39,8 @@ h1 {
 	background-size: 10px 20px;
 	margin: 19px;
 	background-position: 0px 0px;
+}
+
+.download {
+	margin-top: 60px;
 }
