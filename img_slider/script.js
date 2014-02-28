@@ -58,7 +58,7 @@ $(document).ready(function () {
 	$('.img_container').css({'width':(img_width*img_scale)+'px','height':(img_height*img_scale)+'px','background-size':(img_width*img_scale)+'px '+(img_height*img_scale)+'px'});
 	img_num = 1;	
 	$('.slider_button_'+img_num+'').css('background-position','0px 10px');
-	if ($('.img_container_1').complete){
+	if ($('.img_container_1')[0].complete){
 		$('.container').css({'z-index':'-1','background':'rgba(0,0,0,0)'});
 		start();
 	}
