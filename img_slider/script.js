@@ -9,7 +9,7 @@ var img_height = 120;
 //and now set img_width to the standard width of your image
 var img_width = 192;
 //finally set img_scale to the amount you want to scale your image.
-var img_scale = -1;
+var img_scale = 3;
 //set img_scale to 1 if you want the original dimensions and set img_scale to a number between 1 and 0 is you want to make your image smaller.
 var i;
 var img_num;
