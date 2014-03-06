@@ -236,10 +236,10 @@ function new_card() {
 //this is the initial gameplay, giving each player two cards
 function play() {
     bet_input = $('#bet_input').val();
-    bet = parseFloat(bet_input);
-    if (bet > 0 && bet <= money) {
+    bet = parseFloat(Math.round(bet_input));
+    if (bet >= 1 && bet <= money) {
     } else {
-        alert("That was an unacceptable value!");
+        alert("That was an unacceptable value! Bet must be between 1 and "+money);
         document.getElementById('bet_input').disabled = false;
         game_in_prog = false;
         $('.play').css({"background-color":"#FFDE00","cursor":"pointer"});
@@ -403,7 +403,7 @@ $('.surrender').click(function () {
         if (!game_in_prog){
             return;
         }
-        bet = bet / 2;
+        bet = Math.round(bet / 2);
         game_over_message = "You Surrendered";
         surrender = true;
         setTimeout(function () {
@@ -549,14 +549,20 @@ function you_has_ace_check() {
             y_total -= 10;
             you_has_diamond_ace = false;
         }
+    }
+    if (y_total > 21) {
         if (you_has_heart_ace) {
             y_total -= 10;
             you_has_heart_ace = false;
         }
+    }
+    if (y_total > 21) {
         if (you_has_spade_ace) {
             y_total -= 10;
             you_has_spade_ace = false;
         }
+    }
+    if (y_total > 21) {
         if (you_has_club_ace) {
             y_total -= 10;
             you_has_club_ace = false;
@@ -570,14 +576,20 @@ function dealer_has_ace_check() {
                 o_total -= 10;
                 dealer_has_diamond_ace = false;
             }
+        }
+        if (o_total > 21) {
             if (dealer_has_heart_ace) {
                 o_total -= 10;
                 dealer_has_heart_ace = false;
             }
+        }
+        if (o_total > 21) {
             if (dealer_has_spade_ace) {
                 o_total -= 10;
                 dealer_has_spade_ace = false;
             }
+        }
+        if (o_total > 21) {
             if (dealer_has_club_ace) {
                 o_total -= 10;
                 dealer_has_club_ace = false;
@@ -608,7 +620,7 @@ function game_over() {
         money -= bet;
         $('.after').after('<p class="remove">You Lost $' + bet + '</p>');
     } else if (blackjack) {
-        money += bet * 1.5;
+        money += Math.round(bet * 1.5);
         $('.after').after('<p class="remove">You won $' + bet * 1.5 + '</p>');
     } else if (surrender) {
         money -= bet;
