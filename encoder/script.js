@@ -31,6 +31,19 @@ $(document).ready(function () {
                 eoa = "alp";
             }
         }
+        eoa = "en";
+        eoa_num = 1;
+        for (var xx = 0; xx<8; xx++){
+            if($('.enter_'+eoa+eoa_num.toString()+'_key').val()>162 || $('.enter_'+eoa+eoa_num.toString()+'_key').val()<1){
+                alert("You entered values outside of the range(1-162)");
+                return;
+            }
+            eoa_num++;
+            if (eoa_num>4){
+                eoa_num = 1;
+                eoa = "alp";
+            }
+        }
         encode1 = parseInt($('.enter_en1_key').val());
         encode2 = parseInt($('.enter_en2_key').val());
         encode3 = parseInt($('.enter_en3_key').val());
@@ -76,6 +89,19 @@ $(document).ready(function () {
         for (var xx = 0; xx<8; xx++){
             if(!$('.'+eoa+''+eoa_num.toString()+'_key').val()){
                 alert("You left one or more inputs blank");
+                return;
+            }
+            eoa_num++;
+            if (eoa_num>4){
+                eoa_num = 1;
+                eoa = "alpha";
+            }
+        }
+        eoa = "encode";
+        eoa_num = 1;
+        for (var xx = 0; xx<8; xx++){
+            if($('.'+eoa+''+eoa_num.toString()+'_key').val()>162 || $('.'+eoa+''+eoa_num.toString()+'_key').val()<1){
+                alert("You entered values outside of the range (1-162)");
                 return;
             }
             eoa_num++;
