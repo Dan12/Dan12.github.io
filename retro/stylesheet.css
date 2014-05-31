@@ -1,0 +1,31 @@
+canvas {
+    background-color:white;
+}
+
+.button {
+	background-color: lightgray;
+	display: inline-block;
+	cursor: pointer;
+	padding: 4px;
+}
+
+li {
+	display: none;
+	margin-left: 110px;
+}
+
+ol {
+	list-style-type: none;
+}
+
+.name {
+	margin: 5px;
+}
+
+.name_list {
+	display: none;
+	position: relative;
+	top: -261px;
+	left: 0px;
+	text-align: right;
+}
