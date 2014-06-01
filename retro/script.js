@@ -96,16 +96,16 @@ $(document).ready(function () {
             gameOver = false;
             canvas.fillStyle = "Black";
             canvas.font = "14px Arial";
-            canvas.fillText("Press Enter to start and to toggle pause", 15, 25);
-            canvas.fillText("Press Space to jump and use the left and right arrow keys to move", 15, 60);
-            canvas.fillText("Press M to toggle mute and X to toggle sound effects",15,95);
-            canvas.fillText("You get one point for every bomb you shoot down", 15, 130);
-            canvas.fillText("Your highscore will be saved locally on your browser",15,165);
-            canvas.fillText("You will loose lives if a bomb reaches the ground or if the King Spike hits you", 15, 200);
-            canvas.fillText("If you die, just press enter to start a new game", 15, 235);
-            canvas.fillText("You have three lives, good luck", 15, 270);
-            canvas.fillText("Note:", 15, 340);
-            canvas.fillText("Opening the developer tools will disable your chance to get a new highscore", 15, 375);
+            canvas.fillText("Press Enter to start and to toggle pause", 8, 25);
+            canvas.fillText("Press Space to jump and use the left and right arrow keys to move", 8, 60);
+            canvas.fillText("Press M to toggle mute and X to toggle sound effects",8,95);
+            canvas.fillText("You get one point for every bomb you shoot down", 8, 130);
+            canvas.fillText("Your highscore will be saved locally on your browser",8,165);
+            canvas.fillText("You will loose lives if a bomb reaches the ground or if the King Spike hits you", 8, 200);
+            canvas.fillText("If you die, just press enter to start a new game", 8, 235);
+            canvas.fillText("You have three lives, good luck", 8, 270);
+            canvas.fillText("Note:", 8, 340);
+            canvas.fillText("Opening the developer tools will disable your chance to get a new highscore", 8, 375);
         }
         if (go && !pause) {
             if (!empActive){
