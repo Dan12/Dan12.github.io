@@ -29,3 +29,27 @@ ol {
 	left: 0px;
 	text-align: right;
 }
+
+img {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	display: none;
+}
+
+.mute, .volume {
+	left: 440px;
+	top: 50px;
+}
+
+.sfx{
+	left: 480px;
+	top: 50px;
+}
+
+.songx {
+	width: 12px;
+	height: 12px;
+	left: 484px;
+	top: 54px;
+}

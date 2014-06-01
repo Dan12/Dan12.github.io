@@ -63,6 +63,30 @@ $(document).ready(function () {
     var img = new Image();
     img.src="spike.jpg";
     //while (!img.load){}
+    var decap = new Audio('decap.mp3');
+    decap.volume = .35;
+    decap.addEventListener('ended', function() {
+        this.currentTime = 0;
+    }, false);
+    var bomb = new Audio('bomb.mp3');
+    bomb.volume = .17;
+    bomb.addEventListener('ended', function() {
+        this.currentTime = 0;
+    }, false);
+    var emp_sound = new Audio('emp.mp3');
+    emp_sound.volume = 1;
+    emp_sound.addEventListener('ended', function() {
+        this.currentTime = 0;
+    }, false);
+    var background = new Audio('background.mp3');
+    background.volume = .5;
+    background.addEventListener('ended', function() {
+        this.currentTime = 0;
+    }, false);
+    var mute = false;
+    var sfx = true;
+    $('.volume').css('display','block');
+    $('.sfx').css('display','block');
 
     //Function to execute every 40 milliseconds to draw everything and call functions
     setInterval(function () {
@@ -73,13 +97,14 @@ $(document).ready(function () {
             canvas.font = "14px Arial";
             canvas.fillText("Press Enter to start and to toggle pause", 15, 25);
             canvas.fillText("Press Space to jump and use the left and right arrow keys to move", 15, 60);
-            canvas.fillText("You get one point for every bomb you shoot down", 15, 95);
-            canvas.fillText("Your highscore will be saved locally on your browser",15,130)
-            canvas.fillText("You will loose lives if a bomb reaches the ground or if the death pad hits you", 15, 165);
-            canvas.fillText("If you die, just press enter to start a new game", 15, 200);
-            canvas.fillText("You have three lives, good luck", 15, 235);
-            canvas.fillText("Note:", 15, 295);
-            canvas.fillText("Opening the developer tools will disable your chance to get a new highscore", 15, 330);
+            canvas.fillText("Press M to toggle mute and X to toggle sound effects",15,95);
+            canvas.fillText("You get one point for every bomb you shoot down", 15, 130);
+            canvas.fillText("Your highscore will be saved locally on your browser",15,165);
+            canvas.fillText("You will loose lives if a bomb reaches the ground or if the death pad hits you", 15, 200);
+            canvas.fillText("If you die, just press enter to start a new game", 15, 235);
+            canvas.fillText("You have three lives, good luck", 15, 270);
+            canvas.fillText("Note:", 15, 340);
+            canvas.fillText("Opening the developer tools will disable your chance to get a new highscore", 15, 375);
         }
         if (go && !pause) {
             if (!empActive){
@@ -89,11 +114,11 @@ $(document).ready(function () {
             }
             setEmp();
             canvas.clearRect(0, 0, 500, 400);
+            canvas.drawImage(img,padX,340,30,20);
             setBullets();
             setBombs();
             canvas.fillStyle = "Lime";
             canvas.fillRect(0,360,500,40);
-            canvas.drawImage(img,padX,340,30,20);
             canvas.fillStyle = "Red";
             canvas.fillRect(playerX,playerY,30,30);
             canvas.fillStyle = "Black";
@@ -132,6 +157,8 @@ $(document).ready(function () {
         }
         if (gameOver){
             if (gameOverSecs === 0){
+                background.pause();
+                background.currentTime = 0;
                 canvas.fillStyle = "Black";
                 canvas.font = "70px Arial";
                 canvas.fillText("Game Over", 65, 215);
@@ -255,6 +282,8 @@ $(document).ready(function () {
         }
         if (empFill>=100 && upPress){
             empActive = true;
+            emp_sound.currentTime = 0;
+            emp_sound.play();
         }
         if (empActive){
             empActiveSecs++;
@@ -305,6 +334,8 @@ $(document).ready(function () {
                 if (!invincible){
                     lives --;
                 }
+                bomb.currentTime = 0;
+                bomb.play();
             }
         }
         if ((Math.floor(Math.random() * 30 + 1)) === 20 && !padShow){
@@ -350,6 +381,8 @@ $(document).ready(function () {
             if (!invincible){
                 lives --;
             }
+            decap.currentTime = 0;
+            decap.play();
         }
         
         for (i = 0; i<15; i++){
@@ -441,14 +474,69 @@ $(document).ready(function () {
     gameOverSecs = 0;    
     }
 
+    function setVolume(){
+        if (mute){
+            decap.volume = 0;
+            bomb.volume = 0;
+            emp_sound.volume = 0;
+            background.volume = 0;
+        }
+        if (!mute && sfx){
+            decap.volume = .35;
+            bomb.volume = .17;
+            emp_sound.volume = 1;
+            background.volume = .5;
+        }
+        if (!sfx && !mute){
+            decap.volume = 0;
+            bomb.volume = 0;
+            emp_sound.volume = 0;
+            background.volume = .5;
+        }
+        if (mute){
+            $('.volume').css('display','none');
+            $('.mute').css('display','block');
+        }
+        else{
+            $('.volume').css('display','block');
+            $('.mute').css('display','none'); 
+        }
+        if (sfx){
+            $('.sfx').css('display','block');
+            $('.songx').css('display','none');
+        }
+        else{
+            $('.songx').css('display','block');
+        }
+    }
+
     //listens for keycodes
     $(document).keydown(function (e) {
         if (e.keyCode === 13) {
             if (!go){
                 restart();
+                background.play();
             }
             else {
                 pause = !pause;
+                if (pause){
+                    background.pause();
+                    decap.pause();
+                    bomb.pause();
+                    emp_sound.pause();
+                }
+                else{
+                    background.play();
+                    if (decap.currentTime != 0){
+                        decap.play();
+                    }
+                    if (bomb.currentTime != 0){
+                        bomb.play();
+                    }
+                    if (emp_sound.currentTime != 0){
+                        emp_sound.play();
+                    }
+                }
             }
         }
         if (e.keyCode === 32 && !pause) {
@@ -462,6 +550,14 @@ $(document).ready(function () {
         }
         if (e.keyCode === 38) {
             upPress = true;
+        }
+        if (e.keyCode === 77) {
+            mute = !mute;
+            setVolume();
+        }
+        if (e.keyCode === 88) {
+            sfx = !sfx;
+            setVolume();
         }
         // if (e.keyCode === 86) {
         //     if (go){
