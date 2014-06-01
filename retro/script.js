@@ -108,12 +108,12 @@ $(document).ready(function () {
             canvas.fillText("Opening the developer tools will disable your chance to get a new highscore", 8, 375);
         }
         if (go && !pause) {
+            setEmp();
             if (!empActive){
                 getMovement();
                 makeBullets();
                 makeBombs();
             }
-            setEmp();
             canvas.clearRect(0, 0, 500, 400);
             canvas.drawImage(img,padX,340,30,20);
             setBullets();
