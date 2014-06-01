@@ -1,6 +1,7 @@
 $(document).ready(function () {
     //get highscore
-    var retrievedObject = localStorage.getItem('highscore');
+    var retrievedObject = JSON.parse(localStorage.getItem('highscore'));
+    console.log(retrievedObject);
 
     //experimental variables
     var grav = 0.62;
@@ -166,7 +167,7 @@ $(document).ready(function () {
                 canvas.fillText("Press Enter to start a new game",74,260);
                 if ((retrievedObject === null || parseInt(retrievedObject)<points) && !devToolsOpened){
                     alert("Congradulations, you got a new highscore of "+points);
-                    localStorage.setItem('highscore', points);
+                    localStorage.setItem('highscore', JSON.stringify(points));
                 }
                 else{
                     alert("Highscore: "+parseInt(retrievedObject)); 
