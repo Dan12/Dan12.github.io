@@ -4,8 +4,8 @@ $(document).ready(function () {
     console.log(retrievedObject);
 
     //experimental variables
-    var grav = 0.62;
-    var initVel = 5.5;
+    var grav = 0.69;
+    var initVel = 5.6;
     var bombSpawnSecs = 14;
     var bombNum = 30;
     var playerJumpMove = 2;
@@ -612,10 +612,10 @@ $(document).ready(function () {
     $('.saveDev').click(function(){
         grav = parseFloat($(".grav").val());
         initVel = parseFloat($(".initVel").val());
-        bombSpawnSecs = parseInt($(".bombSpawnSecs").val());
-        bombNum = parseInt($(".bombNum").val());
-        playerJumpMove = parseInt($(".playerJumpMove").val());
-        empInverseIncrease = parseInt($(".empInverseIncrease").val());
+        bombSpawnSecs = parseFloat($(".bombSpawnSecs").val());
+        bombNum = parseFloat($(".bombNum").val());
+        playerJumpMove = parseFloat($(".playerJumpMove").val());
+        empInverseIncrease = parseFloat($(".empInverseIncrease").val());
         bombDieOnHit = ($(".bombDieOnHit").val() === "true");
         invincible = ($(".invincible").val() === "true");
         alert("Settings Saved");
