@@ -149,7 +149,8 @@ $(document).ready(function () {
             }
         }
     }, 30);
-
+    
+    //Function to draw bombs
     function setBombs(){
         for (var i = 0; i<bombNum; i++){
             if (bombShow[i]){
@@ -161,6 +162,7 @@ $(document).ready(function () {
         }
     }
 
+    //Funtion to make bombs every 30*bombSpawnSec milliseconds
     function makeBombs(){
         if (bombShowSecs<bombSpawnSecs){
             bombShowSecs++;
@@ -178,6 +180,7 @@ $(document).ready(function () {
         }
     }
 
+    //Function the make bullets every 30*5 milliseconds
     function makeBullets(){
         if (bulletShowSecs<5);{
             bulletShowSecs++;
@@ -196,6 +199,7 @@ $(document).ready(function () {
         }
     }
 
+    //Function to draw bullets and determine color
     function setBullets(){
         for (i = 0; i<15; i++){
             switch(rainbowColor[i]){
@@ -237,6 +241,7 @@ $(document).ready(function () {
         }
     }
 
+    //Function to fill up empbar and call emp animation
     function setEmp(){
         if (!empActive){
             empSecs++;
@@ -281,6 +286,7 @@ $(document).ready(function () {
         }
     }
 
+    //Function to make all movements and check if hit
     function getMovement(){
         for (var i = 0; i<15; i++){
             if (bulletShow[i]){
@@ -396,6 +402,7 @@ $(document).ready(function () {
         }
     }
 
+    //resets all variables
     function restart(){
     go = true;
     leftPress = false;
@@ -435,7 +442,7 @@ $(document).ready(function () {
     gameOverSecs = 0;    
     }
 
-//listens for keycodes
+    //listens for keycodes
     $(document).keydown(function (e) {
         if (e.keyCode === 13) {
             restart();
@@ -468,6 +475,7 @@ $(document).ready(function () {
         }
     });
 
+    //developer tools css
     $('.devToggle').click(function(){
         devToolsOpen = !devToolsOpen;
         devToolsOpened = true;
@@ -492,8 +500,8 @@ $(document).ready(function () {
     });
 
     $('.saveDev').click(function(){
-        grav = parseInt($(".grav").val());
-        initVel = parseInt($(".initVel").val());
+        grav = parseFloat($(".grav").val());
+        initVel = parseFloat($(".initVel").val());
         bombSpawnSecs = parseInt($(".bombSpawnSecs").val());
         bombNum = parseInt($(".bombNum").val());
         playerJumpMove = parseInt($(".playerJumpMove").val());
