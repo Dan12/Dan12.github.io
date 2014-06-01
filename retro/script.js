@@ -89,7 +89,7 @@ $(document).ready(function () {
     $('.volume').css('display','block');
     $('.sfx').css('display','block');
 
-    //Function to execute every 40 milliseconds to draw everything and call functions
+    //Function to execute every 30 milliseconds to draw everything and call functions
     setInterval(function () {
         if (!go && !pause && !gameOver) {
             canvas.clearRect(0, 0, 500, 400);
@@ -101,7 +101,7 @@ $(document).ready(function () {
             canvas.fillText("Press M to toggle mute and X to toggle sound effects",15,95);
             canvas.fillText("You get one point for every bomb you shoot down", 15, 130);
             canvas.fillText("Your highscore will be saved locally on your browser",15,165);
-            canvas.fillText("You will loose lives if a bomb reaches the ground or if the death pad hits you", 15, 200);
+            canvas.fillText("You will loose lives if a bomb reaches the ground or if the King Spike hits you", 15, 200);
             canvas.fillText("If you die, just press enter to start a new game", 15, 235);
             canvas.fillText("You have three lives, good luck", 15, 270);
             canvas.fillText("Note:", 15, 340);
