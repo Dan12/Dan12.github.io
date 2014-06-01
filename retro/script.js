@@ -78,9 +78,8 @@ $(document).ready(function () {
             canvas.fillText("You will loose lives if a bomb reaches the ground or if the death pad hits you", 15, 165);
             canvas.fillText("If you die, just press enter to start a new game", 15, 200);
             canvas.fillText("You have three lives, good luck", 15, 235);
-            canvas.fillText("Notes:", 15, 295);
-            canvas.fillText("If you press enter at any time a new game will start", 15, 330);
-            canvas.fillText("Opening the developer tools will disable your chance to get a new highscore", 15, 365);
+            canvas.fillText("Note:", 15, 295);
+            canvas.fillText("Opening the developer tools will disable your chance to get a new highscore", 15, 330);
         }
         if (go && !pause) {
             if (!empActive){
