@@ -60,6 +60,9 @@ $(document).ready(function () {
     var gameOverSecs = 0;
     var devToolsOpen = false;
     var devToolsOpened = false;
+    var img = new Image();
+    img.src="spike.jpg";
+    //while (!img.load){}
 
     //Function to execute every 40 milliseconds to draw everything and call functions
     setInterval(function () {
@@ -91,12 +94,11 @@ $(document).ready(function () {
             setBombs();
             canvas.fillStyle = "Lime";
             canvas.fillRect(0,360,500,40);
+            canvas.drawImage(img,padX,340,30,20);
             canvas.fillStyle = "Red";
             canvas.fillRect(playerX,playerY,30,30);
             canvas.fillStyle = "Black";
             canvas.fillRect(playerX+10,playerY-10,10,10);
-            canvas.fillStyle = "rgb(173,44,9)";
-            canvas.fillRect(padX,340,30,20);
             
             canvas.fillStyle = "Black";
             canvas.font = "14px Arial";
