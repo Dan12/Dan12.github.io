@@ -281,7 +281,7 @@ $(document).ready(function () {
             var b = (Math.floor(Math.random() * 180 + 1));
             empColor = "rgb("+r+","+g+","+b+")";
         }
-        if (empFill>=100 && upPress){
+        if (empFill>=100 && upPress && !empActive){
             empActive = true;
             emp_sound.currentTime = 0;
             emp_sound.play();
@@ -511,6 +511,12 @@ $(document).ready(function () {
         }
     }
 
+    function closeDevTools(){
+        $('.devToggle').html("Open developer tools");
+        $('li, .name_list').css("display","none");
+        devToolsOpen = false;
+    }
+
     //listens for keycodes
     $(document).keydown(function (e) {
         if (e.keyCode === 13) {
@@ -519,6 +525,7 @@ $(document).ready(function () {
                 background.play();
             }
             else {
+                closeDevTools();
                 pause = !pause;
                 if (pause){
                     background.pause();
@@ -542,6 +549,7 @@ $(document).ready(function () {
         }
         if (e.keyCode === 32 && !pause) {
             spacePress = true;
+            closeDevTools();
         }
         if (e.keyCode === 39) {
             rightPress = true;
@@ -597,8 +605,7 @@ $(document).ready(function () {
             $('.invincible').val(invincible);
         }
         if (!devToolsOpen){
-            $(this).html("Open developer tools");
-            $('li, .name_list').css("display","none");
+            closeDevTools();
         }
     });
 
@@ -611,5 +618,6 @@ $(document).ready(function () {
         empInverseIncrease = parseInt($(".empInverseIncrease").val());
         bombDieOnHit = ($(".bombDieOnHit").val() === "true");
         invincible = ($(".invincible").val() === "true");
+        alert("Settings Saved");
     });
 });
