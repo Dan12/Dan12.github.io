@@ -83,6 +83,7 @@ $(document).ready(function () {
     background.volume = .5;
     background.addEventListener('ended', function() {
         this.currentTime = 0;
+        this.play();
     }, false);
     var mute = false;
     var sfx = true;
