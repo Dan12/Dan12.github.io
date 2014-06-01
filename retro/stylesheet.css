@@ -11,23 +11,20 @@ canvas {
 
 li {
 	display: none;
-	margin-left: 110px;
+	margin-left: -30px;
 }
 
 ol {
 	list-style-type: none;
+	margin-top: 2px;
 }
 
 .name {
-	margin: 5px;
+	margin: 2px 0px 1px 0px;
 }
 
-.name_list {
-	display: none;
-	position: relative;
-	top: -261px;
-	left: 0px;
-	text-align: right;
+.saveDev {
+	margin: 2px;
 }
 
 img {

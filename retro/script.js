@@ -514,7 +514,7 @@ $(document).ready(function () {
 
     function closeDevTools(){
         $('.devToggle').html("Open developer tools");
-        $('li, .name_list').css("display","none");
+        $('li').css("display","none");
         devToolsOpen = false;
     }
 
@@ -597,7 +597,6 @@ $(document).ready(function () {
         if (devToolsOpen){
             $(this).html("Close developer tools");
             $('li').css("display","block");
-            $('.name_list').css("display","inline-block");
             $('.grav').val(grav);
             $('.initVel').val(initVel);
             $('.bombSpawnSecs').val(bombSpawnSecs);
