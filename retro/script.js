@@ -522,6 +522,8 @@ $(document).ready(function () {
         if (e.keyCode === 13) {
             if (!go){
                 restart();
+                retrievedObject = JSON.parse(localStorage.getItem('highscore'));
+                console.log(retrievedObject);
                 background.play();
             }
             else {
