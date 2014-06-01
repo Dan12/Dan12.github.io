@@ -71,7 +71,7 @@ $(document).ready(function () {
             gameOver = false;
             canvas.fillStyle = "Black";
             canvas.font = "14px Arial";
-            canvas.fillText("Press Enter to start and V to toggle pause", 15, 25);
+            canvas.fillText("Press Enter to start and to toggle pause", 15, 25);
             canvas.fillText("Press Space to jump and use the left and right arrow keys to move", 15, 60);
             canvas.fillText("You get one point for every bomb you shoot down", 15, 95);
             canvas.fillText("Your highscore will be saved locally on your browser",15,130)
@@ -445,7 +445,12 @@ $(document).ready(function () {
     //listens for keycodes
     $(document).keydown(function (e) {
         if (e.keyCode === 13) {
-            restart();
+            if (!go){
+                restart();
+            }
+            else {
+                pause = !pause;
+            }
         }
         if (e.keyCode === 32 && !pause) {
             spacePress = true;
@@ -459,9 +464,11 @@ $(document).ready(function () {
         if (e.keyCode === 38) {
             upPress = true;
         }
-        if (e.keyCode === 86) {
-            pause = !pause;
-        }
+        // if (e.keyCode === 86) {
+        //     if (go){
+        //         pause = !pause;
+        //     }
+        // }
     });
     $(document).keyup(function (e) {
         if (e.keyCode === 39) {
