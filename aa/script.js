@@ -5,12 +5,25 @@ $(document).ready(function () {
     $(window).resize(function(){
         $('#myCanvas').css("margin-left", ($(window).width()-300)/2);
     });
-    $(document).on('click touchstart', function(){
+    document.addEventListener(this.eventTouchstart, function (event) {
+        if ((!window.navigator.msPointerEnabled && event.touches.length > 1) ||
+            event.targetTouches > 1) {
+          return; // Ignore if touching with more than 1 finger
+        }
+
         if(gameOver || gameWin)
             reset();
         else
             addItem();
+
+        event.preventDefault();
     });
+    // $(document).on('click touch', function(){
+    //     if(gameOver || gameWin)
+    //         reset();
+    //     else
+    //         addItem();
+    // });
     var levSpeed = new Array(.8,.9,.9,-1,-1.2, 1,-1.2,1.3);
     var levStart = new Array(1,  2, 3, 4,   8, 8,  10,  9);
     var levGetIn = new Array(10,10,10,10,   8,10,  10, 12);
