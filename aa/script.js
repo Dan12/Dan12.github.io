@@ -5,8 +5,11 @@ $(document).ready(function () {
     $(window).resize(function(){
         $('#myCanvas').css("margin-left", ($(window).width()-300)/2);
     });
-    $(window).click(function(){
-        addItem();
+    $(document).on('click touchstart', function(){
+        if(gameOver || gameWin)
+            reset();
+        else
+            addItem();
     });
     var levSpeed = new Array(.8,.9,.9,-1,-1.2, 1,-1.2,1.3);
     var levStart = new Array(1,  2, 3, 4,   8, 8,  10,  9);
