@@ -13,9 +13,9 @@ $(document).ready(function () {
         else
             addItem();
     });
-    var levSpeed = new Array(.8,.9,.9,-1,-1.2, 1,-1.2,1.3);
-    var levStart = new Array(1,  2, 3, 4,   8, 8,  10,  9);
-    var levGetIn = new Array(10,10,10,10,   8,10,  10, 12);
+    var levSpeed = new Array(.8,.9,.9,-1,-1.2, 1,-1.2,1.3,-1,1.2,1.2,-1.5,1.8,1.5,1.4,-1.3);
+    var levStart = new Array(1,  2, 3, 4,   8, 8,  10,  9, 8, 11, 11,   9, 10, 10, 10,   9);
+    var levGetIn = new Array(10,10,10,10,   8,10,  10, 12,14, 12, 13,  10,  8, 10, 12,  13);
     if(retrievedObject === null)
         var level = 0;
     else
