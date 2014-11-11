@@ -10,3 +10,42 @@ p{
 h4{
 	text-align: center;
 }
+.levBut{
+	margin: 0;
+	padding: 0;
+}
+.levBut, .setLevBut{
+	text-align: center;
+	border: 2px solid gray;
+	width: 180px;
+	margin-left: auto;
+	margin-right: auto;
+	cursor: pointer;
+}
+.message{
+	padding: 1px;
+	margin: 2px;
+}
+.setLevBut{
+	visibility: hidden;
+	margin-top: 2px;
+}
+ol{
+	list-style-type: none;
+	margin: auto;
+	padding: 0;
+	visibility: hidden;
+}
+li{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+input{
+	width: 80px;
+	margin: 0px;
+}
+.name{
+	margin: 0px;
+	padding: 2px;
+}

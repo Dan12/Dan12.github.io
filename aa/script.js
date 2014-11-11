@@ -1,11 +1,13 @@
 $(document).ready(function () {
     $('#myCanvas').css("margin-left", ($(window).width()-300)/2);
+    var toggleLevBut = false;
+    var devGame = false;
     var retrievedObject = JSON.parse(localStorage.getItem('level'));
     console.log(retrievedObject);
     $(window).resize(function(){
         $('#myCanvas').css("margin-left", ($(window).width()-300)/2);
     });
-    $(document).on('click touch', function(){
+    $('#myCanvas').on('click touch', function(){
         if(gameOver || gameWin)
             resetGame();
         else
@@ -178,13 +180,54 @@ $(document).ready(function () {
         gameOver = false;
         gameWin = false;
     }
+
+    function resetDevGame(){
+        degrees = new Array(startNum);
+        for(var j = 0; j < degrees.length; j++){
+            degrees[j] = (360/startNum)*j;
+        }
+        numAdd = new Array(getAmount);
+        for(var ii = 0; ii < numAdd.length; ii++){
+            numAdd[ii] = undefined;
+        }
+        numAt = 0;
+        masterDeg = 0;
+        gameOver = false;
+        gameWin = false;
+    }
     
     $(document).keydown(function (e) {
         if (e.keyCode === 32) {
             addItem();
         }
-        if((gameOver || gameWin) && e.keyCode === 13){
+        if((gameOver || gameWin) && e.keyCode === 13 && !devGame){
             resetGame();
         }
+        if((gameOver || gameWin) && e.keyCode === 13 && devGame){
+            resetDevGame();
+        }
+    });
+
+    $('.levBut').click(function(){
+        toggleLevBut = !toggleLevBut;
+
+        if(toggleLevBut){
+            $('ol').css('visibility','visible');
+            $('.setLevBut').css('visibility','visible');
+            $('.levBut').html("Close Level Creator");
+        }
+        if(!toggleLevBut){
+            $('ol').css('visibility','hidden');
+            $('.setLevBut').css('visibility','hidden');
+            $('.levBut').html("Open Level Creator");
+        }
+    });
+
+    $('.setLevBut').click(function(){
+        startNum = parseInt($(".startNum").val());
+        getAmount = parseInt($(".startGet").val());
+        speed = parseFloat($(".speed").val());
+        resetDevGame();
+        devGame = true;
     });
 });
