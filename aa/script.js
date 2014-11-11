@@ -5,25 +5,12 @@ $(document).ready(function () {
     $(window).resize(function(){
         $('#myCanvas').css("margin-left", ($(window).width()-300)/2);
     });
-    document.addEventListener(this.eventTouchstart, function (event) {
-        if ((!window.navigator.msPointerEnabled && event.touches.length > 1) ||
-            event.targetTouches > 1) {
-          return; // Ignore if touching with more than 1 finger
-        }
-
+    $(document).on('click touch', function(){
         if(gameOver || gameWin)
-            reset();
+            resetGame();
         else
             addItem();
-
-        event.preventDefault();
     });
-    // $(document).on('click touch', function(){
-    //     if(gameOver || gameWin)
-    //         reset();
-    //     else
-    //         addItem();
-    // });
     var levSpeed = new Array(.8,.9,.9,-1,-1.2, 1,-1.2,1.3);
     var levStart = new Array(1,  2, 3, 4,   8, 8,  10,  9);
     var levGetIn = new Array(10,10,10,10,   8,10,  10, 12);
@@ -163,7 +150,7 @@ $(document).ready(function () {
         }
     }
     
-    function reset(){
+    function resetGame(){
         if(level<levStart.length-1 && gameWin){
              level++;
              if (retrievedObject === null){
@@ -197,7 +184,7 @@ $(document).ready(function () {
             addItem();
         }
         if((gameOver || gameWin) && e.keyCode === 13){
-            reset();
+            resetGame();
         }
     });
 });
