@@ -25,7 +25,7 @@ $(document).ready(function () {
         level = 0;
     else
         level = parseInt(retrievedObject);
-    //level = 0;
+    level = 19;
 
     var c = document.getElementById("myCanvas");
     var canvas = c.getContext("2d");
@@ -40,7 +40,7 @@ $(document).ready(function () {
     var numAt = 0;
     
     var gameOver = false;
-    var gameWin = false;
+    var gameWin = true;
     
     var tolerance = 8;
     
@@ -61,12 +61,16 @@ $(document).ready(function () {
     var smallFontHeight = 10;
     var smallFontWidth = 8;
     var bigFontHeight = 30;
-    var bigFontWidth = 24;
+    var bigFontWidth;
+    if(level+1<10)
+        bigFontWidth = 24;
+    else
+        bigFontWidth = 48;
     var centerAlpha = 1;
     var bigTextAlpha = 1;
     var mesFontSize = 45;
 
-    var animatingWin = false;
+    var animatingWin = true;
     var animatingLose = false;
 
     var screenRad = Math.sqrt(centerX*centerX+centerY*centerY);
@@ -127,7 +131,7 @@ $(document).ready(function () {
         canvas.fillText(""+(level+1),150-bigFontWidth/2,150+bigFontHeight/2+displaceY);
         if(animatingWin && animateSec > 100 && animateSec <= 200){
             canvas.globalAlpha = 1-centerAlpha;
-            if(level+2 < 10)
+            if(level+2 != 10)
                 canvas.fillText(""+(level+2),150-bigFontWidth/2,150+bigFontHeight/2+displaceY);
             else
                 canvas.fillText(""+(level+2),150-bigFontWidth,150+bigFontHeight/2+displaceY);
@@ -141,8 +145,8 @@ $(document).ready(function () {
         if(gameOver && animateSec == 51){
             canvas.globalAlpha = 1;
             canvas.font = 30+"px Arial";
-            canvas.fillText("Click/Press Enter",150-(canvas.measureText("Click/Press Enter").width/2),150-(45/3));
-            canvas.fillText("to try again",150-(canvas.measureText("to try again").width/2),150+(45/3));
+            canvas.fillText("Click/Press Enter",150-(canvas.measureText("Click/Press Enter").width/2),150-(45/3)-10);
+            canvas.fillText("to try again",150-(canvas.measureText("to try again").width/2),150+(45/3)-10);
         }
         if(gameWin){
             canvas.font = mesFontSize+"px Arial";
@@ -166,8 +170,14 @@ $(document).ready(function () {
         }
         else if(animateSec <= 150){
             bigFontSize = 45+(animateSec-50);
-            bigFontWidth += 0.5;
-            bigFontHeight += 0.5;
+            if(level+1 < 10){
+                bigFontWidth += 0.5;
+                bigFontHeight += 0.5;
+            }
+            else{
+                bigFontWidth += 1;
+                bigFontHeight += 1;
+            }
             smallFontWidth += 0.5;
             smallFontHeight += 0.5;
             smallFontSize = 14+(((animateSec-50)*3)/5);
@@ -184,8 +194,18 @@ $(document).ready(function () {
             centerAlpha = 1;
             bigFontSize = (45-animateSec+300);
             smallFontSize = 14+((300-animateSec)*3)/5;
-            bigFontWidth -= 0.5;
-            bigFontHeight -= 0.5;
+            if(level+1 < 10){
+                bigFontWidth -= 0.5;
+                bigFontHeight -= 0.5;
+            }
+            else if(level+1 == 10){
+                bigFontWidth -= 1;
+                bigFontHeight -= 0.5;
+            }
+            else{
+                bigFontWidth -= 1;
+                bigFontHeight -= 1;
+            }
             smallFontWidth -= 0.5;
             smallFontHeight -= 0.5;
             displaceY = 50-((50/100)*(animateSec-200));
@@ -210,8 +230,11 @@ $(document).ready(function () {
             nodeRad = 8;
             mesFontSize = 45;
         }
-        if(animateSec == 201)
+        if(animateSec == 201){
             resetGame();
+            if(level+1 == 10)
+                bigFontWidth *= 2;
+        }
     }
 
     function animateLose(){
@@ -371,6 +394,8 @@ $(document).ready(function () {
             resetGame();
         }
         if((gameOver || gameWin) && e.keyCode === 13 && devGame && !animatingWin && (!animatingLose || (animatingLose && animateSec>=50))){
+            if(animatingLose)
+                animateSec++;
             resetDevGame();
         }
     });
