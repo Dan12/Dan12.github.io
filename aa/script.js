@@ -25,7 +25,7 @@ $(document).ready(function () {
         level = 0;
     else
         level = parseInt(retrievedObject);
-    level = 19;
+    //level = 19;
 
     var c = document.getElementById("myCanvas");
     var canvas = c.getContext("2d");
@@ -40,7 +40,7 @@ $(document).ready(function () {
     var numAt = 0;
     
     var gameOver = false;
-    var gameWin = true;
+    var gameWin = false;
     
     var tolerance = 8;
     
@@ -70,7 +70,7 @@ $(document).ready(function () {
     var bigTextAlpha = 1;
     var mesFontSize = 45;
 
-    var animatingWin = true;
+    var animatingWin = false;
     var animatingLose = false;
 
     var screenRad = Math.sqrt(centerX*centerX+centerY*centerY);
