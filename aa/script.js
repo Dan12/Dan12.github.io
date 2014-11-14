@@ -6,8 +6,16 @@ $(document).ready(function () {
     });
 
     $('#myCanvas').mousedown(function(){
-        if((gameOver || gameWin) && !animatingWin && (!animatingLose || (animatingLose && animateSec>=50)))
+        if((gameOver || gameWin) && !devGame && !animatingWin && (!animatingLose || (animatingLose && animateSec>=50))){
+            if(animatingLose)
+                animateSec++;
             resetGame();
+        }
+        if((gameOver || gameWin) && devGame && !animatingWin && (!animatingLose || (animatingLose && animateSec>=50))){
+            if(animatingLose)
+                animateSec++;
+            resetDevGame();
+        }
         else
             addItem();
     });
