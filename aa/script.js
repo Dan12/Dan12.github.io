@@ -6,7 +6,7 @@ $(document).ready(function () {
     });
 
     $('#myCanvas').mousedown(function(){
-        if((gameOver || gameWin) && !animatingWin && !animatingLose)
+        if((gameOver || gameWin) && !animatingWin && (!animatingLose || (animatingLose && animateSec>=50)))
             resetGame();
         else
             addItem();
