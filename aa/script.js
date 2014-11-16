@@ -350,7 +350,7 @@ $(document).ready(function () {
     }
     
     function resetGame(){
-        if(level<levStart.length-1 && gameWin){
+        if(level<levStart.length-1 && gameWin && !devGame){
              level++;
              if (retrievedObject === null){
                 console.log(level);
