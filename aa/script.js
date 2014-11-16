@@ -239,7 +239,10 @@ $(document).ready(function () {
             mesFontSize = 45;
         }
         if(animateSec == 201){
-            resetGame();
+            if(!devGame)
+                resetGame();
+            else
+                resetDevGame();
             if(level+1 == 10)
                 bigFontWidth *= 2;
         }
@@ -350,7 +353,7 @@ $(document).ready(function () {
     }
     
     function resetGame(){
-        if(level<levStart.length-1 && gameWin && !devGame){
+        if(level<levStart.length-1 && gameWin){
              level++;
              if (retrievedObject === null){
                 console.log(level);
