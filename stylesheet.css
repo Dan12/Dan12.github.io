@@ -1,163 +1,121 @@
 /*General*/
 
 @font-face{
-	font-family: 'SF';
-	src: url('SF Intellivised.ttf');
-}
-
-@font-face{
 	font-family: 'monaco';
 	src: url('Monaco.ttf');
 }
 
-*{
-	margin: 0;
-}
+/*http://www.colourlovers.com/palette/27905/threadless*/
+
+/*@import url(http://fonts.googleapis.com/css?family=Cinzel+Decorative:700);*/
 
 body{
-	font-family: SF;
+    margin: 0;
+    font-family: 'monaco';
 }
 
-/*Header*/
+/*title*/
 
-.heading{
-	text-align: center;
-	background: url("bar_background.jpg");
-	height: 130px;
-	width: 100%;
-	color: white;
-	z-index: 10;
-	position: relative;
+.titleContainer h1{
+    padding: 6px 0 0 0;
+    margin: 0;
 }
 
-.heading h1{
-	padding-top: 30px;
-	padding-bottom: 10px;
-	font-size: 30px;
+.titleContainer{
+    background-color: rgb(156,196,228);
+    margin: 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 20;
 }
 
-.heading h4{
-	font-size: 12px;
-	border: 3px solid skyblue;
-	display: inline-block;
-	padding: 4px;
-	font-family: arial;
+.quote{
+    padding: 4px 0 6px 0;
+    margin: 0;
+    position: relative;
 }
 
-.sidebar{
-	background: url("bar_background.jpg");
-	width: 100px;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
+/*navigation*/
+
+.navBar{
+    width: 100px;
+    height: 400px;
+    background-color: rgb(58,137,201);
+    position: fixed;
+    z-index: 15;
 }
 
-/*Background*/
-
-.background img{
-	position: fixed;
-	bottom: 0px;
-	right: 0;
-	z-index: -2;
+.navList, .subNavList{
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    position: absolute;
 }
 
-.cover{
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	height: 3000px;
-	width: 3000px;
-	z-index: -2;
-	background-color: rgba(200,200,200,.4);
+.navList li, .subNavList li{
+    padding-top: 10px;
 }
 
-/*Navigation*/
-
-.navigtion{
-	width: 200px;
-	float: left;
-	border: 5px double white;
-	border-radius: 15px;
-	z-index: 20;
-	position: relative;
-	text-align: center;
-	font-size: 30px;
-	padding-top: 30px;
-	position: absolute;
-	top: 150px;
-	left: 70px;
-	background-color: rgba(150,150,150,.5);
-	box-shadow: 3px 3px 16px 1px lightgray;
+.navItem, .subNavItem{
+    cursor: pointer;
+    color: black;
 }
 
-.navigtion p{
-	padding-bottom: 20px;
-	text-shadow: 12px 12px 3px rgb(255,255,200);
-	line-height: 30px;
-	color: white;
-	-webkit-text-stroke: .6px black;
-	width: 160px;
-	margin: 0 auto;
+.subNavItem {
+    position: relative;
+    text-decoration: none;
+    color: white;
 }
 
-.navigtion a{
-	-webkit-text-stroke: .6px black;
-	color: rgb(0,87,199);
+.subNavBar {
+    position: fixed;
+    width: 100px;
+    height: 400px;
+    left: 0;
+    background-color: rgb(27,50,95);
+    z-index: 10;
 }
 
-a{
-	text-decoration: none;
+/*content*/
+
+.contentContainer {
+    left: 100px;
 }
 
-/*General Text*/
-
-.text_box{
-	margin-right: 70px;
-	background-color: rgba(100,100,100,.7);
-	color: white;
-	padding: 15px;	
-	border-radius: 15px;
-	border: 5px double white;
-	position: absolute;
-	z-index: 30;
-	top: 570px;
-	left: 70px;
-	text-indent: 20px;
-	font-size: 20px;
-	font-family: monaco;
-	max-width: 600px;
-	box-shadow: 3px 3px 16px 1px lightgray;
+.contentContainerMain{
+    z-index: -10;
+    background-color: rgba(233,242,249,0);
+    position: absolute;
 }
 
-/*Hobbies extra*/
-
-.hobbies sup{
-	font-size: 8px;
+.contentContainerShadow{
+    box-shadow:7px 10px 6px -4px black inset;
+    z-index: 0;
+    background-color: rgba(255,255,255,1.0);
+    position: fixed;
+    width: 100%;
 }
 
-/*Cool extra*/
-
-.cool_stuff p{
-	padding-bottom: 15px;
+.contentBox{
+    padding: 10px;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    position: relative;
 }
 
-audio{
-	padding-bottom: 15px;
+.contentContent{
+    text-indent: 10px;
+    max-width: 600px;
 }
 
-.text_box a{
-	color: blue;
+.pageContent {
+    position: absolute;
+    visibility: hidden;
 }
 
-@media screen and (max-width: 500px){
-	.heading h4{
-		font-size: 10px;
-	}
-	.heading h1{
-		font-size: 26px;
-	}
-	.text_box{
-		font-size: 17px;
-	}
+.contentBox a{
+    text-decoration: none;
+    color: blue;
+    cursor: pointer;
 }
