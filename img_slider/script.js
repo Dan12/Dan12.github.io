@@ -24,8 +24,10 @@ var seconds = 0;
 var prev_index = 1;
 var interval1;
 var going = false;
+console.log("hey")
 $(document).ready(function () {
-	//$('.container').css({'background':'white url("ajax-loader.gif")','background-position':'center','z-index':'20','width':(img_width*img_scale)+'px','height':(img_height*img_scale)+'px','background-repeat':'no-repeat'});
+	console.log("hey2")
+	$('.container').css({'background':'white url("ajax-loader.gif")','background-position':'center','z-index':'20','width':(img_width*img_scale)+'px','height':(img_height*img_scale)+'px','background-repeat':'no-repeat'});
 	if (img_scale<0 || img_width<0 || img_height<0 || img<0 || effect_dur > transition_time-100){
 		alert('The values you entered will not produce and image or will not effectivley transition. Resetting unacceptable values to default values');
 		if (img_scale<0){
@@ -50,7 +52,11 @@ $(document).ready(function () {
 		$('.container').append('<div class="img_container_'+img_num+' img_container"></div>');
 		$('.img_container_'+img_num).css({'background-image':'url(img'+img_num+'.jpeg)','z-index':'-10'});
 	}
-	//$('.img_container').css('display','hidden')
+	$('.img_container').css('display','none');
+	$('<img/>').attr('src', 'img'+img+'.jpeg').load(function() {
+	   $(this).remove();
+	   $('.img_container').css('display','block');
+	});
 	$('.img_container_1').css('z-index','10');
 	for (i = 1; i <= img; i++){
 		$('.slider_button_holder').append('<div class="slider_button slider_button_'+i+'" value="'+i+'"></div>');
