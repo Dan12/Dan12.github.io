@@ -1,14 +1,29 @@
-var employees = [
+var data = [
     {
-    	"firstName":"Yo", 
-    	"lastName":"Doe"
+    	"tag":"h1", 
+        "classes":"none",
+    	"content":"Hello World",
+        "superClass":"header"
 	},
     {
-    	"firstName":"Anna", 
-    	"lastName":"Smith"
+    	"tag":"p", 
+        "classes":"green",
+    	"content":"Welcome",
+        "superClass":"content"
     },
     {
-    	"firstName":"Peter",
-    	"lastName": "Jones"
+    	"tag":"p",
+        "classes":"none",
+    	"content": "About me and stuff",
+        "superClass":"content"
     }
 ];
+
+var mobileData = [
+    {
+        "tag":"h1", 
+        "classes":"none",
+        "content":"Hello World",
+        "superClass":"header"
+    }
+]

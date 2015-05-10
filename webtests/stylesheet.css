@@ -2,3 +2,12 @@ body {
 	color:blue;
 	visibility:visible;
 }
+
+.green {
+	color:green;
+}
+
+.content{
+	color:orange;
+	background-color: red;
+}

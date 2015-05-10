@@ -6,19 +6,21 @@ $(document).ready(function () {
 		mobileActions();
 	else
 		defaultActions();
- 
-	console.log("Hello");
-	$("h1").after("<p>"+employees[0].firstName+"</p>");
-	console.log(employees[0].firstName);
 
 });
 
 function mobileActions(){
 	isMobile = true;
 	$('head').append('<link rel="stylesheet" type="text/css" href="mobilestylesheet.css" />');
+	for(content in mobileData){
+		$('.'+mobileData[content].superClass).append('<'+mobileData[content].tag+'>'+mobileData[content].content+'</'+mobileData[content].tag+'>');
+	}
 }
 
 function defaultActions(){
 	isMobile = false;
 	$('head').append('<link rel="stylesheet" type="text/css" href="stylesheet.css" />');
+	for(content in data){
+		$('.'+data[content].superClass).append('<'+data[content].tag+' class = "'+data[content].classes+'">'+data[content].content+'</'+data[content].tag+'>');
+	}
 }
