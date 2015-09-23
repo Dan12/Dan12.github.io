@@ -112,7 +112,6 @@ a:hover{
 
 .nav_tabs{
     list-style: none;
-    height: 30px;
     padding: 0;
 }
 
@@ -144,4 +143,32 @@ a:hover{
     padding-bottom: 30px;
     position: relative;
     top: 40px;
+}
+
+.footer_content a{
+    background-color: rgb(245,248,253);
+}
+
+@media screen and (max-width: 800px) {
+    .container{
+        max-width: 600px;
+    }
+
+    .project_image{
+        display: none;
+    }
+
+    .nav_tabs{
+        line-height: 46px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        max-width: 400px;
+    }
+
+    .nav_tab{
+        font-size: 14px;
+    }
 }

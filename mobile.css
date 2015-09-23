@@ -5,3 +5,13 @@
 .project_image{
 	display: none;
 }
+
+.nav_tabs{
+	line-height: 46px;
+}
+
+@media screen and (max-width: 420px) {
+	.nav_tab{
+		font-size: 14px;
+	}
+}

@@ -1,6 +1,7 @@
 TABNUM = 4;
 PAGEWIDTH = 800;
 CURRENTTAB = 1;
+ISMOBILE = false;
 
 $(document).ready(function(){
     
@@ -8,15 +9,52 @@ $(document).ready(function(){
 
     PAGEWIDTH = parseInt($(".container").css("max-width"));
 
-    reformat();
+    if($(".project_image").css("display") == "none"){
+      ISMOBILE = true;
+      reformatMobile();
+    }
+    else
+      reformatRegular();
     
     loadPage();
     
     $(window).resize(function(){
-       reformat(); 
+      if($(".project_image").css("display") == "none")
+        ISMOBILE = true;
+      else
+        ISMOBILE = false;
+      console.log(ISMOBILE);
+      if(ISMOBILE)
+        reformatMobile();
+      else
+        reformatRegular(); 
     });
     
 });
+
+function reformatMobile(){
+    PAGEWIDTH = parseInt($(".nav_tabs").width())-40;
+    var widthSum = 0;
+    for(var i = 1; i <= TABNUM/2; i++){
+        widthSum += $("[tab_num='"+i+"']").outerWidth(false);
+    }
+    var padding = (PAGEWIDTH-widthSum)/(TABNUM/2);
+    padding-=2;
+    if(padding > 0){
+      $("[tab_num='1']").css("margin","0 "+padding+"px 0 20px");
+      $("[tab_num='2']").css("margin","0 20px 0 "+padding+"px");
+    }
+    widthSum = 0;
+    for(var i = TABNUM/2+1; i <= TABNUM; i++){
+        widthSum += $("[tab_num='"+i+"']").outerWidth(false);
+    }
+    padding = (PAGEWIDTH-widthSum)/(TABNUM/2);
+    padding-=2;
+    if(padding > 0){
+      $("[tab_num='3']").css("margin","0 "+padding+"px 0 20px");
+      $("[tab_num='4']").css("margin","0 20px 0 "+padding+"px");
+    }
+}
 
 function loadPage(){
     $(".tab_"+CURRENTTAB).slideDown(300);
@@ -32,13 +70,14 @@ function loadPage(){
     });
 }
 
-function reformat(){
+function reformatRegular(){
+    PAGEWIDTH = parseInt($(".container").width());
     var widthSum = 0;
     for(var i = 1; i <= TABNUM; i++){
-        widthSum += $("[tab_num='"+i+"']").outerWidth();
+        widthSum += $("[tab_num='"+i+"']").outerWidth(false);
     }
     var padding = (PAGEWIDTH-widthSum)/(TABNUM*2);
-    padding-=2;
+    padding-=4;
     for(var i = 1; i <= TABNUM; i++){
         $("[tab_num='"+i+"']").css("margin","0 "+padding+"px");
     }
