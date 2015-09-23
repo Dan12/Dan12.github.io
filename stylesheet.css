@@ -1,119 +1,147 @@
-/*General*/
-
-@font-face{
-	font-family: 'monaco';
-	src: url('Monaco.ttf');
-}
-
-/*http://www.colourlovers.com/palette/27905/threadless*/
-/*http://jsfiddle.net/5GCsJ/954/ and http://jsfiddle.net/XNwbt/458/*/
-/*@import url(http://fonts.googleapis.com/css?family=Cinzel+Decorative:700);*/
+/*palette used: http://www.colourlovers.com/palette/468540/TWLOHA*/
 
 body{
-    margin: 0;
-    font-family: 'monaco';
-}
-
-/*title*/
-
-.titleContainer h1{
-    padding: 6px 0 0 0;
-    margin: 0;
-}
-
-.titleContainer{
-    background-color: rgb(156,196,228);
-    margin: 0;
-    position: fixed;
+    font-family: arial;
     text-align: center;
-    width: 100%;
-    z-index: 20;
+    background-color: rgb(245,248,253);
 }
 
-.quote{
-    padding: 4px 0 6px 0;
-    margin: 0;
+a{
+    color: rgb(0,153,255);
+    background-color: white;
+    text-decoration: none;
+    padding: 0;
+    border-radius: 4px;
+    transition: all 200ms linear;
+}
+
+a:hover{
+    padding: 2px 10px;
+    background-color: rgb(218,222,224);
+    text-decoration: underline;
+}
+
+.inline_a_tag{
+    padding: 0 2px;
+}
+
+.inline_a_tag:hover{
+    padding: 0 2px;
+}
+
+.container{
+    max-width: 800px;
+    margin: auto;
+}
+
+.about, .project_container, .header{
+    border-bottom: solid 1px rgb(218,222,224);
     position: relative;
 }
 
-/*navigation*/
-
-.navBar{
-    width: 100px;
-    height: 400px;
-    background-color: rgb(58,137,201);
-    position: fixed;
-    z-index: 15;
+.header{
+    padding-bottom: 20px;
+    font-size: 40px;
 }
 
-.navList, .subNavList{
-    list-style: none;
-    margin: 0;
-    padding: 10px;
-    position: absolute;
+.about_content, .project_content{
+    text-align: left;
+    margin-left: 20px;
+    font-size: 20px;
+    line-height: 28px;
 }
 
-.navList li, .subNavList li{
-    padding-top: 10px;
+.project_content{
+    max-width: 570px;
 }
 
-.navItem, .subNavItem{
-    cursor: pointer;
+.about_content{
+    text-indent: 36px;
+}
+
+.about_header, .project_header, .web_projects_header, .other_projects_header, .competitions_header{
+    font-size: 30px;
+}
+
+.about_header, .web_projects_header, .other_projects_header, .competitions_header{
+    padding: 14px 0 10px;
+    border-bottom: solid 1px rgb(218,222,224);
+}
+
+.project_content{
+    min-height: 180px;
+}
+
+.project_image img{
+    width: 180px;
+    height: 180px;
+    box-shadow: none;
     color: black;
-}
-
-.subNavItem {
-    position: relative;
-    text-decoration: none;
-    color: white;
-}
-
-.subNavBar {
-    position: fixed;
-    width: 100px;
-    height: 400px;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
     left: 0;
-    background-color: rgb(27,50,95);
+    background-color: white;
     z-index: 10;
+    transition: all 200ms ease;
 }
 
-/*content*/
-
-.contentContainer {
-    left: 100px;
+.project_image img:hover{
+    top: -90px;
+    left: -90px;
+    width: 360px;
+    height: 360px;
+    box-shadow: 0 0 30px 10px;
 }
 
-.contentContainerMain{
-    z-index: -10;
-    background-color: rgba(233,242,249,0);
+.img_link{
     position: absolute;
+    top: 60px;
+    left: 600px;
 }
 
-.contentContainerShadow{
-    box-shadow:7px 10px 6px -4px black inset;
-    z-index: 0;
-    background-color: rgba(255,255,255,1.0);
-    position: fixed;
-    width: 100%;
+.img_link:hover{
+    padding: 0;
+    background-color: rgba(255,255,255,0);
 }
 
-.contentBox{
-    padding: 10px;
-    position: relative;
+.about, .web_projects, .other_projects, .competitions{
+    background-color: white;
+    border-radius: 4px;
 }
 
-.contentContent{
-    text-indent: 10px;
-    max-width: 600px;
+.nav_tabs{
+    list-style: none;
+    height: 30px;
+    padding: 0;
 }
 
-.pageContent {
-    position: absolute;
-    visibility: hidden;
-}
-
-.contentBox a{
-    text-decoration: none;
-    color: blue;
+.nav_tab{
+    display: inline;
+    font-size: 20px;
     cursor: pointer;
+    background-color: rgb(245,248,253);
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: all 300ms ease;
+}
+
+.nav_tab:hover{
+    background-color: rgb(218,222,224);
+}
+
+.nav_selected{
+    background-color: rgb(218,222,224);
+}
+
+.tab{
+    display: none;
+}
+
+.footer_content{
+    display: inline;
+    margin: 0 30px;
+    padding-bottom: 30px;
+    position: relative;
+    top: 40px;
 }

@@ -1,1 +1,1 @@
-This is not just a website. This is a Website. And it is awesome. So take a look. Be amazed. Be disgusted. I don't care. This is just a readme to describe this website. Dan12 out.
+This is the repository where I keep all of my JavaScript projects and the home page of my website. My website contains links to all the porjects that I have done and hightlights some of my achievements.

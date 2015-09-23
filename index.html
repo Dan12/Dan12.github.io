@@ -1,139 +1,146 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
-<head>
-<meta charset="utf-8">
-<title>Daniel Weber</title>
-<link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative:700" rel="stylesheet" type="text/css">
-<link href="stylesheet.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
-<script type="text/javascript" src="script.js"></script>
-</head>
-<body>
-    <div class = "titleContainer">
-        <h1>Daniel Weber</h1>
-        <h4 class = "quote">"Be the change you wish to see in the world. -Unknown"</h4>
-    </div> 
-    <div class = "navBar">
-        <ul class = "navList">
-            <li class = "navItem" pageLink = "1">Home</li>
-            <li class = "navItem" pageLink = "2">About</li>
-            <li class = "navItem" pageLink = "3">Projects</li>
-            <li class = "navItem" pageLink = "4">Contact</li>
-        </ul>
-    </div>
-    <div class = "subNavBar">
-        <ul class = "subNavList">
-            <div class = "pageContent" page="page1">
-                <li class = "subNavItem" clickLink = "h1">Hello World</li>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Daniel Weber</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="header">Daniel Weber</h1>
+            <div class="nav">
+                <ul class="nav_tabs">
+                    <li class="nav_tab nav_selected" tab_num="1">About</li>
+                    <li class="nav_tab" tab_num="2">Web Projects</li>
+                    <li class="nav_tab" tab_num="3">Other Projects</li>
+                    <li class="nav_tab" tab_num="4">Competitions</li>
+                </ul>
             </div>
-            <div class = "pageContent" page="page2">
-                <li class = "subNavItem" clickLink = "a1">General</li>
-                <li class = "subNavItem" clickLink = "a2">Hobbies</li>
-                <li class = "subNavItem" clickLink = "a3">Favorites</li>
+            <div class="about tab tab_1">
+                <h2 class="about_header">About</h2>
+                <p class="about_content">I am currently a senior in high school and enjoy creating and building a wide range of projects. I focus most heavily on electronics projects and programming projects. My favorite hobby is programming, where I have learned many different languages and have found many applications for my knowledge. I consistently take programming related summer courses, mostly through Northwestern's <a href="http://www.ctd.northwestern.edu/" class="inline_a_tag">CTD</a> and have learned how to make web pages with HTML, CSS, and JavaScript and how to create database backed applications using the Ruby on Rails framework.</p>
+                <p class="about_content">I have also achieved significant proficiency in the Java programming language over many years of practice and application and have also gained a good amount of knowledge about arduino programming and electronics. I also recently got a Raspberry Pi and have been experimenting with it's GPIO capabilities. I have also recently taken a course through Coursera called <a href="https://www.coursera.org/learn/machine-learning" class="inline_a_tag">Machine Learning</a>, which greatly interested me and has influenced me to study Machine Learning and Artificial Intelligence more in the future. Appart from programming, I also have played soccer for over a decade for various teams and have been doing Tae Kwon Do for several years now.</p>
             </div>
-            <div class = "pageContent" page="page3">
-                <li class = "subNavItem" clickLink = "p1">Android GameHub</li>
-                <li class = "subNavItem" clickLink = "p2">Blackjack</li>
-                <li class = "subNavItem" clickLink = "p3">Space Flight</li>
-                <li class = "subNavItem" clickLink = "p4">Encoder</li>
-                <li class = "subNavItem" clickLink = "p5">Google Code In 2013</li>
-                <li class = "subNavItem" clickLink = "p6">Image Slider</li>
-                <li class = "subNavItem" clickLink = "p7">Retro</li>
-                <li class = "subNavItem" clickLink = "p8">AA</li>
+            <div class="web_projects tab tab_2">
+                <h2 class="web_projects_header">Web Projects</h2>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="https://lit-beyond-4450.herokuapp.com/">Game Design Host</a></h2>
+                    <p class="project_content">This is a hosting service for Unity games that I created for my game design class. It is built using the Ruby on Rails framework. The GitHub repositiory for this project can be found <a href="https://github.com/Dan12/GDHost" class="inline_a_tag">here</a>.</p>
+                    <div class="project_image">
+                        <a href="https://lit-beyond-4450.herokuapp.com/" class="img_link"><img src="images/gdhost.png"></a>
+                    </div>
+                </div>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="/final_project">Android Gamehub</a></h2>
+                    <p class="project_content">This is my final project for my HTML and CSS Class which I took in the summer of 2013. It is supposed to be a mockup for a site that promotes and reviews android games.</p>
+                    <div class="project_image">
+                        <a href="/final_project" class="img_link"><img src="images/andgh.png"></a>
+                    </div>
+                </div>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="/aa">Web AA</a></h2>
+                    <p class="project_content">This is my JavaScript version of an IOS and Android game called aa. After watching friends play this game on their iPhones, I really wanted to play it. However, I found out that the app didn't exist for android at the time, so I decided to recreate the game so that I could play it. Initially I coded a JavaScript version of the game before porting the code to android. I even released the app on the Google Play App Store, but unfortunately, the creators of the iPhone version asked me to take it down.</p>
+                    <div class="project_image">
+                        <a href="/aa" class="img_link"><img src="images/aa.png"></a>
+                    </div>
+                </div>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="/retro">Retro</a></h2>
+                    <p class="project_content">This is a web version of a Java game that I made. The java game is actually one of the first video games that I ever made. You can download the Java version from my GitHub <a href="https://github.com/Dan12/retro" class="inline_a_tag">here</a>.</p>
+                    <div class="project_image">
+                        <a href="/retro" class="img_link"><img src="images/retro.png"></a>
+                    </div>
+                </div>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="/blackjack">Blackjack</a></h2>
+                    <p class="project_content">This is my recreation of the popular card game Blackjack, which I programmed in JavaScript. This was my first project to be programmed in JavaScript</p>
+                    <div class="project_image">
+                        <a href="/blackjack" class="img_link"><img src="images/black.png"></a>
+                    </div>
+                </div>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="/flight">Space Flight</a></h2>
+                    <p class="project_content">This is my JavaScript version of a Java game that I made inspired by the Helicopter Game. It is a fairly simple game played with only the space bar.</p>
+                    <div class="project_image">
+                        <a href="/flight" class="img_link"><img src="images/flight.png"></a>
+                    </div>
+                </div>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="/encoder">Encoder</a></h2>
+                    <p class="project_content">This is a text encoder that I made a few years ago just as a fun side project. Just don't use it to encrypt your files because by today's standards it is very easy to break.</p>
+                    <div class="project_image">
+                        <a href="/encoder" class="img_link"><img src="images/encode.png"></a>
+                    </div>
+                </div>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="/img_slider">Image Slider</a></h2>
+                    <p class="project_content">This is an image slider that I made that can be downloaded and modified. I saw something similar on the web and tried to see if I could make my own.</p>
+                    <div class="project_image">
+                        <a href="/img_slider" class="img_link"><img src="images/imgslider.png"></a>
+                    </div>
+                </div>
             </div>
-            <div class = "pageContent" page="page4">
-                <li class = "subNavItem" clickLink = "c1">Email</li>
-                <li class = "subNavItem" clickLink = "c2">Github</li>
+            <div class="other_projects tab tab_3">
+                <h2 class="other_projects_header">Other Projects</h2>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="https://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en">Android Apps</a></h2>
+                    <p class="project_content">In the summer of 2014 I took an introduction to android game design class, which inspired me to continue writing apps. I have developed several android apps already and have even published some of them to the <a href="https://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en" class="inline_a_tag">Google Play App Store</a>. I have several other app, mostly games, currently in development and will try to release them soon.</p>
+                    <div class="project_image">
+                        <a href="https://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en" class="img_link"><img src="images/apps.png"></a>
+                    </div>
+                </div>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="https://github.com/Dan12">GitHub</a></h2>
+                    <p class="project_content">I also have a few other projects not listed here on GitHub. This includes several Ruby on Rails applications, a Machine Learning Library that I began writing in Java, and an original shape detection alorithm.</p>
+                    <div class="project_image">
+                        <a href="https://github.com/Dan12" class="img_link"><img src="http://cdn.flaticon.com/png/256/25231.png"></a>
+                    </div>
+                </div>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="https://soundcloud.com/doga1216">Music</a></h2>
+                    <p class="project_content">I also love music and I love messing around with it. I have a Numark Mixtrack Pro DJ controller and a Launchpad mini that I like to pull out every once in a while and just try something out. I have also tried creating a remix, which turned out okay for a first try, and I have posted it to <a href="https://soundcloud.com/doga1216" class="inline_a_tag">Soundcloud</a>.</p>
+                    <div class="project_image">
+                        <a href="https://soundcloud.com/doga1216" class="img_link"><img src="images/music.png"></a>
+                    </div>
+                </div>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="http://www.autodesk.com/products/maya/overview-dts?s_tnt=69290:1:0">3D Modeling</a></h2>
+                    <p class="project_content">I also like to do some 3D modeling and animation whenever I have some free time. I mostly use <a href="http://www.autodesk.com/products/maya/overview-dts?s_tnt=69290:1:0" class="inline_a_tag">Maya</a> and have created a few models and simulations to familiarize myself with the interface.</p>
+                    <div class="project_image">
+                        <a href="http://www.autodesk.com/products/maya/overview-dts?s_tnt=69290:1:0" class="img_link"><img src="images/model.png"></a>
+                    </div>
+                </div>
             </div>
-        </ul> 
-    </div>
-    <div class = "contentContainer contentContainerShadow">
-    </div>
-    <div class = "contentContainer contentContainerMain">
-        <div class = "pageContent" page="page1">
-            <div class = "contentBox" clickedLink = "h1">
-                <h3 class = "contentHeader">Hello World</h3>
-                <p class = "contentContent">Welcome to my website. This site is all about me. Look under the headers to see awesome quotes. Get to know me better, and then forget that I ever existed.</p>
+            <div class="competitions tab tab_4">
+                <h2 class="competitions_header">Competitions</h2>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="http://www.squareonenetwork.org/innovative-vehicle-design/autonomous-innovative-vehicle-design-challenge/">Square One AIVD</a></h2>
+                    <p class="project_content">In both 2014 and 2015, I was part of a team that participated in Square One's Autonomous Innovative Vehicle Design Challenge. The goal of the competition was to re-engineer a barbie jeep to be autonomously controlled and complete several predetermined tasks. In both years I did most of the coding for the car and helped out with the build. In both years we enjoyed great successes, winning 3 1st place trophies the first year for performace, design, and engineering and 2 2st place trophies the seconds year in performance and ambassadorship. All of the code that I wrote and used in the 2015 competition can be found <a href="https://github.com/Dan12/GBS_AIVD_2015" class="inline_a_tag">here</a></p>
+                    <div class="project_image">
+                        <a href="http://www.squareonenetwork.org/innovative-vehicle-design/autonomous-innovative-vehicle-design-challenge/" class="img_link"><img src="images/car.png"></a>
+                    </div>
+                </div>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="https://code.google.com/codejam">Google Code Jam</a></h2>
+                    <p class="project_content">I participated in the Google Code Jam for the first time in 2015, and was able to qualify. I was one of 12,000 people worldwide to pass the qualifying round. Unfortunately, I was not able to make it passed round 1.</p>
+                    <div class="project_image">
+                        <a href="https://code.google.com/codejam" class="img_link"><img src="images/gcj.png"></a>
+                    </div>
+                </div>
+                <div class="project_container">
+                    <h2 class="project_header"><a href="https://developers.google.com/open-source/gci/?hl=en">Google Code In</a></h2>
+                    <p class="project_content">I participated in Google Code jam in 2013 and completed a few HTML and JavaScript tasks for <a href="https://www.apertium.org/index.eng.html?dir=slv-srp#translation" class="inline_a_tag">Apertium</a>, which you can view <a href="/google_code_in">here</a>.</p>
+                    <div class="project_image">
+                        <a href="https://developers.google.com/open-source/gci/?hl=en" class="img_link"><img src="images/gci.png"></a>
+                    </div>
+                </div>
             </div>
+            <footer>
+                <p class="footer_content">Made By Daniel Weber</p>
+                <p class="footer_content">Contact me at <a href="mailto:dantech88@yahoo.com">dantech88@yahoo.com</a></p>
+            </footer>
         </div>
-        <div class = "pageContent" page="page2">
-            <div class = "contentBox" clickedLink = "a1">
-                <h3 class = "contentHeader">General</h3>
-                <p class = "contentContent">Hello, my name is Daniel Weber. I am currently in 11th grade. I really enjoy math (currently in calculus) and science (currently in Engineering and Physics) at my high school. I actively take part in my high school's engineering club and participated in <a href="http://www.squareonenetwork.org/innovative-vehicle-design/" target="_blank">Square One's Innovative Vehicle Design Challenge</a>. During the summer of 2013, I took an HTML and CSS intensive class through the <a href="https://www.ctd.northwestern.edu" target="_blank">Northwestern CTD</a>. I have also taken an introduction to Java class through CTD and hope to further my programming knowledge and engineering skills throughout my life. I also enjoy playing soccer for my high school and doing Tae Kwon Do.</p>
-            </div>
-            <div class = "contentBox" clickedLink = "a2">
-                <h3 class = "contentHeader">Hobbies</h3>
-                <p class = "contentContent">I like to program on Arduino in my free time or experiment with my Numark Mixtrack Pro DJ set. I have also recently taken an interest in making remixes of songs using Audacity. I posted my first remix to SoundCloud which you can listen to <a href="https://soundcloud.com/doga1216/radioactive-spectrum-remix" target="_blank">here</a>. I also like to make JavaScript games and websites for them. I recently participated in the 2013-2014 Google Code In and completed a whopping four tasks, winning me an official Google Code In t-shirt and a certificate of completion.</p>
-            </div>
-            <div class = "contentBox" clickedLink = "a3">
-                <h3 class = "contentHeader">Favorites</h3>
-                <p class = "contentContent">My favorite <a href="http://www.youtube.com" target="_blank">YouTube</a> channel is <a href="http://www.youtube.com/user/HISHEdotcom" target="_blank">HISHEdotcom</a>. My favorite song is the Radioactive Sycronice Remix, which I have provided below.</p>
-            	<div>
-            		<audio src="Radioactive%20(Synchronice%20Remix).mp3" controls>
-            			This browser does not support our audio format
-            		</audio>
-            	</div>
-            	<p class = "contentContent">My favorite DJ is <a href="http://djearworm.com" target="_blank">DJ Earworm</a>. My favorite remix by him is his 2009 United State of Pop remix, which I have also provided below.</p>
-            	<div>
-            		<audio src="United_State_of_Pop_2009.mp3" controls>
-            			This browser does not support our audio format
-            		</audio>
-            	</div>
-            	<p class = "contentContent">Here are some of my favorite websites:</p>
-            	<p class = "contentContent"><a href="http://www.gizoogle.net" target="_blank">Gizoogle</a>-Got to have a laugh once in a while. Best website translator ever.</p>
-            	<p class = "contentContent"><a href="http://totallyabsurd.com/inventionarchive.htm" target="_blank">Totaly Absurd Inventions</a>-Who comes up with these things?</p>
-            	<p class = "contentContent"><a href="https://c9.io" target="_blank">Cloud9</a>-One of the best online IDEs that I've seen.</p>
-            	<p class = "contentContent"><a href="http://www.codecademy.com/learn" target="_blank">Codecademy</a>-A big thanks to them for helping me learn JavaScript and jQuery.</p>
-            	<p class = "contentContent"><a href="http://cardsagainsthumanity.com/" target="_blank">Cards Against Humanity</a>-So inappropriate but so funny. Got to have it on this list.</p>
-
-        	</div>
-        </div>
-        <div class = "pageContent" page="page3">
-            <div class = "contentBox" clickedLink = "p1">
-                <h3 class = "contentHeader"><a href="http://dan12.github.io/final_project/" target="_blank">Android GameHub</a></h3>
-        	    <p class = "contentContent">This is my final for my HTML and CSS Class which I took in the summer of 2013.</p>
-        	</div>
-        	<div class = "contentBox" clickedLink = "p2">
-                <h3 class = "contentHeader"><a href="http://dan12.github.io/blackjack/" target="_blank">Blackjack</a></h3>
-        	    <p class = "contentContent">This is my recreation of Blackjack that I coded in JavaScript.</p>
-        	</div>
-        	<div class = "contentBox" clickedLink = "p3">
-                <h3 class = "contentHeader"><a href="http://dan12.github.io/flight" target="_blank">Space Flight</a></h3>
-        	    <p class = "contentContent">This is my web version of a Java game that I made inspired by the Helicopter Game.</p>
-        	</div>
-        	<div class = "contentBox" clickedLink = "p4">
-                <h3 class = "contentHeader"><a href="http://dan12.github.io/encoder" target="_blank">Encoder</a></h3>
-        	    <p class = "contentContent">This is a text encoder that I made just because I was bored.</p>
-        	</div>
-        	<div class = "contentBox" clickedLink = "p5">
-                <h3 class = "contentHeader"><a href="http://dan12.github.io/google_code_in" target="_blank">Google Code In 2013</a></h3>
-        	    <p class = "contentContent">This is where all of my Google Code In 2013 projects are stored.</p>
-        	</div>
-        	<div class = "contentBox" clickedLink = "p6">
-                <h3 class = "contentHeader"><a href="http://dan12.github.io/img_slider" target="_blank">Image Slider</a></h3>
-        	    <p class = "contentContent">This is an image slider that I made that can be downloaded and modified.</p>
-        	</div>
-        	<div class = "contentBox" clickedLink = "p7">
-                <h3 class = "contentHeader"><a href="http://dan12.github.io/retro" target="_blank">Retro</a></h3>
-        	    <p class = "contentContent">This is a web version of a Java game that I made. You can download the Java version from my Github.</p>
-        	</div>
-        	<div class = "contentBox" clickedLink = "p8">
-                <h3 class = "contentHeader"><a href="http://dan12.github.io/aa" target="_blank">AA</a></h3>
-        	    <p class = "contentContent">This is my JavaScript version of an IOS and Android game called aa.</p>
-        	</div>
-        </div>
-        <div class = "pageContent" page="page4">
-            <div class = "contentBox"  clickedLink = "c1">
-                <h3 class = "contentHeader">Email</h3>
-                <p class = "contentContent">dantech88@yahoo.com</p>
-            </div>
-            <div class = "contentBox"  clickedLink = "c2">
-                <h3 class = "contentHeader">Github</h3>
-                <p class = "contentContent">My <a href="https://github.com/Dan12" target="_blank">Github</a> page</p>
-            </div>
-        </div>
-    </div>
-</body>
+    </body>
 </html>
