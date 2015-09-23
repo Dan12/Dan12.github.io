@@ -4,6 +4,10 @@ CURRENTTAB = 1;
 
 $(document).ready(function(){
     
+    //TODO: add function to reformat for web pages
+
+    PAGEWIDTH = parseInt($(".container").css("max-width"));
+
     reformat();
     
     loadPage();
