@@ -1,17 +1,17 @@
-.container{
-	max-width: 600px;
-}
+/*.container{*/
+/*	max-width: 600px;*/
+/*}*/
 
-.project_image{
-	display: none;
-}
+/*.project_image{*/
+/*	display: none;*/
+/*}*/
 
-.nav_tabs{
-	line-height: 46px;
-}
+/*.nav_tabs{*/
+/*	line-height: 46px;*/
+/*}*/
 
-@media screen and (max-width: 420px) {
-	.nav_tab{
-		font-size: 14px;
-	}
-}
+/*@media screen and (max-width: 420px) {*/
+/*	.nav_tab{*/
+/*		font-size: 14px;*/
+/*	}*/
+/*}*/
