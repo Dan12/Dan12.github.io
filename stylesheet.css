@@ -59,11 +59,11 @@ a:hover{
     text-indent: 36px;
 }
 
-.about_header, .project_header, .web_projects_header, .other_projects_header, .competitions_header{
+.about_header, .project_header, .websites_header, .other_projects_header, .competitions_header{
     font-size: 30px;
 }
 
-.about_header, .web_projects_header, .other_projects_header, .competitions_header{
+.about_header, .websites_header, .other_projects_header, .competitions_header{
     padding: 14px 0 10px;
     border-bottom: solid 1px rgb(218,222,224);
 }
@@ -105,7 +105,7 @@ a:hover{
     background-color: rgba(255,255,255,0);
 }
 
-.about, .web_projects, .other_projects, .competitions{
+.about, .websites, .other_projects, .competitions{
     background-color: white;
     border-radius: 4px;
 }

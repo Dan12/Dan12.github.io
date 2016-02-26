@@ -7,6 +7,7 @@
         <link href="stylesheet.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 800px)" href="mobile.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="content.js"></script>
         <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
@@ -14,156 +15,8 @@
             <h1 class="header">Daniel Weber</h1>
             <div class="nav">
                 <ul class="nav_tabs">
-                    <li class="nav_tab" tab_num="1">About</li>
-                    <li class="nav_tab" tab_num="2">Web Projects</li>
-                    <li class="nav_tab" tab_num="3">Other Projects</li>
-                    <li class="nav_tab" tab_num="4">Competitions</li>
                 </ul>
             </div>
-            <div class="about tab tab_1">
-                <h2 class="about_header">About</h2>
-                <p class="about_content">I am currently a senior in high school and enjoy creating and building a wide range of projects. I focus mostly on electronics and programming projects. My favorite hobby is coding, and I have learned many different languages and have found many different applications for my knowledge. I consistently take programming related summer courses, mostly through Northwestern's <a href="http://www.ctd.northwestern.edu/" target="_blank" class="inline_a_tag">CTD</a>, and I have learned how to make web pages with HTML, CSS, and JavaScript and how to create database-backed applications using the Ruby on Rails framework.</p>
-                <p class="about_content">I have also achieved significant proficiency in the Java programming language over many years of practice and application and have also gained a large amount of knowledge about Arduino programming and electronics. I also recently got a Raspberry Pi and have been experimenting with its GPIO capabilities. I recently took an online course through Coursera called <a href="https://www.coursera.org/learn/machine-learning" target="_blank" class="inline_a_tag">Machine Learning</a>, which was very interesting and has influenced me to study Machine Learning and Artificial Intelligence more in the future. This interest in Machine Learning influenced me to take another online course titled <a href="https://www.coursera.org/learn/synapses" target="_blank" class="inline_a_tag">Synapses, Neurons, and the Brain</a>. Apart from programming, I also have played soccer for over a decade for various teams and have been doing Taekwondo for several years now.</p></div>
-            <div class="web_projects tab tab_2">
-                <h2 class="web_projects_header">Web Projects</h2>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="https://lit-beyond-4450.herokuapp.com/" target="_blank">Game Design Host</a></h2>
-                    <p class="project_content">This is a hosting service for Unity games that I created for my game design class. It is built using the Ruby on Rails framework. The GitHub repository for this project can be found <a href="https://github.com/Dan12/GDHost" target="_blank" class="inline_a_tag">here</a>.</p>
-                    <div class="project_image">
-                        <a href="https://lit-beyond-4450.herokuapp.com/" target="_blank" class="img_link"><img src="images/gdhost.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="https://agile-spire-1086.herokuapp.com/" target="_blank">Online Launchpad</a></h2>
-                    <p class="project_content">This is an online <a href="http://global.novationmusic.com/launch/launchpad" target="_blank" class="inline_a_tag">Launchpad</a> that allows you to play a song by pressing keys on your keyboard. It is built using the Ruby on Rails framework and relies heavily on Javascript for the front-end. The GitHub repository for this project can be found <a href="https://github.com/Dan12/Launchpad" target="_blank" class="inline_a_tag">here</a>.</p>
-                    <div class="project_image">
-                        <a href="https://agile-spire-1086.herokuapp.com/" target="_blank" class="img_link"><img src="images/launch.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="/aa" target="_blank">Web AA</a></h2>
-                    <p class="project_content">This is my JavaScript version of an IOS and Android game called aa. After watching friends play this game on their iPhones, I really wanted to play it. However, I found out that the app didn't exist for Android phones at the time, so I decided to recreate the game so that I could play it. I initially created a JavaScript version of the game before porting the code to Android. I even released the app on the Google Play App Store, but unfortunately, the creators of the iPhone version asked me to take it down.</p>
-                    <div class="project_image">
-                        <a href="/aa" target="_blank" class="img_link"><img src="images/aa.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="/thematrix" target="_blank">The Power of the Matrix</a></h2>
-                    <p class="project_content">After familiarizing myself with matrix transformations in my Linear Algebra class, I decided to learn WebGL, an API that allows you to draw 3D graphics using JavaScript. I then made this website to show how matrices are used in computer graphics to quickly and easily transform coordinates in 3D space and then convert those coordinates to 2D space to be displayed on the screen.</p>
-                    <div class="project_image">
-                        <a href="/thematrix" target="_blank" class="img_link"><img src="images/matrix.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="/final_project" target="_blank">Android Gamehub</a></h2>
-                    <p class="project_content">This is my final for my HTML and CSS Class which I took in the summer of 2013. It is supposed to be a mockup for a site that promotes and reviews android games.</p>
-                    <div class="project_image">
-                        <a href="/final_project" target="_blank" class="img_link"><img src="images/andgh.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="/retro" target="_blank">Retro</a></h2>
-                    <p class="project_content">This is a web version of a Java game that I made. The Java game is actually one of the first games that I ever made. You can download the Java version from my GitHub <a href="https://github.com/Dan12/retro" target="_blank" class="inline_a_tag">here</a>.</p>
-                    <div class="project_image">
-                        <a href="/retro" target="_blank" class="img_link"><img src="images/retro.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="/blackjack" target="_blank">Blackjack</a></h2>
-                    <p class="project_content">This is my recreation of the popular card game Blackjack, which I programmed in JavaScript. This was the first project that I created using JavaScript</p>
-                    <div class="project_image">
-                        <a href="/blackjack" target="_blank" class="img_link"><img src="images/black.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="/flight" target="_blank">Space Flight</a></h2>
-                    <p class="project_content">This is my Javascript version of a Java game that I made inspired by the Helicopter Game. It is a fairly simple game played with the space bar.</p>
-                    <div class="project_image">
-                        <a href="/flight" target="_blank" class="img_link"><img src="images/flight.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="/encoder" target="_blank">Encoder</a></h2>
-                    <p class="project_content">This is a text encoder that I made a few years ago as a fun side project. However, don't use it to encrypt your files because by today's standards it is very easy to break.</p>
-                    <div class="project_image">
-                        <a href="/encoder" target="_blank" class="img_link"><img src="images/encode.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="/img_slider" target="_blank">Image Slider</a></h2>
-                    <p class="project_content">This is an image slider that I made that can be downloaded and modified. I saw something similar on the web and tried to see if I could make my own.</p>
-                    <div class="project_image">
-                        <a href="/img_slider" target="_blank" class="img_link"><img src="images/imgslider.png"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="other_projects tab tab_3">
-                <h2 class="other_projects_header">Other Projects</h2>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="https://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en" target="_blank">Android Apps</a></h2>
-                    <p class="project_content">In the summer of 2014 I took an Introduction to Android Game Design class, which inspired me to continue writing apps. I have developed several android apps already and have even published some of them to the <a href="https://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en" target="_blank" class="inline_a_tag">Google Play App Store</a>. I have several other apps, mostly games, currently in development and will try to release them soon.</p>
-                    <div class="project_image">
-                        <a href="https://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en" target="_blank" class="img_link"><img src="images/apps.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="https://github.com/Dan12" target="_blank">GitHub</a></h2>
-                    <p class="project_content">I have a few other projects not listed here on GitHub. This includes several Ruby on Rails applications, a Machine Learning Library that I began writing in Java, and an original shape detection algorithm.</p>
-                    <div class="project_image">
-                        <a href="https://github.com/Dan12" target="_blank" class="img_link"><img src="http://cdn.flaticon.com/png/256/25231.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="https://soundcloud.com/doga1216" target="_blank">Music</a></h2>
-                    <p class="project_content">I love music and I love messing around with it. I have a Numark Mixtrack Pro DJ controller and a Launchpad mini that I like to pull out every once in a while and just jam away at. I have also tried creating a remix, which turned out okay for a first try, and I have posted it to <a href="https://soundcloud.com/doga1216" target="_blank" class="inline_a_tag">Soundcloud</a>.</p>
-                    <div class="project_image">
-                        <a href="https://soundcloud.com/doga1216" target="_blank" class="img_link"><img src="images/music.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="https://www.youtube.com/watch?v=mYCbxSenAww" target="_blank">3D Modeling</a></h2>
-                    <p class="project_content">I like to do some 3D modeling and animation whenever I have some free time. I mostly use <a href="http://www.autodesk.com/products/maya/overview-dts?s_tnt=69290:1:0" target="_blank" class="inline_a_tag">Maya</a> and have created a few models and simulations to familiarize myself with the interface. <a href="https://www.youtube.com/watch?v=mYCbxSenAww" target="_blank" class="inline_a_tag">Here</a> is a video of my quick two second rendering of a helicopter</p>
-                    <div class="project_image">
-                        <a href="https://www.youtube.com/watch?v=mYCbxSenAww" target="_blank" class="img_link"><img src="images/model.png"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="competitions tab tab_4">
-                <h2 class="competitions_header">Competitions</h2>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="http://www.squareonenetwork.org/innovative-vehicle-design/autonomous-innovative-vehicle-design-challenge/" target="_blank">Square One AIVD Challenge</a></h2>
-                    <p class="project_content">In both 2014 and 2015, I was part of a team that participated in Square One's Autonomous Innovative Vehicle Design Challenge. The goal of the competition was to re-engineer a small jeep, one that a little kid would ride in, to be autonomously controlled and complete several predetermined tasks. In both years, I did most of the coding for the car and helped out with the build. In both years we enjoyed great successes, winning 3 first place trophies the first year for performance, design, and engineering and 2 first place trophies the seconds year in performance and ambassadorship. All of the code that I wrote and used in the 2015 competition can be found <a href="https://github.com/Dan12/GBS_AIVD_2015" target="_blank" class="inline_a_tag">here</a></p>
-                    <div class="project_image">
-                        <a href="http://www.squareonenetwork.org/innovative-vehicle-design/autonomous-innovative-vehicle-design-challenge/" target="_blank" class="img_link"><img src="images/car.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="http://www.usaco.org/" target="_blank">USACO Contests</a></h2>
-                    <p class="project_content">I participated in <a href="http://www.usaco.org/" target="_blank" class="inline_a_tag">USACO's</a> 2015-2016 contest season, my first season competing at USACO. While I am doing this mostly just for fun, I do intend to try and get up to the platinum level and I hope that I will learn some cool new things along the way.</p>
-                    <div class="project_image">
-                        <a href="http://www.usaco.org/" target="_blank" class="img_link"><img src="images/usaco.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="https://code.google.com/codejam" target="_blank">Google Code Jam</a></h2>
-                    <p class="project_content">I participated in the Google Code Jam for the first time in 2015 and was able to qualify. I was one of 12,000 people worldwide to pass the qualifying round. Unfortunately, I was not able to make it passed round 1.</p>
-                    <div class="project_image">
-                        <a href="https://code.google.com/codejam" target="_blank" class="img_link"><img src="images/gcj.png"></a>
-                    </div>
-                </div>
-                <div class="project_container">
-                    <h2 class="project_header"><a href="https://developers.google.com/open-source/gci/?hl=en" target="_blank">Google Code In</a></h2>
-                    <p class="project_content">I participated in Google Code In in 2013 and completed a few HTML and JavaScript tasks for <a href="https://www.apertium.org/index.eng.html?dir=slv-srp#translation" target="_blank" class="inline_a_tag">Apertium</a>, which you can view <a href="/google_code_in" target="_blank" class="inline_a_tag">here</a>.</p>
-                    <div class="project_image">
-                        <a href="https://developers.google.com/open-source/gci/?hl=en" target="_blank" class="img_link"><img src="images/gci.png"></a>
-                    </div>
-                </div>
-            </div>
-            <footer>
-                <p class="footer_content">Made By Daniel Weber</p>
-                <p class="footer_content">Contact me at dantech88@yahoo.com</p>
-            </footer>
-            <div id="mobile_check_div"></div>
         </div>
     </body>
 </html>
