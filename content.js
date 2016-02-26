@@ -3,6 +3,7 @@ var content = {
         "I am currently a senior in high school and enjoy creating and building a wide range of projects. I focus mostly on electronics and programming projects. My favorite hobby is coding, and I have learned many different languages and have found many different applications for my knowledge. I consistently take programming related summer courses, mostly through Northwestern's $ahttp://www.ctd.northwestern.edu/,inline_a_tag,CTD$, and I have learned how to make web pages with HTML, CSS, and JavaScript and how to create database-backed applications using the Ruby on Rails framework."
         ,"I have also achieved significant proficiency in the Java programming language over many years of practice and application and have also gained a large amount of knowledge about Arduino programming and electronics. I also recently got a Raspberry Pi and have been experimenting with its GPIO capabilities. I recently took an online course through Coursera called $ahttps://www.coursera.org/learn/machine-learning,inline_a_tag,Machine Learning$, which was very interesting and has influenced me to study Machine Learning and Artificial Intelligence more in the future. This interest in Machine Learning influenced me to take another online course titled $ahttps://www.coursera.org/learn/synapses,inline_a_tag,Synapses, Neurons, and the Brain$. In addition to programming, I have also played soccer for over a decade on various teams and I have been doing Taekwondo for several years now."
         ],
+        
     "Websites":[
         // header, content, image
         [
@@ -61,6 +62,7 @@ var content = {
             "/img_slider,images/imgslider.png"
         ]
     ],
+    
     "Other Projects":[
         [
             "https://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en,Android Apps",
@@ -73,6 +75,11 @@ var content = {
             "https://github.com/Dan12,images/git.png"
         ],
         [
+            "/daniel_weber_sirs_research_paper.pdf,Research Paper",
+            "During my senior year of high school, I designed and carried out a research project on machine learning. I wanted to create a machine learning algorithm capable of learning visual features by looking at frames of a video. The algorithm that I ended up creating was different from traditonal algorithms because it's dataset was constatly changing, which led to some interesting results. You can see my final paper $a/daniel_weber_sirs_research_paper.pdf,inline_a_tag,here$.",
+            "/daniel_weber_sirs_research_paper.pdf,images/research.png"
+        ],
+        [
             "https://soundcloud.com/doga1216,Music",
             "I love music and I love messing around with it. I have a Numark Mixtrack Pro DJ controller and a Launchpad mini that I like to pull out every once in a while and just jam away at. I have also tried creating a remix, which turned out okay for a first try, and I have posted it to $ahttps://soundcloud.com/doga1216,inline_a_tag,Soundcloud$.",
             "https://soundcloud.com/doga1216,images/music.png"
@@ -83,11 +90,17 @@ var content = {
             "https://www.youtube.com/watch?v=mYCbxSenAww,images/model.png"
         ]
     ],
+    
     "Competitions":[
         [
             "http://www.squareonenetwork.org/innovative-vehicle-design/autonomous-innovative-vehicle-design-challenge/,Square One AIVD Challenge",
             "In both 2014 and 2015, I was part of a team that participated in Square One's Autonomous Innovative Vehicle Design Challenge. The goal of the competition was to re-engineer a small jeep, one that a little kid would ride in, to be autonomously controlled and complete several predetermined tasks. In both years, I did most of the coding for the car and helped out with the build. In both years we enjoyed great successes, winning 3 first place trophies the first year for performance, design, and engineering and 2 first place trophies the seconds year in performance and ambassadorship. All of the code that I wrote and used in the 2015 competition can be found $ahttps://github.com/Dan12/GBS_AIVD_2015,inline_a_tag,here$",
             "http://www.squareonenetwork.org/innovative-vehicle-design/autonomous-innovative-vehicle-design-challenge/,images/car.png"
+        ],
+        [
+            "http://procom.strikingly.com/,ProCom 2.0",
+            "In February of 2016 I participated in the $ahttp://procom.strikingly.com/,inline_a_tag,ProCom 2.0$ programming competition. This programming competition required of teams of up to 4 students from a school to work together and solve up to 26 challenging programming problems. My school was able to get fourth place out of almost 30 teams, which was a great result for our school.",
+            "http://procom.strikingly.com/,images/procom.png"
         ],
         [
             "http://www.usaco.org/,USACO Contests",
