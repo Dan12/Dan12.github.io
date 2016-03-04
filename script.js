@@ -39,31 +39,29 @@ $(document).ready(function(){
 });
 
 function reformatMobile(){
-    $("[tab_num='1']").css("margin","0");
-    $("[tab_num='2']").css("margin","0");
-    $("[tab_num='3']").css("margin","0");
-    $("[tab_num='4']").css("margin","0");
+    $(".nav_tab").css("margin","0");
     PAGEWIDTH = parseInt($(".nav_tabs").width())-40;
-    var widthSum = 0;
+    var widthSum1 = 0;
     for(var i = 1; i <= TABNUM/2; i++){
-        widthSum += $("[tab_num='"+i+"']").outerWidth(false);
+        widthSum1 += $("[tab_num='"+i+"']").outerWidth(false);
     }
-    var padding = (PAGEWIDTH-widthSum)/(TABNUM/2);
+    var padding = (PAGEWIDTH-widthSum1)/(TABNUM/2);
     padding-=2;
-    if(padding > 0){
-        $("[tab_num='1']").css("margin","0 "+padding+"px 0 20px");
-        $("[tab_num='2']").css("margin","0 20px 0 "+padding+"px");
-    }
-    widthSum = 0;
+    var widthSum2 = 0;
     for(var i = TABNUM/2+1; i <= TABNUM; i++){
-        widthSum += $("[tab_num='"+i+"']").outerWidth(false);
+        widthSum2 += $("[tab_num='"+i+"']").outerWidth(false);
     }
-    padding = (PAGEWIDTH-widthSum)/(TABNUM/2);
+    if(padding > 0){
+        $("[tab_num='1']").css("margin","0 "+padding+"px 14px 20px");
+        $("[tab_num='2']").css("margin","0 20px 14px "+padding+"px");
+    }
+    padding = (PAGEWIDTH-widthSum2)/(TABNUM/2);
     padding-=2;
     if(padding > 0){
-        $("[tab_num='3']").css("margin","0 "+padding+"px 0 20px");
-        $("[tab_num='4']").css("margin","0 20px 0 "+padding+"px");
+        $("[tab_num='3']").css("margin","14px "+padding+"px 0 20px");
+        $("[tab_num='4']").css("margin","14px 20px 0 "+padding+"px");
     }
+    
 }
 
 function loadPage(){
@@ -83,6 +81,7 @@ function loadPage(){
 }
 
 function reformatRegular(){
+    $(".nav_tab").css("margin","0");
     PAGEWIDTH = parseInt($(".container").width());
     var widthSum = 0;
     for(var i = 1; i <= TABNUM; i++){
@@ -101,7 +100,7 @@ function addContent(){
         //console.log(i);
         $(".nav_tabs").append('<li class="nav_tab" tab_num="'+num+'">'+i+'</li>');
         var className = i.toLowerCase().replace(" ","_");
-        $(".container").append('<div class="'+className+' tab tab_'+num+'">');
+        $("#content_container").append('<div class="'+className+' tab tab_'+num+'">');
         $("."+className).append('<h2 class="'+className+'_header">'+i+'</h2>');
         for(var j in content[i]){
             if(className=="about")

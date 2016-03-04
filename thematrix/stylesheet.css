@@ -54,6 +54,7 @@ h1{
   padding-left: 2px;
   border: solid 1px lightgray;
   border-radius: 1px;
+  max-width: 50px;
 }
 
 .matrix{

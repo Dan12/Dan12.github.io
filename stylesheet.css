@@ -116,7 +116,7 @@ a:hover{
 }
 
 .nav_tab{
-    display: inline;
+    display: inline-block;
     font-size: 20px;
     cursor: pointer;
     background-color: rgb(245,248,253);
@@ -154,52 +154,4 @@ a:hover{
     height: 0;
     margin: 0;
     padding: 0;
-}
-
-@media screen and (max-width: 800px) {
-    .container{
-        max-width: 600px;
-    }
-
-    .project_content{
-        min-height: 0;
-    }
-
-    .project_image img{
-        /*display: none;*/
-        position: static;
-        margin-bottom: 20px;
-    }
-    
-    .project_image img:hover{
-        width: 180px;
-        height: 180px;
-        box-shadow: none;
-    }
-    
-    .img_link{
-        position: static;
-    }
-
-    .nav_tabs{
-        line-height: 46px;
-    }
-    
-    #mobile_check_div{
-        display: none;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .container{
-        max-width: 400px;
-    }
-
-    .nav_tab{
-        font-size: 14px;
-    }
-    
-    .footer_content{
-        display: block;
-    }
 }
