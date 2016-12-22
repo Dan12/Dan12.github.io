@@ -1,9 +1,9 @@
 var content = {
     "About":[
-        "I am currently a senior in high school and I enjoy creating and building a wide range of projects. I focus mostly on electronics and programming projects. My favorite hobby is coding, and I have learned many different languages and have found many different applications for my knowledge. I consistently take programming related summer courses, mostly through Northwestern's $ahttp://www.ctd.northwestern.edu/,inline_a_tag,CTD$, and I have learned how to make web pages with HTML, CSS, and JavaScript and how to create database-backed applications using the Ruby on Rails framework."
+        "I am currently a freshman at $ahttps://www.cornell.edu/,inline_a_tag,Cornell University$ and I enjoy creating and building a wide range of projects. I focus mostly on electronics and programming projects. My favorite hobby is coding, and I have learned many different languages and have found many different applications for my knowledge. I consistently take programming related summer courses, mostly through Northwestern's $ahttp://www.ctd.northwestern.edu/,inline_a_tag,CTD$, and I have learned how to make web pages with HTML, CSS, and JavaScript and how to create database-backed applications using the Ruby on Rails framework."
         ,"I have also achieved significant proficiency in the Java programming language over many years of practice and application and have also gained a large amount of knowledge about Arduino programming and electronics. I also recently got a Raspberry Pi and have been experimenting with its GPIO capabilities. I recently took an online course through Coursera called $ahttps://www.coursera.org/learn/machine-learning,inline_a_tag,Machine Learning$, which was very interesting and has influenced me to study Machine Learning and Artificial Intelligence more in the future. This interest in Machine Learning influenced me to take another online course titled $ahttps://www.coursera.org/learn/synapses,inline_a_tag,Synapses, Neurons, and the Brain$. In addition to programming, I have also played soccer for over a decade on various teams and I have been doing Taekwondo for several years now."
         ],
-        
+
     "Websites":[
         // header, content, image
         [
@@ -30,6 +30,11 @@ var content = {
             "/thematrix,The Power of the Matrix",
             "After familiarizing myself with matrix transformations in my Linear Algebra class, I decided to learn WebGL, an API that allows you to draw 3D graphics using JavaScript. I then made this website to show how matrices are used in computer graphics to quickly and easily transform coordinates in 3D space and then convert those coordinates to 2D space to be displayed on the screen.",
             "/thematrix,images/matrix.png"
+        ],
+        [
+            "/WebGLTests,WebGL Animations",
+            "After learning some of the basics about WebGL, I created 2 scenes and then tried to incorporate some animations into them. I also tried to learn a bit about shaders to create and animate light in the scenes. The results are pretty cool.",
+            "/WebGLTests,images/webgl.png"
         ],
         [
             "/final_project,Android Gamehub",
@@ -62,11 +67,11 @@ var content = {
             "/img_slider,images/imgslider.png"
         ]
     ],
-    
+
     "Other Projects":[
         [
             "https://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en,Android Apps",
-            "In the summer of 2014 I took an Introduction to Android Game Design class, which inspired me to continue writing apps. I have developed several android apps already and have even published some of them to the $ahttps://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en,inline_a_tag,Google Play App Store$. I have several other apps, mostly games, currently in development and will try to release them soon.",
+            "In the summer of 2014, I took an Introduction to Android Game Design class, which inspired me to continue writing apps. I have developed several android apps already and have even published some of them to the $ahttps://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en,inline_a_tag,Google Play App Store$. I have several other apps, mostly games, currently in development and will try to release them soon.",
             "https://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en,images/apps.png"
         ],
         [
@@ -76,7 +81,7 @@ var content = {
         ],
         [
             "/daniel_weber_sirs_research_paper.pdf,Research Paper",
-            "During my senior year of high school, I designed and carried out a research project on machine learning. I wanted to create a machine learning algorithm capable of learning visual features by looking at frames of a video. The algorithm that I ended up creating was different from traditonal algorithms because it's dataset was constatly changing, which led to some interesting results. You can see my final paper $a/daniel_weber_sirs_research_paper.pdf,inline_a_tag,here$.",
+            "During my senior year of high school, I designed and carried out a research project on machine learning. I wanted to create a machine learning algorithm capable of learning visual features by looking at frames of a video. The algorithm that I ended up creating was different from traditional algorithms because it's dataset was constantly changing, which led to some interesting results. You can see my final paper $a/daniel_weber_sirs_research_paper.pdf,inline_a_tag,here$.",
             "/daniel_weber_sirs_research_paper.pdf,images/research.png"
         ],
         [
@@ -90,32 +95,32 @@ var content = {
             "https://www.youtube.com/watch?v=mYCbxSenAww,images/model.png"
         ]
     ],
-    
+
     "Competitions":[
         [
             "http://www.squareonenetwork.org/innovative-vehicle-design/autonomous-innovative-vehicle-design-challenge/,Square One AIVD Challenge",
-            "In both 2014 and 2015, I was part of a team that participated in Square One's Autonomous Innovative Vehicle Design Challenge. The goal of the competition was to re-engineer a small jeep, one that a little kid would ride in, to be autonomously controlled and complete several predetermined tasks. In both years, I did most of the coding for the car and helped out with the build. In both years we enjoyed great successes, winning 3 first place trophies the first year for performance, design, and engineering and 2 first place trophies the seconds year in performance and ambassadorship. All of the code that I wrote and used in the 2015 competition can be found $ahttps://github.com/Dan12/GBS_AIVD_2015,inline_a_tag,here$",
+            "In 2014, 2015, and 2016, I was part of a team that participated in Square One's Autonomous Innovative Vehicle Design Challenge. The goal of the competition was to re-engineer a small jeep, one that a little kid would ride in, to be completely autonomous and complete several predetermined tasks. In all 3 years, I did most of the coding for the car and helped out to varying degrees with the actual construction of the car. We enjoyed great successes in all 3 years, winning 3 first place trophies the first year for performance, design, and engineering, 2 first place trophies the second year in performance and ambassadorship, and 1 first place trophy in the third year for engineering. All of the code that I wrote and used in the 2016 competition can be found $ahttps://github.com/Dan12/AIVD_2016,inline_a_tag,here$",
             "http://www.squareonenetwork.org/innovative-vehicle-design/autonomous-innovative-vehicle-design-challenge/,images/car.png"
         ],
         [
             "http://procom.strikingly.com/,ProCom 2.0",
-            "In February of 2016 I participated in the $ahttp://procom.strikingly.com/,inline_a_tag,ProCom 2.0$ programming competition. This programming competition required of teams of up to 4 students from a school to work together and solve up to 26 challenging programming problems. My school was able to get fourth place out of almost 30 teams, which was a great result for our school.",
+            "In February of 2016, I participated in the $ahttp://procom.strikingly.com/,inline_a_tag,ProCom 2.0$ programming competition. This programming competition required of teams of up to 4 students from a school to work together and solve up to 26 challenging programming problems. My school was able to get fourth place out of almost 30 teams, which was a great result for our school.",
             "http://procom.strikingly.com/,images/procom.png"
         ],
         [
             "http://www.usaco.org/,USACO Contests",
-            "I participated in $ahttp://www.usaco.org/,inline_a_tag,USACO's$ 2015-2016 contest season, my first season competing at USACO. While I am doing this mostly just for fun, I do intend to try and get up to the platinum level and I hope that I will learn some cool new things along the way.",
+            "I participated in $ahttp://www.usaco.org/,inline_a_tag,USACO's$ 2015-2016 contest season, my first season competing for USACO. While I did it mostly just for fun, I was able to make it up to the Gold Level in competition and was able to learn many interesting algorithms and programming techniques along the way.",
             "http://www.usaco.org/,images/usaco.png"
         ],
         [
             "https://code.google.com/codejam,Google Code Jam",
-            "I participated in the Google Code Jam for the first time in 2015 and was able to qualify. I was one of 12,000 people worldwide to pass the qualifying round. Unfortunately, I was not able to make it passed round 1.",
+            "I participated in the Google Code Jam for the first time in 2015 and was able to qualify. I was one of 12,000 people worldwide to pass the qualifying round. Unfortunately, I was not able to make it passed round 1. I participated again in 2016, and despite performing better than in 2015, I did not make it past round 1.",
             "https://code.google.com/codejam,images/gcj.png"
         ],
         [
             "https://developers.google.com/open-source/gci/?hl=en,Google Code In",
-            "I participated in Google Code In in 2013 and completed a few HTML and JavaScript tasks for $ahttps://www.apertium.org/index.eng.html?dir=slv-srp#translation,inline_a_tag,Apertium$, which you can view ",
+            "I participated in Google Code In in 2013 and completed a few HTML and JavaScript tasks for $ahttps://www.apertium.org/index.eng.html?dir=slv-srp#translation,inline_a_tag,Apertium$, which you can view $a/google_code_in,inline_a_tag,here$",
             "https://developers.google.com/open-source/gci/?hl=en,images/gci.png"
-        ]    
+        ]
     ]
 }
