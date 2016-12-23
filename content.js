@@ -1,4 +1,4 @@
-var content = {
+{
     "About":[
         "I am currently a freshman at $ahttps://www.cornell.edu/,inline_a_tag,Cornell University$ and I enjoy creating and building a wide range of projects. I focus mostly on electronics and programming projects. My favorite hobby is coding, and I have learned many different languages and have found many different applications for my knowledge. I consistently take programming related summer courses, mostly through Northwestern's $ahttp://www.ctd.northwestern.edu/,inline_a_tag,CTD$, and I have learned how to make web pages with HTML, CSS, and JavaScript and how to create database-backed applications using the Ruby on Rails framework."
         ,"I have also achieved significant proficiency in the Java programming language over many years of practice and application and have also gained a large amount of knowledge about Arduino programming and electronics. I also recently got a Raspberry Pi and have been experimenting with its GPIO capabilities. I recently took an online course through Coursera called $ahttps://www.coursera.org/learn/machine-learning,inline_a_tag,Machine Learning$, which was very interesting and has influenced me to study Machine Learning and Artificial Intelligence more in the future. This interest in Machine Learning influenced me to take another online course titled $ahttps://www.coursera.org/learn/synapses,inline_a_tag,Synapses, Neurons, and the Brain$. In addition to programming, I have also played soccer for over a decade on various teams and I have been doing Taekwondo for several years now."
@@ -81,7 +81,7 @@ var content = {
         ],
         [
             "/daniel_weber_sirs_research_paper.pdf,Research Paper",
-            "During my senior year of high school, I designed and carried out a research project on machine learning. I wanted to create a machine learning algorithm capable of learning visual features by looking at frames of a video. The algorithm that I ended up creating was different from traditional algorithms because it's dataset was constantly changing, which led to some interesting results. You can see my final paper $a/daniel_weber_sirs_research_paper.pdf,inline_a_tag,here$.",
+            "During my senior year of high school, I designed and carried out a research project on machine learning. I wanted to create a machine learning algorithm capable of learning visual features by looking at frames of a video. The algorithm that I ended up creating was different from traditional algorithms because it's dataset was constantly changing, which led to some interesting results. You can see my final paper $a/daniel_weber_sirs_research_paper.pdf,inline_a_tag,here$. Other research stuff $a/research.html,inline_a_tag,here$.",
             "/daniel_weber_sirs_research_paper.pdf,images/research.png"
         ],
         [
