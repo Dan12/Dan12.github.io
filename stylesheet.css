@@ -136,6 +136,10 @@ a:hover{
     top: 40px;
 }
 
+footer {
+  padding-bottom: 60px;
+}
+
 .footer_content a{
     background-color: rgb(245,248,253);
 }

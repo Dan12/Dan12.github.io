@@ -52,12 +52,14 @@ function loadPage(){
             $(".tab_"+CURRENTTAB).slideDown(300);
             window.location.hash = CURRENTTAB;
         });
+        return false;
     });
 
     $("#back_to_top").click(function(){
       $("html, body").animate({
             scrollTop: 0
       }, 200);
+      return false;
     });
 }
 
