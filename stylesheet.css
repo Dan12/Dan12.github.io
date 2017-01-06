@@ -22,10 +22,6 @@ a:hover{
     padding: 0 2px;
 }
 
-.inline_a_tag:hover{
-    padding: 0 2px;
-}
-
 #content_container{
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
@@ -62,11 +58,11 @@ a:hover{
     text-indent: 36px;
 }
 
-.about_header, .project_header, .websites_header, .other_projects_header, .competitions_header{
+.subheader, .project_header{
     font-size: 30px;
 }
 
-.about_header, .websites_header, .other_projects_header, .competitions_header{
+.subheader{
     padding: 14px 0 10px;
     border-bottom: solid 1px rgb(218,222,224);
     margin-top: 0;
@@ -99,10 +95,6 @@ a:hover{
     background-color: rgba(255,255,255,0);
 }
 
-.about, .websites, .other_projects, .competitions{
-    background-color: white;
-}
-
 .nav{
   background-color: white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -133,6 +125,7 @@ a:hover{
 
 .tab{
     display: none;
+    background-color: white;
 }
 
 .footer_content{
