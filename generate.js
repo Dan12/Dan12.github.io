@@ -74,7 +74,7 @@ function addContent(content, pageData) {
       contentIndex++;
       curTabs+=tabSpaces;
 
-      newLineData.splice(contentIndex, 0, tabsToSpace(curTabs)+'<h2 class="'+className+'_header">'+i+'</h2>');
+      newLineData.splice(contentIndex, 0, tabsToSpace(curTabs)+'<h2 class="subheader">'+i+'</h2>');
       contentIndex++;
 
       for(var j in content[i]){
