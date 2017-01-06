@@ -15,23 +15,21 @@
         width: 240px;
         height: 240px;
     }
-    
-    .project_image img:hover{
-        width: 240px;
-        height: 240px;
-        box-shadow: none;
-    }
-    
+
     .img_link{
         position: static;
     }
-    
+
     .about_content, .project_content{
         font-size: 18px;
     }
-    
+
     #mobile_check_div{
         display: none;
+    }
+
+    #back_to_top{
+      display: inline-block;
     }
 }
 
@@ -44,8 +42,12 @@
         font-size: 16px;
         padding: 2px 6px;
     }
-    
+
     .footer_content{
         display: block;
+    }
+
+    #back_to_top{
+      font-size: 14px;
     }
 }

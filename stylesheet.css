@@ -11,14 +11,11 @@ a{
     background-color: white;
     text-decoration: none;
     padding: 0;
-    border-radius: 4px;
-    transition: all 200ms linear;
+    transition: color 75ms linear;
 }
 
 a:hover{
-    padding: 2px 10px;
-    background-color: rgb(218,222,224);
-    text-decoration: underline;
+    color: rgba(0,153,255,0.75);
 }
 
 .inline_a_tag{
@@ -27,6 +24,10 @@ a:hover{
 
 .inline_a_tag:hover{
     padding: 0 2px;
+}
+
+#content_container{
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .container{
@@ -40,8 +41,10 @@ a:hover{
 }
 
 .header{
-    padding-bottom: 20px;
+    padding: 16px 0;
     font-size: 40px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background-color: white;
 }
 
 .about_content, .project_content{
@@ -66,6 +69,7 @@ a:hover{
 .about_header, .websites_header, .other_projects_header, .competitions_header{
     padding: 14px 0 10px;
     border-bottom: solid 1px rgb(218,222,224);
+    margin-top: 0;
 }
 
 .project_content{
@@ -75,23 +79,13 @@ a:hover{
 .project_image img{
     width: 180px;
     height: 180px;
-    box-shadow: none;
     color: black;
-    border-radius: 6px;
     position: absolute;
     top: 0;
     left: 0;
     background-color: white;
     z-index: 10;
     transition: all 200ms ease;
-}
-
-.project_image img:hover{
-    top: -90px;
-    left: -90px;
-    width: 360px;
-    height: 360px;
-    box-shadow: 0 0 30px 10px;
 }
 
 .img_link{
@@ -107,30 +101,34 @@ a:hover{
 
 .about, .websites, .other_projects, .competitions{
     background-color: white;
-    border-radius: 4px;
+}
+
+.nav{
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  margin-bottom: 40px;
 }
 
 .nav_tabs{
     list-style: none;
     padding: 0;
+    margin: 0;
+    font-size: 0;
 }
 
 .nav_tab{
     display: inline-block;
     font-size: 20px;
     cursor: pointer;
-    background-color: rgb(245,248,253);
-    padding: 4px 10px;
-    border-radius: 4px;
-    transition: all 300ms ease;
+    transition: background-color 300ms ease;
 }
 
 .nav_tab:hover{
-    background-color: rgb(218,222,224);
+    background-color: rgb(238,242,244);
 }
 
 .nav_selected{
-    background-color: rgb(218,222,224);
+    background-color: rgb(238,242,244);
 }
 
 .tab{
@@ -154,4 +152,17 @@ a:hover{
     height: 0;
     margin: 0;
     padding: 0;
+}
+
+#back_to_top{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px 6px;
+  border-radius: 30px;
+  font-size: 18px;
+  text-align: center;
+  display: none;
+  cursor: pointer;
+  background-color: rgb(218,222,224);
 }
