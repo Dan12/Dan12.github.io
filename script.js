@@ -4,9 +4,7 @@ CURRENTTAB = 1;
 ISMOBILE = false;
 
 $(document).ready(function(){
-    //TODO: add function to reformat for web pages
     if(window.location.hash) {
-        //console.log(parseInt(window.location.hash.substr(1,window.location.hash.length)))
         CURRENTTAB = parseInt(window.location.hash.substr(1,window.location.hash.length));
     }
 
@@ -26,7 +24,6 @@ $(document).ready(function(){
             ISMOBILE = true;
         else
             ISMOBILE = false;
-        //console.log(ISMOBILE);
         if(ISMOBILE)
             reformatMobile();
         else
@@ -35,10 +32,7 @@ $(document).ready(function(){
 
 });
 
-function reformatMobile(){
-    $(".nav_tab").css({"padding": "10px 0", "display": "block"});
-}
-
+// load the event listeners and styles
 function loadPage(){
     $(".tab_"+CURRENTTAB).slideDown(300);
     $("[tab_num='"+CURRENTTAB+"']").addClass("nav_selected");
@@ -63,6 +57,12 @@ function loadPage(){
     });
 }
 
+// set the nav format for mobile
+function reformatMobile(){
+    $(".nav_tab").css({"padding": "10px 0", "display": "block"});
+}
+
+// reformat the nav for desktop
 function reformatRegular(){
     $(".nav_tab").css({"padding": "0", "display": "inline-block"});
     PAGEWIDTH = parseInt($(".container").width());
