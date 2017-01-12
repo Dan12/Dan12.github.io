@@ -1,6 +1,5 @@
 TABNUM = 1;
 PAGEWIDTH = 800;
-CURRENTTAB = 1;
 ISMOBILE = false;
 
 $(document).ready(function(){
@@ -36,23 +35,6 @@ $(document).ready(function(){
 
 // load the event listeners and styles
 function loadPage(){
-    $(".tab_"+CURRENTTAB).slideDown(300);
-    $("[tab_num='"+CURRENTTAB+"']").addClass("nav_selected");
-
-    $(".nav_tab").click(function(){
-        var newTabNum = $(this).attr("tab_num");
-        if(parseInt(CURRENTTAB) !== parseInt(newTabNum)) {
-          $("[tab_num='"+CURRENTTAB+"']").removeClass("nav_selected");
-          $(".tab_"+CURRENTTAB).slideUp(300, function(){
-              CURRENTTAB = newTabNum;
-              $("[tab_num='"+CURRENTTAB+"']").addClass("nav_selected");
-              $(".tab_"+CURRENTTAB).slideDown(300);
-              window.location.hash = CURRENTTAB;
-          });
-          return false;
-        }
-    });
-
     $("#back_to_top").click(function(){
       $("html, body").animate({
             scrollTop: 0

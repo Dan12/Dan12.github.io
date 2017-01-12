@@ -2,7 +2,7 @@
 
 /*
 ========================================
-             main stylesheet
+             blog stylesheet
 ========================================
 */
 
@@ -12,6 +12,7 @@
              general
 ========================================
 */
+
 body{
     font-family: arial;
     text-align: center;
@@ -19,18 +20,28 @@ body{
 }
 
 a{
-    color: rgb(0,153,255);
-    background-color: white;
-    text-decoration: none;
-    padding: 0 2px;
-    transition: color 75ms linear;
+  color: black;
+  text-decoration: none;
 }
 
 a:hover{
-    color: rgba(0,153,255,0.75);
+
 }
 
-.header, .nav, #content_container{
+.blog_content a, footer a{
+    color: rgb(0,153,255);
+    background-color: white;
+    text-decoration: none;
+    padding: 0;
+    transition: color 75ms linear;
+    padding: 0 2px;
+}
+
+.blog_content a:hover, footer a:hover{
+  color: rgba(0,153,255,0.75);
+}
+
+.header, .nav, #content_container, #disqus_thread{
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
@@ -82,6 +93,10 @@ a:hover{
              content
 ========================================
 */
+#content_container{
+  background-color: white;
+}
+
 .container{
     max-width: 800px;
     margin: auto;
@@ -93,58 +108,36 @@ a:hover{
 }
 
 .subheader{
-    padding: 14px 0 10px;
+    padding: 14px 10px 10px;
     margin-top: 0;
-}
-
-.subheader, .project_header{
     font-size: 30px;
+    border-bottom: 1px solid rgb(218,222,224);
 }
 
-.project_header small {
+.subheader small {
   font-weight: normal;
   font-size: large;
-  margin-left: 10px;
-}
-
-.project_header a {
-  padding: 0 10px;
-}
-
-.project_container{
-    position: relative;
-}
-
-.img_content{
-  max-width: 550px;
-  min-height: 200px;
-}
-
-.tab img {
-  width: 200px;
-  height: 200px;
-  color: black;
-  position: absolute;
-  top: 60px;
-  left: 580px;
-  background-color: white;
-  z-index: 10;
-}
-
-.tab p {
-  text-align: left;
   margin-left: 20px;
-  font-size: 20px;
-  line-height: 28px;
 }
 
-#about_tab p {
+.blog_content {
+  text-align: left;
+  font-size: 18px;
+  line-height: 24px;
   text-indent: 36px;
-  margin: 20px;
+  padding: 0 26px 12px;
 }
 
-#about_tab, .project_container, .subheader {
-  border-bottom: 1px solid rgb(218,222,224);
+img{
+  margin: auto;
+  display: block;
+  max-width: 718px;
+}
+
+#disqus_thread {
+  background-color: white;
+  margin-top: 30px;
+  padding: 20px;
 }
 
 /*

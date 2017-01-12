@@ -4,19 +4,8 @@
         max-width: 600px;
     }
 
-    .img_content{
-        min-height: 0;
-    }
-
-    .tab img{
-        position: static;
-        margin-bottom: 20px;
-        width: 240px;
-        height: 240px;
-    }
-
-    .tab p{
-        font-size: 18px;
+    img{
+      max-width: 518px;
     }
 
     #mobile_check_div{
@@ -31,6 +20,10 @@
 @media screen and (max-width: 600px) {
     .container{
         max-width: 400px;
+    }
+
+    img{
+      max-width: 318px;
     }
 
     .nav_tab{
