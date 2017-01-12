@@ -23,6 +23,10 @@ a:hover{
     color: rgba(0,153,255,0.75);
 }
 
+.header, .nav, #content_container{
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
 /*
 ========================================
              header
@@ -31,7 +35,6 @@ a:hover{
 .header{
     padding: 16px 0;
     font-size: 40px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     background-color: white;
 }
 
@@ -42,8 +45,7 @@ a:hover{
 */
 .nav{
   background-color: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .nav_tabs{
@@ -73,10 +75,6 @@ a:hover{
              content
 ========================================
 */
-#content_container{
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
 .container{
     max-width: 800px;
     margin: auto;
@@ -89,7 +87,6 @@ a:hover{
 
 .subheader{
     padding: 14px 0 10px;
-    border-bottom: solid 1px rgb(218,222,224);
     margin-top: 0;
 }
 
@@ -99,7 +96,6 @@ a:hover{
 
 .project_container{
     position: relative;
-    border-bottom: solid 1px rgb(218,222,224);
 }
 
 .img_content{
@@ -126,9 +122,13 @@ a:hover{
   line-height: 28px;
 }
 
-.tab_5 p {
+#about_tab p {
   text-indent: 36px;
   margin: 20px;
+}
+
+#about_tab, .project_container, .subheader {
+  border-bottom: 1px solid rgb(218,222,224);
 }
 
 /*

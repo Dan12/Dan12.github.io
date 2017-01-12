@@ -1,12 +1,15 @@
 const fs = require('fs');
+
+const jml = require('./jml-h');
 const tabFuncs = require('./tab-counter');
-const parsers = require('./parsers');
 const templatePath = "./blog-template.html"
 
-// Full post should include paragraph breaks, images, and code
+function mod(n, m) {
+  return ((n % m) + m) % m;
+}
 
-function addContent(content, title, pageData, prevLink, curLink, nextLink) {
-  var newLineData = pageData.split('\n');
+function addContent(templateData, title, content, prevLink, curLink, nextLink) {
+  var newLineData = templateData.split('\n');
 
   var navIndex = 0;
   var contentIndex = 0;
@@ -21,28 +24,38 @@ function addContent(content, title, pageData, prevLink, curLink, nextLink) {
     }
   }
 
-  var navTabs = tabFuncs.numberOfSpaces(newLineData[navIndex]);
   var tabSpaces = 4;
+  var navTabs = tabFuncs.numberOfSpaces(newLineData[navIndex])+tabSpaces;
   var curTabs = tabFuncs.numberOfSpaces(newLineData[contentIndex])+tabSpaces;
 
-  newLineData.splice(navIndex++, 0, tabFuncs.tabsToSpace(navTabs+tabSpaces)+'<a href="'+prevLink+'.html"><li class="nav_tab" tab_num=1>Previous</li></a>');
+  newLineData.splice(navIndex++, 0, tabFuncs.tabsToSpace(navTabs+tabSpaces)+'<a href="'+prevLink+'"><li class="nav_tab" tab_num=1>Previous</li></a>');
   newLineData.splice(navIndex++, 0, tabFuncs.tabsToSpace(navTabs+tabSpaces)+'<a href="/#4"><li class="nav_tab" tab_num=2>Blogs</li></a>');
-  newLineData.splice(navIndex++, 0, tabFuncs.tabsToSpace(navTabs+tabSpaces)+'<a href="'+nextLink+'.html"><li class="nav_tab" tab_num=3>Next</li></a>');
+  newLineData.splice(navIndex++, 0, tabFuncs.tabsToSpace(navTabs+tabSpaces)+'<a href="'+nextLink+'"><li class="nav_tab" tab_num=3>Next</li></a>');
   contentIndex+=3;
 
   newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+'<h2 class="subheader">'+title+'</h2>');
   contentIndex++;
 
-  newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+'<div class="blog_content">'+parsers.replaceI(parsers.replaceP(parsers.replaceA(content)))+'</div>');
+  newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+'<div class="blog_content">');
+  contentIndex++;
+  curTabs+=tabSpaces;
 
-  fs.writeFile("../blogs/"+curLink+".html", newLineData.join('\n'), function(err) {
+  for(var i = 0; i < content.length; i++) {
+    newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+jml.dom(content[i]));
+    contentIndex++;
+  }
+
+  curTabs-=tabSpaces;
+  newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+'</div>');
+
+  fs.writeFile("../"+curLink, newLineData.join('\n'), function(err) {
     if(err) {
       console.log(err);
     }
   });
 }
 
-exports.generateBlog = (title, page, content, prev, next) => {
+exports.generateBlog = (contentStruct, ind) => {
 
   fs.readFile(templatePath, 'utf8', function(err, data) {
       if(err) {
@@ -50,6 +63,14 @@ exports.generateBlog = (title, page, content, prev, next) => {
           return;
       }
 
-      addContent(content, title, data, prev, page, next);
+      var content = contentStruct[ind]['content'];
+      var title = contentStruct[ind]['header'][2];
+      var page = contentStruct[ind]['link'];
+      var prevLink = contentStruct[mod(ind-1,contentStruct.length)]['link'];
+      prevLink = prevLink.substring(prevLink.indexOf('/')+1);
+      var nextLink = contentStruct[mod(ind-1,contentStruct.length)]['link'];
+      nextLink = nextLink.substring(nextLink.indexOf('/')+1);
+
+      addContent(data, title, content, prevLink, page, nextLink);
   });
 }

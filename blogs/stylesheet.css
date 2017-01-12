@@ -15,7 +15,7 @@ a:hover{
 
 }
 
-.inline_a_tag{
+.blog_content a, footer a{
     color: rgb(0,153,255);
     background-color: white;
     text-decoration: none;
@@ -24,7 +24,7 @@ a:hover{
     padding: 0 2px;
 }
 
-.inline_a_tag:hover{
+.blog_content a:hover, footer a:hover{
   color: rgba(0,153,255,0.75);
 }
 

@@ -4,6 +4,7 @@ const fs = require('fs');
 const md = require('./md-jml');
 const jml = require('./jml-h');
 const tabFuncs = require('./tab-counter');
+const blogs = require('./generate-blog');
 
 const contentPath = './content.md';
 const outputPath = '../index.html';
@@ -42,7 +43,11 @@ function generateContent(mdTree) {
     } else {
       if(contentStruct[contentStruct.length-1]['header'].toLowerCase() !== 'about') {
         if (mdTree[i][0] == 'h2') {
-          contentStruct[contentStruct.length-1]['content'].push({'header': mdTree[i][2], 'content': [], 'image': []});
+          if(contentStruct[contentStruct.length-1]['header'].toLowerCase() === 'blog') {
+            mdTree[i][2][1]['href'] = 'blogs/'+ mdTree[i][2][1]['href'] +'.html';
+          }
+
+          contentStruct[contentStruct.length-1]['content'].push({'header': mdTree[i][2], 'link': mdTree[i][2][1]['href'],'content': [], 'image': []});
         } else {
           var lastTab = contentStruct.length-1;
           var lastSection = contentStruct[lastTab]['content'].length-1;
@@ -65,7 +70,7 @@ function generateContent(mdTree) {
   for(var i = 0; i < contentStruct.length; i++) {
     nav.push(tabFuncs.tabsToSpace(navTabs)+'<li class="nav_tab" tab_num="'+ (i+1) +'">'+ (contentStruct[i]['header']) +'</li>');
 
-    content.push(tabFuncs.tabsToSpace(contTabs)+'<div class="tab tab_'+ (i+1) +'">');
+    content.push(tabFuncs.tabsToSpace(contTabs)+'<div class="tab tab_'+ (i+1) +'" id="'+ (contentStruct[i]['header']).toLowerCase() +'_tab">');
     contTabs+=tabSpaces;
 
     content.push(tabFuncs.tabsToSpace(contTabs)+'<h2 class="subheader">'+ contentStruct[i]['header'] +'</h2>');
@@ -78,11 +83,18 @@ function generateContent(mdTree) {
         content.push(tabFuncs.tabsToSpace(contTabs)+'<div class="project_container">');
         contTabs+=tabSpaces;
 
+        if(contentStruct[i]['header'].toLowerCase() === 'blog') {
+          blogs.generateBlog(JSON.parse(JSON.stringify(contentStruct[i]['content'])), j);
+
+          contentStruct[i]['content'][j]['content'][0].push(
+            [ 'a',{ href: contentStruct[i]['content'][j]['link']},' Continue Reading' ]
+          );
+        }
+
         content.push(tabFuncs.tabsToSpace(contTabs)+'<h2 class="project_header">'+ jml.dom(contentStruct[i]['content'][j]['header']) +'</h2>');
 
         contentStruct[i]['content'][j]['content'][0][1] = {'class':'img_content'}
 
-        // TODO loop
         content.push(tabFuncs.tabsToSpace(contTabs)+jml.dom(contentStruct[i]['content'][j]['content'][0]));
 
         content.push(tabFuncs.tabsToSpace(contTabs)+jml.dom(contentStruct[i]['content'][j]['image'][2]));
