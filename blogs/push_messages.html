@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Daniel Weber Blogs</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css">
+        <link href="mobile.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="header"><a href="/">Daniel Weber</a></h1>
+            <div class="nav">
+                <ul class="nav_tabs">
+                        <a href="push_messages.html"><li class="nav_tab" tab_num=1>Previous</li></a>
+                        <a href="/#4"><li class="nav_tab" tab_num=2>Blogs</li></a>
+                        <a href="push_messages.html"><li class="nav_tab" tab_num=3>Next</li></a>
+                </ul>
+            </div>
+
+            <div id="content_container">
+                <h2 class="subheader">Enrollment Push Messages with Firebase<small> Jan. 12, 2017</small></h2>
+                <div class="blog_content">
+                    <p>This is a project that I started because I wanted to be notified when a class at Cornell opened up. During Cornell&#39;s add-drop period in the fall and spring, if you want to get into a class that is full, you have to constantly refresh the student center page until someone else drops the class and a spot opens up for you. A quick Google search did not reveal any already implemented notification systems. So I decided to try and see if I could set up a notification system for myself.</p>
+                    <p><img src="../blogs/images/push_messages/enroll.png" alt="enroll"/></p>
+                    <p>Because I do not have access to the student center backend, I had to work with the front end. I decided that I needed to try emulating refreshing the student center page from the command line, so I opened up <a href="https://www.getpostman.com/">Postman</a> and captured my request to the student center enroll page. One of the nice things about postman is that it shows you the cookies that were sent with a request, which is what I need to &quot;log in&quot; from the command line.</p>
+                    <p><img src="../blogs/images/push_messages/postman.png" alt="postman"/></p>
+                    <p>After I had the cookie, I set up a simple Node.js script that would send a get request to the student center URL with the cookie in the header of the request. I then parsed the response from the server to find the specific class that I wanted to enroll in and check if there was a spot open (I basically used the image tag, so hopefully they won&#39;t change that). After I could tell if a class was open or not from the command line, I wanted to know if I could send a push notification to my phone. A quick google search revealed that Google&#39;s <a href="https://firebase.google.com/">Firebase</a> offered a simple and more importantly free API for sending push notifications to a phone. After following the firebase app setup for android and slightly customizing it for my purpose, I added an HTTP request to the Firebase API to my class checking script that would send a push message to a device specified by a token.</p>
+                    <p><img src="../blogs/images/push_messages/app.png" alt="app"/></p>
+                    <p>I thought that I was done after this, but I realized that I would be carrying around my laptop and it sleeps whenever the screen is closed. I needed to find a preferably free service that would allow me to run a small secure script in the cloud. After experimenting with a few online IDE&#39;s, I realized that most of them sleep after some amount of inactivity. I finally remembered the <a href="https://beepboophq.com/">Beep Boop</a> Slack bot service that I had used at my internship at Occasion. Their free plan runs a small docker container in the cloud that you can hook into with slack. So I downloaded Beep Boop&#39;s node started bot, set up a simple listener for a <code>start script</code> command in slack, and plugged in my existing push notification code.</p>
+                    <p><img src="../blogs/images/push_messages/beepboop.png" alt="beepboop"/></p>
+                    <p>After setting up the private environment variables for the bot (such as my cookie and Firebase api key), I started it up, and it worked. The only downside is that I have to reenter my cookie every day, as it expires after about a 24 hours. The other thing that I realized about this is that I didn&#39;t really have to do the whole Firebase setup, because the slack app will send you push notifications when you get a direct message. Nevertheless, it was still fun to get exposed to Firebase and I am definitely interested in the other services. I also realized that I could extend the push notification system to arbitrary tasks, so I went back to the push notification code base and made it more general. You can find that code <a href="https://github.com/Dan12/Personal-Push-Messages">here</a>. I tried to include a little tutorial on how to get started with Firebase how to set up the android app. The slack bot code can be found <a href="https://github.com/Dan12/starter-node-bot">here</a>.</p>
+                </div>
+            </div>
+
+            <!-- Start disqus -->
+              <div id="disqus_thread"></div>
+              <script>
+
+              (function() { // DON'T EDIT BELOW THIS LINE
+              var d = document, s = d.createElement('script');
+              s.src = '//dan121.disqus.com/embed.js';
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+              })();
+              </script>
+              <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <!-- End disqus -->
+
+            <footer>
+                <p class="footer_content">Made By Daniel Weber</p>
+                <p class="footer_content">Contact me at <a href="mailto:dantech88@yahoo.com" class="inline_a_tag">dantech88@yahoo.com</a></p>
+            </footer>
+
+            <div id="mobile_check_div"></div>
+            <div id="back_to_top">Top</div>
+        </div>
+
+        <!-- analytics -->
+          <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-78432255-2', 'auto');
+            ga('send', 'pageview');
+
+          </script>
+    </body>
+</html>

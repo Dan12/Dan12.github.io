@@ -60,15 +60,15 @@ This is an image slider that I made that can be downloaded and modified. I saw s
 ![Image Slider](../images/imgslider.png)
 
 # Other Projects
+## [GitHub](https://github.com/Dan12)
+I have several other projects not listed here on GitHub. This includes several Ruby on Rails applications, some simple games that I made, a slack bot, various attempts at computer vision and machine learning algorithms, and all of my scripts that don't contain sensitive information.
+
+![GitHub](../images/git.png)
+
 ## [Android Apps](https://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en)
 In the summer of 2014, I took an Introduction to Android Game Design class, which inspired me to continue writing apps. I have developed several android apps already and have even published some of them to the [Google Play App Store](https://play.google.com/store/apps/developer?id=DanTech%20Apps&hl=en). I have several other apps, mostly games, currently in development and will try to release them soon.
 
 ![Android Apps](../images/apps.png)
-
-## [GitHub](https://github.com/Dan12)
-I have a few other projects not listed here on GitHub. This includes several Ruby on Rails applications, a Machine Learning Library that I began writing in Java, and an original shape detection algorithm.
-
-![GitHub](../images/git.png)
 
 ## [Research Paper](/daniel_weber_sirs_research_paper.pdf)
 During my senior year of high school, I designed and carried out a research project on machine learning. I wanted to create a machine learning algorithm capable of learning visual features by looking at frames of a video. The algorithm that I ended up creating was different from traditional algorithms because it's dataset was constantly changing, which led to some interesting results. You can see my final paper [here](/daniel_weber_sirs_research_paper.pdf). Other research stuff [here](/research.html).
@@ -112,33 +112,32 @@ I participated in Google Code In in 2013 and completed a few HTML and JavaScript
 ![Google Code In](../images/gci.png)
 
 # Blog
-## [Test Blog](test_blog) Jan. 4, 2017
-This is some test input. I am just planning to use this as a test. [Lorem ipsum](http://www.lipsum.com/feed/html) dolor sit amet, consectetur adipiscing elit. Fusce molestie odio vel aliquet pretium. Donec interdum tortor a nisi imperdiet, ac ullamcorper orci sollicitudin. Pellentesque mi sem, accumsan id tellus sed, euismod fermentum lacus. Suspendisse nunc quam, pulvinar sed tellus ac, feugiat placerat purus. Proin dolor justo, sollicitudin vulputate ultricies id, vestibulum ut mi. Donec viverra felis nunc, nec elementum enim eleifend vitae. Donec porttitor lacinia facilisis. Fusce egestas, erat mattis ultricies ornare, mi ante sodales ipsum, vel euismod ipsum lectus efficitur massa. Curabitur eleifend, enim eu suscipit pellentesque, sapien ligula viverra ex, eu dapibus magna mi in quam.
+## [Enrollment Push Messages with Firebase](push_messages) Jan. 12, 2017
+This is a project that I started because I wanted to be notified when a class at Cornell opened up. During Cornell's add-drop period in the fall and spring, if you want to get into a class that is full, you have to constantly refresh the student center page until someone else drops the class and a spot opens up for you. A quick Google search did not reveal any already implemented notification systems. So I decided to try and see if I could set up a notification system for myself.
 
-![lorem ipsum 1](../blogs/images/lorem_ipsum_1.jpg)
+![enroll](../blogs/images/push_messages/enroll.png)
 
-Maecenas sed efficitur velit. Morbi at faucibus ex. Donec accumsan eu quam varius fermentum. Nam ultrices viverra elit, et dapibus ante sodales nec. Donec porta orci vel congue vehicula. Ut laoreet vitae dolor at malesuada. Fusce sed nulla sed nunc auctor euismod ut vel velit. Curabitur tempus neque et dui mollis, sed aliquet magna elementum. Mauris pretium urna nisl, eu vehicula velit accumsan lacinia. In ut arcu sed urna suscipit mollis.
+Because I do not have access to the student center backend, I had to work with the front end. I decided that I needed to try emulating refreshing the student center page from the command line, so I opened up [Postman](https://www.getpostman.com/) and captured my request to the student center enroll page. One of the nice things about postman is that it shows you the cookies that were sent with a request, which is what I need to "log in" from the command line.
 
-Sed hendrerit metus in leo efficitur porttitor. Duis sagittis leo ut quam maximus rhoncus. Nullam purus dui, venenatis quis eros nec, blandit semper leo. Nunc vel metus pellentesque, volutpat nulla non, aliquam ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eu [lorem ipsum](http://www.lipsum.com/feed/html) molestie, tristique dolor accumsan, vestibulum ante. Sed efficitur nunc eu tortor volutpat fermentum. Aliquam sagittis quis sem a vulputate. Nam condimentum eleifend nisi in mattis. Duis a libero est. Morbi a sagittis ligula, ut congue felis.
+![postman](../blogs/images/push_messages/postman.png)
 
-![lorem ipsum 2](../blogs/images/lorem_ipsum_2.png)
+After I had the cookie, I set up a simple Node.js script that would send a get request to the student center URL with the cookie in the header of the request. I then parsed the response from the server to find the specific class that I wanted to enroll in and check if there was a spot open (I basically used the image tag, so hopefully they won't change that). After I could tell if a class was open or not from the command line, I wanted to know if I could send a push notification to my phone. A quick google search revealed that Google's [Firebase](https://firebase.google.com/) offered a simple and more importantly free API for sending push notifications to a phone. After following the firebase app setup for android and slightly customizing it for my purpose, I added an HTTP request to the Firebase API to my class checking script that would send a push message to a device specified by a token.
 
-Sed imperdiet, tortor at mattis porta, ante sapien venenatis massa, vitae sodales orci mauris at nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam eget sem consequat, faucibus nulla a, fermentum libero. Proin ac porta metus. Maecenas et lacus tristique, porttitor justo non, blandit felis. Nulla nec scelerisque dui, eget pellentesque libero. Nam at auctor felis. In aliquam fermentum eleifend. Vivamus bibendum, tortor in semper pellentesque, sem metus euismod erat, ac ullamcorper urna libero sit amet quam.
+![app](../blogs/images/push_messages/app.png)
 
-Phasellus iaculis lacus ipsum, ut ultricies sapien eleifend at. Nulla in metus feugiat ipsum cursus placerat. Proin mollis bibendum diam. Vestibulum nulla urna, aliquam quis augue vitae, porttitor fermentum massa. Sed tincidunt commodo eleifend. Maecenas vitae mauris non lacus sodales maximus. Sed blandit ipsum sit amet blandit fringilla. Donec interdum orci velit, et dictum arcu mollis at. Nullam mattis arcu ac felis facilisis, ut tempus nunc ornare. Quisque mattis urna id porttitor ultrices. Ut ut malesuada ex. Fusce finibus, nulla nec suscipit iaculis, lectus risus fringilla ipsum, at varius risus lorem at massa. Nunc placerat justo eget tellus dictum blandit. Ut diam ligula, gravida at ligula vitae, elementum gravida magna.
+I thought that I was done after this, but I realized that I would be carrying around my laptop and it sleeps whenever the screen is closed. I needed to find a preferably free service that would allow me to run a small secure script in the cloud. After experimenting with a few online IDE's, I realized that most of them sleep after some amount of inactivity. I finally remembered the [Beep Boop](https://beepboophq.com/) Slack bot service that I had used at my internship at Occasion. Their free plan runs a small docker container in the cloud that you can hook into with slack. So I downloaded Beep Boop's node started bot, set up a simple listener for a `start script` command in slack, and plugged in my existing push notification code.
 
-![Test Blog](../blogs/images/lorem_ipsum_1.jpg)
+![beepboop](../blogs/images/push_messages/beepboop.png)
 
-## [Testing Large Blog Text Even Larger #2](test_blog_2) Jan. 8, 2017
-This is the second test blog. Nulla in metus feugiat ipsum cursus placerat. Proin mollis bibendum diam. Vestibulum nulla urna, aliquam quis augue vitae, porttitor fermentum massa. Sed tincidunt commodo eleifend. Maecenas vitae mauris non lacus sodales maximus. Sed blandit ipsum sit amet blandit fringilla. Donec interdum orci velit, et dictum arcu mollis at. Nullam mattis arcu ac felis facilisis, ut tempus nunc ornare. Quisque mattis urna id porttitor ultrices.
+After setting up the private environment variables for the bot (such as my cookie and Firebase api key), I started it up, and it worked. The only downside is that I have to reenter my cookie every day, as it expires after about a 24 hours. The other thing that I realized about this is that I didn't really have to do the whole Firebase setup, because the slack app will send you push notifications when you get a direct message. Nevertheless, it was still fun to get exposed to Firebase and I am definitely interested in the other services. I also realized that I could extend the push notification system to arbitrary tasks, so I went back to the push notification code base and made it more general. You can find that code [here](https://github.com/Dan12/Personal-Push-Messages). I tried to include a little tutorial on how to get started with Firebase how to set up the android app. The slack bot code can be found [here](https://github.com/Dan12/starter-node-bot).
 
-![lorem ipsum 2](../blogs/images/lorem_ipsum_2.png)
-
-Sed imperdiet, tortor at mattis porta, ante sapien venenatis massa, vitae sodales orci mauris at nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam eget sem consequat, faucibus nulla a, fermentum libero. Proin ac porta metus. Maecenas et lacus tristique, porttitor justo non, blandit felis. Nulla nec scelerisque dui, eget pellentesque libero. Nam at auctor felis. In aliquam fermentum eleifend. Vivamus bibendum, tortor in semper pellentesque, sem metus euismod erat, ac ullamcorper urna libero sit amet quam.
-
-![Test Blog](../blogs/images/lorem_ipsum_1.jpg)
+![main app](../blogs/images/push_messages/main.png)
 
 # About
-I am currently a freshman at [Cornell University](https://www.cornell.edu/) and I enjoy creating and building a wide range of projects. I focus mostly on electronics and programming projects. My favorite hobby is coding, and I have learned many different languages and have found many different applications for my knowledge. I consistently take programming related summer courses, mostly through Northwestern's [CTD](http://www.ctd.northwestern.edu/), and I have learned how to make web pages with HTML, CSS, and JavaScript and how to create database-backed applications using the Ruby on Rails framework.
+I am currently a freshman at [Cornell University](https://www.cornell.edu/) pursuing a Bachelors degree in Computer Science and I enjoy creating many different types of projects. I have programmed many awesome websites using Javascript, and I often go back to my first programming language, Java, when I want to whip up a quick android app or desktop utility. I use Javascript and Node.js to write my desktop automation scripts because I really cannot deal with bash syntax, and I use Ruby on Rails when I need a backend for my site (although I have experience with Django and Node.js servers). I also have a few years of experience using and programming Arduinos and electronic circuits, so I guess I can say that I know how to solder and program in C.
 
-I have also achieved significant proficiency in the Java programming language over many years of practice and application and have also gained a large amount of knowledge about Arduino programming and electronics. I also recently got a Raspberry Pi and have been experimenting with its GPIO capabilities. I recently took an online course through Coursera called [Machine Learning](https://www.coursera.org/learn/machine-learning), which was very interesting and has influenced me to study Machine Learning and Artificial Intelligence more in the future. This interest in Machine Learning influenced me to take another online course titled [Synapses, Neurons, and the Brain](https://www.coursera.org/learn/synapses). In addition to programming, I have also played soccer for over a decade on various teams and I have been doing Taekwondo for several years now.
+During my Pre-Collegiate years, I took several programming related summer courses, mostly through Northwestern's [CTD](http://www.ctd.northwestern.edu/). That's where I learned how to make web pages with HTML, CSS, and JavaScript and how to create database-backed applications using the Ruby on Rails framework. However, my thirst for knowledge has not stopped, and I now look for MOOCs in anything I am interested in.
+
+The first MOOC that I took was Coursera's [Machine Learning](https://www.coursera.org/learn/machine-learning), course, which was very interesting and has inspired me to study Machine Learning and Artificial Intelligence more in the future. My interest in Machine Learning also led me to another online course titled [Synapses, Neurons, and the Brain](https://www.coursera.org/learn/synapses). I also have learned about Node.js and MongoDB from a [server side development](https://www.coursera.org/learn/server-side-development) course.
+
+In addition to programming, I have also played soccer for over a decade on various teams and I have been doing Taekwondo for several years now. Some of my hobbies include juggling, rock climbing, music, and electronics. I also occasionally dabble in video editing and 3D modeling.
