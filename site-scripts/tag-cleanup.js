@@ -14,14 +14,12 @@ exports.targetBlank = (tree) => {
   recurseTree(tree, 'a', (tree) => {
     tree[1]['target'] = '_blank';
   });
-  // set all a tags to 'target': "_blank"
 }
 
 exports.trimImageSrc = (tree) => {
   recurseTree(tree, 'img', (tree) => {
     tree[1]['src'] = tree[1]['src'].substring(tree[1]['src'].indexOf('/')+1);
   });
-  // TODO, for all img tags, set src = src.substring(src.indexOf('/'))
 }
 
 exports.clearDataPos = (tree) => {

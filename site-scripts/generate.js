@@ -11,6 +11,9 @@ const contentPath = './content.md';
 const outputPath = '../index.html';
 const templatePath = './main-template.html';
 
+// TODO blog dates
+// Blog discus
+
 var contentStruct = [];
 
 var preNav = [];
@@ -44,15 +47,20 @@ function generateContent(mdTree) {
     if(mdTree[i][0] == 'h1') {
       contentStruct.push({'header': mdTree[i][2], 'content': []});
     } else {
-      if(contentStruct[contentStruct.length-1]['header'].toLowerCase() !== 'about') {
+      var lastTab = contentStruct.length-1;
+      if(contentStruct[lastTab]['header'].toLowerCase() !== 'about') {
         if (mdTree[i][0] == 'h2') {
-          if(contentStruct[contentStruct.length-1]['header'].toLowerCase() === 'blog') {
+          if(contentStruct[lastTab]['header'].toLowerCase() === 'blog') {
             mdTree[i][2][1]['href'] = 'blogs/'+ mdTree[i][2][1]['href'] +'.html';
           }
 
-          contentStruct[contentStruct.length-1]['content'].push({'header': mdTree[i][2], 'link': mdTree[i][2][1]['href'],'content': [], 'image': []});
+          contentStruct[lastTab]['content'].push({'header': mdTree[i][2], 'link': mdTree[i][2][1]['href'], 'content': [], 'image': []});
+
+          if(contentStruct[lastTab]['header'].toLowerCase() === 'blog') {
+            var lastSection = contentStruct[lastTab]['content'].length-1;
+            contentStruct[lastTab]['content'][lastSection]['date'] = mdTree[i][3];
+          }
         } else {
-          var lastTab = contentStruct.length-1;
           var lastSection = contentStruct[lastTab]['content'].length-1;
           while(i < mdTree.length - 1 && mdTree[i+1][0] !== 'h1' && mdTree[i+1][0] !== 'h2'){
             contentStruct[lastTab]['content'][lastSection]['content'].push(mdTree[i]);
@@ -100,7 +108,7 @@ function generateContent(mdTree) {
           tagCleaner.targetBlank(contentStruct[i]['content'][j]['header']);
         }
 
-        content.push(tabFuncs.tabsToSpace(contTabs)+'<h2 class="project_header">'+ jml.dom(contentStruct[i]['content'][j]['header']) +'</h2>');
+        content.push(tabFuncs.tabsToSpace(contTabs)+'<h2 class="project_header">'+ jml.dom(contentStruct[i]['content'][j]['header']) + (contentStruct[i]['content'][j]['date'] !== undefined ? `<small>${contentStruct[i]['content'][j]['date']}</small>` : '') +'</h2>');
 
         contentStruct[i]['content'][j]['content'][0][1] = {'class':'img_content'}
 

@@ -8,7 +8,7 @@ function mod(n, m) {
   return ((n % m) + m) % m;
 }
 
-function addContent(templateData, title, content, prevLink, curLink, nextLink) {
+function addContent(templateData, title, date, content, prevLink, curLink, nextLink) {
   var newLineData = templateData.split('\n');
 
   var navIndex = 0;
@@ -33,7 +33,7 @@ function addContent(templateData, title, content, prevLink, curLink, nextLink) {
   newLineData.splice(navIndex++, 0, tabFuncs.tabsToSpace(navTabs+tabSpaces)+'<a href="'+nextLink+'"><li class="nav_tab" tab_num=3>Next</li></a>');
   contentIndex+=3;
 
-  newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+'<h2 class="subheader">'+title+'</h2>');
+  newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+`<h2 class="subheader">${title}<small>${date}</small></h2>`);
   contentIndex++;
 
   newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+'<div class="blog_content">');
@@ -70,7 +70,8 @@ exports.generateBlog = (contentStruct, ind) => {
       prevLink = prevLink.substring(prevLink.indexOf('/')+1);
       var nextLink = contentStruct[mod(ind-1,contentStruct.length)]['link'];
       nextLink = nextLink.substring(nextLink.indexOf('/')+1);
+      var date = contentStruct[ind]['date'];
 
-      addContent(data, title, content, prevLink, page, nextLink);
+      addContent(data, title, date, content, prevLink, page, nextLink);
   });
 }

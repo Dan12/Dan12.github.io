@@ -112,7 +112,7 @@ I participated in Google Code In in 2013 and completed a few HTML and JavaScript
 ![Google Code In](../images/gci.png)
 
 # Blog
-## [Test Blog](test_blog)
+## [Test Blog](test_blog) Jan. 4, 2017
 This is some test input. I am just planning to use this as a test. [Lorem ipsum](http://www.lipsum.com/feed/html) dolor sit amet, consectetur adipiscing elit. Fusce molestie odio vel aliquet pretium. Donec interdum tortor a nisi imperdiet, ac ullamcorper orci sollicitudin. Pellentesque mi sem, accumsan id tellus sed, euismod fermentum lacus. Suspendisse nunc quam, pulvinar sed tellus ac, feugiat placerat purus. Proin dolor justo, sollicitudin vulputate ultricies id, vestibulum ut mi. Donec viverra felis nunc, nec elementum enim eleifend vitae. Donec porttitor lacinia facilisis. Fusce egestas, erat mattis ultricies ornare, mi ante sodales ipsum, vel euismod ipsum lectus efficitur massa. Curabitur eleifend, enim eu suscipit pellentesque, sapien ligula viverra ex, eu dapibus magna mi in quam.
 
 ![lorem ipsum 1](../blogs/images/lorem_ipsum_1.jpg)
@@ -126,6 +126,15 @@ Sed hendrerit metus in leo efficitur porttitor. Duis sagittis leo ut quam maximu
 Sed imperdiet, tortor at mattis porta, ante sapien venenatis massa, vitae sodales orci mauris at nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam eget sem consequat, faucibus nulla a, fermentum libero. Proin ac porta metus. Maecenas et lacus tristique, porttitor justo non, blandit felis. Nulla nec scelerisque dui, eget pellentesque libero. Nam at auctor felis. In aliquam fermentum eleifend. Vivamus bibendum, tortor in semper pellentesque, sem metus euismod erat, ac ullamcorper urna libero sit amet quam.
 
 Phasellus iaculis lacus ipsum, ut ultricies sapien eleifend at. Nulla in metus feugiat ipsum cursus placerat. Proin mollis bibendum diam. Vestibulum nulla urna, aliquam quis augue vitae, porttitor fermentum massa. Sed tincidunt commodo eleifend. Maecenas vitae mauris non lacus sodales maximus. Sed blandit ipsum sit amet blandit fringilla. Donec interdum orci velit, et dictum arcu mollis at. Nullam mattis arcu ac felis facilisis, ut tempus nunc ornare. Quisque mattis urna id porttitor ultrices. Ut ut malesuada ex. Fusce finibus, nulla nec suscipit iaculis, lectus risus fringilla ipsum, at varius risus lorem at massa. Nunc placerat justo eget tellus dictum blandit. Ut diam ligula, gravida at ligula vitae, elementum gravida magna.
+
+![Test Blog](../blogs/images/lorem_ipsum_1.jpg)
+
+## [Testing Large Blog Text Even Larger #2](test_blog_2) Jan. 8, 2017
+This is the second test blog. Nulla in metus feugiat ipsum cursus placerat. Proin mollis bibendum diam. Vestibulum nulla urna, aliquam quis augue vitae, porttitor fermentum massa. Sed tincidunt commodo eleifend. Maecenas vitae mauris non lacus sodales maximus. Sed blandit ipsum sit amet blandit fringilla. Donec interdum orci velit, et dictum arcu mollis at. Nullam mattis arcu ac felis facilisis, ut tempus nunc ornare. Quisque mattis urna id porttitor ultrices.
+
+![lorem ipsum 2](../blogs/images/lorem_ipsum_2.png)
+
+Sed imperdiet, tortor at mattis porta, ante sapien venenatis massa, vitae sodales orci mauris at nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam eget sem consequat, faucibus nulla a, fermentum libero. Proin ac porta metus. Maecenas et lacus tristique, porttitor justo non, blandit felis. Nulla nec scelerisque dui, eget pellentesque libero. Nam at auctor felis. In aliquam fermentum eleifend. Vivamus bibendum, tortor in semper pellentesque, sem metus euismod erat, ac ullamcorper urna libero sit amet quam.
 
 ![Test Blog](../blogs/images/lorem_ipsum_1.jpg)
 

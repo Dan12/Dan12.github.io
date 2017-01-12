@@ -2,6 +2,13 @@
 
 /*
 ========================================
+             main stylesheet
+========================================
+*/
+
+
+/*
+========================================
              general
 ========================================
 */
@@ -94,6 +101,16 @@ a:hover{
     font-size: 30px;
 }
 
+.project_header small {
+  font-weight: normal;
+  font-size: large;
+  margin-left: 10px;
+}
+
+.project_header a {
+  padding: 0 10px;
+}
+
 .project_container{
     position: relative;
 }
@@ -112,7 +129,6 @@ a:hover{
   left: 580px;
   background-color: white;
   z-index: 10;
-  transition: all 200ms ease;
 }
 
 .tab p {
