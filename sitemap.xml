@@ -4,81 +4,98 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
   <loc>http://dan12.github.io/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/aa/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/thematrix/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
+</url>
+<url>
+  <loc>http://dan12.github.io/WebGLTests/</loc>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/final_project/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/retro/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/blackjack/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/flight/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/encoder/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/img_slider/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
+</url>
+<url>
+  <loc>http://dan12.github.io/daniel_weber_sirs_research_paper.pdf</loc>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
+</url>
+<url>
+  <loc>http://dan12.github.io/research.html</loc>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/google_code_in/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
+</url>
+<url>
+  <loc>http://dan12.github.io/blogs/push_messages.html</loc>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/final_project/racing.html</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/final_project/arcade.html</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/final_project/running.html</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/final_project/puzzle.html</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/google_code_in/Abstract_html/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/google_code_in/abstract_html_2/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/google_code_in/interface_language_detection/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/google_code_in/spell_checker_interface/</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 <url>
   <loc>http://dan12.github.io/final_project/index.html</loc>
-  <lastmod>2015-11-14T16:41:03+00:00</lastmod>
+  <lastmod>2017-01-12T23:43:40+00:00</lastmod>
 </url>
 </urlset>
