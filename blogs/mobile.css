@@ -1,0 +1,33 @@
+
+@media screen and (max-width: 800px) {
+    .container{
+        max-width: 600px;
+    }
+
+    .project_content{
+        min-height: 0;
+    }
+
+    #mobile_check_div{
+        display: none;
+    }
+
+    #back_to_top{
+      display: inline-block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        max-width: 400px;
+    }
+
+    .nav_tab{
+        font-size: 16px;
+        padding: 2px 6px;
+    }
+
+    .footer_content{
+        display: block;
+    }
+}

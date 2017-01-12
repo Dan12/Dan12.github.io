@@ -1,6 +1,5 @@
 {
     "Websites":[
-        // header, content, image
         [
             "https://agile-spire-1086.herokuapp.com/,Online Launchpad",
             "This is an online $ahttp://global.novationmusic.com/launch/launchpad,inline_a_tag,Launchpad$ that allows you to play a song by pressing keys on your keyboard. It is built using the Ruby on Rails framework and relies heavily on Javascript for the front-end. The GitHub repository for this project can be found $ahttps://github.com/Dan12/Launchpad,inline_a_tag,here$",
@@ -117,6 +116,14 @@
             "I participated in Google Code In in 2013 and completed a few HTML and JavaScript tasks for $ahttps://www.apertium.org/index.eng.html?dir=slv-srp#translation,inline_a_tag,Apertium$, which you can view $a/google_code_in,inline_a_tag,here$",
             "https://developers.google.com/open-source/gci/?hl=en,images/gci.png"
         ]
+    ],
+
+    "Blog":[
+      [
+        "test_blog,Test Blog",
+        "$ahttp://www.lipsum.com/feed/html,inline_a_tag,Lorem ipsum$ dolor sit amet, consectetur adipiscing elit. Fusce molestie odio vel aliquet pretium. Donec interdum tortor a nisi imperdiet, ac ullamcorper orci sollicitudin. Pellentesque mi sem, accumsan id tellus sed, euismod fermentum lacus. Suspendisse nunc quam, pulvinar sed tellus ac, feugiat placerat purus. Proin dolor justo, sollicitudin vulputate ultricies id, vestibulum ut mi. Donec viverra felis nunc, nec elementum enim eleifend vitae. Donec porttitor lacinia facilisis. Fusce egestas, erat mattis ultricies ornare, mi ante sodales ipsum, vel euismod ipsum lectus efficitur massa. Curabitur eleifend, enim eu suscipit pellentesque, sapien ligula viverra ex, eu dapibus magna mi in quam.$iimages/lorem_ipsum_1.jpg$Maecenas sed efficitur velit. Morbi at faucibus ex. Donec accumsan eu quam varius fermentum. Nam ultrices viverra elit, et dapibus ante sodales nec. Donec porta orci vel congue vehicula. Ut laoreet vitae dolor at malesuada. Fusce sed nulla sed nunc auctor euismod ut vel velit. Curabitur tempus neque et dui mollis, sed aliquet magna elementum. Mauris pretium urna nisl, eu vehicula velit accumsan lacinia. In ut arcu sed urna suscipit mollis.$p$Sed hendrerit metus in leo efficitur porttitor. Duis sagittis leo ut quam maximus rhoncus. Nullam purus dui, venenatis quis eros nec, blandit semper leo. Nunc vel metus pellentesque, volutpat nulla non, aliquam ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eu $ahttp://www.lipsum.com/feed/html,inline_a_tag,lorem ipsum$ molestie, tristique dolor accumsan, vestibulum ante. Sed efficitur nunc eu tortor volutpat fermentum. Aliquam sagittis quis sem a vulputate. Nam condimentum eleifend nisi in mattis. Duis a libero est. Morbi a sagittis ligula, ut congue felis.$iimages/lorem_ipsum_2.png,http://www.lipsum.com/feed/html$Sed imperdiet, tortor at mattis porta, ante sapien venenatis massa, vitae sodales orci mauris at nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam eget sem consequat, faucibus nulla a, fermentum libero. Proin ac porta metus. Maecenas et lacus tristique, porttitor justo non, blandit felis. Nulla nec scelerisque dui, eget pellentesque libero. Nam at auctor felis. In aliquam fermentum eleifend. Vivamus bibendum, tortor in semper pellentesque, sem metus euismod erat, ac ullamcorper urna libero sit amet quam.$p$Phasellus iaculis lacus ipsum, ut ultricies sapien eleifend at. Nulla in metus feugiat ipsum cursus placerat. Proin mollis bibendum diam. Vestibulum nulla urna, aliquam quis augue vitae, porttitor fermentum massa. Sed tincidunt commodo eleifend. Maecenas vitae mauris non lacus sodales maximus. Sed blandit ipsum sit amet blandit fringilla. Donec interdum orci velit, et dictum arcu mollis at. Nullam mattis arcu ac felis facilisis, ut tempus nunc ornare. Quisque mattis urna id porttitor ultrices. Ut ut malesuada ex. Fusce finibus, nulla nec suscipit iaculis, lectus risus fringilla ipsum, at varius risus lorem at massa. Nunc placerat justo eget tellus dictum blandit. Ut diam ligula, gravida at ligula vitae, elementum gravida magna.",
+        "test_blog,blogs/images/lorem_ipsum_1.jpg"
+      ]
     ],
 
     "About":[
