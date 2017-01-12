@@ -1,5 +1,10 @@
 /*palette used: http://www.colourlovers.com/palette/468540/TWLOHA*/
 
+/*
+========================================
+             general
+========================================
+*/
 body{
     font-family: arial;
     text-align: center;
@@ -10,7 +15,7 @@ a{
     color: rgb(0,153,255);
     background-color: white;
     text-decoration: none;
-    padding: 0;
+    padding: 0 2px;
     transition: color 75ms linear;
 }
 
@@ -18,24 +23,11 @@ a:hover{
     color: rgba(0,153,255,0.75);
 }
 
-.inline_a_tag{
-    padding: 0 2px;
-}
-
-#content_container{
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
-.container{
-    max-width: 800px;
-    margin: auto;
-}
-
-.about, .project_container, .header{
-    border-bottom: solid 1px rgb(218,222,224);
-    position: relative;
-}
-
+/*
+========================================
+             header
+========================================
+*/
 .header{
     padding: 16px 0;
     font-size: 40px;
@@ -43,58 +35,11 @@ a:hover{
     background-color: white;
 }
 
-.about_content, .project_content{
-    text-align: left;
-    margin-left: 20px;
-    font-size: 20px;
-    line-height: 28px;
-}
-
-.project_content{
-    max-width: 570px;
-}
-
-.about_content{
-    text-indent: 36px;
-}
-
-.subheader, .project_header{
-    font-size: 30px;
-}
-
-.subheader{
-    padding: 14px 0 10px;
-    border-bottom: solid 1px rgb(218,222,224);
-    margin-top: 0;
-}
-
-.project_content{
-    min-height: 180px;
-}
-
-.project_image img{
-    width: 180px;
-    height: 180px;
-    color: black;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: white;
-    z-index: 10;
-    transition: all 200ms ease;
-}
-
-.img_link{
-    position: absolute;
-    top: 60px;
-    left: 600px;
-}
-
-.img_link:hover{
-    padding: 0;
-    background-color: rgba(255,255,255,0);
-}
-
+/*
+========================================
+              nav
+========================================
+*/
 .nav{
   background-color: white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -123,9 +68,76 @@ a:hover{
     background-color: rgb(238,242,244);
 }
 
+/*
+========================================
+             content
+========================================
+*/
+#content_container{
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.container{
+    max-width: 800px;
+    margin: auto;
+}
+
 .tab{
     display: none;
     background-color: white;
+}
+
+.subheader{
+    padding: 14px 0 10px;
+    border-bottom: solid 1px rgb(218,222,224);
+    margin-top: 0;
+}
+
+.subheader, .project_header{
+    font-size: 30px;
+}
+
+.project_container{
+    position: relative;
+    border-bottom: solid 1px rgb(218,222,224);
+}
+
+.img_content{
+  max-width: 570px;
+  min-height: 180px;
+}
+
+.tab img {
+  width: 180px;
+  height: 180px;
+  color: black;
+  position: absolute;
+  top: 60px;
+  left: 600px;
+  background-color: white;
+  z-index: 10;
+  transition: all 200ms ease;
+}
+
+.tab p {
+  text-align: left;
+  margin-left: 20px;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.tab_5 p {
+  text-indent: 36px;
+  margin: 20px;
+}
+
+/*
+========================================
+             footer
+========================================
+*/
+footer {
+  padding-bottom: 60px;
 }
 
 .footer_content{
@@ -136,14 +148,15 @@ a:hover{
     top: 40px;
 }
 
-footer {
-  padding-bottom: 60px;
-}
-
 .footer_content a{
     background-color: rgb(245,248,253);
 }
 
+/*
+========================================
+              misc
+========================================
+*/
 #mobile_check_div{
     width: 0;
     height: 0;

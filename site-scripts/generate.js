@@ -1,125 +1,155 @@
-// index.html generation script for node
-
+// MD to site html
 const fs = require('fs');
-const blogs = require('./generate-blog');
-const tabFuncs = require('./tab-counter');
-const parsers = require('./parsers');
 
-const contentPath = './content.json';
+const md = require('./md-jml');
+const jml = require('./jml-h');
+const tabFuncs = require('./tab-counter');
+
+const contentPath = './content.md';
 const outputPath = '../index.html';
 const templatePath = './main-template.html';
 
-function mod(n, m) {
-  return ((n % m) + m) % m;
-}
+var contentStruct = [];
 
-function addContent(content, pageData) {
-  var newLineData = pageData.split('\n');
+var preNav = [];
+var nav = [];
+var navToContent = [];
+var content = [];
+var postContent = [];
 
-  var navIndex = 0;
-  var contentIndex = 0;
+function writeOutput() {
+  var outText = '';
+  outText += preNav.join('\n') + '\n';
+  outText += nav.join('\n') + '\n';
+  outText += navToContent.join('\n') + '\n';
+  outText += content.join('\n') + '\n';
+  outText += postContent.join('\n') + '\n';
 
-  for(var i = 0; i < newLineData.length; i++) {
-    if(newLineData[i].trim().includes('class="nav_tabs"')) {
-      navIndex = i+1;
-    }
-    if(newLineData[i].trim().includes('id="content_container"')) {
-      contentIndex = i+1;
-      break;
-    }
-  }
-
-  var navTabs = tabFuncs.numberOfSpaces(newLineData[navIndex]);
-  var tabSpaces = 4;
-  var curTabs = tabFuncs.numberOfSpaces(newLineData[contentIndex])+tabSpaces;
-
-  var num = 1;
-  for(var i in content){
-      // add the nav and increment the contentIndex
-      newLineData.splice(navIndex, 0, tabFuncs.tabsToSpace(navTabs+tabSpaces)+'<li class="nav_tab" tab_num="'+num+'">'+i+'</li>');
-      contentIndex++;
-      navIndex++;
-
-      var className = i.toLowerCase().replace(" ","_");
-      newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+'<div class="'+className+' tab tab_'+num+'">');
-      contentIndex++;
-      curTabs+=tabSpaces;
-
-      newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+'<h2 class="subheader">'+i+'</h2>');
-      contentIndex++;
-
-      for(var j in content[i]){
-
-          if(className=="about"){
-            newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+'<p class="about_content">'+parsers.replaceA(content[i][j])+'</p>');
-            contentIndex++;
-          }
-
-          else{
-              var header = content[i][j][0].split(",");
-              var projContent = content[i][j][1];
-              var image = content[i][j][2].split(",");
-
-              if(className=="blog") {
-                var headerPrev = content[i][mod(parseInt(j)-1,content[i].length)][0].split(",");
-                var headerNext = content[i][mod(parseInt(j)+1,content[i].length)][0].split(",");
-                blogs.generateBlog(header[1], header[0], projContent, headerPrev[0], headerNext[0]);
-
-                // first 4 sentences
-                var sentInd = projContent.indexOf(". ") + 1;
-                for(var k = 1; k < 4; k++) {
-                  sentInd = projContent.indexOf(". ", sentInd) + 1;
-                }
-
-                projContent = projContent.substring(0, sentInd+1);
-
-                var page = "blogs/"+header[0]+".html";
-                header[0] = page;
-                image[0] = page
-
-                newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+'<div class="project_container"><h2 class="project_header"><a href="'+header[0]+'">'+header[1]+'</a></h2><p class="project_content">'+parsers.replaceA(projContent)+'<a href="'+page+'">Continue Reading</a></p><div class="project_image"><a href="'+image[0]+'" class="img_link"><img src="'+image[1]+'"></a></div></div>');
-              } else {
-                newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+'<div class="project_container"><h2 class="project_header"><a href="'+header[0]+'" target="_blank">'+header[1]+'</a></h2><p class="project_content">'+parsers.replaceA(projContent)+'</p><div class="project_image"><a href="'+image[0]+'" target="_blank" class="img_link"><img src="'+image[1]+'"></a></div></div>');
-              }
-              contentIndex++;
-          }
-      }
-      curTabs-=tabSpaces;
-      newLineData.splice(contentIndex, 0, tabFuncs.tabsToSpace(curTabs)+'</div>');
-      contentIndex++;
-
-      num++;
-  }
-
-  fs.writeFile(outputPath, newLineData.join('\n'), function(err) {
+  fs.writeFile(outputPath, outText, function(err) {
     if(err) {
       console.log(err);
     }
   });
 }
 
-// read in the content and html data
-fs.readFile(contentPath, 'utf8', function(err, data) {
+// generate the content object from the mark down data
+function generateContent(mdTree) {
+  for(var i = 2; i < mdTree.length; i++) {
+    mdTree[i][1] = {};
+
+    if(mdTree[i][0] == 'h1') {
+      contentStruct.push({'header': mdTree[i][2], 'content': []});
+    } else {
+      if(contentStruct[contentStruct.length-1]['header'].toLowerCase() !== 'about') {
+        if (mdTree[i][0] == 'h2') {
+          contentStruct[contentStruct.length-1]['content'].push({'header': mdTree[i][2], 'content': [], 'image': []});
+        } else {
+          var lastTab = contentStruct.length-1;
+          var lastSection = contentStruct[lastTab]['content'].length-1;
+          while(i < mdTree.length - 1 && mdTree[i+1][0] !== 'h1' && mdTree[i+1][0] !== 'h2'){
+            contentStruct[lastTab]['content'][lastSection]['content'].push(mdTree[i]);
+            i++;
+          }
+          contentStruct[lastTab]['content'][lastSection]['image'] = mdTree[i];
+        }
+      } else {
+        contentStruct[contentStruct.length-1]['content'].push(mdTree[i]);
+      }
+    }
+  }
+
+  var tabSpaces = 4;
+  var navTabs = tabFuncs.numberOfSpaces(preNav[preNav.length-1])+tabSpaces;
+  var contTabs = tabFuncs.numberOfSpaces(navToContent[navToContent.length-1])+tabSpaces;
+
+  for(var i = 0; i < contentStruct.length; i++) {
+    nav.push(tabFuncs.tabsToSpace(navTabs)+'<li class="nav_tab" tab_num="'+ (i+1) +'">'+ (contentStruct[i]['header']) +'</li>');
+
+    content.push(tabFuncs.tabsToSpace(contTabs)+'<div class="tab tab_'+ (i+1) +'">');
+    contTabs+=tabSpaces;
+
+    content.push(tabFuncs.tabsToSpace(contTabs)+'<h2 class="subheader">'+ contentStruct[i]['header'] +'</h2>');
+    if(contentStruct[i]['header'].toLowerCase() === 'about') {
+      for(var j = 0; j < contentStruct[i]['content'].length; j++) {
+        content.push(tabFuncs.tabsToSpace(contTabs)+jml.dom(contentStruct[i]['content'][j]));
+      }
+    } else {
+      for(var j = 0; j < contentStruct[i]['content'].length; j++) {
+        content.push(tabFuncs.tabsToSpace(contTabs)+'<div class="project_container">');
+        contTabs+=tabSpaces;
+
+        content.push(tabFuncs.tabsToSpace(contTabs)+'<h2 class="project_header">'+ jml.dom(contentStruct[i]['content'][j]['header']) +'</h2>');
+
+        contentStruct[i]['content'][j]['content'][0][1] = {'class':'img_content'}
+
+        // TODO loop
+        content.push(tabFuncs.tabsToSpace(contTabs)+jml.dom(contentStruct[i]['content'][j]['content'][0]));
+
+        content.push(tabFuncs.tabsToSpace(contTabs)+jml.dom(contentStruct[i]['content'][j]['image'][2]));
+
+        contTabs-=tabSpaces;
+        content.push(tabFuncs.tabsToSpace(contTabs)+'</div>');
+      }
+    }
+
+    contTabs-=tabSpaces;
+    content.push(tabFuncs.tabsToSpace(contTabs)+'</div>');
+  }
+
+  writeOutput();
+}
+
+// read the markdown content
+function readContent() {
+  fs.readFile(contentPath, 'utf8', function(err, data) {
     if(err) {
         console.error("Could not open file: %s", err);
         return;
     }
-    var strNewLine = data.split('\n');
-    var strJSON = '';
-    for(var i = 0; i < strNewLine.length; i++) {
-      if(!strNewLine[i].trim().startsWith('//')) {
-        strJSON += strNewLine[i]+'\n';
-      }
+
+    md.parse(data, {}, function(mdTree) {
+        generateContent(mdTree);
+    });
+
+  });
+}
+
+// generate the 3 prebuilt arrays
+function generateArrays(templateData) {
+  var arr = templateData.split('\n');
+
+  var foundNav = false;
+  var foundContent = false;
+
+  for(var i = 0; i < arr.length; i++) {
+    if(!foundNav) {
+      preNav.push(arr[i]);
+    } else if(!foundContent) {
+      navToContent.push(arr[i]);
+    } else {
+      postContent.push(arr[i]);
     }
 
-    var content = JSON.parse(strJSON);
+    if(arr[i].includes('class="nav_tabs"')) {
+      foundNav = true;
+    } else if(arr[i].includes('id="content_container"')) {
+      foundContent = true;
+    }
+  }
 
-    fs.readFile(templatePath, 'utf8', function(err, data) {
-        if(err) {
-            console.error("Could not open file: %s", err);
-            return;
-        }
+  readContent();
+}
 
-        addContent(content, data);
-    });
-});
+// Read the template
+function readTemplate() {
+  fs.readFile(templatePath, 'utf8', function(err, data) {
+    if(err) {
+        console.error("Could not open file: %s", err);
+        return;
+    }
+
+    generateArrays(data);
+  });
+}
+
+readTemplate();
