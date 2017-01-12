@@ -5,6 +5,7 @@ const md = require('./md-jml');
 const jml = require('./jml-h');
 const tabFuncs = require('./tab-counter');
 const blogs = require('./generate-blog');
+const tagCleaner = require('./tag-cleanup');
 
 const contentPath = './content.md';
 const outputPath = '../index.html';
@@ -35,8 +36,10 @@ function writeOutput() {
 
 // generate the content object from the mark down data
 function generateContent(mdTree) {
+  tagCleaner.clearDataPos(mdTree);
+
+  // structure the data
   for(var i = 2; i < mdTree.length; i++) {
-    mdTree[i][1] = {};
 
     if(mdTree[i][0] == 'h1') {
       contentStruct.push({'header': mdTree[i][2], 'content': []});
@@ -67,6 +70,7 @@ function generateContent(mdTree) {
   var navTabs = tabFuncs.numberOfSpaces(preNav[preNav.length-1])+tabSpaces;
   var contTabs = tabFuncs.numberOfSpaces(navToContent[navToContent.length-1])+tabSpaces;
 
+  // add the structured data to the content array
   for(var i = 0; i < contentStruct.length; i++) {
     nav.push(tabFuncs.tabsToSpace(navTabs)+'<li class="nav_tab" tab_num="'+ (i+1) +'">'+ (contentStruct[i]['header']) +'</li>');
 
@@ -83,12 +87,17 @@ function generateContent(mdTree) {
         content.push(tabFuncs.tabsToSpace(contTabs)+'<div class="project_container">');
         contTabs+=tabSpaces;
 
+        // target blank for the content
+        tagCleaner.targetBlank(contentStruct[i]['content'][j]['content'][0]);
+
         if(contentStruct[i]['header'].toLowerCase() === 'blog') {
           blogs.generateBlog(JSON.parse(JSON.stringify(contentStruct[i]['content'])), j);
 
           contentStruct[i]['content'][j]['content'][0].push(
             [ 'a',{ href: contentStruct[i]['content'][j]['link']},' Continue Reading' ]
           );
+        } else {
+          tagCleaner.targetBlank(contentStruct[i]['content'][j]['header']);
         }
 
         content.push(tabFuncs.tabsToSpace(contTabs)+'<h2 class="project_header">'+ jml.dom(contentStruct[i]['content'][j]['header']) +'</h2>');
@@ -97,6 +106,7 @@ function generateContent(mdTree) {
 
         content.push(tabFuncs.tabsToSpace(contTabs)+jml.dom(contentStruct[i]['content'][j]['content'][0]));
 
+        tagCleaner.trimImageSrc(contentStruct[i]['content'][j]['image'][2]);
         content.push(tabFuncs.tabsToSpace(contTabs)+jml.dom(contentStruct[i]['content'][j]['image'][2]));
 
         contTabs-=tabSpaces;

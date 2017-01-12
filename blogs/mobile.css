@@ -4,8 +4,8 @@
         max-width: 600px;
     }
 
-    .project_content{
-        min-height: 0;
+    img{
+      max-width: 548px;
     }
 
     #mobile_check_div{
@@ -20,6 +20,10 @@
 @media screen and (max-width: 600px) {
     .container{
         max-width: 400px;
+    }
+
+    img{
+      max-width: 348px;
     }
 
     .nav_tab{
