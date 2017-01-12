@@ -1,4 +1,4 @@
-TABNUM = 5;
+TABNUM = 1;
 PAGEWIDTH = 800;
 CURRENTTAB = 1;
 ISMOBILE = false;
@@ -9,6 +9,8 @@ $(document).ready(function(){
     }
 
     PAGEWIDTH = parseInt($(".container").css("max-width"));
+
+    TABNUM = $(".nav_tab").length;
 
     if($("#mobile_check_div").css("display") == "none"){
       ISMOBILE = true;
