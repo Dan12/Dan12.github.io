@@ -17,12 +17,12 @@
     <script type="text/javascript" src="javascript/animation2.js"></script>
     <script type="text/javascript" src="javascript/variables.js"></script>
     <script type="text/javascript" src="javascript/ui.js"></script>
-    
+
     <!-- Fragment shader program -->
     <script id="shader-fs" type="x-shader/x-fragment">
       varying lowp vec4 vColor;
       varying highp vec3 vLighting;
-      
+
       void main(void) {
         gl_FragColor = vec4(vColor.rgb * vLighting, vColor.a);
       }
@@ -33,41 +33,53 @@
       attribute highp vec3 aVertexNormal;
       attribute highp vec3 aVertexPosition;
       attribute highp vec4 aVertexColor;
-    
+
       uniform highp mat4 uNormalMatrix;
       uniform highp mat4 uMVMatrix;
       uniform highp mat4 uPMatrix;
-      
+
       uniform highp vec3 uAmbientLight;
       uniform highp vec3 uDirectionalLightColor;
       uniform highp vec3 uDirectionalVector;
-      
+
       varying lowp vec4 vColor;
       varying highp vec3 vLighting;
-    
+
       void main(void) {
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
         vColor = aVertexColor;
-        
+
         // Apply lighting effecs
         highp vec4 transformedNormal = uNormalMatrix * vec4(aVertexNormal, 1.0);
-        
+
         highp float directional = max(dot(transformedNormal.xyz, uDirectionalVector), 0.0);
         vLighting = uAmbientLight + (uDirectionalLightColor * directional);
       }
     </script>
   </head>
-  
+
   <body onload="start()">
     <h1>WebGL Tests</h1>
-    
+
     <canvas id="glcanvas" width="640" height="480" style="border: 1px solid lightgray;">
-      Your browser doesn't appear to support the 
+      Your browser doesn't appear to support the
       <code>canvas</code> element.
     </canvas>
     <br>
     <div class="button" id="anim1" anim="0">Animation1</div>
     <div class="button" id="anim2" anim="1">Animation2</div>
-    
+
+    <!-- analytics -->
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-78432255-2', 'auto');
+        ga('send', 'pageview');
+
+      </script>
+
   </body>
 </html>
