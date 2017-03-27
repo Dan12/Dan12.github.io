@@ -71,7 +71,7 @@ In the summer of 2014, I took an Introduction to Android Game Design class, whic
 ![Android Apps](../images/apps.png)
 
 ## [Research Paper](/daniel_weber_sirs_research_paper.pdf)
-During my senior year of high school, I designed and carried out a research project on machine learning. I wanted to create a machine learning algorithm capable of learning visual features by looking at frames of a video. The algorithm that I ended up creating was different from traditional algorithms because it's dataset was constantly changing, which led to some interesting results. You can see my final paper [here](/daniel_weber_sirs_research_paper.pdf). Other research stuff [here](/research.html).
+During my senior year of high school, I designed and carried out a research project on machine learning. I wanted to create a machine learning algorithm capable of learning visual features by looking at frames of a video. The algorithm that I ended up creating was different from traditional algorithms because it's dataset was constantly changing, which led to some interesting results. You can see my final paper [here](/daniel_weber_sirs_research_paper.pdf).
 
 ![Research Paper](../images/research.png)
 
@@ -136,7 +136,7 @@ After setting up the private environment variables for the bot (such as my cooki
 # About
 I am currently a freshman at [Cornell University](https://www.cornell.edu/) pursuing a Bachelors degree in Computer Science and I enjoy creating many different types of projects. I have programmed many awesome websites using Javascript, and I often go back to my first programming language, Java, when I want to whip up a quick android app or desktop utility. I use Javascript and Node.js to write my desktop automation scripts because I really cannot deal with bash syntax, and I use Ruby on Rails when I need a backend for my site (although I have experience with Django and Node.js servers). I also have a few years of experience using and programming Arduinos and electronic circuits, so I guess I can say that I know how to solder and program in C.
 
-During my Pre-Collegiate years, I took several programming related summer courses, mostly through Northwestern's [CTD](http://www.ctd.northwestern.edu/). That's where I learned how to make web pages with HTML, CSS, and JavaScript and how to create database-backed applications using the Ruby on Rails framework. However, my thirst for knowledge has not stopped, and I now look for MOOCs in anything I am interested in.
+During my Pre-Collegiate years, I took several programming related summer courses, mostly through Northwestern's [CTD](http://www.ctd.northwestern.edu/). That's where I learned how to make web pages with HTML, CSS, and JavaScript and how to create database-backed applications using the Ruby on Rails framework. I have a great love for learning and I am always looking to expand my knowledge and learn more about subjects that really interest me, which has led me to some fascinating Massive Open Online Courses (MOOCs).
 
 The first MOOC that I took was Coursera's [Machine Learning](https://www.coursera.org/learn/machine-learning), course, which was very interesting and has inspired me to study Machine Learning and Artificial Intelligence more in the future. My interest in Machine Learning also led me to another online course titled [Synapses, Neurons, and the Brain](https://www.coursera.org/learn/synapses). I also have learned about Node.js and MongoDB from a [server side development](https://www.coursera.org/learn/server-side-development) course.
 
