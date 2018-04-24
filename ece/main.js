@@ -1,6 +1,9 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext("2d");
 
+var phaseCanvas = document.getElementById('phase');
+var pctx = phaseCanvas.getContext("2d");
+
 function par(r1,r2) {
   var num = math.multiply(r1,r2);
   var denom = math.add(r1,r2);
@@ -81,8 +84,47 @@ function drawGraph(f,r,l,c) {
   ctx.stroke();
 }
 
-// console.log(series(100))
-// console.log(mag(series(100)));
+function drawPhase(f,r,l,c) {
+  pctx.beginPath();
+
+  var width = 500;
+  var height = 300;
+
+  pctx.moveTo(0,height/2);
+  pctx.lineTo(width,height/2);
+
+  pctx.lineWidth = 2;
+  pctx.strokeStyle = "#00ff00";
+  pctx.stroke();
+
+  pctx.beginPath();
+  
+  var xmin = 0;
+  var xmax = Math.log(10e6);
+  var ymin = -180;
+  var ymax = 180;
+  
+  var xscale = width/xmax;
+  var yscale = height/(ymax-ymin);
+  
+  var first = true;
+  
+  for (var j = 1; j < 10e6; j*=2) {
+    var x = Math.log(j);
+    var y = f(j,r,l,c);
+    var y = math.divide(1,y).toPolar().phi*180/Math.PI;
+    // console.log(x+","+y);
+    if (first) {
+      pctx.moveTo(x*xscale,height - y*yscale + ymin*yscale);
+      first = false;
+    }
+    pctx.lineTo(x*xscale,height - y*yscale + ymin*yscale);
+  }
+  
+  pctx.lineWidth = 2;
+  pctx.strokeStyle = "#ff0000";
+  pctx.stroke();
+}
 
 var rDiv = document.getElementById("rangeR");
 var lDiv = document.getElementById("rangeL");
@@ -92,8 +134,8 @@ var type = 0;
 var allTypes = [t1,t2,t3,t4,t5,t6,t7,t8];
 
 var typeForm = document.getElementById("typeForm");
-for (var i = 0; i < typeForm.elements.length; i++) {
-  typeForm.elements[i].addEventListener('mouseup', function() {
+for (var j = 0; j < typeForm.elements.length; j++) {
+  typeForm.elements[j].addEventListener('mouseup', function() {
     type = this.value-1;
     scaleAndDraw();
   });
@@ -107,6 +149,8 @@ function scaleAndDraw() {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawGraph(allTypes[type],r,l,c);
+  pctx.clearRect(0, 0, phaseCanvas.width, phaseCanvas.height);
+  drawPhase(allTypes[type],r,l,c);
 }
 
 rDiv.addEventListener('mouseup', function() {
