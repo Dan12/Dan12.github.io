@@ -16,47 +16,47 @@ function fc(c,w) {
   return math.divide(1, math.multiply(i, math.multiply(w, c)));
 }
 
-function fl(l,w) {
-  return math.multiply(i, math.multiply(w, l));
+function fl(l,w,rl) {
+  return math.add(rl, math.multiply(i, math.multiply(w, l)));
 }
 
-function t1(w,r,l,c) {
-  return math.add(r, math.add(fc(c,w), fl(l,w)));
+function t1(w,r,l,c,rl) {
+  return math.add(r, math.add(fc(c,w), fl(l,w,rl)));
 }
 
-function t2(w,r,l,c) {
-  return par(r, par(fc(c,w), fl(l,w)));
+function t2(w,r,l,c,rl) {
+  return par(r, par(fc(c,w), fl(l,w,rl)));
 }
 
-function t3(w,r,l,c) {
-  return par(fc(c,w), math.add(r, fl(l,w)));
+function t3(w,r,l,c,rl) {
+  return par(fc(c,w), math.add(r, fl(l,w,rl)));
 }
 
-function t4(w,r,l,c) {
-  return math.add(fc(c,w), par(fl(l,w), r));
+function t4(w,r,l,c,rl) {
+  return math.add(fc(c,w), par(fl(l,w,rl), r));
 }
 
-function t5(w,r,l,c) {
-  return par(r, math.add(fc(c,w), fl(l,w)));
+function t5(w,r,l,c,rl) {
+  return par(r, math.add(fc(c,w), fl(l,w,rl)));
 }
 
-function t6(w,r,l,c) {
-  return math.add(r, par(fl(l,w), fc(c,w)));
+function t6(w,r,l,c,rl) {
+  return math.add(r, par(fl(l,w,rl), fc(c,w)));
 }
 
-function t7(w,r,l,c) {
-  return par(fl(l,w), math.add(fc(c,w), r));
+function t7(w,r,l,c,rl) {
+  return par(fl(l,w,rl), math.add(fc(c,w), r));
 }
 
-function t8(w,r,l,c) {
-  return math.add(fl(l,w), par(r, fc(c,w)));
+function t8(w,r,l,c,rl) {
+  return math.add(fl(l,w,rl), par(r, fc(c,w)));
 }
 
 function mag(im) {
   return math.sqrt(math.re(im)*math.re(im) + math.im(im)*math.im(im));
 }
 
-function drawGraph(f,r,l,c) {
+function drawGraph(f,r,l,c,rl) {
   ctx.beginPath();
 
   var width = 500;
@@ -70,11 +70,11 @@ function drawGraph(f,r,l,c) {
   var xscale = width/xmax;
   var yscale = height/ymax;
   
-  ctx.moveTo(Math.log(1)*xscale,height - Math.log(mag(f(1,r,l,c)))*yscale);
+  ctx.moveTo(Math.log(1)*xscale,height - Math.log(mag(f(1,r,l,c,rl)))*yscale);
   
   for (var j = 1; j < 10e6; j*=2) {
     var x = Math.log(j);
-    var y = Math.log(mag(f(j,r,l,c)));
+    var y = Math.log(mag(f(j,r,l,c,rl)));
     // console.log(x+","+y);
     ctx.lineTo(x*xscale,height - y*yscale);
   }
@@ -84,7 +84,7 @@ function drawGraph(f,r,l,c) {
   ctx.stroke();
 }
 
-function drawPhase(f,r,l,c) {
+function drawPhase(f,r,l,c,rl) {
   pctx.beginPath();
 
   var width = 500;
@@ -111,7 +111,7 @@ function drawPhase(f,r,l,c) {
   
   for (var j = 1; j < 10e6; j*=2) {
     var x = Math.log(j);
-    var y = f(j,r,l,c);
+    var y = f(j,r,l,c,rl);
     var y = math.divide(1,y).toPolar().phi*180/Math.PI;
     // console.log(x+","+y);
     if (first) {
@@ -128,6 +128,7 @@ function drawPhase(f,r,l,c) {
 
 var rDiv = document.getElementById("rangeR");
 var lDiv = document.getElementById("rangeL");
+var rlDiv = document.getElementById("rangeRL");
 var cDiv = document.getElementById("rangeC");
 
 var type = 0;
@@ -145,12 +146,13 @@ function scaleAndDraw() {
   var r = rDiv.value*10;
   var l = lDiv.value/1000;
   var c = cDiv.value/1000000;
+  var rl = rlDiv.value;
   console.log(r+","+l+","+c);
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawGraph(allTypes[type],r,l,c);
+  drawGraph(allTypes[type],r,l,c,rl);
   pctx.clearRect(0, 0, phaseCanvas.width, phaseCanvas.height);
-  drawPhase(allTypes[type],r,l,c);
+  drawPhase(allTypes[type],r,l,c,rl);
 }
 
 rDiv.addEventListener('mousemove', function() {
@@ -162,6 +164,10 @@ lDiv.addEventListener('mousemove', function() {
 });
 
 cDiv.addEventListener('mousemove', function() {
+  scaleAndDraw();
+});
+
+rlDiv.addEventListener('mousemove', function() {
   scaleAndDraw();
 });
 
