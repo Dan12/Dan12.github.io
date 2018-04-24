@@ -153,15 +153,15 @@ function scaleAndDraw() {
   drawPhase(allTypes[type],r,l,c);
 }
 
-rDiv.addEventListener('mouseup', function() {
+rDiv.addEventListener('mousemove', function() {
   scaleAndDraw();
 });
 
-lDiv.addEventListener('mouseup', function() {
+lDiv.addEventListener('mousemove', function() {
   scaleAndDraw();
 });
 
-cDiv.addEventListener('mouseup', function() {
+cDiv.addEventListener('mousemove', function() {
   scaleAndDraw();
 });
 
