@@ -112,7 +112,7 @@ function drawPhase(f,r,l,c,rl) {
   for (var j = 1; j < 10e6; j*=2) {
     var x = Math.log(j);
     var y = f(j,r,l,c,rl);
-    var y = math.divide(1,y).toPolar().phi*180/Math.PI;
+    var y = y.toPolar().phi*180/Math.PI;
     // console.log(x+","+y);
     if (first) {
       pctx.moveTo(x*xscale,height - y*yscale + ymin*yscale);
@@ -145,7 +145,7 @@ for (var j = 0; j < typeForm.elements.length; j++) {
 function scaleAndDraw() {
   var r = rDiv.value*10;
   var l = lDiv.value/1000;
-  var c = cDiv.value/1000000;
+  var c = cDiv.value/10000000;
   var rl = rlDiv.value;
   console.log(r+","+l+","+c);
 
